@@ -1,0 +1,143 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class Hasil extends CI_Controller 
+{
+
+    function __construct()
+    {
+        parent::__construct();
+        $this->load->database();
+        $this->load->model("hasil_model");
+        $this->lang->load('basic', $this->config->item('language'));
+        // redirect if not loggedin
+        if(!$this->session->userdata('logged_in')){
+            redirect('login');
+        }
+        $logged_in=$this->session->userdata('logged_in');
+        if($logged_in['base_url'] != base_url()){
+            $this->session->unset_userdata('logged_in');        
+            redirect('login');
+        }
+    }
+
+    public function index($limit='0',$cid='0',$lid='0')
+    {
+        $this->load->helper('form');
+        $logged_in=$this->session->userdata('logged_in');
+        if($logged_in['su']!='1'){
+            exit($this->lang->line('permission_denied'));
+        }
+            
+        $data['limit']=$limit;
+        $data['cid']=$cid;
+        $data['lid']=$lid;
+        
+        $data['title']=$this->lang->line('resultlist');
+        // fetching user list
+        $data['result']=$this->hasil_model->hasil_list($limit,$cid,$lid);
+        $this->load->view('header',$data);
+        $this->load->view('hasil_list',$data);
+        $this->load->view('footer',$data);
+    }
+
+    public function detail($uid)
+    {
+        $this->load->model("user_model");
+        $this->load->model("norma_model");
+        $this->load->helper('form');
+        $logged_in=$this->session->userdata('logged_in');
+        if($logged_in['su']!='1'){
+            exit($this->lang->line('permission_denied'));
+        }
+        
+        $data['title']="Detail Peserta";
+        // fetching user list
+        $data['user']=$this->user_model->get_user($uid);
+        $data['result'] = $this->hasil_model->hasil_detail($uid);
+        $data['disc_m'] = $this->norma_model->hasil_disc_m($uid);
+        $data['disc_l'] = $this->norma_model->hasil_disc_l($uid);
+        $data['mscale'] = $this->norma_model->data_scale_m($uid);
+        $data['lscale'] = $this->norma_model->data_scale_l($uid);
+        $data['cscale'] = $this->norma_model->data_scale_c($uid);
+
+        $this->load->view('header',$data);
+        $this->load->view('hasil_detail',$data);
+        $this->load->view('footer',$data);
+    }
+
+    public function detailist($uid)
+    {
+        $this->load->model("user_model");
+        $this->load->model("norma_model");
+        $this->load->helper('form');
+        $logged_in=$this->session->userdata('logged_in');
+        if($logged_in['su']!='1'){
+            exit($this->lang->line('permission_denied'));
+        }
+        
+        $data['title']="Detail Peserta";
+        // fetching user list
+        $data['user']=$this->user_model->get_user($uid);
+        $data['result'] = $this->hasil_model->hasil_detail($uid);
+        $data['disc_m'] = $this->norma_model->hasil_disc_m($uid);
+        $data['disc_l'] = $this->norma_model->hasil_disc_l($uid);
+        $data['mscale'] = $this->norma_model->data_scale_m($uid);
+        $data['lscale'] = $this->norma_model->data_scale_l($uid);
+        $data['cscale'] = $this->norma_model->data_scale_c($uid);
+
+        $this->load->view('header',$data);
+        $this->load->view('hasil_detail_ist',$data);
+        $this->load->view('footer',$data);
+    }
+
+    public function tpa()
+    {
+        $this->load->view('header');
+        $this->load->view('hasil_tpa');
+        $this->load->view('footer');
+    }
+
+    public function tpu()
+    {
+        $this->load->view('header');
+        $this->load->view('hasil_tpu');
+        $this->load->view('footer');
+    }
+
+    
+    public function ist($limit='0',$cid='0',$lid='0')
+    {
+        $this->load->helper('form');
+        $logged_in=$this->session->userdata('logged_in');
+        if($logged_in['su']!='1'){
+            exit($this->lang->line('permission_denied'));
+        }
+            
+        $data['limit']=$limit;
+        $data['cid']=$cid;
+        $data['lid']=$lid;
+        
+        $data['title']=$this->lang->line('resultlist');
+        // fetching user list
+        $data['result']=$this->hasil_model->hasil_list($limit,$cid,$lid);
+        $this->load->view('header',$data);
+        $this->load->view('hasil_ist',$data);
+        $this->load->view('footer',$data);
+    }
+
+
+    // public function hasilist()
+    // {
+    //     $this->load->view('header',$data);
+    //     $this->load->view('hasil_ist',$data);
+    //     $this->load->view('footer',$data);
+    // }
+
+    public function disc()
+    {
+        $this->load->view('header');
+        $this->load->view('hasil_disc');
+        $this->load->view('footer');
+    }
+}
