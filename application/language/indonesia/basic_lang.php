@@ -219,6 +219,7 @@ $lang['disc_question'] = "DISC (Kepribadian)";
 $lang['match_the_column'] = "Cocokkan Kolom";
 $lang['short_answer'] = "Jawaban Singkat";
 $lang['submit_quiz'] = "Kirim Ujian";
+$lang['next_quiz'] = "Berikutnya";
 $lang['clear'] = "Bersihkan";
 $lang['cancel'] = "Batal";
 $lang['success'] = "Sukses";

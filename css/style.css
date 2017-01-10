@@ -471,6 +471,6 @@ div#timer-left.col-md-3 {
   padding: 15px;
 }
 
-#submitbtnsave {
+.is-hide {
   display: none;
 }

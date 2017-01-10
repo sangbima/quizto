@@ -412,7 +412,7 @@
     <?php } ?>
     <button class="btn btn-success" id="nextbtn" onClick="javascript:show_next_question();" style="margin-top:2px;" ><?php echo $this->lang->line('save_next');?></button>
     
-    <button class="btn btn-danger"  onClick="javascript:cancelmove();" style="margin-top:2px;" ><?php echo $this->lang->line('submit_quiz');?></button>
+    <button id="submitbtnsave" class="btn btn-danger is-hide"  onClick="javascript:submit_ujian_zr();" style="margin-top:2px;" ><?php echo $this->lang->line('next_quiz');?></button>
 </div>
 
 

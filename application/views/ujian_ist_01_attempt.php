@@ -411,10 +411,8 @@
     <button class="btn btn-success"  id="backbtn" style="visibility:hidden;" onClick="javascript:show_back_question();"  style="margin-top:2px;" ><?php echo $this->lang->line('back');?></button>
     <?php } ?>
     <button class="btn btn-success" id="nextbtn" onClick="javascript:show_next_question();" style="margin-top:2px;" ><?php echo $this->lang->line('save_next');?></button>
-    <?php echo $quizgroup['noq']; ?>
-    <!-- Ini dimunculkan ketika soal terakhir -->
-    <!-- <button id="submitbtn" class="btn btn-danger"  onClick="javascript:cancelmove();" style="margin-top:2px;" ><?php //echo $this->lang->line('submit_quiz');?></button> -->
-    <button id="submitbtnsave" class="btn btn-danger"  onClick="javascript:submit_ujian_se();" style="margin-top:2px;" ><?php echo $this->lang->line('submit_quiz');?></button>
+    
+    <button id="submitbtnsave" class="btn btn-danger is-hide"  onClick="javascript:submit_ujian_se();" style="margin-top:2px;" ><?php echo $this->lang->line('next_quiz');?></button>
 </div>
 
 <script>

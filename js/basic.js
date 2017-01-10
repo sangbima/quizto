@@ -206,15 +206,15 @@ function cancelmovedisc(position_t,quid,qid,opos){
 
 function movequestion(){
 
-var pos=document.getElementById('qposition').value;
+	var pos=document.getElementById('qposition').value;
 
-if(position_type=="Up"){
-var npos=parseInt(global_opos)-parseInt(pos);
-window.location=base_url+"index.php/quiz/up_question/"+global_quid+"/"+global_qid+"/"+npos;
-}else{
-var npos=parseInt(pos)-parseInt(global_opos);
-window.location=base_url+"index.php/quiz/down_question/"+global_quid+"/"+global_qid+"/"+npos;
-}
+	if(position_type=="Up"){
+		var npos=parseInt(global_opos)-parseInt(pos);
+		window.location=base_url+"index.php/quiz/up_question/"+global_quid+"/"+global_qid+"/"+npos;
+	}else{
+		var npos=parseInt(pos)-parseInt(global_opos);
+		window.location=base_url+"index.php/quiz/down_question/"+global_quid+"/"+global_qid+"/"+npos;
+	}
 }
 
 
@@ -263,25 +263,25 @@ function show_question(vqn){
 	$(did).css('display','block');
 	// hide show next back btn
 	if(vqn >= 1){
-	$('#backbtn').css('visibility','visible');
+		$('#backbtn').css('visibility','visible');
 	}
 	
 	if(vqn < noq){
-	$('#nextbtn').css('visibility','visible');
+		$('#nextbtn').css('visibility','visible');
 	}
 	if((parseInt(vqn)+1) == noq){
 	  
-	$('#nextbtn').css('visibility','hidden');
+		$('#nextbtn').css('visibility','hidden');
 	}
 	if(vqn == 0){
-	$('#backbtn').css('visibility','hidden');
+		$('#backbtn').css('visibility','hidden');
 	}
 	
 	// last qn
 	qn=vqn;
-lqn=vqn;
-setIndividual_time(lqn);
-save_answer(lqn);
+	lqn=vqn;
+	setIndividual_time(lqn);
+	save_answer(lqn);
 	
 }
 
@@ -293,12 +293,14 @@ function show_next_question(){
 		var did="#q"+qn;
 		$(did).css('display','block');
 	}
-	// hide show next back btn
+
+	// // hide show next back btn
 	if(qn >= 1){
 		$('#backbtn').css('visibility','visible');
 	}
 	if((parseInt(qn)+1) == noq){
 		$('#nextbtn').css('visibility','hidden');
+		$('#submitbtnsave').removeClass('is-hide');
 	}
 	change_color(lqn);
 	setIndividual_time(lqn);
@@ -312,17 +314,19 @@ function show_next_question(){
 function show_next_question_ist(){
 
 	if((parseInt(qn)+1) < noq){
-	fide_all_question();
-	qn=(parseInt(qn)+1);
-	var did="#q"+qn;
-	$(did).css('display','block');
+		fide_all_question();
+		qn=(parseInt(qn)+1);
+		var did="#q"+qn;
+		$(did).css('display','block');
 	}
 	// hide show next back btn
 	if(qn >= 1){
-	$('#backbtn').css('visibility','visible');
+		$('#backbtn').css('visibility','visible');
 	}
 	if((parseInt(qn)+1) == noq){
-	$('#nextbtn').css('visibility','hidden');
+		$('#nextbtn').css('visibility','hidden');
+		$('#submitbtnsave').removeClass('is-hide');
+		$('#submitbtnsave').addClass('is-showing');
 	}
 	change_color(lqn);
 	setIndividual_time(lqn);
