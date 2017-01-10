@@ -21859,3 +21859,463 @@ INFO - 2017-01-10 17:26:09 --> Model Class Initialized
 INFO - 2017-01-10 17:26:09 --> Language file loaded: language/indonesia/basic_lang.php
 INFO - 2017-01-10 17:26:09 --> Final output sent to browser
 DEBUG - 2017-01-10 17:26:09 --> Total execution time: 0.1504
+INFO - 2017-01-10 17:26:39 --> Config Class Initialized
+INFO - 2017-01-10 17:26:39 --> Hooks Class Initialized
+DEBUG - 2017-01-10 17:26:39 --> UTF-8 Support Enabled
+INFO - 2017-01-10 17:26:39 --> Utf8 Class Initialized
+INFO - 2017-01-10 17:26:39 --> URI Class Initialized
+INFO - 2017-01-10 17:26:39 --> Router Class Initialized
+INFO - 2017-01-10 17:26:39 --> Output Class Initialized
+INFO - 2017-01-10 17:26:39 --> Security Class Initialized
+DEBUG - 2017-01-10 17:26:39 --> Global POST, GET and COOKIE data sanitized
+INFO - 2017-01-10 17:26:39 --> Input Class Initialized
+INFO - 2017-01-10 17:26:39 --> Language Class Initialized
+INFO - 2017-01-10 17:26:39 --> Loader Class Initialized
+INFO - 2017-01-10 17:26:39 --> Helper loaded: url_helper
+INFO - 2017-01-10 17:26:39 --> Helper loaded: language_helper
+INFO - 2017-01-10 17:26:39 --> Session: Class initialized using 'files' driver.
+INFO - 2017-01-10 17:26:39 --> Controller Class Initialized
+INFO - 2017-01-10 17:26:39 --> Database Driver Class Initialized
+INFO - 2017-01-10 17:26:39 --> Model Class Initialized
+INFO - 2017-01-10 17:26:39 --> Model Class Initialized
+INFO - 2017-01-10 17:26:39 --> Model Class Initialized
+INFO - 2017-01-10 17:26:39 --> Language file loaded: language/indonesia/basic_lang.php
+INFO - 2017-01-10 17:26:39 --> Final output sent to browser
+DEBUG - 2017-01-10 17:26:39 --> Total execution time: 0.1478
+INFO - 2017-01-10 17:27:09 --> Config Class Initialized
+INFO - 2017-01-10 17:27:09 --> Hooks Class Initialized
+DEBUG - 2017-01-10 17:27:09 --> UTF-8 Support Enabled
+INFO - 2017-01-10 17:27:09 --> Utf8 Class Initialized
+INFO - 2017-01-10 17:27:09 --> URI Class Initialized
+INFO - 2017-01-10 17:27:09 --> Router Class Initialized
+INFO - 2017-01-10 17:27:09 --> Output Class Initialized
+INFO - 2017-01-10 17:27:09 --> Security Class Initialized
+DEBUG - 2017-01-10 17:27:09 --> Global POST, GET and COOKIE data sanitized
+INFO - 2017-01-10 17:27:09 --> Input Class Initialized
+INFO - 2017-01-10 17:27:09 --> Language Class Initialized
+INFO - 2017-01-10 17:27:09 --> Loader Class Initialized
+INFO - 2017-01-10 17:27:09 --> Helper loaded: url_helper
+INFO - 2017-01-10 17:27:09 --> Helper loaded: language_helper
+INFO - 2017-01-10 17:27:09 --> Session: Class initialized using 'files' driver.
+INFO - 2017-01-10 17:27:09 --> Controller Class Initialized
+INFO - 2017-01-10 17:27:09 --> Database Driver Class Initialized
+INFO - 2017-01-10 17:27:09 --> Model Class Initialized
+INFO - 2017-01-10 17:27:09 --> Model Class Initialized
+INFO - 2017-01-10 17:27:09 --> Model Class Initialized
+INFO - 2017-01-10 17:27:09 --> Language file loaded: language/indonesia/basic_lang.php
+INFO - 2017-01-10 17:27:09 --> Final output sent to browser
+DEBUG - 2017-01-10 17:27:09 --> Total execution time: 0.1077
+INFO - 2017-01-10 17:27:39 --> Config Class Initialized
+INFO - 2017-01-10 17:27:39 --> Hooks Class Initialized
+DEBUG - 2017-01-10 17:27:39 --> UTF-8 Support Enabled
+INFO - 2017-01-10 17:27:39 --> Utf8 Class Initialized
+INFO - 2017-01-10 17:27:39 --> URI Class Initialized
+INFO - 2017-01-10 17:27:39 --> Router Class Initialized
+INFO - 2017-01-10 17:27:39 --> Output Class Initialized
+INFO - 2017-01-10 17:27:39 --> Security Class Initialized
+DEBUG - 2017-01-10 17:27:39 --> Global POST, GET and COOKIE data sanitized
+INFO - 2017-01-10 17:27:39 --> Input Class Initialized
+INFO - 2017-01-10 17:27:39 --> Language Class Initialized
+INFO - 2017-01-10 17:27:39 --> Loader Class Initialized
+INFO - 2017-01-10 17:27:39 --> Helper loaded: url_helper
+INFO - 2017-01-10 17:27:39 --> Helper loaded: language_helper
+INFO - 2017-01-10 17:27:39 --> Session: Class initialized using 'files' driver.
+INFO - 2017-01-10 17:27:39 --> Controller Class Initialized
+INFO - 2017-01-10 17:27:39 --> Database Driver Class Initialized
+INFO - 2017-01-10 17:27:39 --> Model Class Initialized
+INFO - 2017-01-10 17:27:39 --> Model Class Initialized
+INFO - 2017-01-10 17:27:39 --> Model Class Initialized
+INFO - 2017-01-10 17:27:39 --> Language file loaded: language/indonesia/basic_lang.php
+INFO - 2017-01-10 17:27:39 --> Final output sent to browser
+DEBUG - 2017-01-10 17:27:39 --> Total execution time: 0.1250
+INFO - 2017-01-10 17:28:09 --> Config Class Initialized
+INFO - 2017-01-10 17:28:09 --> Hooks Class Initialized
+DEBUG - 2017-01-10 17:28:09 --> UTF-8 Support Enabled
+INFO - 2017-01-10 17:28:09 --> Utf8 Class Initialized
+INFO - 2017-01-10 17:28:09 --> URI Class Initialized
+INFO - 2017-01-10 17:28:09 --> Router Class Initialized
+INFO - 2017-01-10 17:28:09 --> Output Class Initialized
+INFO - 2017-01-10 17:28:09 --> Security Class Initialized
+DEBUG - 2017-01-10 17:28:09 --> Global POST, GET and COOKIE data sanitized
+INFO - 2017-01-10 17:28:09 --> Input Class Initialized
+INFO - 2017-01-10 17:28:09 --> Language Class Initialized
+INFO - 2017-01-10 17:28:09 --> Loader Class Initialized
+INFO - 2017-01-10 17:28:09 --> Helper loaded: url_helper
+INFO - 2017-01-10 17:28:09 --> Helper loaded: language_helper
+INFO - 2017-01-10 17:28:09 --> Session: Class initialized using 'files' driver.
+INFO - 2017-01-10 17:28:09 --> Controller Class Initialized
+INFO - 2017-01-10 17:28:09 --> Database Driver Class Initialized
+INFO - 2017-01-10 17:28:09 --> Model Class Initialized
+INFO - 2017-01-10 17:28:09 --> Model Class Initialized
+INFO - 2017-01-10 17:28:09 --> Model Class Initialized
+INFO - 2017-01-10 17:28:09 --> Language file loaded: language/indonesia/basic_lang.php
+INFO - 2017-01-10 17:28:09 --> Final output sent to browser
+DEBUG - 2017-01-10 17:28:09 --> Total execution time: 0.1088
+INFO - 2017-01-10 17:28:39 --> Config Class Initialized
+INFO - 2017-01-10 17:28:39 --> Hooks Class Initialized
+DEBUG - 2017-01-10 17:28:39 --> UTF-8 Support Enabled
+INFO - 2017-01-10 17:28:39 --> Utf8 Class Initialized
+INFO - 2017-01-10 17:28:39 --> URI Class Initialized
+INFO - 2017-01-10 17:28:39 --> Router Class Initialized
+INFO - 2017-01-10 17:28:39 --> Output Class Initialized
+INFO - 2017-01-10 17:28:39 --> Security Class Initialized
+DEBUG - 2017-01-10 17:28:39 --> Global POST, GET and COOKIE data sanitized
+INFO - 2017-01-10 17:28:39 --> Input Class Initialized
+INFO - 2017-01-10 17:28:39 --> Language Class Initialized
+INFO - 2017-01-10 17:28:39 --> Loader Class Initialized
+INFO - 2017-01-10 17:28:39 --> Helper loaded: url_helper
+INFO - 2017-01-10 17:28:39 --> Helper loaded: language_helper
+INFO - 2017-01-10 17:28:39 --> Session: Class initialized using 'files' driver.
+INFO - 2017-01-10 17:28:39 --> Controller Class Initialized
+INFO - 2017-01-10 17:28:39 --> Database Driver Class Initialized
+INFO - 2017-01-10 17:28:39 --> Model Class Initialized
+INFO - 2017-01-10 17:28:39 --> Model Class Initialized
+INFO - 2017-01-10 17:28:39 --> Model Class Initialized
+INFO - 2017-01-10 17:28:39 --> Language file loaded: language/indonesia/basic_lang.php
+INFO - 2017-01-10 17:28:39 --> Final output sent to browser
+DEBUG - 2017-01-10 17:28:39 --> Total execution time: 0.0834
+INFO - 2017-01-10 17:29:09 --> Config Class Initialized
+INFO - 2017-01-10 17:29:09 --> Hooks Class Initialized
+DEBUG - 2017-01-10 17:29:09 --> UTF-8 Support Enabled
+INFO - 2017-01-10 17:29:09 --> Utf8 Class Initialized
+INFO - 2017-01-10 17:29:09 --> URI Class Initialized
+INFO - 2017-01-10 17:29:09 --> Router Class Initialized
+INFO - 2017-01-10 17:29:09 --> Output Class Initialized
+INFO - 2017-01-10 17:29:09 --> Security Class Initialized
+DEBUG - 2017-01-10 17:29:09 --> Global POST, GET and COOKIE data sanitized
+INFO - 2017-01-10 17:29:09 --> Input Class Initialized
+INFO - 2017-01-10 17:29:09 --> Language Class Initialized
+INFO - 2017-01-10 17:29:09 --> Loader Class Initialized
+INFO - 2017-01-10 17:29:09 --> Helper loaded: url_helper
+INFO - 2017-01-10 17:29:09 --> Helper loaded: language_helper
+INFO - 2017-01-10 17:29:09 --> Session: Class initialized using 'files' driver.
+INFO - 2017-01-10 17:29:09 --> Controller Class Initialized
+INFO - 2017-01-10 17:29:09 --> Database Driver Class Initialized
+INFO - 2017-01-10 17:29:09 --> Model Class Initialized
+INFO - 2017-01-10 17:29:09 --> Model Class Initialized
+INFO - 2017-01-10 17:29:09 --> Model Class Initialized
+INFO - 2017-01-10 17:29:09 --> Language file loaded: language/indonesia/basic_lang.php
+INFO - 2017-01-10 17:29:09 --> Final output sent to browser
+DEBUG - 2017-01-10 17:29:09 --> Total execution time: 0.2046
+INFO - 2017-01-10 17:29:39 --> Config Class Initialized
+INFO - 2017-01-10 17:29:39 --> Hooks Class Initialized
+DEBUG - 2017-01-10 17:29:39 --> UTF-8 Support Enabled
+INFO - 2017-01-10 17:29:39 --> Utf8 Class Initialized
+INFO - 2017-01-10 17:29:39 --> URI Class Initialized
+INFO - 2017-01-10 17:29:39 --> Router Class Initialized
+INFO - 2017-01-10 17:29:39 --> Output Class Initialized
+INFO - 2017-01-10 17:29:39 --> Security Class Initialized
+DEBUG - 2017-01-10 17:29:39 --> Global POST, GET and COOKIE data sanitized
+INFO - 2017-01-10 17:29:39 --> Input Class Initialized
+INFO - 2017-01-10 17:29:39 --> Language Class Initialized
+INFO - 2017-01-10 17:29:39 --> Loader Class Initialized
+INFO - 2017-01-10 17:29:39 --> Helper loaded: url_helper
+INFO - 2017-01-10 17:29:39 --> Helper loaded: language_helper
+INFO - 2017-01-10 17:29:39 --> Session: Class initialized using 'files' driver.
+INFO - 2017-01-10 17:29:39 --> Controller Class Initialized
+INFO - 2017-01-10 17:29:39 --> Database Driver Class Initialized
+INFO - 2017-01-10 17:29:39 --> Model Class Initialized
+INFO - 2017-01-10 17:29:39 --> Model Class Initialized
+INFO - 2017-01-10 17:29:39 --> Model Class Initialized
+INFO - 2017-01-10 17:29:39 --> Language file loaded: language/indonesia/basic_lang.php
+INFO - 2017-01-10 17:29:39 --> Final output sent to browser
+DEBUG - 2017-01-10 17:29:39 --> Total execution time: 0.0869
+INFO - 2017-01-10 17:30:09 --> Config Class Initialized
+INFO - 2017-01-10 17:30:09 --> Hooks Class Initialized
+DEBUG - 2017-01-10 17:30:09 --> UTF-8 Support Enabled
+INFO - 2017-01-10 17:30:09 --> Utf8 Class Initialized
+INFO - 2017-01-10 17:30:09 --> URI Class Initialized
+INFO - 2017-01-10 17:30:09 --> Router Class Initialized
+INFO - 2017-01-10 17:30:09 --> Output Class Initialized
+INFO - 2017-01-10 17:30:09 --> Security Class Initialized
+DEBUG - 2017-01-10 17:30:09 --> Global POST, GET and COOKIE data sanitized
+INFO - 2017-01-10 17:30:09 --> Input Class Initialized
+INFO - 2017-01-10 17:30:09 --> Language Class Initialized
+INFO - 2017-01-10 17:30:09 --> Loader Class Initialized
+INFO - 2017-01-10 17:30:09 --> Helper loaded: url_helper
+INFO - 2017-01-10 17:30:09 --> Helper loaded: language_helper
+INFO - 2017-01-10 17:30:09 --> Session: Class initialized using 'files' driver.
+INFO - 2017-01-10 17:30:09 --> Controller Class Initialized
+INFO - 2017-01-10 17:30:09 --> Database Driver Class Initialized
+INFO - 2017-01-10 17:30:09 --> Model Class Initialized
+INFO - 2017-01-10 17:30:09 --> Model Class Initialized
+INFO - 2017-01-10 17:30:09 --> Model Class Initialized
+INFO - 2017-01-10 17:30:09 --> Language file loaded: language/indonesia/basic_lang.php
+INFO - 2017-01-10 17:30:09 --> Final output sent to browser
+DEBUG - 2017-01-10 17:30:09 --> Total execution time: 0.1280
+INFO - 2017-01-10 17:30:39 --> Config Class Initialized
+INFO - 2017-01-10 17:30:39 --> Hooks Class Initialized
+DEBUG - 2017-01-10 17:30:39 --> UTF-8 Support Enabled
+INFO - 2017-01-10 17:30:39 --> Utf8 Class Initialized
+INFO - 2017-01-10 17:30:39 --> URI Class Initialized
+INFO - 2017-01-10 17:30:39 --> Router Class Initialized
+INFO - 2017-01-10 17:30:39 --> Output Class Initialized
+INFO - 2017-01-10 17:30:39 --> Security Class Initialized
+DEBUG - 2017-01-10 17:30:39 --> Global POST, GET and COOKIE data sanitized
+INFO - 2017-01-10 17:30:39 --> Input Class Initialized
+INFO - 2017-01-10 17:30:39 --> Language Class Initialized
+INFO - 2017-01-10 17:30:39 --> Loader Class Initialized
+INFO - 2017-01-10 17:30:39 --> Helper loaded: url_helper
+INFO - 2017-01-10 17:30:39 --> Helper loaded: language_helper
+INFO - 2017-01-10 17:30:39 --> Session: Class initialized using 'files' driver.
+INFO - 2017-01-10 17:30:39 --> Controller Class Initialized
+INFO - 2017-01-10 17:30:39 --> Database Driver Class Initialized
+INFO - 2017-01-10 17:30:39 --> Model Class Initialized
+INFO - 2017-01-10 17:30:39 --> Model Class Initialized
+INFO - 2017-01-10 17:30:39 --> Model Class Initialized
+INFO - 2017-01-10 17:30:39 --> Language file loaded: language/indonesia/basic_lang.php
+INFO - 2017-01-10 17:30:39 --> Final output sent to browser
+DEBUG - 2017-01-10 17:30:39 --> Total execution time: 0.1026
+INFO - 2017-01-10 17:31:09 --> Config Class Initialized
+INFO - 2017-01-10 17:31:09 --> Hooks Class Initialized
+DEBUG - 2017-01-10 17:31:09 --> UTF-8 Support Enabled
+INFO - 2017-01-10 17:31:09 --> Utf8 Class Initialized
+INFO - 2017-01-10 17:31:09 --> URI Class Initialized
+INFO - 2017-01-10 17:31:09 --> Router Class Initialized
+INFO - 2017-01-10 17:31:09 --> Output Class Initialized
+INFO - 2017-01-10 17:31:09 --> Security Class Initialized
+DEBUG - 2017-01-10 17:31:09 --> Global POST, GET and COOKIE data sanitized
+INFO - 2017-01-10 17:31:09 --> Input Class Initialized
+INFO - 2017-01-10 17:31:09 --> Language Class Initialized
+INFO - 2017-01-10 17:31:09 --> Loader Class Initialized
+INFO - 2017-01-10 17:31:09 --> Helper loaded: url_helper
+INFO - 2017-01-10 17:31:09 --> Helper loaded: language_helper
+INFO - 2017-01-10 17:31:09 --> Session: Class initialized using 'files' driver.
+INFO - 2017-01-10 17:31:09 --> Controller Class Initialized
+INFO - 2017-01-10 17:31:09 --> Database Driver Class Initialized
+INFO - 2017-01-10 17:31:09 --> Model Class Initialized
+INFO - 2017-01-10 17:31:09 --> Model Class Initialized
+INFO - 2017-01-10 17:31:09 --> Model Class Initialized
+INFO - 2017-01-10 17:31:09 --> Language file loaded: language/indonesia/basic_lang.php
+INFO - 2017-01-10 17:31:09 --> Final output sent to browser
+DEBUG - 2017-01-10 17:31:09 --> Total execution time: 0.1086
+INFO - 2017-01-10 17:31:39 --> Config Class Initialized
+INFO - 2017-01-10 17:31:39 --> Hooks Class Initialized
+DEBUG - 2017-01-10 17:31:39 --> UTF-8 Support Enabled
+INFO - 2017-01-10 17:31:39 --> Utf8 Class Initialized
+INFO - 2017-01-10 17:31:39 --> URI Class Initialized
+INFO - 2017-01-10 17:31:39 --> Router Class Initialized
+INFO - 2017-01-10 17:31:39 --> Output Class Initialized
+INFO - 2017-01-10 17:31:39 --> Security Class Initialized
+DEBUG - 2017-01-10 17:31:39 --> Global POST, GET and COOKIE data sanitized
+INFO - 2017-01-10 17:31:39 --> Input Class Initialized
+INFO - 2017-01-10 17:31:39 --> Language Class Initialized
+INFO - 2017-01-10 17:31:39 --> Loader Class Initialized
+INFO - 2017-01-10 17:31:39 --> Helper loaded: url_helper
+INFO - 2017-01-10 17:31:39 --> Helper loaded: language_helper
+INFO - 2017-01-10 17:31:39 --> Session: Class initialized using 'files' driver.
+INFO - 2017-01-10 17:31:39 --> Controller Class Initialized
+INFO - 2017-01-10 17:31:39 --> Database Driver Class Initialized
+INFO - 2017-01-10 17:31:39 --> Model Class Initialized
+INFO - 2017-01-10 17:31:39 --> Model Class Initialized
+INFO - 2017-01-10 17:31:39 --> Model Class Initialized
+INFO - 2017-01-10 17:31:39 --> Language file loaded: language/indonesia/basic_lang.php
+INFO - 2017-01-10 17:31:39 --> Final output sent to browser
+DEBUG - 2017-01-10 17:31:39 --> Total execution time: 0.1588
+INFO - 2017-01-10 17:32:09 --> Config Class Initialized
+INFO - 2017-01-10 17:32:09 --> Hooks Class Initialized
+DEBUG - 2017-01-10 17:32:09 --> UTF-8 Support Enabled
+INFO - 2017-01-10 17:32:09 --> Utf8 Class Initialized
+INFO - 2017-01-10 17:32:09 --> URI Class Initialized
+INFO - 2017-01-10 17:32:09 --> Router Class Initialized
+INFO - 2017-01-10 17:32:09 --> Output Class Initialized
+INFO - 2017-01-10 17:32:09 --> Security Class Initialized
+DEBUG - 2017-01-10 17:32:09 --> Global POST, GET and COOKIE data sanitized
+INFO - 2017-01-10 17:32:09 --> Input Class Initialized
+INFO - 2017-01-10 17:32:09 --> Language Class Initialized
+INFO - 2017-01-10 17:32:09 --> Loader Class Initialized
+INFO - 2017-01-10 17:32:09 --> Helper loaded: url_helper
+INFO - 2017-01-10 17:32:09 --> Helper loaded: language_helper
+INFO - 2017-01-10 17:32:09 --> Session: Class initialized using 'files' driver.
+INFO - 2017-01-10 17:32:09 --> Controller Class Initialized
+INFO - 2017-01-10 17:32:09 --> Database Driver Class Initialized
+INFO - 2017-01-10 17:32:09 --> Model Class Initialized
+INFO - 2017-01-10 17:32:09 --> Model Class Initialized
+INFO - 2017-01-10 17:32:09 --> Model Class Initialized
+INFO - 2017-01-10 17:32:09 --> Language file loaded: language/indonesia/basic_lang.php
+INFO - 2017-01-10 17:32:09 --> Final output sent to browser
+DEBUG - 2017-01-10 17:32:09 --> Total execution time: 0.1040
+INFO - 2017-01-10 17:32:39 --> Config Class Initialized
+INFO - 2017-01-10 17:32:39 --> Hooks Class Initialized
+DEBUG - 2017-01-10 17:32:39 --> UTF-8 Support Enabled
+INFO - 2017-01-10 17:32:39 --> Utf8 Class Initialized
+INFO - 2017-01-10 17:32:39 --> URI Class Initialized
+INFO - 2017-01-10 17:32:39 --> Router Class Initialized
+INFO - 2017-01-10 17:32:39 --> Output Class Initialized
+INFO - 2017-01-10 17:32:39 --> Security Class Initialized
+DEBUG - 2017-01-10 17:32:39 --> Global POST, GET and COOKIE data sanitized
+INFO - 2017-01-10 17:32:39 --> Input Class Initialized
+INFO - 2017-01-10 17:32:39 --> Language Class Initialized
+INFO - 2017-01-10 17:32:39 --> Loader Class Initialized
+INFO - 2017-01-10 17:32:39 --> Helper loaded: url_helper
+INFO - 2017-01-10 17:32:39 --> Helper loaded: language_helper
+INFO - 2017-01-10 17:32:39 --> Session: Class initialized using 'files' driver.
+INFO - 2017-01-10 17:32:39 --> Controller Class Initialized
+INFO - 2017-01-10 17:32:39 --> Database Driver Class Initialized
+INFO - 2017-01-10 17:32:39 --> Model Class Initialized
+INFO - 2017-01-10 17:32:39 --> Model Class Initialized
+INFO - 2017-01-10 17:32:39 --> Model Class Initialized
+INFO - 2017-01-10 17:32:39 --> Language file loaded: language/indonesia/basic_lang.php
+INFO - 2017-01-10 17:32:39 --> Final output sent to browser
+DEBUG - 2017-01-10 17:32:39 --> Total execution time: 0.1162
+INFO - 2017-01-10 17:33:09 --> Config Class Initialized
+INFO - 2017-01-10 17:33:09 --> Hooks Class Initialized
+DEBUG - 2017-01-10 17:33:09 --> UTF-8 Support Enabled
+INFO - 2017-01-10 17:33:09 --> Utf8 Class Initialized
+INFO - 2017-01-10 17:33:09 --> URI Class Initialized
+INFO - 2017-01-10 17:33:09 --> Router Class Initialized
+INFO - 2017-01-10 17:33:09 --> Output Class Initialized
+INFO - 2017-01-10 17:33:09 --> Security Class Initialized
+DEBUG - 2017-01-10 17:33:09 --> Global POST, GET and COOKIE data sanitized
+INFO - 2017-01-10 17:33:09 --> Input Class Initialized
+INFO - 2017-01-10 17:33:09 --> Language Class Initialized
+INFO - 2017-01-10 17:33:09 --> Loader Class Initialized
+INFO - 2017-01-10 17:33:09 --> Helper loaded: url_helper
+INFO - 2017-01-10 17:33:09 --> Helper loaded: language_helper
+INFO - 2017-01-10 17:33:09 --> Session: Class initialized using 'files' driver.
+INFO - 2017-01-10 17:33:09 --> Controller Class Initialized
+INFO - 2017-01-10 17:33:09 --> Database Driver Class Initialized
+INFO - 2017-01-10 17:33:09 --> Model Class Initialized
+INFO - 2017-01-10 17:33:09 --> Model Class Initialized
+INFO - 2017-01-10 17:33:09 --> Model Class Initialized
+INFO - 2017-01-10 17:33:09 --> Language file loaded: language/indonesia/basic_lang.php
+INFO - 2017-01-10 17:33:09 --> Final output sent to browser
+DEBUG - 2017-01-10 17:33:09 --> Total execution time: 0.1133
+INFO - 2017-01-10 17:33:39 --> Config Class Initialized
+INFO - 2017-01-10 17:33:39 --> Hooks Class Initialized
+DEBUG - 2017-01-10 17:33:39 --> UTF-8 Support Enabled
+INFO - 2017-01-10 17:33:39 --> Utf8 Class Initialized
+INFO - 2017-01-10 17:33:39 --> URI Class Initialized
+INFO - 2017-01-10 17:33:39 --> Router Class Initialized
+INFO - 2017-01-10 17:33:39 --> Output Class Initialized
+INFO - 2017-01-10 17:33:39 --> Security Class Initialized
+DEBUG - 2017-01-10 17:33:39 --> Global POST, GET and COOKIE data sanitized
+INFO - 2017-01-10 17:33:39 --> Input Class Initialized
+INFO - 2017-01-10 17:33:39 --> Language Class Initialized
+INFO - 2017-01-10 17:33:39 --> Loader Class Initialized
+INFO - 2017-01-10 17:33:39 --> Helper loaded: url_helper
+INFO - 2017-01-10 17:33:39 --> Helper loaded: language_helper
+INFO - 2017-01-10 17:33:39 --> Session: Class initialized using 'files' driver.
+INFO - 2017-01-10 17:33:39 --> Controller Class Initialized
+INFO - 2017-01-10 17:33:39 --> Database Driver Class Initialized
+INFO - 2017-01-10 17:33:39 --> Model Class Initialized
+INFO - 2017-01-10 17:33:39 --> Model Class Initialized
+INFO - 2017-01-10 17:33:39 --> Model Class Initialized
+INFO - 2017-01-10 17:33:39 --> Language file loaded: language/indonesia/basic_lang.php
+INFO - 2017-01-10 17:33:39 --> Final output sent to browser
+DEBUG - 2017-01-10 17:33:39 --> Total execution time: 0.0996
+INFO - 2017-01-10 17:34:09 --> Config Class Initialized
+INFO - 2017-01-10 17:34:09 --> Hooks Class Initialized
+DEBUG - 2017-01-10 17:34:09 --> UTF-8 Support Enabled
+INFO - 2017-01-10 17:34:09 --> Utf8 Class Initialized
+INFO - 2017-01-10 17:34:09 --> URI Class Initialized
+INFO - 2017-01-10 17:34:09 --> Router Class Initialized
+INFO - 2017-01-10 17:34:09 --> Output Class Initialized
+INFO - 2017-01-10 17:34:09 --> Security Class Initialized
+DEBUG - 2017-01-10 17:34:09 --> Global POST, GET and COOKIE data sanitized
+INFO - 2017-01-10 17:34:09 --> Input Class Initialized
+INFO - 2017-01-10 17:34:09 --> Language Class Initialized
+INFO - 2017-01-10 17:34:09 --> Loader Class Initialized
+INFO - 2017-01-10 17:34:09 --> Helper loaded: url_helper
+INFO - 2017-01-10 17:34:09 --> Helper loaded: language_helper
+INFO - 2017-01-10 17:34:09 --> Session: Class initialized using 'files' driver.
+INFO - 2017-01-10 17:34:09 --> Controller Class Initialized
+INFO - 2017-01-10 17:34:09 --> Database Driver Class Initialized
+INFO - 2017-01-10 17:34:09 --> Model Class Initialized
+INFO - 2017-01-10 17:34:09 --> Model Class Initialized
+INFO - 2017-01-10 17:34:09 --> Model Class Initialized
+INFO - 2017-01-10 17:34:09 --> Language file loaded: language/indonesia/basic_lang.php
+INFO - 2017-01-10 17:34:09 --> Final output sent to browser
+DEBUG - 2017-01-10 17:34:09 --> Total execution time: 0.1653
+INFO - 2017-01-10 17:34:39 --> Config Class Initialized
+INFO - 2017-01-10 17:34:39 --> Hooks Class Initialized
+DEBUG - 2017-01-10 17:34:39 --> UTF-8 Support Enabled
+INFO - 2017-01-10 17:34:39 --> Utf8 Class Initialized
+INFO - 2017-01-10 17:34:39 --> URI Class Initialized
+INFO - 2017-01-10 17:34:39 --> Router Class Initialized
+INFO - 2017-01-10 17:34:39 --> Output Class Initialized
+INFO - 2017-01-10 17:34:39 --> Security Class Initialized
+DEBUG - 2017-01-10 17:34:39 --> Global POST, GET and COOKIE data sanitized
+INFO - 2017-01-10 17:34:39 --> Input Class Initialized
+INFO - 2017-01-10 17:34:39 --> Language Class Initialized
+INFO - 2017-01-10 17:34:39 --> Loader Class Initialized
+INFO - 2017-01-10 17:34:39 --> Helper loaded: url_helper
+INFO - 2017-01-10 17:34:39 --> Helper loaded: language_helper
+INFO - 2017-01-10 17:34:39 --> Session: Class initialized using 'files' driver.
+INFO - 2017-01-10 17:34:39 --> Controller Class Initialized
+INFO - 2017-01-10 17:34:39 --> Database Driver Class Initialized
+INFO - 2017-01-10 17:34:39 --> Model Class Initialized
+INFO - 2017-01-10 17:34:39 --> Model Class Initialized
+INFO - 2017-01-10 17:34:39 --> Model Class Initialized
+INFO - 2017-01-10 17:34:39 --> Language file loaded: language/indonesia/basic_lang.php
+INFO - 2017-01-10 17:34:39 --> Final output sent to browser
+DEBUG - 2017-01-10 17:34:39 --> Total execution time: 0.1240
+INFO - 2017-01-10 17:35:09 --> Config Class Initialized
+INFO - 2017-01-10 17:35:09 --> Hooks Class Initialized
+DEBUG - 2017-01-10 17:35:09 --> UTF-8 Support Enabled
+INFO - 2017-01-10 17:35:09 --> Utf8 Class Initialized
+INFO - 2017-01-10 17:35:09 --> URI Class Initialized
+INFO - 2017-01-10 17:35:09 --> Router Class Initialized
+INFO - 2017-01-10 17:35:09 --> Output Class Initialized
+INFO - 2017-01-10 17:35:09 --> Security Class Initialized
+DEBUG - 2017-01-10 17:35:09 --> Global POST, GET and COOKIE data sanitized
+INFO - 2017-01-10 17:35:09 --> Input Class Initialized
+INFO - 2017-01-10 17:35:09 --> Language Class Initialized
+INFO - 2017-01-10 17:35:09 --> Loader Class Initialized
+INFO - 2017-01-10 17:35:09 --> Helper loaded: url_helper
+INFO - 2017-01-10 17:35:09 --> Helper loaded: language_helper
+INFO - 2017-01-10 17:35:09 --> Session: Class initialized using 'files' driver.
+INFO - 2017-01-10 17:35:09 --> Controller Class Initialized
+INFO - 2017-01-10 17:35:09 --> Database Driver Class Initialized
+INFO - 2017-01-10 17:35:09 --> Model Class Initialized
+INFO - 2017-01-10 17:35:09 --> Model Class Initialized
+INFO - 2017-01-10 17:35:09 --> Model Class Initialized
+INFO - 2017-01-10 17:35:09 --> Language file loaded: language/indonesia/basic_lang.php
+INFO - 2017-01-10 17:35:09 --> Final output sent to browser
+DEBUG - 2017-01-10 17:35:09 --> Total execution time: 0.0804
+INFO - 2017-01-10 17:35:39 --> Config Class Initialized
+INFO - 2017-01-10 17:35:39 --> Hooks Class Initialized
+DEBUG - 2017-01-10 17:35:39 --> UTF-8 Support Enabled
+INFO - 2017-01-10 17:35:39 --> Utf8 Class Initialized
+INFO - 2017-01-10 17:35:39 --> URI Class Initialized
+INFO - 2017-01-10 17:35:39 --> Router Class Initialized
+INFO - 2017-01-10 17:35:39 --> Output Class Initialized
+INFO - 2017-01-10 17:35:39 --> Security Class Initialized
+DEBUG - 2017-01-10 17:35:39 --> Global POST, GET and COOKIE data sanitized
+INFO - 2017-01-10 17:35:39 --> Input Class Initialized
+INFO - 2017-01-10 17:35:39 --> Language Class Initialized
+INFO - 2017-01-10 17:35:39 --> Loader Class Initialized
+INFO - 2017-01-10 17:35:39 --> Helper loaded: url_helper
+INFO - 2017-01-10 17:35:39 --> Helper loaded: language_helper
+INFO - 2017-01-10 17:35:39 --> Session: Class initialized using 'files' driver.
+INFO - 2017-01-10 17:35:39 --> Controller Class Initialized
+INFO - 2017-01-10 17:35:39 --> Database Driver Class Initialized
+INFO - 2017-01-10 17:35:39 --> Model Class Initialized
+INFO - 2017-01-10 17:35:39 --> Model Class Initialized
+INFO - 2017-01-10 17:35:39 --> Model Class Initialized
+INFO - 2017-01-10 17:35:39 --> Language file loaded: language/indonesia/basic_lang.php
+INFO - 2017-01-10 17:35:39 --> Final output sent to browser
+DEBUG - 2017-01-10 17:35:39 --> Total execution time: 0.0784
+INFO - 2017-01-10 17:36:09 --> Config Class Initialized
+INFO - 2017-01-10 17:36:09 --> Hooks Class Initialized
+DEBUG - 2017-01-10 17:36:09 --> UTF-8 Support Enabled
+INFO - 2017-01-10 17:36:09 --> Utf8 Class Initialized
+INFO - 2017-01-10 17:36:09 --> URI Class Initialized
+INFO - 2017-01-10 17:36:09 --> Router Class Initialized
+INFO - 2017-01-10 17:36:09 --> Output Class Initialized
+INFO - 2017-01-10 17:36:09 --> Security Class Initialized
+DEBUG - 2017-01-10 17:36:09 --> Global POST, GET and COOKIE data sanitized
+INFO - 2017-01-10 17:36:09 --> Input Class Initialized
+INFO - 2017-01-10 17:36:09 --> Language Class Initialized
+INFO - 2017-01-10 17:36:09 --> Loader Class Initialized
+INFO - 2017-01-10 17:36:09 --> Helper loaded: url_helper
+INFO - 2017-01-10 17:36:09 --> Helper loaded: language_helper
+INFO - 2017-01-10 17:36:09 --> Session: Class initialized using 'files' driver.
+INFO - 2017-01-10 17:36:09 --> Controller Class Initialized
+INFO - 2017-01-10 17:36:09 --> Database Driver Class Initialized
+INFO - 2017-01-10 17:36:09 --> Model Class Initialized
+INFO - 2017-01-10 17:36:09 --> Model Class Initialized
+INFO - 2017-01-10 17:36:09 --> Model Class Initialized
+INFO - 2017-01-10 17:36:09 --> Language file loaded: language/indonesia/basic_lang.php
+INFO - 2017-01-10 17:36:09 --> Final output sent to browser
+DEBUG - 2017-01-10 17:36:09 --> Total execution time: 0.0800

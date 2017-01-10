@@ -4,4 +4,10 @@ quizzz.sublime-project
 readme.md
 savsoftquiz_v3_0.sql
 sftp-config.json
+installation.txt
+note.txt
+license.md
+license_codeigniter.txt
+license_savsoftquiz.txt
 application/config/sq_config.php
+upload/
