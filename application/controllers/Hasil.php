@@ -126,6 +126,34 @@ class Hasil extends CI_Controller
         $this->load->view('footer',$data);
     }
 
+    public function export_hasil($limit='0',$cid='0',$lid='0')
+    {    
+
+        $logged_in=$this->session->userdata('logged_in');
+        if($logged_in['su']!='1'){
+            exit($this->lang->line('permission_denied'));
+        }
+            
+        $data['limit']=$limit;
+        $data['cid']=$cid;
+        $data['lid']=$lid;  
+        $data['title']='Hasil IST';
+        $data['header']=array('A'=>'Fullname',
+                              'B'=>'WA',
+                              'C'=>'SE',
+                              'D'=>'AN',
+                              'E'=>'GE',
+                              'F'=>'RA',                              
+                              'G'=>'ZR',
+                              'H'=>'FA',
+                              'I'=>'WU',
+                              'J'=>'ME',
+                              'K'=>'TOTAL'
+                              );
+         $data['result']=$this->hasil_model->hasil_list($limit,$cid,$lid);                            
+         $this->load->view('export_hasil_ist',$data);
+    }
+
 
     // public function hasilist()
     // {
