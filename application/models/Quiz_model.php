@@ -53,14 +53,17 @@ Class Quiz_model extends CI_Model
 			'view_answer'=>$this->input->post('view_answer'),
 			'camera_req'=>$this->input->post('camera_req'),
 			'gids'=>implode(',',$this->input->post('gids')),
-			'question_selection'=>$this->input->post('question_selection')
+			'question_selection'=>$this->input->post('question_selection'),
+			'status'=>$this->input->post('status') == 'on' ? '1' : '0',
 		);
-		if($this->input->post('gen_certificate')){
-			$userdata['gen_certificate']=$this->input->post('gen_certificate'); 
-		}
-		if($this->input->post('certificate_text')){
-			$userdata['certificate_text']=$this->input->post('certificate_text'); 
-		}
+		// if($this->input->post('gen_certificate')){
+		// 	$userdata['gen_certificate']=$this->input->post('gen_certificate'); 
+		// }
+		// if($this->input->post('certificate_text')){
+		// 	$userdata['certificate_text']=$this->input->post('certificate_text'); 
+		// };
+		$userdata['gen_certificate']=0;
+		$userdata['certificate_text']=null;
 		$this->db->insert('quiz',$userdata);
 		$quid=$this->db->insert_id();
 		return $quid;
@@ -75,6 +78,8 @@ Class Quiz_model extends CI_Model
 
 		$inputStartDate = $start_date . ' ' . $start_time;
 		$inputEndDate = $end_date . ' ' . $end_time;
+
+		// var_dump($this->input->post('status')); die();
 
 		$userdata=array(
 			'quiz_name'=>$this->input->post('quiz_name'),
@@ -91,14 +96,18 @@ Class Quiz_model extends CI_Model
 			'ip_address'=>$this->input->post('ip_address'),
 			'view_answer'=>$this->input->post('view_answer'),
 			'camera_req'=>$this->input->post('camera_req'),
-			'gids'=>implode(',',$this->input->post('gids'))
+			'gids'=>implode(',',$this->input->post('gids')),
+			'status'=>$this->input->post('status') == 'on' ? '1' : '0',
 		);
-		if($this->input->post('gen_certificate')){
-			$userdata['gen_certificate']=$this->input->post('gen_certificate'); 
-		}
-		if($this->input->post('certificate_text')){
-			$userdata['certificate_text']=$this->input->post('certificate_text'); 
-		}
+		// if($this->input->post('gen_certificate')){
+		// 	$userdata['gen_certificate']=$this->input->post('gen_certificate'); 
+		// }
+		// if($this->input->post('certificate_text')){
+		// 	$userdata['certificate_text']=$this->input->post('certificate_text'); 
+		// }
+
+		$userdata['gen_certificate']=0;
+		$userdata['certificate_text']=null;
 
 		$this->db->where('quid',$quid);
 		$this->db->update('quiz',$userdata);

@@ -23,9 +23,14 @@
                 </tr>
                 <?php } ?>
             </table>
+            <?php  
+               if ( $reach_max )                
+                    echo "<h3>Kuota ujian sudah habis</h3>";              
+                else { ?>           
             <form name="preujian" method="post" action="<?php echo site_url('ujian/se/');?>">
                 <button class="btn btn-success" type="submit" name="submit"><?php echo $this->lang->line('start_quiz');?></button>
             </form>
+            <?php };?>
         </div>
     </div>
 </div>

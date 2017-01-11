@@ -38,6 +38,7 @@
                 <th>#</th>
                 <th><?php echo $this->lang->line('quiz_name');?></th>
                 <th><?php echo $this->lang->line('noq');?></th>
+                <th><?php echo $this->lang->line('status');?></th>
                 <th><?php echo $this->lang->line('action');?> </th>
             </tr>
             <?php 
@@ -54,6 +55,7 @@
                 <td><?php echo $val['quid'];?></td>
                 <td><?php echo substr(strip_tags($val['quiz_name']),0,50);?></td>
                 <td><?php echo $val['noq'];?></td>
+                <td><?php echo $val['status'] == 1 ? '<span class="label label-success"><i class="fa fa-check"></i></span>' : '<span class="label label-danger"><i class="fa fa-close"></i></span>';?></td>
                 <td>
                     <?php 
                         if($logged_in['su']=='1'){

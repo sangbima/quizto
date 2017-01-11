@@ -22,6 +22,9 @@
 									<input type="text"  name="quiz_name"  class="form-control" placeholder="<?php echo $this->lang->line('quiz_name');?>"  required autofocus>
 								</div>
 							</div>
+							<div class="col-md-6">
+								<label class="toggle"><input id="quiz_status" name="status" type="checkbox"><span class="handle"></span></label> <label for="quiz_status" ><?php echo $this->lang->line('status');?></label>
+							</div>
 						</div>
 						<div class="row">
 							<div class="col-md-12">
@@ -174,32 +177,6 @@
 								</div>
 							</div>
 						</div>
-						<div class="row">
-							<div class="col-md-2">
-								<div class="form-group">	 
-									<label for="inputEmail" ><?php echo $this->lang->line('generate_certificate');?></label>
-									<div class="radio">
-										<input type="radio" id="genYes" name="gen_certificate" value="1"  >
-										<label for="genYes"><?php echo $this->lang->line('yes');?></label>
-									</div>
-									<div class="radio">
-										<input type="radio" id="genNo" name="gen_certificate" value="0"  checked >
-										<label for="genNo"><?php echo $this->lang->line('no');?></label>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-12">
-								<div class="form-group">	 
-									<label for="inputEmail"  ><?php echo $this->lang->line('certificate_text');?></label> 
-									<textarea  name="certificate_text"  class="form-control" style="height:250px;"></textarea><br>
-									<?php echo $this->lang->line('tags_use');?> <?php echo htmlentities("<br>  <center></center>  <b></b>  <h1></h1>  <h2></h2>  <h3></h3>  <font></font>");?><br>
-									{email}, {first_name}, {last_name}, {quiz_name}, {percentage_obtained}, {score_obtained}, {result}, {generated_date}, {result_id}, {qr_code}
-								</div>
-							</div>
-						</div>
-						
 						<button class="btn btn-success" type="submit"><?php echo $this->lang->line('next');?></button>
 					</div>
 				</div>

@@ -31,6 +31,8 @@ class Ujian extends CI_Controller
       // fetching quiz list
       $data['result'] = $this->ujian_model->ujian_list();
 
+      $data['reach_max'] = $this->ujian_model->is_reach_max($logged_in['uid']);
+
       foreach ($data['result'] as $key => $value) {
         $data['quid'][$key] = $value['quid'];
         $key++;

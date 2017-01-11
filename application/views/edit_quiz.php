@@ -22,6 +22,9 @@
 									<input type="text" name="quiz_name"  value="<?php echo $quiz['quiz_name'];?>" class="form-control" placeholder="<?php echo $this->lang->line('quiz_name');?>"  required autofocus>
 								</div>
 							</div>
+							<div class="col-md-6">
+								<label class="toggle"><input id="quiz_status" name="status" type="checkbox" <?php echo $quiz['status'] == "1" ? 'checked' : '';?>><span class="handle"></span></label> <label for="quiz_status" ><?php echo $this->lang->line('status');?></label>
+							</div>
 						</div>
 						<div class="row">
 							<div class="col-md-12">
@@ -154,37 +157,6 @@
 								</div>
 							</div>
 						</div>
-						<div class="row">
-							<div class="col-md-2">
-								<div class="form-group">	 
-									<label for="inputEmail" ><?php echo $this->lang->line('generate_certificate');?></label> <br>
-									<div class="radio">
-										<input type="radio" name="gen_certificate" id="genYes" value="1"   <?php if($quiz['gen_certificate']==1){ echo 'checked'; } ?> >
-										<label for="genYes"><?php echo $this->lang->line('yes');?></label>
-									</div>
-									<div class="radio">
-										<input type="radio" name="gen_certificate" id="genNo" value="0"    <?php if($quiz['gen_certificate']==0){ echo 'checked'; } ?> >
-										<label for="genNo"><?php echo $this->lang->line('no');?></label>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-12">
-								<div class="form-group">	 
-									<label for="inputEmail"  ><?php echo $this->lang->line('certificate_text');?></label> 
-									<textarea  name="certificate_text"  class="form-control" style="height:250px;"><?php echo $quiz['certificate_text'];?></textarea><br>
-									<?php echo $this->lang->line('tags_use');?> <?php echo htmlentities("<br>  <center></center>  <b></b>  <h1></h1>  <h2></h2>  <h3></h3>  <font></font>");?><br>
-									{email}, {first_name}, {last_name}, {quiz_name}, {percentage_obtained}, {score_obtained}, {result}, {generated_date}, {result_id}, {qr_code}
-
-									<br><br>
-									<a href="<?php echo site_url('result/preview_certificate/'.$quiz['quid']);?>" target="preview_cert" class="btn btn-warning"><?php echo $this->lang->line('preview');?></a>
-
-									<span style="color:#ff0000"><?php echo $this->lang->line('preview_warning');?></span>
-								</div>
-							</div>
-						</div>
-
 						<hr>
 						<?php 
 						if($quiz['question_selection']=='0'){

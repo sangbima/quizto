@@ -673,4 +673,17 @@ Class Ujian_model extends CI_Model
         $query=$this->db->get('result');
         return $query->num_rows();
     }
+
+    function is_reach_max($uid) {
+        $cq=$this->db->query("select distinct cid from category");
+        $cq_rows=$cq->num_rows();
+        
+        $sq=$this->db->query("select distinct rid from result where uid='$uid'"); 
+        $rs_rows=$sq->row_array();      
+        
+        if ( $rs_rows >= $cq_rows ) 
+            return true;
+        else 
+            return false;               
+    }
 }
