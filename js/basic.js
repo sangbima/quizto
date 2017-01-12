@@ -691,6 +691,26 @@ function submit_quiz(){
 	},3000);
 }
 
+function submit_ujian_tpu(){
+	window.location=base_url+"index.php/ujian/submit_quiz_tpu/";
+	save_answer_ist(qn);
+	setIndividual_time_ist(qn);
+	$('#processing').html("Processing...<br>");
+	setTimeout(function(){
+		window.location=base_url+"index.php/ujian/submit_quiz_tpu/";
+	},1000);
+}
+
+function submit_ujian_tpa(){
+	window.location=base_url+"index.php/ujian/submit_quiz_tpa/";
+	save_answer_ist(qn);
+	setIndividual_time_ist(qn);
+	$('#processing').html("Processing...<br>");
+	setTimeout(function(){
+		window.location=base_url+"index.php/ujian/submit_quiz_tpa/";
+	},1000);
+}
+
 function submit_ujian_se(){
 	window.location=base_url+"index.php/ujian/submit_quiz_se/";
 	save_answer_ist(qn);
