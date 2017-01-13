@@ -620,7 +620,6 @@ Class Qbank_model extends CI_Model
 							  '4'=>$qvalue['8']
 							  );
 				
-				
 				switch($q_type) {					
 				   case 0:
 				         $question_type=$this->lang->line('multiple_choice_single_answer');	

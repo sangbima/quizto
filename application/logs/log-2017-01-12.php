@@ -909,3 +909,266 @@ INFO - 2017-01-12 16:24:32 --> File loaded: C:\wamp64\www\savsoftquiz\applicatio
 INFO - 2017-01-12 16:24:32 --> File loaded: C:\wamp64\www\savsoftquiz\application\views\footer.php
 INFO - 2017-01-12 16:24:32 --> Final output sent to browser
 DEBUG - 2017-01-12 16:24:32 --> Total execution time: 0.1274
+INFO - 2017-01-12 21:13:02 --> Config Class Initialized
+INFO - 2017-01-12 21:13:02 --> Hooks Class Initialized
+DEBUG - 2017-01-12 21:13:02 --> UTF-8 Support Enabled
+INFO - 2017-01-12 21:13:02 --> Utf8 Class Initialized
+INFO - 2017-01-12 21:13:02 --> URI Class Initialized
+INFO - 2017-01-12 21:13:02 --> Router Class Initialized
+INFO - 2017-01-12 21:13:02 --> Output Class Initialized
+INFO - 2017-01-12 21:13:02 --> Security Class Initialized
+DEBUG - 2017-01-12 21:13:02 --> Global POST, GET and COOKIE data sanitized
+INFO - 2017-01-12 21:13:02 --> Input Class Initialized
+INFO - 2017-01-12 21:13:02 --> Language Class Initialized
+INFO - 2017-01-12 21:13:02 --> Loader Class Initialized
+INFO - 2017-01-12 21:13:02 --> Helper loaded: url_helper
+INFO - 2017-01-12 21:13:02 --> Helper loaded: language_helper
+INFO - 2017-01-12 21:13:02 --> Session: Class initialized using 'files' driver.
+INFO - 2017-01-12 21:13:02 --> Controller Class Initialized
+INFO - 2017-01-12 21:13:02 --> Database Driver Class Initialized
+INFO - 2017-01-12 21:13:02 --> Model Class Initialized
+INFO - 2017-01-12 21:13:02 --> Language file loaded: language/indonesia/basic_lang.php
+ERROR - 2017-01-12 21:13:02 --> Severity: 8192 --> Methods with the same name as their class will not be constructors in a future version of PHP; OLERead has a deprecated constructor C:\wamp64\www\savsoftquiz\application\helpers\xlsimport\php-excel-reader\excel_reader2_helper.php 95
+ERROR - 2017-01-12 21:13:02 --> Severity: 8192 --> Methods with the same name as their class will not be constructors in a future version of PHP; Spreadsheet_Excel_Reader has a deprecated constructor C:\wamp64\www\savsoftquiz\application\helpers\xlsimport\php-excel-reader\excel_reader2_helper.php 312
+INFO - 2017-01-12 21:13:02 --> Helper loaded: xlsimport/php-excel-reader/excel_reader2_helper
+INFO - 2017-01-12 21:13:02 --> Helper loaded: xlsimport/spreadsheetreader_helper
+INFO - 2017-01-12 21:13:02 --> Config Class Initialized
+INFO - 2017-01-12 21:13:02 --> Hooks Class Initialized
+DEBUG - 2017-01-12 21:13:02 --> UTF-8 Support Enabled
+INFO - 2017-01-12 21:13:02 --> Utf8 Class Initialized
+INFO - 2017-01-12 21:13:02 --> URI Class Initialized
+INFO - 2017-01-12 21:13:02 --> Router Class Initialized
+INFO - 2017-01-12 21:13:02 --> Output Class Initialized
+INFO - 2017-01-12 21:13:02 --> Security Class Initialized
+DEBUG - 2017-01-12 21:13:02 --> Global POST, GET and COOKIE data sanitized
+INFO - 2017-01-12 21:13:02 --> Input Class Initialized
+INFO - 2017-01-12 21:13:02 --> Language Class Initialized
+INFO - 2017-01-12 21:13:02 --> Loader Class Initialized
+INFO - 2017-01-12 21:13:02 --> Helper loaded: url_helper
+INFO - 2017-01-12 21:13:02 --> Helper loaded: language_helper
+INFO - 2017-01-12 21:13:02 --> Session: Class initialized using 'files' driver.
+INFO - 2017-01-12 21:13:02 --> Controller Class Initialized
+INFO - 2017-01-12 21:13:02 --> Database Driver Class Initialized
+INFO - 2017-01-12 21:13:02 --> Model Class Initialized
+INFO - 2017-01-12 21:13:02 --> Language file loaded: language/indonesia/basic_lang.php
+INFO - 2017-01-12 21:13:02 --> Helper loaded: form_helper
+INFO - 2017-01-12 21:13:02 --> File loaded: C:\wamp64\www\savsoftquiz\application\views\header.php
+INFO - 2017-01-12 21:13:02 --> File loaded: C:\wamp64\www\savsoftquiz\application\views\question_list.php
+INFO - 2017-01-12 21:13:02 --> File loaded: C:\wamp64\www\savsoftquiz\application\views\footer.php
+INFO - 2017-01-12 21:13:02 --> Final output sent to browser
+DEBUG - 2017-01-12 21:13:02 --> Total execution time: 0.1283
+INFO - 2017-01-12 21:17:36 --> Config Class Initialized
+INFO - 2017-01-12 21:17:36 --> Hooks Class Initialized
+DEBUG - 2017-01-12 21:17:36 --> UTF-8 Support Enabled
+INFO - 2017-01-12 21:17:36 --> Utf8 Class Initialized
+INFO - 2017-01-12 21:17:36 --> URI Class Initialized
+INFO - 2017-01-12 21:17:36 --> Router Class Initialized
+INFO - 2017-01-12 21:17:36 --> Output Class Initialized
+INFO - 2017-01-12 21:17:36 --> Security Class Initialized
+DEBUG - 2017-01-12 21:17:36 --> Global POST, GET and COOKIE data sanitized
+INFO - 2017-01-12 21:17:36 --> Input Class Initialized
+INFO - 2017-01-12 21:17:36 --> Language Class Initialized
+INFO - 2017-01-12 21:17:36 --> Loader Class Initialized
+INFO - 2017-01-12 21:17:36 --> Helper loaded: url_helper
+INFO - 2017-01-12 21:17:36 --> Helper loaded: language_helper
+INFO - 2017-01-12 21:17:36 --> Session: Class initialized using 'files' driver.
+INFO - 2017-01-12 21:17:36 --> Controller Class Initialized
+INFO - 2017-01-12 21:17:36 --> Database Driver Class Initialized
+INFO - 2017-01-12 21:17:36 --> Model Class Initialized
+INFO - 2017-01-12 21:17:36 --> Language file loaded: language/indonesia/basic_lang.php
+INFO - 2017-01-12 21:17:36 --> Helper loaded: form_helper
+INFO - 2017-01-12 21:17:36 --> File loaded: C:\wamp64\www\savsoftquiz\application\views\header.php
+INFO - 2017-01-12 21:17:36 --> File loaded: C:\wamp64\www\savsoftquiz\application\views\question_list.php
+INFO - 2017-01-12 21:17:36 --> File loaded: C:\wamp64\www\savsoftquiz\application\views\footer.php
+INFO - 2017-01-12 21:17:36 --> Final output sent to browser
+DEBUG - 2017-01-12 21:17:36 --> Total execution time: 0.1318
+INFO - 2017-01-12 21:18:07 --> Config Class Initialized
+INFO - 2017-01-12 21:18:07 --> Hooks Class Initialized
+DEBUG - 2017-01-12 21:18:07 --> UTF-8 Support Enabled
+INFO - 2017-01-12 21:18:07 --> Utf8 Class Initialized
+INFO - 2017-01-12 21:18:07 --> URI Class Initialized
+INFO - 2017-01-12 21:18:07 --> Router Class Initialized
+INFO - 2017-01-12 21:18:07 --> Output Class Initialized
+INFO - 2017-01-12 21:18:07 --> Security Class Initialized
+DEBUG - 2017-01-12 21:18:07 --> Global POST, GET and COOKIE data sanitized
+INFO - 2017-01-12 21:18:07 --> Input Class Initialized
+INFO - 2017-01-12 21:18:07 --> Language Class Initialized
+INFO - 2017-01-12 21:18:08 --> Loader Class Initialized
+INFO - 2017-01-12 21:18:08 --> Helper loaded: url_helper
+INFO - 2017-01-12 21:18:08 --> Helper loaded: language_helper
+INFO - 2017-01-12 21:18:08 --> Session: Class initialized using 'files' driver.
+INFO - 2017-01-12 21:18:08 --> Controller Class Initialized
+INFO - 2017-01-12 21:18:08 --> Database Driver Class Initialized
+INFO - 2017-01-12 21:18:08 --> Model Class Initialized
+INFO - 2017-01-12 21:18:08 --> Language file loaded: language/indonesia/basic_lang.php
+ERROR - 2017-01-12 21:18:08 --> Severity: 8192 --> Methods with the same name as their class will not be constructors in a future version of PHP; OLERead has a deprecated constructor C:\wamp64\www\savsoftquiz\application\helpers\xlsimport\php-excel-reader\excel_reader2_helper.php 95
+ERROR - 2017-01-12 21:18:08 --> Severity: 8192 --> Methods with the same name as their class will not be constructors in a future version of PHP; Spreadsheet_Excel_Reader has a deprecated constructor C:\wamp64\www\savsoftquiz\application\helpers\xlsimport\php-excel-reader\excel_reader2_helper.php 312
+INFO - 2017-01-12 21:18:08 --> Helper loaded: xlsimport/php-excel-reader/excel_reader2_helper
+INFO - 2017-01-12 21:18:08 --> Helper loaded: xlsimport/spreadsheetreader_helper
+INFO - 2017-01-12 21:18:08 --> Config Class Initialized
+INFO - 2017-01-12 21:18:08 --> Hooks Class Initialized
+DEBUG - 2017-01-12 21:18:08 --> UTF-8 Support Enabled
+INFO - 2017-01-12 21:18:08 --> Utf8 Class Initialized
+INFO - 2017-01-12 21:18:08 --> URI Class Initialized
+INFO - 2017-01-12 21:18:08 --> Router Class Initialized
+INFO - 2017-01-12 21:18:08 --> Output Class Initialized
+INFO - 2017-01-12 21:18:08 --> Security Class Initialized
+DEBUG - 2017-01-12 21:18:08 --> Global POST, GET and COOKIE data sanitized
+INFO - 2017-01-12 21:18:08 --> Input Class Initialized
+INFO - 2017-01-12 21:18:08 --> Language Class Initialized
+INFO - 2017-01-12 21:18:08 --> Loader Class Initialized
+INFO - 2017-01-12 21:18:08 --> Helper loaded: url_helper
+INFO - 2017-01-12 21:18:08 --> Helper loaded: language_helper
+INFO - 2017-01-12 21:18:08 --> Session: Class initialized using 'files' driver.
+INFO - 2017-01-12 21:18:08 --> Controller Class Initialized
+INFO - 2017-01-12 21:18:08 --> Database Driver Class Initialized
+INFO - 2017-01-12 21:18:08 --> Model Class Initialized
+INFO - 2017-01-12 21:18:08 --> Language file loaded: language/indonesia/basic_lang.php
+INFO - 2017-01-12 21:18:08 --> Helper loaded: form_helper
+INFO - 2017-01-12 21:18:08 --> File loaded: C:\wamp64\www\savsoftquiz\application\views\header.php
+INFO - 2017-01-12 21:18:08 --> File loaded: C:\wamp64\www\savsoftquiz\application\views\question_list.php
+INFO - 2017-01-12 21:18:08 --> File loaded: C:\wamp64\www\savsoftquiz\application\views\footer.php
+INFO - 2017-01-12 21:18:08 --> Final output sent to browser
+DEBUG - 2017-01-12 21:18:08 --> Total execution time: 0.1185
+INFO - 2017-01-12 21:18:12 --> Config Class Initialized
+INFO - 2017-01-12 21:18:12 --> Hooks Class Initialized
+DEBUG - 2017-01-12 21:18:12 --> UTF-8 Support Enabled
+INFO - 2017-01-12 21:18:12 --> Utf8 Class Initialized
+INFO - 2017-01-12 21:18:12 --> URI Class Initialized
+INFO - 2017-01-12 21:18:12 --> Router Class Initialized
+INFO - 2017-01-12 21:18:12 --> Output Class Initialized
+INFO - 2017-01-12 21:18:12 --> Security Class Initialized
+DEBUG - 2017-01-12 21:18:13 --> Global POST, GET and COOKIE data sanitized
+INFO - 2017-01-12 21:18:13 --> Input Class Initialized
+INFO - 2017-01-12 21:18:13 --> Language Class Initialized
+INFO - 2017-01-12 21:18:13 --> Loader Class Initialized
+INFO - 2017-01-12 21:18:13 --> Helper loaded: url_helper
+INFO - 2017-01-12 21:18:13 --> Helper loaded: language_helper
+INFO - 2017-01-12 21:18:13 --> Session: Class initialized using 'files' driver.
+INFO - 2017-01-12 21:18:13 --> Controller Class Initialized
+INFO - 2017-01-12 21:18:13 --> Database Driver Class Initialized
+INFO - 2017-01-12 21:18:13 --> Model Class Initialized
+INFO - 2017-01-12 21:18:13 --> Language file loaded: language/indonesia/basic_lang.php
+INFO - 2017-01-12 21:18:13 --> Config Class Initialized
+INFO - 2017-01-12 21:18:13 --> Hooks Class Initialized
+DEBUG - 2017-01-12 21:18:13 --> UTF-8 Support Enabled
+INFO - 2017-01-12 21:18:13 --> Utf8 Class Initialized
+INFO - 2017-01-12 21:18:13 --> URI Class Initialized
+INFO - 2017-01-12 21:18:13 --> Router Class Initialized
+INFO - 2017-01-12 21:18:13 --> Output Class Initialized
+INFO - 2017-01-12 21:18:13 --> Security Class Initialized
+DEBUG - 2017-01-12 21:18:13 --> Global POST, GET and COOKIE data sanitized
+INFO - 2017-01-12 21:18:13 --> Input Class Initialized
+INFO - 2017-01-12 21:18:13 --> Language Class Initialized
+INFO - 2017-01-12 21:18:13 --> Loader Class Initialized
+INFO - 2017-01-12 21:18:13 --> Helper loaded: url_helper
+INFO - 2017-01-12 21:18:13 --> Helper loaded: language_helper
+INFO - 2017-01-12 21:18:13 --> Session: Class initialized using 'files' driver.
+INFO - 2017-01-12 21:18:13 --> Controller Class Initialized
+INFO - 2017-01-12 21:18:13 --> Database Driver Class Initialized
+INFO - 2017-01-12 21:18:13 --> Model Class Initialized
+INFO - 2017-01-12 21:18:13 --> Language file loaded: language/indonesia/basic_lang.php
+INFO - 2017-01-12 21:18:13 --> Helper loaded: form_helper
+INFO - 2017-01-12 21:18:13 --> File loaded: C:\wamp64\www\savsoftquiz\application\views\header.php
+INFO - 2017-01-12 21:18:13 --> File loaded: C:\wamp64\www\savsoftquiz\application\views\question_list.php
+INFO - 2017-01-12 21:18:13 --> File loaded: C:\wamp64\www\savsoftquiz\application\views\footer.php
+INFO - 2017-01-12 21:18:13 --> Final output sent to browser
+DEBUG - 2017-01-12 21:18:13 --> Total execution time: 0.0794
+INFO - 2017-01-12 21:18:17 --> Config Class Initialized
+INFO - 2017-01-12 21:18:17 --> Hooks Class Initialized
+DEBUG - 2017-01-12 21:18:17 --> UTF-8 Support Enabled
+INFO - 2017-01-12 21:18:17 --> Utf8 Class Initialized
+INFO - 2017-01-12 21:18:17 --> URI Class Initialized
+INFO - 2017-01-12 21:18:17 --> Router Class Initialized
+INFO - 2017-01-12 21:18:17 --> Output Class Initialized
+INFO - 2017-01-12 21:18:17 --> Security Class Initialized
+DEBUG - 2017-01-12 21:18:17 --> Global POST, GET and COOKIE data sanitized
+INFO - 2017-01-12 21:18:17 --> Input Class Initialized
+INFO - 2017-01-12 21:18:17 --> Language Class Initialized
+INFO - 2017-01-12 21:18:17 --> Loader Class Initialized
+INFO - 2017-01-12 21:18:17 --> Helper loaded: url_helper
+INFO - 2017-01-12 21:18:17 --> Helper loaded: language_helper
+INFO - 2017-01-12 21:18:17 --> Session: Class initialized using 'files' driver.
+INFO - 2017-01-12 21:18:17 --> Controller Class Initialized
+INFO - 2017-01-12 21:18:17 --> Database Driver Class Initialized
+INFO - 2017-01-12 21:18:17 --> Model Class Initialized
+INFO - 2017-01-12 21:18:17 --> Language file loaded: language/indonesia/basic_lang.php
+INFO - 2017-01-12 21:18:17 --> Helper loaded: form_helper
+INFO - 2017-01-12 21:18:17 --> File loaded: C:\wamp64\www\savsoftquiz\application\views\header.php
+INFO - 2017-01-12 21:18:17 --> File loaded: C:\wamp64\www\savsoftquiz\application\views\question_list.php
+INFO - 2017-01-12 21:18:17 --> File loaded: C:\wamp64\www\savsoftquiz\application\views\footer.php
+INFO - 2017-01-12 21:18:17 --> Final output sent to browser
+DEBUG - 2017-01-12 21:18:17 --> Total execution time: 0.1012
+INFO - 2017-01-12 21:18:21 --> Config Class Initialized
+INFO - 2017-01-12 21:18:21 --> Hooks Class Initialized
+DEBUG - 2017-01-12 21:18:21 --> UTF-8 Support Enabled
+INFO - 2017-01-12 21:18:21 --> Utf8 Class Initialized
+INFO - 2017-01-12 21:18:21 --> URI Class Initialized
+INFO - 2017-01-12 21:18:21 --> Router Class Initialized
+INFO - 2017-01-12 21:18:21 --> Output Class Initialized
+INFO - 2017-01-12 21:18:21 --> Security Class Initialized
+DEBUG - 2017-01-12 21:18:21 --> Global POST, GET and COOKIE data sanitized
+INFO - 2017-01-12 21:18:21 --> Input Class Initialized
+INFO - 2017-01-12 21:18:21 --> Language Class Initialized
+INFO - 2017-01-12 21:18:21 --> Loader Class Initialized
+INFO - 2017-01-12 21:18:21 --> Helper loaded: url_helper
+INFO - 2017-01-12 21:18:21 --> Helper loaded: language_helper
+INFO - 2017-01-12 21:18:21 --> Session: Class initialized using 'files' driver.
+INFO - 2017-01-12 21:18:21 --> Controller Class Initialized
+INFO - 2017-01-12 21:18:21 --> Database Driver Class Initialized
+INFO - 2017-01-12 21:18:21 --> Model Class Initialized
+INFO - 2017-01-12 21:18:21 --> Language file loaded: language/indonesia/basic_lang.php
+INFO - 2017-01-12 21:18:21 --> Helper loaded: form_helper
+INFO - 2017-01-12 21:18:21 --> File loaded: C:\wamp64\www\savsoftquiz\application\views\header.php
+INFO - 2017-01-12 21:18:21 --> File loaded: C:\wamp64\www\savsoftquiz\application\views\question_list.php
+INFO - 2017-01-12 21:18:21 --> File loaded: C:\wamp64\www\savsoftquiz\application\views\footer.php
+INFO - 2017-01-12 21:18:21 --> Final output sent to browser
+DEBUG - 2017-01-12 21:18:21 --> Total execution time: 0.1785
+INFO - 2017-01-12 21:19:25 --> Config Class Initialized
+INFO - 2017-01-12 21:19:25 --> Hooks Class Initialized
+DEBUG - 2017-01-12 21:19:25 --> UTF-8 Support Enabled
+INFO - 2017-01-12 21:19:25 --> Utf8 Class Initialized
+INFO - 2017-01-12 21:19:25 --> URI Class Initialized
+INFO - 2017-01-12 21:19:25 --> Router Class Initialized
+INFO - 2017-01-12 21:19:25 --> Output Class Initialized
+INFO - 2017-01-12 21:19:25 --> Security Class Initialized
+DEBUG - 2017-01-12 21:19:25 --> Global POST, GET and COOKIE data sanitized
+INFO - 2017-01-12 21:19:25 --> Input Class Initialized
+INFO - 2017-01-12 21:19:25 --> Language Class Initialized
+INFO - 2017-01-12 21:19:25 --> Loader Class Initialized
+INFO - 2017-01-12 21:19:25 --> Helper loaded: url_helper
+INFO - 2017-01-12 21:19:25 --> Helper loaded: language_helper
+INFO - 2017-01-12 21:19:25 --> Session: Class initialized using 'files' driver.
+INFO - 2017-01-12 21:19:25 --> Controller Class Initialized
+INFO - 2017-01-12 21:19:25 --> Database Driver Class Initialized
+INFO - 2017-01-12 21:19:25 --> Model Class Initialized
+INFO - 2017-01-12 21:19:25 --> Language file loaded: language/indonesia/basic_lang.php
+ERROR - 2017-01-12 21:19:25 --> Severity: 8192 --> Methods with the same name as their class will not be constructors in a future version of PHP; OLERead has a deprecated constructor C:\wamp64\www\savsoftquiz\application\helpers\xlsimport\php-excel-reader\excel_reader2_helper.php 95
+ERROR - 2017-01-12 21:19:25 --> Severity: 8192 --> Methods with the same name as their class will not be constructors in a future version of PHP; Spreadsheet_Excel_Reader has a deprecated constructor C:\wamp64\www\savsoftquiz\application\helpers\xlsimport\php-excel-reader\excel_reader2_helper.php 312
+INFO - 2017-01-12 21:19:25 --> Helper loaded: xlsimport/php-excel-reader/excel_reader2_helper
+INFO - 2017-01-12 21:19:25 --> Helper loaded: xlsimport/spreadsheetreader_helper
+INFO - 2017-01-12 21:19:25 --> Config Class Initialized
+INFO - 2017-01-12 21:19:25 --> Hooks Class Initialized
+DEBUG - 2017-01-12 21:19:25 --> UTF-8 Support Enabled
+INFO - 2017-01-12 21:19:25 --> Utf8 Class Initialized
+INFO - 2017-01-12 21:19:25 --> URI Class Initialized
+INFO - 2017-01-12 21:19:25 --> Router Class Initialized
+INFO - 2017-01-12 21:19:25 --> Output Class Initialized
+INFO - 2017-01-12 21:19:25 --> Security Class Initialized
+DEBUG - 2017-01-12 21:19:25 --> Global POST, GET and COOKIE data sanitized
+INFO - 2017-01-12 21:19:25 --> Input Class Initialized
+INFO - 2017-01-12 21:19:25 --> Language Class Initialized
+INFO - 2017-01-12 21:19:25 --> Loader Class Initialized
+INFO - 2017-01-12 21:19:25 --> Helper loaded: url_helper
+INFO - 2017-01-12 21:19:25 --> Helper loaded: language_helper
+INFO - 2017-01-12 21:19:25 --> Session: Class initialized using 'files' driver.
+INFO - 2017-01-12 21:19:25 --> Controller Class Initialized
+INFO - 2017-01-12 21:19:25 --> Database Driver Class Initialized
+INFO - 2017-01-12 21:19:25 --> Model Class Initialized
+INFO - 2017-01-12 21:19:25 --> Language file loaded: language/indonesia/basic_lang.php
+INFO - 2017-01-12 21:19:25 --> Helper loaded: form_helper
+INFO - 2017-01-12 21:19:25 --> File loaded: C:\wamp64\www\savsoftquiz\application\views\header.php
+INFO - 2017-01-12 21:19:25 --> File loaded: C:\wamp64\www\savsoftquiz\application\views\question_list.php
+INFO - 2017-01-12 21:19:25 --> File loaded: C:\wamp64\www\savsoftquiz\application\views\footer.php
+INFO - 2017-01-12 21:19:25 --> Final output sent to browser
+DEBUG - 2017-01-12 21:19:25 --> Total execution time: 0.1674
