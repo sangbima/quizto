@@ -27,7 +27,7 @@ class Ujian extends CI_Controller
       $logged_in=$this->session->userdata('logged_in');
     
       // $data['limit']=$limit;
-      $data['title']='Daftar Ujian IST';
+      $data['title']='Daftar Ujian CAT';
       // fetching quiz list
       $data['result'] = $this->ujian_model->ujian_list();
 
@@ -39,11 +39,253 @@ class Ujian extends CI_Controller
       }
 
       $this->session->set_userdata('quid', $data['quid']);
+
+      // var_dump($data['quid']);
       
       $this->load->view('header',$data);
       $this->load->view('ujian_list',$data);
       $this->load->view('footer',$data);
     }
+
+    // START UJIAN TPU
+
+    public function tpu()
+    {
+      $quid = $this->session->userdata('quid');
+      $logged_in=$this->session->userdata('logged_in');
+      $gid=$logged_in['gid'];
+
+      $data['title'] = 'TEST TPU (TEST PENGETAHUAN UMUM)';
+      // $data['quiz']=$this->ujian_model->get_quiz($quid[0]);
+      $data['quiz']=$this->ujian_model->get_quiz($quid[0]);
+      
+      $this->load->view('header',$data);
+      $this->load->view('ujian_tpu',$data);
+      $this->load->view('footer',$data);
+    }
+
+    public function validate_ujian_tpu($quid)
+    {
+      $logged_in=$this->session->userdata('logged_in');
+      $gid=$logged_in['gid'];
+      $uid=$logged_in['uid'];
+       
+      $data['quiz']=$this->ujian_model->get_quiz($quid);
+
+      // Cek apakah waktu start/end valid
+      // validate start end date/time
+      if($data['quiz']['start_date'] > time()){
+        $this->session->set_flashdata('message', "<div class='alert alert-danger'>".$this->lang->line('quiz_not_available')." </div>");
+        redirect('ujian/index/'.$quid);
+      }
+      // validate start end date/time
+      if($data['quiz']['end_date'] < time()){
+        $this->session->set_flashdata('message', "<div class='alert alert-danger'>".$this->lang->line('quiz_ended')." </div>");
+        redirect('ujian/index/'.$quid);
+      }
+
+      // validate maximum attempts
+      $maximum_attempt=$this->ujian_model->count_result($quid,$uid);
+      if($data['quiz']['maximum_attempts'] <= $maximum_attempt){
+        $this->session->set_flashdata('message', "<div class='alert alert-danger'>".$this->lang->line('reached_maximum_attempt')." </div>");
+        redirect('ujian/index/'.$quid);
+      }
+      
+      // // insert result row and get rid (result id)
+      $rid=$this->ujian_model->insert_result($quid,$uid);
+      // var_dump($rid);die();
+      
+      $this->session->set_userdata('rid', $rid);
+      redirect('ujian/tpu_attempt/'.$rid);
+    }
+
+    function tpu_attempt($rid)
+    {
+      $srid=$this->session->userdata('rid');
+      // if linked and session rid is not matched then something wrong.
+      if($rid != $srid){
+       
+        $this->session->set_flashdata('message', "<div class='alert alert-danger'>".$this->lang->line('quiz_ended')." </div>");
+        redirect('ujian/');
+
+      }
+
+      if(!$this->session->userdata('logged_in')){
+        exit($this->lang->line('permission_denied'));
+      }
+      // get result and quiz info and validate time period
+      $data['quiz']=$this->ujian_model->quiz_result($rid);
+      $data['saved_answers']=$this->ujian_model->saved_answers($rid);
+
+      // get number of questions
+      // $data['questions'] = $this->ujian_model->ujian_list();
+        
+      // end date/time
+      if($data['quiz']['end_date'] < time()){
+        $this->ujian_model->submit_result($rid);
+        $this->session->unset_userdata('rid');
+        $this->session->set_flashdata('message', "<div class='alert alert-danger'>".$this->lang->line('quiz_ended')." </div>");
+        redirect('ujian/index/'.$data['quiz']['quid']);
+      }
+
+      // end date/time
+      if(($data['quiz']['start_time']+($data['quiz']['duration']*60)) < time()){
+        $this->ujian_model->submit_result($rid);
+        $this->session->unset_userdata('rid');
+        $this->session->set_flashdata('message', "<div class='alert alert-danger'>".$this->lang->line('time_over')." </div>");
+        redirect('ujian/index/'.$data['quiz']['quid']);
+      }
+      // remaining time in seconds 
+      $data['seconds']=($data['quiz']['duration']*60) - (time()- $data['quiz']['start_time']);
+      // get questions
+      $data['questions']=$this->ujian_model->get_questions($data['quiz']['r_qids']);
+
+      // Get number of question
+      $data['quizgroup'] = $this->ujian_model->get_quiz($data['quiz']['quid']);
+
+      // get options
+      $data['options']=$this->ujian_model->get_options($data['quiz']['r_qids']);
+      $data['title']=$data['quiz']['quiz_name'];
+      $this->load->view('header',$data);
+      $this->load->view('ujian_tpu_attempt',$data);
+      $this->load->view('footer',$data);
+        
+    }
+
+    function submit_quiz_tpu()
+    {
+     
+      if($this->ujian_model->submit_result()){
+          $this->session->set_flashdata('message', "<div class='alert alert-success'>".$this->lang->line('quiz_submit_successfully')." </div>");
+      }else{
+          $this->session->set_flashdata('message', "<div class='alert alert-danger'>".$this->lang->line('error_to_submit')." </div>");
+      }
+      $this->session->unset_userdata('rid');    
+            
+      redirect('ujian/tpa');
+    }
+
+    // END UJIAN TPU
+
+    // START UJIAN TPA
+
+    public function tpa()
+    {
+      $quid = $this->session->userdata('quid');
+      $logged_in=$this->session->userdata('logged_in');
+      $gid=$logged_in['gid'];
+
+      $data['title'] = 'TEST TPA (TEST PENGETAHUAN AKADEMIK)';
+      // $data['quiz']=$this->ujian_model->get_quiz($quid[0]);
+      $data['quiz']=$this->ujian_model->get_quiz($quid[1]);
+      
+      $this->load->view('header',$data);
+      $this->load->view('ujian_tpa',$data);
+      $this->load->view('footer',$data);
+    }
+
+    public function validate_ujian_tpa($quid)
+    {
+      $logged_in=$this->session->userdata('logged_in');
+      $gid=$logged_in['gid'];
+      $uid=$logged_in['uid'];
+       
+      $data['quiz']=$this->ujian_model->get_quiz($quid);
+
+      // Cek apakah waktu start/end valid
+      // validate start end date/time
+      if($data['quiz']['start_date'] > time()){
+        $this->session->set_flashdata('message', "<div class='alert alert-danger'>".$this->lang->line('quiz_not_available')." </div>");
+        redirect('ujian/index/'.$quid);
+      }
+      // validate start end date/time
+      if($data['quiz']['end_date'] < time()){
+        $this->session->set_flashdata('message', "<div class='alert alert-danger'>".$this->lang->line('quiz_ended')." </div>");
+        redirect('ujian/index/'.$quid);
+      }
+
+      // validate maximum attempts
+      $maximum_attempt=$this->ujian_model->count_result($quid,$uid);
+      if($data['quiz']['maximum_attempts'] <= $maximum_attempt){
+        $this->session->set_flashdata('message', "<div class='alert alert-danger'>".$this->lang->line('reached_maximum_attempt')." </div>");
+        redirect('ujian/index/'.$quid);
+      }
+      
+      // // insert result row and get rid (result id)
+      $rid=$this->ujian_model->insert_result($quid,$uid);
+      // var_dump($rid);die();
+      
+      $this->session->set_userdata('rid', $rid);
+      redirect('ujian/tpa_attempt/'.$rid);
+    }
+
+    function tpa_attempt($rid)
+    {
+      $srid=$this->session->userdata('rid');
+      // if linked and session rid is not matched then something wrong.
+      if($rid != $srid){
+       
+        $this->session->set_flashdata('message', "<div class='alert alert-danger'>".$this->lang->line('quiz_ended')." </div>");
+        redirect('ujian/');
+
+      }
+
+      if(!$this->session->userdata('logged_in')){
+        exit($this->lang->line('permission_denied'));
+      }
+      // get result and quiz info and validate time period
+      $data['quiz']=$this->ujian_model->quiz_result($rid);
+      $data['saved_answers']=$this->ujian_model->saved_answers($rid);
+
+      // get number of questions
+      // $data['questions'] = $this->ujian_model->ujian_list();
+        
+      // end date/time
+      if($data['quiz']['end_date'] < time()){
+        $this->ujian_model->submit_result($rid);
+        $this->session->unset_userdata('rid');
+        $this->session->set_flashdata('message', "<div class='alert alert-danger'>".$this->lang->line('quiz_ended')." </div>");
+        redirect('ujian/index/'.$data['quiz']['quid']);
+      }
+
+      // end date/time
+      if(($data['quiz']['start_time']+($data['quiz']['duration']*60)) < time()){
+        $this->ujian_model->submit_result($rid);
+        $this->session->unset_userdata('rid');
+        $this->session->set_flashdata('message', "<div class='alert alert-danger'>".$this->lang->line('time_over')." </div>");
+        redirect('ujian/index/'.$data['quiz']['quid']);
+      }
+      // remaining time in seconds 
+      $data['seconds']=($data['quiz']['duration']*60) - (time()- $data['quiz']['start_time']);
+      // get questions
+      $data['questions']=$this->ujian_model->get_questions($data['quiz']['r_qids']);
+
+      // Get number of question
+      $data['quizgroup'] = $this->ujian_model->get_quiz($data['quiz']['quid']);
+
+      // get options
+      $data['options']=$this->ujian_model->get_options($data['quiz']['r_qids']);
+      $data['title']=$data['quiz']['quiz_name'];
+      $this->load->view('header',$data);
+      $this->load->view('ujian_tpa_attempt',$data);
+      $this->load->view('footer',$data);
+        
+    }
+
+    function submit_quiz_tpa()
+    {
+     
+      if($this->ujian_model->submit_result()){
+          $this->session->set_flashdata('message', "<div class='alert alert-success'>".$this->lang->line('quiz_submit_successfully')." </div>");
+      }else{
+          $this->session->set_flashdata('message', "<div class='alert alert-danger'>".$this->lang->line('error_to_submit')." </div>");
+      }
+      $this->session->unset_userdata('rid');    
+            
+      redirect('ujian/se');
+    }
+
+    // END UJIAN TPA
 
     public function validate_ujian_se($quid)
     {
@@ -446,7 +688,7 @@ class Ujian extends CI_Controller
       $gid=$logged_in['gid'];
 
       $data['title'] = 'IST';
-      $data['quiz']=$this->ujian_model->get_quiz($quid[0]);
+      $data['quiz']=$this->ujian_model->get_quiz($quid[2]);
 
       $this->load->view('header',$data);
       $this->load->view('ujian_ist_01',$data);
@@ -533,7 +775,7 @@ class Ujian extends CI_Controller
       $gid=$logged_in['gid'];
 
       $data['title'] = 'IST';
-      $data['quiz']=$this->ujian_model->get_quiz($quid[1]);
+      $data['quiz']=$this->ujian_model->get_quiz($quid[3]);
 
       $this->load->view('header',$data);
       $this->load->view('ujian_ist_02',$data);
@@ -593,7 +835,7 @@ class Ujian extends CI_Controller
       $gid=$logged_in['gid'];
 
       $data['title'] = 'IST';
-      $data['quiz']=$this->ujian_model->get_quiz($quid[2]);
+      $data['quiz']=$this->ujian_model->get_quiz($quid[4]);
 
       $this->load->view('header',$data);
       $this->load->view('ujian_ist_03',$data);
@@ -653,7 +895,7 @@ class Ujian extends CI_Controller
       $gid=$logged_in['gid'];
 
       $data['title'] = 'IST';
-      $data['quiz']=$this->ujian_model->get_quiz($quid[3]);
+      $data['quiz']=$this->ujian_model->get_quiz($quid[5]);
 
       $this->load->view('header',$data);
       $this->load->view('ujian_ist_04',$data);
@@ -713,7 +955,7 @@ class Ujian extends CI_Controller
       $gid=$logged_in['gid'];
 
       $data['title'] = 'IST';
-      $data['quiz']=$this->ujian_model->get_quiz($quid[4]);
+      $data['quiz']=$this->ujian_model->get_quiz($quid[6]);
 
       $this->load->view('header',$data);
       $this->load->view('ujian_ist_05',$data);
@@ -773,7 +1015,7 @@ class Ujian extends CI_Controller
       $gid=$logged_in['gid'];
 
       $data['title'] = 'IST';
-      $data['quiz']=$this->ujian_model->get_quiz($quid[5]);
+      $data['quiz']=$this->ujian_model->get_quiz($quid[7]);
 
       $this->load->view('header',$data);
       $this->load->view('ujian_ist_06',$data);
@@ -833,7 +1075,7 @@ class Ujian extends CI_Controller
       $gid=$logged_in['gid'];
 
       $data['title'] = 'IST';
-      $data['quiz']=$this->ujian_model->get_quiz($quid[6]);
+      $data['quiz']=$this->ujian_model->get_quiz($quid[8]);
 
       $this->load->view('header',$data);
       $this->load->view('ujian_ist_07',$data);
@@ -893,7 +1135,7 @@ class Ujian extends CI_Controller
       $gid=$logged_in['gid'];
 
       $data['title'] = 'IST';
-      $data['quiz']=$this->ujian_model->get_quiz($quid[7]);
+      $data['quiz']=$this->ujian_model->get_quiz($quid[9]);
 
       $this->load->view('header',$data);
       $this->load->view('ujian_ist_08',$data);
@@ -953,7 +1195,7 @@ class Ujian extends CI_Controller
       $gid=$logged_in['gid'];
 
       $data['title'] = 'IST';
-      $data['quiz']=$this->ujian_model->get_quiz($quid[8]);
+      $data['quiz']=$this->ujian_model->get_quiz($quid[10]);
 
       $this->load->view('header',$data);
       $this->load->view('ujian_ist_09',$data);
@@ -1014,7 +1256,7 @@ class Ujian extends CI_Controller
       $gid=$logged_in['gid'];
 
       $data['title'] = 'DISC';
-      $data['quiz']=$this->ujian_model->get_quiz($quid[9]);
+      $data['quiz']=$this->ujian_model->get_quiz($quid[11]);
 
       $this->load->view('header',$data);
       $this->load->view('ujian_disc',$data);
