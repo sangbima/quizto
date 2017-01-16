@@ -80,7 +80,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $this->lang->line('quiz');?> <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                                 
-                            <li><a href="<?php echo site_url('quiz/add_new');?>"><?php echo $this->lang->line('add_new');?></a></li>
+                            <!-- <li><a href="<?php //echo site_url('quiz/add_new');?>"><?php //echo $this->lang->line('add_new');?></a></li> -->
                             				 
                             <li><a href="<?php echo site_url('quiz');?>"><?php echo $this->lang->line('quiz_list');?></a></li>
                         </ul>
@@ -96,10 +96,11 @@
                     <li class="dropdown" <?php if($this->uri->segment(1)=='result'){ echo "class='active'"; } ?> >
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $this->lang->line('result');?> <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="<?php echo site_url('#');?>"><?php echo $this->lang->line('result_tpa');?></a></li>
-                            <li><a href="<?php echo site_url('#');?>"><?php echo $this->lang->line('result_tpu');?></a></li>
+                            <li><a href="<?php echo site_url('hasil/');?>"><?php echo $this->lang->line('result_all');?></a></li>
+                            <!-- <li><a href="<?php //echo site_url('#');?>"><?php //echo $this->lang->line('result_tpa');?></a></li> -->
+                            <li><a href="<?php echo site_url('hasil/tpu_tpa');?>"><?php echo $this->lang->line('result_tpu_tpa');?></a></li>
                             <li><a href="<?php echo site_url('hasil/ist');?>"><?php echo $this->lang->line('result_ist');?></a></li>
-                            <li><a href="<?php echo site_url('#');?>"><?php echo $this->lang->line('result_disc');?></a></li>
+                            <!-- <li><a href="<?php // echo site_url('#');?>"><?php // echo $this->lang->line('result_disc');?></a></li> -->
                         </ul>
                     </li>
                     <!-- End Menu Hasil -->
@@ -110,8 +111,8 @@
                         <li><a href="<?php echo site_url('user/group_list');?>"><?php echo $this->lang->line('group_list');?></a></li>
                         <li><a href="<?php echo site_url('qbank/category_list');?>"><?php echo $this->lang->line('category_list');?></a></li>
                         <li><a href="<?php echo site_url('qbank/level_list');?>"><?php echo $this->lang->line('level_list');?></a></li>
-                        <li><a href="<?php echo site_url('dashboard/config');?>"><?php echo $this->lang->line('config');?></a></li>
-                        <li><a href="<?php echo site_url('dashboard/css');?>"><?php echo $this->lang->line('custom_css');?></a></li>
+                        <!-- <li><a href="<?php //echo site_url('dashboard/config');?>"><?php //echo $this->lang->line('config');?></a></li> -->
+                        <!-- <li><a href="<?php //echo site_url('dashboard/css');?>"><?php //echo $this->lang->line('custom_css');?></a></li> -->
                         </ul>
                     </li>
                     <?php 

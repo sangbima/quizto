@@ -98,11 +98,24 @@ class Hasil extends CI_Controller
         $this->load->view('footer');
     }
 
-    public function tpu()
+    public function tpu_tpa($limit='0',$cid='0',$lid='0')
     {
-        $this->load->view('header');
-        $this->load->view('hasil_tpu');
-        $this->load->view('footer');
+        $this->load->helper('form');
+        $logged_in=$this->session->userdata('logged_in');
+        if($logged_in['su']!='1'){
+            exit($this->lang->line('permission_denied'));
+        }
+            
+        $data['limit']=$limit;
+        $data['cid']=$cid;
+        $data['lid']=$lid;
+        
+        $data['title']=$this->lang->line('resultlist');
+        // fetching user list
+        $data['result']=$this->hasil_model->hasil_tpu_tpa($limit,$cid,$lid);
+        $this->load->view('header', $data);
+        $this->load->view('hasil_tpu_tpa', $data);
+        $this->load->view('footer', $data);
     }
 
     

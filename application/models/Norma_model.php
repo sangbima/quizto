@@ -139,7 +139,7 @@ Class Norma_model extends CI_Model
             COUNT(CASE WHEN disc_answers.most = \'C\' THEN disc_answers.most ELSE null END)+
             COUNT(CASE WHEN disc_answers.most = \'*\' THEN disc_answers.most ELSE null END)
             as t
-            FROM quiz.disc_answers where uid='.$uid;
+            FROM disc_answers where uid='.$uid;
         
         $query_m =  $this->db->query($q_n_most);
 
@@ -162,7 +162,7 @@ Class Norma_model extends CI_Model
             COUNT(CASE WHEN disc_answers.least = \'C\' THEN disc_answers.least ELSE null END)+
             COUNT(CASE WHEN disc_answers.least = \'*\' THEN disc_answers.least ELSE null END)
             as t
-            FROM quiz.disc_answers where uid='.$uid;
+            FROM disc_answers where uid='.$uid;
 
         $query_l =  $this->db->query($q_n_least);
 
