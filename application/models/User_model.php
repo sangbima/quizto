@@ -333,7 +333,7 @@ Class User_model extends CI_Model
 		$usercid=$this->input->post('cid');
 		$userdid=$this->input->post('did');
 		foreach($user as $key => $singleuser){
-			if($key != 0){
+			if(($key != 0) and ($singleuser['0'] . "" != "")){
 				echo "<pre>";print_r($singleuser);
 				$user= str_replace('"','&#34;',$singleuser['1']);
 				$user= str_replace("`",'&#39;',$user);
