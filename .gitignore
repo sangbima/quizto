@@ -10,4 +10,5 @@ license.md
 license_codeigniter.txt
 license_savsoftquiz.txt
 application/config/sq_config.php
+application/logs/
 upload/
