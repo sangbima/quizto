@@ -39,7 +39,7 @@
     setTimeout(submitform,'<?php echo $seconds * 1000;?>');
     function submitform(){
         alert('Time Over');
-        window.location="<?php echo site_url('ujian/submit_quiz_tpa/');?>";
+        window.location="<?php echo site_url('ujian/submit_quiz_tpu/');?>";
     }
 </script>
 
