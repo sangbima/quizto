@@ -1,12 +1,29 @@
 <?php
 Class Ujian_model extends CI_Model
 {
+	
+    function ujian_list_all()
+    {
+        $logged_in=$this->session->userdata('logged_in');
+        if($logged_in['su']=='0'){
+            $gid=$logged_in['gid'];
+		    $where="FIND_IN_SET('".$gid."', gids)";              			        
+            $this->db->where($where);
+        }
+        
+        // $this->db->limit($this->config->item('number_of_rows'),$limit);
+        $this->db->order_by('quid','asc');
+        $query=$this->db->get('quiz');
+        return $query->result_array();
+    }	
+	
     function ujian_list()
     {
         $logged_in=$this->session->userdata('logged_in');
         if($logged_in['su']=='0'){
             $gid=$logged_in['gid'];
-            $where="FIND_IN_SET('".$gid."', gids)";  
+		    $where="FIND_IN_SET('".$gid."', gids)";              
+			$where .= " and status='1'";            
             $this->db->where($where);
         }
         
@@ -18,6 +35,7 @@ Class Ujian_model extends CI_Model
 
     function get_quiz($quid){
         $this->db->where('quid',$quid);
+        $this->db->where('status','1');		
         $query=$this->db->get('quiz');
         return $query->row_array();
     }
@@ -686,4 +704,26 @@ Class Ujian_model extends CI_Model
         else 
             return false;               
     }
+	
+	function is_quiz_enabled($priority=0) {
+		$logged_in=$this->session->userdata('logged_in');
+        if($logged_in['su']=='0'){
+            $gid=$logged_in['gid'];
+		    $where="FIND_IN_SET('".$gid."', gids)";              
+            $this->db->where($where);
+        }
+        
+        // $this->db->limit($this->config->item('number_of_rows'),$limit);
+        $this->db->order_by('quid','asc');
+        $query=$this->db->get('quiz');
+		$hasil=$query->result_array();
+		
+		if ( $hasil[$priority]['status']=="1") {
+			$quiz_enabled=true;
+		} else {
+            $quiz_enabled=false;  
+		} 				
+		return $quiz_enabled;
+	}	
+	
 }

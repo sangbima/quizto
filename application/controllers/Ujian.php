@@ -29,16 +29,23 @@ class Ujian extends CI_Controller
       // $data['limit']=$limit;
       $data['title']='Daftar Ujian CAT';
       // fetching quiz list
-      $data['result'] = $this->ujian_model->ujian_list();
+      $data['result'] = $this->ujian_model->ujian_list();	  
 
+      $data['result_all'] = $this->ujian_model->ujian_list_all();	  
+	  
       $data['reach_max'] = $this->ujian_model->is_reach_max($logged_in['uid']);
 
       foreach ($data['result'] as $key => $value) {
         $data['quid'][$key] = $value['quid'];
         $key++;
       }
-
+	  
+      foreach ($data['result_all'] as $key => $value) {
+        $data['quid_all'][$key] = $value['quid'];
+        $key++;
+      }	  
       $this->session->set_userdata('quid', $data['quid']);
+      $this->session->set_userdata('quid_all', $data['quid_all']);
 
       // var_dump($data['quid']);
       
@@ -51,17 +58,22 @@ class Ujian extends CI_Controller
 
     public function tpu()
     {
-      $quid = $this->session->userdata('quid');
-      $logged_in=$this->session->userdata('logged_in');
-      $gid=$logged_in['gid'];
+      if ( $this->ujian_model->is_quiz_enabled(0) ) {		
+          $quid = $this->session->userdata('quid');
+          $quid_all = $this->session->userdata('quid_all');		  
+          $logged_in=$this->session->userdata('logged_in');
+          $gid=$logged_in['gid'];
 
-      $data['title'] = 'TEST TPU (TEST PENGETAHUAN UMUM)';
-      // $data['quiz']=$this->ujian_model->get_quiz($quid[0]);
-      $data['quiz']=$this->ujian_model->get_quiz($quid[0]);
+          $data['title'] = 'TEST TPU (TEST PENGETAHUAN UMUM)';
+          // $data['quiz']=$this->ujian_model->get_quiz($quid[0]);
+          $data['quiz']=$this->ujian_model->get_quiz($quid_all[0]);
       
-      $this->load->view('header',$data);
-      $this->load->view('ujian_tpu',$data);
-      $this->load->view('footer',$data);
+          $this->load->view('header',$data);
+          $this->load->view('ujian_tpu',$data);
+          $this->load->view('footer',$data);
+	  } else {
+		   redirect('ujian/tpa'); 
+	  }	  
     }
 
     public function validate_ujian_tpu($quid)
@@ -171,17 +183,23 @@ class Ujian extends CI_Controller
 
     public function tpa()
     {
-      $quid = $this->session->userdata('quid');
-      $logged_in=$this->session->userdata('logged_in');
-      $gid=$logged_in['gid'];
+		
+      if ( $this->ujian_model->is_quiz_enabled(1) ) {					
+          $quid = $this->session->userdata('quid');
+		  $quid_all = $this->session->userdata('quid_all');	
+          $logged_in=$this->session->userdata('logged_in');
+          $gid=$logged_in['gid'];
 
-      $data['title'] = 'TEST TPA (TEST PENGETAHUAN AKADEMIK)';
-      // $data['quiz']=$this->ujian_model->get_quiz($quid[0]);
-      $data['quiz']=$this->ujian_model->get_quiz($quid[1]);
+          $data['title'] = 'TEST TPA (TEST PENGETAHUAN AKADEMIK)';
+          // $data['quiz']=$this->ujian_model->get_quiz($quid[0]);
+          $data['quiz']=$this->ujian_model->get_quiz($quid_all[1]);
       
-      $this->load->view('header',$data);
-      $this->load->view('ujian_tpa',$data);
-      $this->load->view('footer',$data);
+          $this->load->view('header',$data);
+          $this->load->view('ujian_tpa',$data);
+          $this->load->view('footer',$data);
+	  } else {
+		  redirect('ujian/se');
+	  }	  
     }
 
     public function validate_ujian_tpa($quid)
@@ -683,16 +701,21 @@ class Ujian extends CI_Controller
 
     public function se()
     {
-      $quid = $this->session->userdata('quid');
-      $logged_in=$this->session->userdata('logged_in');
-      $gid=$logged_in['gid'];
+      if ( $this->ujian_model->is_quiz_enabled(2) ) {			
+           $quid = $this->session->userdata('quid');
+		   $quid_all = $this->session->userdata('quid_all');	
+           $logged_in=$this->session->userdata('logged_in');
+           $gid=$logged_in['gid'];
 
-      $data['title'] = 'IST';
-      $data['quiz']=$this->ujian_model->get_quiz($quid[2]);
-
-      $this->load->view('header',$data);
-      $this->load->view('ujian_ist_01',$data);
-      $this->load->view('footer',$data);
+           $data['title'] = 'IST';
+           $data['quiz']=$this->ujian_model->get_quiz($quid_all[2]);
+ 
+           $this->load->view('header',$data);
+           $this->load->view('ujian_ist_01',$data);
+           $this->load->view('footer',$data);
+	  } else {
+		   redirect('ujian/wa');	
+      }		  
     }
 
     // public function se_attempt()
@@ -770,16 +793,22 @@ class Ujian extends CI_Controller
 
     public function wa()
     {
-      $quid = $this->session->userdata('quid');
-      $logged_in=$this->session->userdata('logged_in');
-      $gid=$logged_in['gid'];
+     if ( $this->ujian_model->is_quiz_enabled(3) ) {			
+		
+          $quid = $this->session->userdata('quid');
+		  $quid_all = $this->session->userdata('quid_all');	
+          $logged_in=$this->session->userdata('logged_in');
+          $gid=$logged_in['gid'];
 
-      $data['title'] = 'IST';
-      $data['quiz']=$this->ujian_model->get_quiz($quid[3]);
+          $data['title'] = 'IST';
+          $data['quiz']=$this->ujian_model->get_quiz($quid_all[3]);
 
-      $this->load->view('header',$data);
-      $this->load->view('ujian_ist_02',$data);
-      $this->load->view('footer',$data);
+          $this->load->view('header',$data);
+          $this->load->view('ujian_ist_02',$data);
+          $this->load->view('footer',$data);
+	 } else {
+		  redirect('ujian/an');
+     }  		 
     }
 
     public function wa_attempt($rid)
@@ -830,16 +859,21 @@ class Ujian extends CI_Controller
 
     public function an()
     {
-      $quid = $this->session->userdata('quid');
-      $logged_in=$this->session->userdata('logged_in');
-      $gid=$logged_in['gid'];
+      if ( $this->ujian_model->is_quiz_enabled(4) ) {			
+          $quid = $this->session->userdata('quid');
+		  $quid_all = $this->session->userdata('quid_all');	
+          $logged_in=$this->session->userdata('logged_in');
+          $gid=$logged_in['gid'];
 
-      $data['title'] = 'IST';
-      $data['quiz']=$this->ujian_model->get_quiz($quid[4]);
+          $data['title'] = 'IST';
+          $data['quiz']=$this->ujian_model->get_quiz($quid_all[4]);
 
-      $this->load->view('header',$data);
-      $this->load->view('ujian_ist_03',$data);
-      $this->load->view('footer',$data);
+          $this->load->view('header',$data);
+          $this->load->view('ujian_ist_03',$data);
+          $this->load->view('footer',$data);
+	  } else {
+		  redirect('ujian/ge');
+      }		  
     }
 
     public function an_attempt($rid)
@@ -890,16 +924,21 @@ class Ujian extends CI_Controller
 
     public function ge()
     {
-      $quid = $this->session->userdata('quid');
-      $logged_in=$this->session->userdata('logged_in');
-      $gid=$logged_in['gid'];
+	  if ( $this->ujian_model->is_quiz_enabled(5) ) {	 	
+          $quid = $this->session->userdata('quid');
+		  $quid_all = $this->session->userdata('quid_all');	
+          $logged_in=$this->session->userdata('logged_in');
+          $gid=$logged_in['gid'];
 
-      $data['title'] = 'IST';
-      $data['quiz']=$this->ujian_model->get_quiz($quid[5]);
+          $data['title'] = 'IST';
+          $data['quiz']=$this->ujian_model->get_quiz($quid_all[5]);
 
-      $this->load->view('header',$data);
-      $this->load->view('ujian_ist_04',$data);
-      $this->load->view('footer',$data);
+          $this->load->view('header',$data);
+          $this->load->view('ujian_ist_04',$data);
+          $this->load->view('footer',$data);
+	  } else {	  
+	      redirect('ujian/ra');
+	  }
     }
 
     public function ge_attempt($rid)
@@ -950,16 +989,22 @@ class Ujian extends CI_Controller
 
     public function ra()
     {
-      $quid = $this->session->userdata('quid');
-      $logged_in=$this->session->userdata('logged_in');
-      $gid=$logged_in['gid'];
+      if ( $this->ujian_model->is_quiz_enabled(6) ) {			
+		
+			$quid = $this->session->userdata('quid');
+			$quid_all = $this->session->userdata('quid_all');	
+			$logged_in=$this->session->userdata('logged_in');
+			$gid=$logged_in['gid'];
 
-      $data['title'] = 'IST';
-      $data['quiz']=$this->ujian_model->get_quiz($quid[6]);
+			$data['title'] = 'IST';
+			$data['quiz']=$this->ujian_model->get_quiz($quid_all[6]);
 
-      $this->load->view('header',$data);
-      $this->load->view('ujian_ist_05',$data);
-      $this->load->view('footer',$data);
+			$this->load->view('header',$data);
+			$this->load->view('ujian_ist_05',$data);
+			$this->load->view('footer',$data);
+	  } else {
+		    redirect('ujian/zr');
+      }		  
     }
 
     public function ra_attempt($rid)
@@ -1010,16 +1055,22 @@ class Ujian extends CI_Controller
 
     public function zr()
     {
-      $quid = $this->session->userdata('quid');
-      $logged_in=$this->session->userdata('logged_in');
-      $gid=$logged_in['gid'];
+     if ( $this->ujian_model->is_quiz_enabled(7) ) {			
+		
+		$quid = $this->session->userdata('quid');
+		$quid_all = $this->session->userdata('quid_all');	
+		$logged_in=$this->session->userdata('logged_in');
+		$gid=$logged_in['gid'];
 
-      $data['title'] = 'IST';
-      $data['quiz']=$this->ujian_model->get_quiz($quid[7]);
+		$data['title'] = 'IST';
+		$data['quiz']=$this->ujian_model->get_quiz($quid_all[7]);
 
-      $this->load->view('header',$data);
-      $this->load->view('ujian_ist_06',$data);
-      $this->load->view('footer',$data);
+		$this->load->view('header',$data);
+		$this->load->view('ujian_ist_06',$data);
+		$this->load->view('footer',$data);
+	 } else {
+		 redirect('ujian/fa');
+	 }	 
     }
 
     public function zr_attempt($rid)
@@ -1070,16 +1121,22 @@ class Ujian extends CI_Controller
 
     public function fa()
     {
-      $quid = $this->session->userdata('quid');
-      $logged_in=$this->session->userdata('logged_in');
-      $gid=$logged_in['gid'];
+		
+      if ( $this->ujian_model->is_quiz_enabled(8) ) {			
+			$quid = $this->session->userdata('quid');
+			$quid_all = $this->session->userdata('quid_all');	
+			$logged_in=$this->session->userdata('logged_in');
+			$gid=$logged_in['gid'];
 
-      $data['title'] = 'IST';
-      $data['quiz']=$this->ujian_model->get_quiz($quid[8]);
+			$data['title'] = 'IST';
+			$data['quiz']=$this->ujian_model->get_quiz($quid_all[8]);
 
-      $this->load->view('header',$data);
-      $this->load->view('ujian_ist_07',$data);
-      $this->load->view('footer',$data);
+			$this->load->view('header',$data);
+			$this->load->view('ujian_ist_07',$data);
+			$this->load->view('footer',$data);
+	  } else {
+		  redirect('ujian/wu');
+      }		  
     }
 
     public function fa_attempt($rid)
@@ -1130,16 +1187,23 @@ class Ujian extends CI_Controller
 
     public function wu()
     {
+      if ( $this->ujian_model->is_quiz_enabled(9) ) {			
+		
       $quid = $this->session->userdata('quid');
+	  $quid_all = $this->session->userdata('quid_all');	
       $logged_in=$this->session->userdata('logged_in');
       $gid=$logged_in['gid'];
 
       $data['title'] = 'IST';
-      $data['quiz']=$this->ujian_model->get_quiz($quid[9]);
+      $data['quiz']=$this->ujian_model->get_quiz($quid_all[9]);
 
       $this->load->view('header',$data);
       $this->load->view('ujian_ist_08',$data);
       $this->load->view('footer',$data);
+	  } else {
+		  redirect('ujian/me');
+	  }	  
+	  
     }
 
     public function wu_attempt($rid)
@@ -1190,16 +1254,21 @@ class Ujian extends CI_Controller
 
     public function me()
     { 
-      $quid = $this->session->userdata('quid');
-      $logged_in=$this->session->userdata('logged_in');
-      $gid=$logged_in['gid'];
+	  if ( $this->ujian_model->is_quiz_enabled(10) ) {	
+			$quid = $this->session->userdata('quid');
+			$quid_all = $this->session->userdata('quid_all');	
+			$logged_in=$this->session->userdata('logged_in');
+			$gid=$logged_in['gid'];
 
-      $data['title'] = 'IST';
-      $data['quiz']=$this->ujian_model->get_quiz($quid[10]);
+			$data['title'] = 'IST';
+			$data['quiz']=$this->ujian_model->get_quiz($quid_all[10]);
 
-      $this->load->view('header',$data);
-      $this->load->view('ujian_ist_09',$data);
-      $this->load->view('footer',$data);
+			$this->load->view('header',$data);
+			$this->load->view('ujian_ist_09',$data);
+			$this->load->view('footer',$data);
+	  } else {
+            redirect('ujian/disc'); 
+      } 	  
     }
 
     public function me_attempt($rid)
@@ -1251,16 +1320,21 @@ class Ujian extends CI_Controller
     /* start ujian DISC */
     public function disc()
     { 
-      $quid = $this->session->userdata('quid');
-      $logged_in=$this->session->userdata('logged_in');
-      $gid=$logged_in['gid'];
+      if ( $this->ujian_model->is_quiz_enabled(11) ) {		
+			$quid = $this->session->userdata('quid');
+			$quid_all = $this->session->userdata('quid_all');	
+			$logged_in=$this->session->userdata('logged_in');
+			$gid=$logged_in['gid'];
 
-      $data['title'] = 'DISC';
-      $data['quiz']=$this->ujian_model->get_quiz($quid[11]);
+			$data['title'] = 'DISC';
+			$data['quiz']=$this->ujian_model->get_quiz($quid_all[11]);
 
-      $this->load->view('header',$data);
-      $this->load->view('ujian_disc',$data);
-      $this->load->view('footer',$data);
+			$this->load->view('header',$data);
+			$this->load->view('ujian_disc',$data);
+			$this->load->view('footer',$data);
+      } else {
+            redirect('ujian/index');
+	  } 	  
     }
 
     public function disc_attempt($rid)
