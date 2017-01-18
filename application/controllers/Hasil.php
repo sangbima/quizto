@@ -175,10 +175,50 @@ class Hasil extends CI_Controller
     //     $this->load->view('footer',$data);
     // }
 
-    public function disc()
+    public function disc($limit='0',$cid='0',$lid='0')
     {
-        $this->load->view('header');
-        $this->load->view('hasil_disc');
-        $this->load->view('footer');
+        $this->load->helper('form');
+        $logged_in=$this->session->userdata('logged_in');
+        if($logged_in['su']!='1'){
+            exit($this->lang->line('permission_denied'));
+        }
+            
+        $data['limit']=$limit;
+        $data['cid']=$cid;
+        $data['lid']=$lid;
+        
+        $data['title']=$this->lang->line('resultlist');
+        // fetching user list
+        $data['result']=$this->hasil_model->hasil_disc($limit,$cid,$lid);
+        $this->load->view('header', $data);
+        $this->load->view('hasil_disc', $data);
+        $this->load->view('footer', $data);
     }
+
+    public function detaildisc($uid)
+    {
+        $this->load->model("user_model");
+        $this->load->model("norma_model");
+        $this->load->helper('form');
+        $logged_in=$this->session->userdata('logged_in');
+        if($logged_in['su']!='1'){
+            exit($this->lang->line('permission_denied'));
+        }
+        
+        $data['title']="Detail Peserta";
+        // fetching user list
+        $data['user']=$this->user_model->get_user($uid);
+        $data['result'] = $this->hasil_model->hasil_detail($uid);
+        $data['disc_m'] = $this->norma_model->hasil_disc_m($uid);
+        $data['disc_l'] = $this->norma_model->hasil_disc_l($uid);
+        
+        $data['mscale'] = $this->norma_model->data_scale_m($uid);
+        $data['lscale'] = $this->norma_model->data_scale_l($uid);
+        $data['cscale'] = $this->norma_model->data_scale_c($uid);
+
+        $this->load->view('header',$data);
+        $this->load->view('hasil_detail_disc',$data);
+        $this->load->view('footer',$data);
+    }
+
 }

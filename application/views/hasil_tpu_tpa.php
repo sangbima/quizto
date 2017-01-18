@@ -25,7 +25,7 @@
                     <td><?php echo $value['fullname']; ?></td>
                     <td><?php echo $value['ist1'] ? $value['ist1'] : 0; ?></td>
                     <td><?php echo $value['ist2'] ? $value['ist2'] : 0; ?></td>
-                    <td><?php echo $value['ist1'] ? $value['ist1'] : 0 + $value['ist2'] ? $value['ist2'] : 0 ?></td>
+                    <td><?php echo ($value['ist1'] ? $value['ist1'] : 0) + ($value['ist2'] ? $value['ist2'] : 0) ?></td>
                 </tr>
                 <?php } ?>
             </table>
