@@ -84,6 +84,21 @@
                         <h4><?php echo $this->lang->line('import_user');?></h4>
                     </div>
                 </div>              
+				
+                <div class="row">
+					<div class="col-md-6">
+						<select name="gid" class="selecter_4">
+							<option value=""><?php echo $this->lang->line('select_group');?></option>
+                            <?php 
+								foreach($group_list as $key => $val){
+							?>
+									<option value="<?php echo $val['gid'];?>"><?php echo $val['group_name'];?></option>
+							<?php 
+								}
+							?>
+						</select>
+					</div>
+				</div>				
                 <div class="row">
                     <div class="col-md-2">
                         <input type="hidden" name="size" value="3500000">

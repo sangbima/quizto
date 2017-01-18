@@ -100,7 +100,7 @@
                             <!-- <li><a href="<?php //echo site_url('#');?>"><?php //echo $this->lang->line('result_tpa');?></a></li> -->
                             <li><a href="<?php echo site_url('hasil/tpu_tpa');?>"><?php echo $this->lang->line('result_tpu_tpa');?></a></li>
                             <li><a href="<?php echo site_url('hasil/ist');?>"><?php echo $this->lang->line('result_ist');?></a></li>
-                            <li><a href="<?php echo site_url('hasil/disc');?>"><?php echo $this->lang->line('result_disc');?></a></li>
+                            <!-- <li><a href="<?php // echo site_url('hasil/disc');?>"><?php // echo $this->lang->line('result_disc');?></a></li> -->
                         </ul>
                     </li>
                     <!-- End Menu Hasil -->

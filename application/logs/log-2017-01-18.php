@@ -13790,3 +13790,382 @@ INFO - 2017-01-18 09:39:59 --> File loaded: C:\wamp64\www\savsoftquiz\applicatio
 INFO - 2017-01-18 09:39:59 --> File loaded: C:\wamp64\www\savsoftquiz\application\views\footer.php
 INFO - 2017-01-18 09:39:59 --> Final output sent to browser
 DEBUG - 2017-01-18 09:39:59 --> Total execution time: 0.0830
+INFO - 2017-01-18 10:04:38 --> Config Class Initialized
+INFO - 2017-01-18 10:04:38 --> Hooks Class Initialized
+DEBUG - 2017-01-18 10:04:38 --> UTF-8 Support Enabled
+INFO - 2017-01-18 10:04:38 --> Utf8 Class Initialized
+INFO - 2017-01-18 10:04:38 --> URI Class Initialized
+INFO - 2017-01-18 10:04:38 --> Router Class Initialized
+INFO - 2017-01-18 10:04:38 --> Output Class Initialized
+INFO - 2017-01-18 10:04:38 --> Security Class Initialized
+DEBUG - 2017-01-18 10:04:38 --> Global POST, GET and COOKIE data sanitized
+INFO - 2017-01-18 10:04:38 --> Input Class Initialized
+INFO - 2017-01-18 10:04:38 --> Language Class Initialized
+INFO - 2017-01-18 10:04:38 --> Loader Class Initialized
+INFO - 2017-01-18 10:04:38 --> Helper loaded: url_helper
+INFO - 2017-01-18 10:04:38 --> Helper loaded: language_helper
+INFO - 2017-01-18 10:04:38 --> Session: Class initialized using 'files' driver.
+INFO - 2017-01-18 10:04:38 --> Controller Class Initialized
+INFO - 2017-01-18 10:04:38 --> Database Driver Class Initialized
+INFO - 2017-01-18 10:04:38 --> Model Class Initialized
+INFO - 2017-01-18 10:04:38 --> Language file loaded: language/indonesia/basic_lang.php
+INFO - 2017-01-18 10:04:38 --> Helper loaded: form_helper
+INFO - 2017-01-18 10:04:38 --> File loaded: C:\wamp64\www\savsoftquiz\application\views\header.php
+ERROR - 2017-01-18 10:04:38 --> Could not find the language line "import_user"
+INFO - 2017-01-18 10:04:38 --> File loaded: C:\wamp64\www\savsoftquiz\application\views\user_list.php
+INFO - 2017-01-18 10:04:38 --> File loaded: C:\wamp64\www\savsoftquiz\application\views\footer.php
+INFO - 2017-01-18 10:04:38 --> Final output sent to browser
+DEBUG - 2017-01-18 10:04:38 --> Total execution time: 0.0871
+INFO - 2017-01-18 10:12:16 --> Config Class Initialized
+INFO - 2017-01-18 10:12:16 --> Hooks Class Initialized
+DEBUG - 2017-01-18 10:12:16 --> UTF-8 Support Enabled
+INFO - 2017-01-18 10:12:16 --> Utf8 Class Initialized
+INFO - 2017-01-18 10:12:16 --> URI Class Initialized
+INFO - 2017-01-18 10:12:16 --> Router Class Initialized
+INFO - 2017-01-18 10:12:16 --> Output Class Initialized
+INFO - 2017-01-18 10:12:16 --> Security Class Initialized
+DEBUG - 2017-01-18 10:12:16 --> Global POST, GET and COOKIE data sanitized
+INFO - 2017-01-18 10:12:16 --> Input Class Initialized
+INFO - 2017-01-18 10:12:16 --> Language Class Initialized
+INFO - 2017-01-18 10:12:16 --> Loader Class Initialized
+INFO - 2017-01-18 10:12:16 --> Helper loaded: url_helper
+INFO - 2017-01-18 10:12:16 --> Helper loaded: language_helper
+INFO - 2017-01-18 10:12:16 --> Session: Class initialized using 'files' driver.
+INFO - 2017-01-18 10:12:16 --> Controller Class Initialized
+INFO - 2017-01-18 10:12:16 --> Database Driver Class Initialized
+INFO - 2017-01-18 10:12:16 --> Model Class Initialized
+INFO - 2017-01-18 10:12:16 --> Language file loaded: language/indonesia/basic_lang.php
+INFO - 2017-01-18 10:12:16 --> Helper loaded: form_helper
+INFO - 2017-01-18 10:12:16 --> File loaded: C:\wamp64\www\savsoftquiz\application\views\header.php
+ERROR - 2017-01-18 10:12:16 --> Could not find the language line "import_user"
+INFO - 2017-01-18 10:12:16 --> File loaded: C:\wamp64\www\savsoftquiz\application\views\user_list.php
+INFO - 2017-01-18 10:12:16 --> File loaded: C:\wamp64\www\savsoftquiz\application\views\footer.php
+INFO - 2017-01-18 10:12:16 --> Final output sent to browser
+DEBUG - 2017-01-18 10:12:16 --> Total execution time: 0.0798
+INFO - 2017-01-18 10:15:41 --> Config Class Initialized
+INFO - 2017-01-18 10:15:41 --> Hooks Class Initialized
+DEBUG - 2017-01-18 10:15:41 --> UTF-8 Support Enabled
+INFO - 2017-01-18 10:15:41 --> Utf8 Class Initialized
+INFO - 2017-01-18 10:15:41 --> URI Class Initialized
+INFO - 2017-01-18 10:15:41 --> Router Class Initialized
+INFO - 2017-01-18 10:15:41 --> Output Class Initialized
+INFO - 2017-01-18 10:15:41 --> Security Class Initialized
+DEBUG - 2017-01-18 10:15:41 --> Global POST, GET and COOKIE data sanitized
+INFO - 2017-01-18 10:15:41 --> Input Class Initialized
+INFO - 2017-01-18 10:15:41 --> Language Class Initialized
+INFO - 2017-01-18 10:15:41 --> Loader Class Initialized
+INFO - 2017-01-18 10:15:41 --> Helper loaded: url_helper
+INFO - 2017-01-18 10:15:41 --> Helper loaded: language_helper
+INFO - 2017-01-18 10:15:41 --> Session: Class initialized using 'files' driver.
+INFO - 2017-01-18 10:15:41 --> Controller Class Initialized
+INFO - 2017-01-18 10:15:41 --> Database Driver Class Initialized
+INFO - 2017-01-18 10:15:41 --> Model Class Initialized
+INFO - 2017-01-18 10:15:41 --> Language file loaded: language/indonesia/basic_lang.php
+INFO - 2017-01-18 10:15:41 --> Helper loaded: form_helper
+INFO - 2017-01-18 10:15:41 --> File loaded: C:\wamp64\www\savsoftquiz\application\views\header.php
+ERROR - 2017-01-18 10:15:41 --> Could not find the language line "import_user"
+INFO - 2017-01-18 10:15:41 --> File loaded: C:\wamp64\www\savsoftquiz\application\views\user_list.php
+INFO - 2017-01-18 10:15:41 --> File loaded: C:\wamp64\www\savsoftquiz\application\views\footer.php
+INFO - 2017-01-18 10:15:41 --> Final output sent to browser
+DEBUG - 2017-01-18 10:15:41 --> Total execution time: 0.0799
+INFO - 2017-01-18 10:16:19 --> Config Class Initialized
+INFO - 2017-01-18 10:16:19 --> Hooks Class Initialized
+DEBUG - 2017-01-18 10:16:19 --> UTF-8 Support Enabled
+INFO - 2017-01-18 10:16:19 --> Utf8 Class Initialized
+INFO - 2017-01-18 10:16:19 --> URI Class Initialized
+INFO - 2017-01-18 10:16:19 --> Router Class Initialized
+INFO - 2017-01-18 10:16:19 --> Output Class Initialized
+INFO - 2017-01-18 10:16:19 --> Security Class Initialized
+DEBUG - 2017-01-18 10:16:19 --> Global POST, GET and COOKIE data sanitized
+INFO - 2017-01-18 10:16:19 --> Input Class Initialized
+INFO - 2017-01-18 10:16:19 --> Language Class Initialized
+INFO - 2017-01-18 10:16:19 --> Loader Class Initialized
+INFO - 2017-01-18 10:16:19 --> Helper loaded: url_helper
+INFO - 2017-01-18 10:16:19 --> Helper loaded: language_helper
+INFO - 2017-01-18 10:16:19 --> Session: Class initialized using 'files' driver.
+INFO - 2017-01-18 10:16:19 --> Controller Class Initialized
+INFO - 2017-01-18 10:16:19 --> Database Driver Class Initialized
+INFO - 2017-01-18 10:16:19 --> Model Class Initialized
+INFO - 2017-01-18 10:16:19 --> Language file loaded: language/indonesia/basic_lang.php
+INFO - 2017-01-18 10:16:19 --> Helper loaded: form_helper
+INFO - 2017-01-18 10:16:19 --> File loaded: C:\wamp64\www\savsoftquiz\application\views\header.php
+INFO - 2017-01-18 10:16:19 --> File loaded: C:\wamp64\www\savsoftquiz\application\views\question_list.php
+INFO - 2017-01-18 10:16:19 --> File loaded: C:\wamp64\www\savsoftquiz\application\views\footer.php
+INFO - 2017-01-18 10:16:19 --> Final output sent to browser
+DEBUG - 2017-01-18 10:16:19 --> Total execution time: 0.0965
+INFO - 2017-01-18 10:16:35 --> Config Class Initialized
+INFO - 2017-01-18 10:16:35 --> Hooks Class Initialized
+DEBUG - 2017-01-18 10:16:35 --> UTF-8 Support Enabled
+INFO - 2017-01-18 10:16:35 --> Utf8 Class Initialized
+INFO - 2017-01-18 10:16:35 --> URI Class Initialized
+INFO - 2017-01-18 10:16:35 --> Router Class Initialized
+INFO - 2017-01-18 10:16:35 --> Output Class Initialized
+INFO - 2017-01-18 10:16:35 --> Security Class Initialized
+DEBUG - 2017-01-18 10:16:35 --> Global POST, GET and COOKIE data sanitized
+INFO - 2017-01-18 10:16:35 --> Input Class Initialized
+INFO - 2017-01-18 10:16:35 --> Language Class Initialized
+INFO - 2017-01-18 10:16:35 --> Loader Class Initialized
+INFO - 2017-01-18 10:16:35 --> Helper loaded: url_helper
+INFO - 2017-01-18 10:16:35 --> Helper loaded: language_helper
+INFO - 2017-01-18 10:16:35 --> Session: Class initialized using 'files' driver.
+INFO - 2017-01-18 10:16:35 --> Controller Class Initialized
+INFO - 2017-01-18 10:16:35 --> Database Driver Class Initialized
+INFO - 2017-01-18 10:16:35 --> Model Class Initialized
+INFO - 2017-01-18 10:16:35 --> Language file loaded: language/indonesia/basic_lang.php
+INFO - 2017-01-18 10:16:35 --> File loaded: C:\wamp64\www\savsoftquiz\application\views\header.php
+INFO - 2017-01-18 10:16:35 --> File loaded: C:\wamp64\www\savsoftquiz\application\views\new_user.php
+INFO - 2017-01-18 10:16:35 --> File loaded: C:\wamp64\www\savsoftquiz\application\views\footer.php
+INFO - 2017-01-18 10:16:35 --> Final output sent to browser
+DEBUG - 2017-01-18 10:16:35 --> Total execution time: 0.0780
+INFO - 2017-01-18 10:16:35 --> Config Class Initialized
+INFO - 2017-01-18 10:16:35 --> Hooks Class Initialized
+DEBUG - 2017-01-18 10:16:35 --> UTF-8 Support Enabled
+INFO - 2017-01-18 10:16:35 --> Utf8 Class Initialized
+INFO - 2017-01-18 10:16:35 --> URI Class Initialized
+INFO - 2017-01-18 10:16:35 --> Router Class Initialized
+INFO - 2017-01-18 10:16:35 --> Output Class Initialized
+INFO - 2017-01-18 10:16:35 --> Security Class Initialized
+DEBUG - 2017-01-18 10:16:35 --> Global POST, GET and COOKIE data sanitized
+INFO - 2017-01-18 10:16:35 --> Input Class Initialized
+INFO - 2017-01-18 10:16:35 --> Language Class Initialized
+INFO - 2017-01-18 10:16:35 --> Loader Class Initialized
+INFO - 2017-01-18 10:16:35 --> Helper loaded: url_helper
+INFO - 2017-01-18 10:16:35 --> Helper loaded: language_helper
+INFO - 2017-01-18 10:16:35 --> Session: Class initialized using 'files' driver.
+INFO - 2017-01-18 10:16:35 --> Controller Class Initialized
+INFO - 2017-01-18 10:16:35 --> Database Driver Class Initialized
+INFO - 2017-01-18 10:16:35 --> Model Class Initialized
+INFO - 2017-01-18 10:16:35 --> Language file loaded: language/indonesia/basic_lang.php
+INFO - 2017-01-18 10:16:35 --> Final output sent to browser
+DEBUG - 2017-01-18 10:16:35 --> Total execution time: 0.0808
+INFO - 2017-01-18 10:17:21 --> Config Class Initialized
+INFO - 2017-01-18 10:17:21 --> Hooks Class Initialized
+DEBUG - 2017-01-18 10:17:21 --> UTF-8 Support Enabled
+INFO - 2017-01-18 10:17:21 --> Utf8 Class Initialized
+INFO - 2017-01-18 10:17:21 --> URI Class Initialized
+INFO - 2017-01-18 10:17:21 --> Router Class Initialized
+INFO - 2017-01-18 10:17:21 --> Output Class Initialized
+INFO - 2017-01-18 10:17:21 --> Security Class Initialized
+DEBUG - 2017-01-18 10:17:21 --> Global POST, GET and COOKIE data sanitized
+INFO - 2017-01-18 10:17:21 --> Input Class Initialized
+INFO - 2017-01-18 10:17:21 --> Language Class Initialized
+INFO - 2017-01-18 10:17:21 --> Loader Class Initialized
+INFO - 2017-01-18 10:17:21 --> Helper loaded: url_helper
+INFO - 2017-01-18 10:17:21 --> Helper loaded: language_helper
+INFO - 2017-01-18 10:17:21 --> Session: Class initialized using 'files' driver.
+INFO - 2017-01-18 10:17:21 --> Controller Class Initialized
+INFO - 2017-01-18 10:17:21 --> Database Driver Class Initialized
+INFO - 2017-01-18 10:17:21 --> Model Class Initialized
+INFO - 2017-01-18 10:17:21 --> Language file loaded: language/indonesia/basic_lang.php
+INFO - 2017-01-18 10:17:21 --> Helper loaded: xlsimport/php-excel-reader/excel_reader2_helper
+INFO - 2017-01-18 10:17:21 --> Helper loaded: xlsimport/spreadsheetreader_helper
+ERROR - 2017-01-18 04:47:21 --> Severity: Notice --> Undefined index: cells C:\wamp64\www\savsoftquiz\application\helpers\xlsimport\SpreadsheetReader_XLS.php 133
+ERROR - 2017-01-18 04:47:21 --> Severity: Notice --> Undefined index: cells C:\wamp64\www\savsoftquiz\application\helpers\xlsimport\SpreadsheetReader_XLS.php 133
+ERROR - 2017-01-18 04:47:21 --> Severity: Notice --> Undefined offset: 0 C:\wamp64\www\savsoftquiz\application\models\User_model.php 335
+ERROR - 2017-01-18 04:47:21 --> Severity: Notice --> Undefined offset: 0 C:\wamp64\www\savsoftquiz\application\models\User_model.php 335
+INFO - 2017-01-18 10:17:21 --> Config Class Initialized
+INFO - 2017-01-18 10:17:21 --> Hooks Class Initialized
+DEBUG - 2017-01-18 10:17:21 --> UTF-8 Support Enabled
+INFO - 2017-01-18 10:17:21 --> Utf8 Class Initialized
+INFO - 2017-01-18 10:17:21 --> URI Class Initialized
+INFO - 2017-01-18 10:17:21 --> Router Class Initialized
+INFO - 2017-01-18 10:17:21 --> Output Class Initialized
+INFO - 2017-01-18 10:17:21 --> Security Class Initialized
+DEBUG - 2017-01-18 10:17:21 --> Global POST, GET and COOKIE data sanitized
+INFO - 2017-01-18 10:17:21 --> Input Class Initialized
+INFO - 2017-01-18 10:17:21 --> Language Class Initialized
+INFO - 2017-01-18 10:17:21 --> Loader Class Initialized
+INFO - 2017-01-18 10:17:21 --> Helper loaded: url_helper
+INFO - 2017-01-18 10:17:21 --> Helper loaded: language_helper
+INFO - 2017-01-18 10:17:21 --> Session: Class initialized using 'files' driver.
+INFO - 2017-01-18 10:17:21 --> Controller Class Initialized
+INFO - 2017-01-18 10:17:21 --> Database Driver Class Initialized
+INFO - 2017-01-18 10:17:21 --> Model Class Initialized
+INFO - 2017-01-18 10:17:21 --> Language file loaded: language/indonesia/basic_lang.php
+INFO - 2017-01-18 10:17:21 --> Helper loaded: form_helper
+INFO - 2017-01-18 10:17:21 --> File loaded: C:\wamp64\www\savsoftquiz\application\views\header.php
+ERROR - 2017-01-18 10:17:21 --> Could not find the language line "import_user"
+INFO - 2017-01-18 10:17:21 --> File loaded: C:\wamp64\www\savsoftquiz\application\views\user_list.php
+INFO - 2017-01-18 10:17:21 --> File loaded: C:\wamp64\www\savsoftquiz\application\views\footer.php
+INFO - 2017-01-18 10:17:21 --> Final output sent to browser
+DEBUG - 2017-01-18 10:17:21 --> Total execution time: 0.0783
+INFO - 2017-01-18 10:17:30 --> Config Class Initialized
+INFO - 2017-01-18 10:17:30 --> Hooks Class Initialized
+DEBUG - 2017-01-18 10:17:30 --> UTF-8 Support Enabled
+INFO - 2017-01-18 10:17:30 --> Utf8 Class Initialized
+INFO - 2017-01-18 10:17:30 --> URI Class Initialized
+INFO - 2017-01-18 10:17:30 --> Router Class Initialized
+INFO - 2017-01-18 10:17:30 --> Output Class Initialized
+INFO - 2017-01-18 10:17:30 --> Security Class Initialized
+DEBUG - 2017-01-18 10:17:30 --> Global POST, GET and COOKIE data sanitized
+INFO - 2017-01-18 10:17:30 --> Input Class Initialized
+INFO - 2017-01-18 10:17:30 --> Language Class Initialized
+INFO - 2017-01-18 10:17:30 --> Loader Class Initialized
+INFO - 2017-01-18 10:17:30 --> Helper loaded: url_helper
+INFO - 2017-01-18 10:17:30 --> Helper loaded: language_helper
+INFO - 2017-01-18 10:17:30 --> Session: Class initialized using 'files' driver.
+INFO - 2017-01-18 10:17:30 --> Controller Class Initialized
+INFO - 2017-01-18 10:17:30 --> Database Driver Class Initialized
+INFO - 2017-01-18 10:17:30 --> Model Class Initialized
+INFO - 2017-01-18 10:17:30 --> Language file loaded: language/indonesia/basic_lang.php
+INFO - 2017-01-18 10:17:30 --> Config Class Initialized
+INFO - 2017-01-18 10:17:30 --> Hooks Class Initialized
+DEBUG - 2017-01-18 10:17:30 --> UTF-8 Support Enabled
+INFO - 2017-01-18 10:17:30 --> Utf8 Class Initialized
+INFO - 2017-01-18 10:17:30 --> URI Class Initialized
+INFO - 2017-01-18 10:17:30 --> Router Class Initialized
+INFO - 2017-01-18 10:17:30 --> Output Class Initialized
+INFO - 2017-01-18 10:17:30 --> Security Class Initialized
+DEBUG - 2017-01-18 10:17:30 --> Global POST, GET and COOKIE data sanitized
+INFO - 2017-01-18 10:17:30 --> Input Class Initialized
+INFO - 2017-01-18 10:17:30 --> Language Class Initialized
+INFO - 2017-01-18 10:17:30 --> Loader Class Initialized
+INFO - 2017-01-18 10:17:30 --> Helper loaded: url_helper
+INFO - 2017-01-18 10:17:30 --> Helper loaded: language_helper
+INFO - 2017-01-18 10:17:30 --> Session: Class initialized using 'files' driver.
+INFO - 2017-01-18 10:17:30 --> Controller Class Initialized
+INFO - 2017-01-18 10:17:30 --> Database Driver Class Initialized
+INFO - 2017-01-18 10:17:30 --> Model Class Initialized
+INFO - 2017-01-18 10:17:30 --> Language file loaded: language/indonesia/basic_lang.php
+INFO - 2017-01-18 10:17:30 --> Helper loaded: form_helper
+INFO - 2017-01-18 10:17:30 --> File loaded: C:\wamp64\www\savsoftquiz\application\views\header.php
+ERROR - 2017-01-18 10:17:30 --> Could not find the language line "import_user"
+INFO - 2017-01-18 10:17:30 --> File loaded: C:\wamp64\www\savsoftquiz\application\views\user_list.php
+INFO - 2017-01-18 10:17:30 --> File loaded: C:\wamp64\www\savsoftquiz\application\views\footer.php
+INFO - 2017-01-18 10:17:30 --> Final output sent to browser
+DEBUG - 2017-01-18 10:17:30 --> Total execution time: 0.0791
+INFO - 2017-01-18 10:17:32 --> Config Class Initialized
+INFO - 2017-01-18 10:17:32 --> Hooks Class Initialized
+DEBUG - 2017-01-18 10:17:32 --> UTF-8 Support Enabled
+INFO - 2017-01-18 10:17:32 --> Utf8 Class Initialized
+INFO - 2017-01-18 10:17:32 --> URI Class Initialized
+INFO - 2017-01-18 10:17:32 --> Router Class Initialized
+INFO - 2017-01-18 10:17:32 --> Output Class Initialized
+INFO - 2017-01-18 10:17:32 --> Security Class Initialized
+DEBUG - 2017-01-18 10:17:32 --> Global POST, GET and COOKIE data sanitized
+INFO - 2017-01-18 10:17:32 --> Input Class Initialized
+INFO - 2017-01-18 10:17:32 --> Language Class Initialized
+INFO - 2017-01-18 10:17:32 --> Loader Class Initialized
+INFO - 2017-01-18 10:17:32 --> Helper loaded: url_helper
+INFO - 2017-01-18 10:17:32 --> Helper loaded: language_helper
+INFO - 2017-01-18 10:17:32 --> Session: Class initialized using 'files' driver.
+INFO - 2017-01-18 10:17:32 --> Controller Class Initialized
+INFO - 2017-01-18 10:17:32 --> Database Driver Class Initialized
+INFO - 2017-01-18 10:17:32 --> Model Class Initialized
+INFO - 2017-01-18 10:17:32 --> Language file loaded: language/indonesia/basic_lang.php
+INFO - 2017-01-18 10:17:32 --> Config Class Initialized
+INFO - 2017-01-18 10:17:32 --> Hooks Class Initialized
+DEBUG - 2017-01-18 10:17:32 --> UTF-8 Support Enabled
+INFO - 2017-01-18 10:17:32 --> Utf8 Class Initialized
+INFO - 2017-01-18 10:17:32 --> URI Class Initialized
+INFO - 2017-01-18 10:17:32 --> Router Class Initialized
+INFO - 2017-01-18 10:17:32 --> Output Class Initialized
+INFO - 2017-01-18 10:17:32 --> Security Class Initialized
+DEBUG - 2017-01-18 10:17:32 --> Global POST, GET and COOKIE data sanitized
+INFO - 2017-01-18 10:17:32 --> Input Class Initialized
+INFO - 2017-01-18 10:17:32 --> Language Class Initialized
+INFO - 2017-01-18 10:17:32 --> Loader Class Initialized
+INFO - 2017-01-18 10:17:32 --> Helper loaded: url_helper
+INFO - 2017-01-18 10:17:32 --> Helper loaded: language_helper
+INFO - 2017-01-18 10:17:32 --> Session: Class initialized using 'files' driver.
+INFO - 2017-01-18 10:17:32 --> Controller Class Initialized
+INFO - 2017-01-18 10:17:32 --> Database Driver Class Initialized
+INFO - 2017-01-18 10:17:32 --> Model Class Initialized
+INFO - 2017-01-18 10:17:32 --> Language file loaded: language/indonesia/basic_lang.php
+INFO - 2017-01-18 10:17:32 --> Helper loaded: form_helper
+INFO - 2017-01-18 10:17:32 --> File loaded: C:\wamp64\www\savsoftquiz\application\views\header.php
+ERROR - 2017-01-18 10:17:32 --> Could not find the language line "import_user"
+INFO - 2017-01-18 10:17:32 --> File loaded: C:\wamp64\www\savsoftquiz\application\views\user_list.php
+INFO - 2017-01-18 10:17:32 --> File loaded: C:\wamp64\www\savsoftquiz\application\views\footer.php
+INFO - 2017-01-18 10:17:32 --> Final output sent to browser
+DEBUG - 2017-01-18 10:17:32 --> Total execution time: 0.0769
+INFO - 2017-01-18 10:17:34 --> Config Class Initialized
+INFO - 2017-01-18 10:17:34 --> Hooks Class Initialized
+DEBUG - 2017-01-18 10:17:34 --> UTF-8 Support Enabled
+INFO - 2017-01-18 10:17:34 --> Utf8 Class Initialized
+INFO - 2017-01-18 10:17:34 --> URI Class Initialized
+INFO - 2017-01-18 10:17:34 --> Router Class Initialized
+INFO - 2017-01-18 10:17:34 --> Output Class Initialized
+INFO - 2017-01-18 10:17:34 --> Security Class Initialized
+DEBUG - 2017-01-18 10:17:34 --> Global POST, GET and COOKIE data sanitized
+INFO - 2017-01-18 10:17:34 --> Input Class Initialized
+INFO - 2017-01-18 10:17:34 --> Language Class Initialized
+INFO - 2017-01-18 10:17:34 --> Loader Class Initialized
+INFO - 2017-01-18 10:17:34 --> Helper loaded: url_helper
+INFO - 2017-01-18 10:17:34 --> Helper loaded: language_helper
+INFO - 2017-01-18 10:17:34 --> Session: Class initialized using 'files' driver.
+INFO - 2017-01-18 10:17:34 --> Controller Class Initialized
+INFO - 2017-01-18 10:17:34 --> Database Driver Class Initialized
+INFO - 2017-01-18 10:17:34 --> Model Class Initialized
+INFO - 2017-01-18 10:17:34 --> Language file loaded: language/indonesia/basic_lang.php
+INFO - 2017-01-18 10:17:34 --> Config Class Initialized
+INFO - 2017-01-18 10:17:34 --> Hooks Class Initialized
+DEBUG - 2017-01-18 10:17:34 --> UTF-8 Support Enabled
+INFO - 2017-01-18 10:17:34 --> Utf8 Class Initialized
+INFO - 2017-01-18 10:17:34 --> URI Class Initialized
+INFO - 2017-01-18 10:17:34 --> Router Class Initialized
+INFO - 2017-01-18 10:17:34 --> Output Class Initialized
+INFO - 2017-01-18 10:17:34 --> Security Class Initialized
+DEBUG - 2017-01-18 10:17:34 --> Global POST, GET and COOKIE data sanitized
+INFO - 2017-01-18 10:17:34 --> Input Class Initialized
+INFO - 2017-01-18 10:17:34 --> Language Class Initialized
+INFO - 2017-01-18 10:17:34 --> Loader Class Initialized
+INFO - 2017-01-18 10:17:34 --> Helper loaded: url_helper
+INFO - 2017-01-18 10:17:34 --> Helper loaded: language_helper
+INFO - 2017-01-18 10:17:34 --> Session: Class initialized using 'files' driver.
+INFO - 2017-01-18 10:17:34 --> Controller Class Initialized
+INFO - 2017-01-18 10:17:34 --> Database Driver Class Initialized
+INFO - 2017-01-18 10:17:34 --> Model Class Initialized
+INFO - 2017-01-18 10:17:34 --> Language file loaded: language/indonesia/basic_lang.php
+INFO - 2017-01-18 10:17:34 --> Helper loaded: form_helper
+INFO - 2017-01-18 10:17:34 --> File loaded: C:\wamp64\www\savsoftquiz\application\views\header.php
+ERROR - 2017-01-18 10:17:34 --> Could not find the language line "import_user"
+INFO - 2017-01-18 10:17:34 --> File loaded: C:\wamp64\www\savsoftquiz\application\views\user_list.php
+INFO - 2017-01-18 10:17:34 --> File loaded: C:\wamp64\www\savsoftquiz\application\views\footer.php
+INFO - 2017-01-18 10:17:34 --> Final output sent to browser
+DEBUG - 2017-01-18 10:17:34 --> Total execution time: 0.0993
+INFO - 2017-01-18 10:17:37 --> Config Class Initialized
+INFO - 2017-01-18 10:17:37 --> Hooks Class Initialized
+DEBUG - 2017-01-18 10:17:37 --> UTF-8 Support Enabled
+INFO - 2017-01-18 10:17:37 --> Utf8 Class Initialized
+INFO - 2017-01-18 10:17:37 --> URI Class Initialized
+INFO - 2017-01-18 10:17:37 --> Router Class Initialized
+INFO - 2017-01-18 10:17:37 --> Output Class Initialized
+INFO - 2017-01-18 10:17:37 --> Security Class Initialized
+DEBUG - 2017-01-18 10:17:37 --> Global POST, GET and COOKIE data sanitized
+INFO - 2017-01-18 10:17:37 --> Input Class Initialized
+INFO - 2017-01-18 10:17:37 --> Language Class Initialized
+INFO - 2017-01-18 10:17:37 --> Loader Class Initialized
+INFO - 2017-01-18 10:17:37 --> Helper loaded: url_helper
+INFO - 2017-01-18 10:17:37 --> Helper loaded: language_helper
+INFO - 2017-01-18 10:17:37 --> Session: Class initialized using 'files' driver.
+INFO - 2017-01-18 10:17:37 --> Controller Class Initialized
+INFO - 2017-01-18 10:17:37 --> Database Driver Class Initialized
+INFO - 2017-01-18 10:17:37 --> Model Class Initialized
+INFO - 2017-01-18 10:17:37 --> Language file loaded: language/indonesia/basic_lang.php
+INFO - 2017-01-18 10:17:37 --> Config Class Initialized
+INFO - 2017-01-18 10:17:37 --> Hooks Class Initialized
+DEBUG - 2017-01-18 10:17:37 --> UTF-8 Support Enabled
+INFO - 2017-01-18 10:17:37 --> Utf8 Class Initialized
+INFO - 2017-01-18 10:17:37 --> URI Class Initialized
+INFO - 2017-01-18 10:17:37 --> Router Class Initialized
+INFO - 2017-01-18 10:17:37 --> Output Class Initialized
+INFO - 2017-01-18 10:17:37 --> Security Class Initialized
+DEBUG - 2017-01-18 10:17:37 --> Global POST, GET and COOKIE data sanitized
+INFO - 2017-01-18 10:17:37 --> Input Class Initialized
+INFO - 2017-01-18 10:17:37 --> Language Class Initialized
+INFO - 2017-01-18 10:17:37 --> Loader Class Initialized
+INFO - 2017-01-18 10:17:37 --> Helper loaded: url_helper
+INFO - 2017-01-18 10:17:37 --> Helper loaded: language_helper
+INFO - 2017-01-18 10:17:37 --> Session: Class initialized using 'files' driver.
+INFO - 2017-01-18 10:17:37 --> Controller Class Initialized
+INFO - 2017-01-18 10:17:37 --> Database Driver Class Initialized
+INFO - 2017-01-18 10:17:37 --> Model Class Initialized
+INFO - 2017-01-18 10:17:37 --> Language file loaded: language/indonesia/basic_lang.php
+INFO - 2017-01-18 10:17:37 --> Helper loaded: form_helper
+INFO - 2017-01-18 10:17:37 --> File loaded: C:\wamp64\www\savsoftquiz\application\views\header.php
+ERROR - 2017-01-18 10:17:37 --> Could not find the language line "import_user"
+INFO - 2017-01-18 10:17:37 --> File loaded: C:\wamp64\www\savsoftquiz\application\views\user_list.php
+INFO - 2017-01-18 10:17:37 --> File loaded: C:\wamp64\www\savsoftquiz\application\views\footer.php
+INFO - 2017-01-18 10:17:37 --> Final output sent to browser
+DEBUG - 2017-01-18 10:17:37 --> Total execution time: 0.0781

@@ -330,8 +330,7 @@ Class User_model extends CI_Model
 
  	function import_user($user){
 		//echo "<pre>"; print_r($question);exit;
-		$usercid=$this->input->post('cid');
-		$userdid=$this->input->post('did');
+		$group_id=$this->input->post('gid');		
 		foreach($user as $key => $singleuser){
 			if(($key != 0) and ($singleuser['0'] . "" != "")){
 				echo "<pre>";print_r($singleuser);
@@ -354,7 +353,7 @@ Class User_model extends CI_Model
 			          'first_name'=>$singleuser[3],
 			          'last_name'=>$singleuser[4],
 			          'contact_no'=>$singleuser[5],
-			          'gid'=>'6',
+			          'gid'=>$group_id,
 		         	  'subscription_expired'=>strtotime($singleuser[6]),
          			  'su'=>'0'												
 				   );				

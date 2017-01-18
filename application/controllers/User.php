@@ -33,6 +33,8 @@ class User extends CI_Controller
 		$data['title']=$this->lang->line('userlist');
 		// fetching user list
 		$data['result']=$this->user_model->user_list($limit);
+		$data['group_list']=$this->user_model->group_list();          		
+		
 		$this->load->view('header',$data);
 		$this->load->view('user_list',$data);
 		$this->load->view('footer',$data);
@@ -303,14 +305,14 @@ class User extends CI_Controller
 				}
 
 				$this->user_model->import_user($allxlsdata);   
-		
-			}
-			
+				
+				$this->session->set_flashdata('message', "<div class='alert alert-success'>".$this->lang->line('data_imported_successfully')." </div>");
+  		        redirect('user');		
+			}			
 		}
 		else{
 			echo "Error: " . $_FILES["file"]["error"];
 		}	
-  		$this->session->set_flashdata('message', "<div class='alert alert-success'>".$this->lang->line('data_imported_successfully')." </div>");
-  		redirect('user');
+
 	}
 }
