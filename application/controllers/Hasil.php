@@ -35,7 +35,7 @@ class Hasil extends CI_Controller
         
         $data['title']=$this->lang->line('resultlist');
         // fetching user list
-        $data['result']=$this->hasil_model->hasil_list($limit,$cid,$lid);
+        $data['result']=$this->hasil_model->hasil_resume($limit,$cid,$lid);
         $this->load->view('header',$data);
         $this->load->view('hasil_list',$data);
         $this->load->view('footer',$data);
@@ -54,7 +54,8 @@ class Hasil extends CI_Controller
         $data['title']="Detail Peserta";
         // fetching user list
         $data['user']=$this->user_model->get_user($uid);
-        $data['result'] = $this->hasil_model->hasil_detail($uid);
+        $data['tputpa'] = 'TPU TPA';
+        $data['result'] = $this->hasil_model->hasil_detail($uid, '1');
         $data['disc_m'] = $this->norma_model->hasil_disc_m($uid);
         $data['disc_l'] = $this->norma_model->hasil_disc_l($uid);
         $data['mscale'] = $this->norma_model->data_scale_m($uid);

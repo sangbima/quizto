@@ -197,8 +197,9 @@ class Quiz extends CI_Controller
         else
         {
 			$quid=$this->quiz_model->update_quiz($quid);
-           
-			redirect('quiz/edit_quiz/'.$quid);
+           	
+           	$this->session->set_flashdata('message', "<div class='alert alert-success'>".$this->lang->line('data_updated_successfully')." </div>");
+			redirect('quiz');
         }       
 	}
 	public function remove_quiz($quid)

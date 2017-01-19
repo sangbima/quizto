@@ -27,6 +27,14 @@
                                 <th>Telephone</th>
                                 <td><?php echo $user['contact_no']; ?></td>
                             </tr>
+                            <!-- <tr>
+                                <th>TPU</th>
+                                <td><?php //echo $tputpa; ?></td>
+                            </tr>
+                            <tr>
+                                <th>TPA</th>
+                                <td><?php //echo $tputpa; ?></td>
+                            </tr> -->
                         </table>
                     </div>
                 </div>

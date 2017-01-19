@@ -14,6 +14,8 @@
                     <tr>
                         <th>#</th>
                         <th>Fullname</th>
+                        <th>TPU</th>
+                        <th>TPA</th>
                         <th>WA</th>
                         <th>SE</th>
                         <th>AN</th>
@@ -23,7 +25,6 @@
                         <th>FA</th>
                         <th>WU</th>
                         <th>ME</th>
-                        <th>TOTAL</th>
                         <th>DETAIL</th>
                     </tr>
                 </thead>
@@ -40,7 +41,8 @@
                     <td><?php echo $value['ist7'] ? $value['ist7'] : 0; ?></td>
                     <td><?php echo $value['ist8'] ? $value['ist8'] : 0; ?></td>
                     <td><?php echo $value['ist9'] ? $value['ist9'] : 0; ?></td>
-                    <td><?php echo $value['total']; ?></td>
+                    <td><?php echo $value['ist9'] ? $value['ist10'] : 0; ?></td>
+                    <td><?php echo $value['ist9'] ? $value['ist11'] : 0; ?></td>
                     <td><a href="<?php echo site_url('hasil/detail/'.$value['uid']);?>"><i class="fa fa-eye"></i></a></td>
                 </tr>
                 <?php } ?>
