@@ -684,26 +684,6 @@ Class Ujian_model extends CI_Model
 
         return true;
     }
-
-    function count_result($quid,$uid){
-        $this->db->where('quid',$quid);
-        $this->db->where('uid',$uid);
-        $query=$this->db->get('result');
-        return $query->num_rows();
-    }
-
-    function is_reach_max($uid) {
-        $cq=$this->db->query("select distinct cid from category");
-        $cq_rows=$cq->num_rows();
-        
-        $sq=$this->db->query("select distinct rid from result where uid='$uid'"); 
-        $rs_rows=$sq->row_array();      
-        
-        if ( $rs_rows >= $cq_rows ) 
-            return true;
-        else 
-            return false;               
-    }
 	
 	function is_quiz_enabled($priority=0) {
 		$logged_in=$this->session->userdata('logged_in');
@@ -724,6 +704,23 @@ Class Ujian_model extends CI_Model
             $quiz_enabled=false;  
 		} 				
 		return $quiz_enabled;
-	}	
+	}
+
+    function count_result($quid,$uid){
+        $this->db->where('quid',$quid);
+        $this->db->where('uid',$uid);
+        $query=$this->db->get('result');
+        return $query->num_rows();
+    }
+
+    function is_reach_max($uid,$quid) {
+        $maximum_attempts = $this->ujian_model->count_result($quid,$uid);
+        $quiz = $this->ujian_model->get_quiz($quid);
+        if ($quiz['maximum_attempts'] <= $maximum_attempts) {
+             return true;
+        } else {
+          return false;
+        }         
+    }
 	
 }

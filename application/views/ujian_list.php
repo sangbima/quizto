@@ -23,14 +23,16 @@
                 </tr>
                 <?php } ?>
             </table>
-            <?php  
-               if ( $reach_max )                
-                    echo "<h3>Kesempatan ujian sudah habis</h3>";              
-                else { ?>           
+            <?php
+               if ($masih_ada_kesempatan)
+               {
+            ?>
             <form name="preujian" method="post" action="<?php echo site_url('ujian/tpu/');?>">
                 <button class="btn btn-success" type="submit" name="submit"><?php echo $this->lang->line('start_quiz');?></button>
             </form>
-            <?php };?>
+            <?php } else { ?>
+                <h3>Kesempatan Sudah Habis</h3>
+            <?php } ?>
         </div>
     </div>
 </div>
