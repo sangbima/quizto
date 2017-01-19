@@ -99,6 +99,25 @@ class User extends CI_Controller
 		redirect('user');
 	}
 
+	public function reset_user($uid)
+	{
+
+		$logged_in=$this->session->userdata('logged_in');
+		if($logged_in['su']!='1'){
+			exit($this->lang->line('permission_denied'));
+		}
+		if($uid=='1'){
+			exit($this->lang->line('permission_denied'));
+		}
+		
+		if(($this->user_model->reset_user($uid, 'answers')) && ($this->user_model->reset_user($uid, 'disc_answers')) && ($this->user_model->reset_user($uid, 'result'))){
+            $this->session->set_flashdata('message', "<div class='alert alert-success'>".$this->lang->line('reset_successfully')." </div>");
+		}else{
+		    $this->session->set_flashdata('message', "<div class='alert alert-danger'>".$this->lang->line('error_to_reset')." </div>");
+		}
+		redirect('user');
+	}
+
 	public function edit_user($uid)
 	{
 		

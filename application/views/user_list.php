@@ -51,7 +51,7 @@
                     <td>
                     <a class="btn btn-primary" href="<?php echo site_url('user/edit_user/'.$val['uid']);?>"><i class="fa fa-edit"></i></a>
                     <a class="btn btn-danger" href="javascript:remove_entry('user/remove_user/<?php echo $val['uid'];?>');"><i class="fa fa-trash"></i></a>
-
+                    <a class="btn btn-info" href="javascript:reset_entry('user/reset_user/<?php echo $val['uid'];?>');"><i class="fa fa-refresh"></i></a>
                     </td>
                 </tr>
 

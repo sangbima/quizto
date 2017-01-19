@@ -140,7 +140,7 @@ Class Norma_model extends CI_Model
             COUNT(CASE WHEN disc_answers.most = \'*\' THEN disc_answers.most ELSE null END)
             as t
             FROM disc_answers where uid='.$uid;
-
+        
         $query_m =  $this->db->query($q_n_most);
 
         $result_m = $query_m->row_array();

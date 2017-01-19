@@ -7,6 +7,14 @@ function remove_entry(redir_cont){
 	
 }
 
+function reset_entry(redir_cont){
+	
+	if(confirm("Anda yakin ingin mereset User ini?")){
+		window.location=base_url+"index.php/"+redir_cont;
+	}
+	
+}
+
 
 
 function updategroup(vall,gid){

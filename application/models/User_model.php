@@ -281,6 +281,17 @@ Class User_model extends CI_Model
 			return false;
 	 	}
  	}
+
+ 	function reset_user($uid, $table)
+ 	{
+ 		$this->db->where('uid', $uid);
+
+ 		if($this->db->delete($table)) {
+ 			return true;
+ 		} else {
+ 			return false;
+ 		}
+ 	}
  
  	function remove_group($gid)
  	{
