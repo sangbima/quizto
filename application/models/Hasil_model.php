@@ -47,9 +47,11 @@ Class Hasil_model extends CI_Model
            $offset_start=0; 
            $qoption="";
         } else {    
-           $offset_start= $limit * $this->config->item('number_of_rows');
+           $offset_start= $limit;
            $qoption= " limit " . $this->config->item('number_of_rows') .  " offset " . $offset_start;
         }
+
+        $script = 'SELECT d.uid,concat(d.first_name,\' \',d.last_name) as fullname,';
                 
         // GET CATEGORY ID
         $this->db->order_by('cid','asc');
@@ -70,7 +72,7 @@ Class Hasil_model extends CI_Model
                 left join users d on d.uid = a.uid
                 where su != 1
                 group by d.uid
-                order by total desc' . $qoption;
+                order by total desc ' . $qoption;
 
         // Dengan admin
         // $script .= '

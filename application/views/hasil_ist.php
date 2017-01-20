@@ -15,7 +15,7 @@
                      <table class="table table-condensed table-hover table-bordered" id="table-hasil">
                            <thead>
                                 <tr>
-                                   <th>#</th>
+                                   <th>ID</th>
                                    <th>Fullname</th>
                                    <th>WA</th>
                                    <th>SE</th>
@@ -40,7 +40,7 @@
 								} 							
 							     foreach ($result as $key => $value) { ?>
                                 <tr>
-                                   <td><?php echo $key+1 ?></td>
+                                   <td><?php echo $value['uid'] ?></td>
                                    <td><?php echo $value['fullname']; ?></td>
                                    <td><?php echo $value['ist1'] ? $value['ist1'] : 0; ?></td>
                                    <td><?php echo $value['ist2'] ? $value['ist2'] : 0; ?></td>
