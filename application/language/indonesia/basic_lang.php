@@ -64,6 +64,7 @@ $lang['userlist'] = "Daftar Pengguna";
 $lang['email'] = "Email";
 $lang['first_name'] = "Nama Depan";
 $lang['last_name'] = "Nama Belakang";
+$lang['full_name'] = "Nama Lengkap";
 $lang['action'] = "Aksi";
 $lang['answer_sheet'] = "Lembar Jawaban";
 $lang['correct'] = "Benar ";
@@ -261,5 +262,5 @@ $lang['Review-Later'] = "Tinjau Nanti";
 $lang['Not-visited'] = "Belum Dikunjungi";
 $lang['payment_gateway_plugin_missing'] = "Plugin Jenis Pembayaran tidak ada, Anda tidak dapat membayar online.<br> Hubungin administrator untuk aktivasi layanan Anda secara manual.";
 $lang['payment_gateway_plugin_missing2'] = "Plugin Jenis Pembayaran tidak ada.";
-
+$lang['reset'] = "Reset";
 

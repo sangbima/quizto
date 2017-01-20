@@ -1,5 +1,5 @@
 <div class="container">
-     <div class="row">
+    <div class="row">
         <div class="col-lg-12">
             <?php 
                 $logged_in=$this->session->userdata('logged_in');
@@ -53,4 +53,13 @@
             ?>
         </div>
     </div>
+    <?php
+    if(($limit-($this->config->item('number_of_rows')))>=0){ $back=$limit-($this->config->item('number_of_rows')); }else{ $back='0'; } ?>
+
+    <a href="<?php echo site_url('hasil/index/'.$back);?>"  class="btn btn-primary"><?php echo $this->lang->line('back');?></a>
+    &nbsp;&nbsp;
+    <?php
+    $next=$limit+($this->config->item('number_of_rows'));  ?>
+
+    <a href="<?php echo site_url('hasil/index/'.$next);?>"  class="btn btn-primary"><?php echo $this->lang->line('next');?></a>
 </div>

@@ -29,8 +29,9 @@
                 <tr>
                     <th><?php echo $this->lang->line('email');?></th>
                     <th><?php echo $this->lang->line('registration_no');?></th>
-                    <th><?php echo $this->lang->line('first_name');?> <?php echo $this->lang->line('last_name');?></th>
+                    <th><?php echo $this->lang->line('full_name');?></th>
                     <th><?php echo $this->lang->line('action');?> </th>
+                    <!-- <th><?php //echo $this->lang->line('reset');?></th> -->
                 </tr>
                 <?php 
                     if(count($result)==0){
@@ -49,10 +50,21 @@
                     <td><?php echo $val['registration_no'];?></td>
                     <td><?php echo $val['first_name'];?> <?php echo $val['last_name'];?></td>
                     <td>
-                    <a class="btn btn-primary" href="<?php echo site_url('user/edit_user/'.$val['uid']);?>"><i class="fa fa-edit"></i></a>
-                    <a class="btn btn-danger" href="javascript:remove_entry('user/remove_user/<?php echo $val['uid'];?>');"><i class="fa fa-trash"></i></a>
-                    <a class="btn btn-info" href="javascript:reset_entry('user/reset_user/<?php echo $val['uid'];?>');"><i class="fa fa-refresh"></i></a>
+                        <a class="btn btn-primary" href="<?php echo site_url('user/edit_user/'.$val['uid']);?>"><i class="fa fa-edit"></i></a>
+                        <a class="btn btn-danger" href="javascript:remove_entry('user/remove_user/<?php echo $val['uid'];?>');"><i class="fa fa-trash"></i></a>
+                        <a class="btn btn-info" href="javascript:reset_entry('user/reset/<?php echo $val['uid'];?>');"><i class="fa fa-refresh"></i></a>
                     </td>
+                    <!-- <td>
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"><i class="fa fa-refresh"></i> <span class="caret"></span></button>
+                          <ul class="dropdown-menu" role="menu">
+                            <li><a href="javascript:reset_entry('user/reset/<?php //echo $val['uid'];?>');">ALL</a></li>
+                            <?php //foreach($quiz as $k => $v) {?>
+                            <li><a href="javascript:reset_entry('user/reset_quiz/<?php //echo $v['quid']?>/<?php //echo $val['uid'];?>');"><?php //echo $v['quiz_name']?></a></li>
+                            <?php //}?>
+                          </ul>
+                        </div>
+                    </td> -->
                 </tr>
 
                 <?php 

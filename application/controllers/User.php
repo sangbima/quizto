@@ -8,6 +8,7 @@ class User extends CI_Controller
 		parent::__construct();
 		$this->load->database();
 		$this->load->model("user_model");
+		$this->load->model("quiz_model");
 		$this->lang->load('basic', $this->config->item('language'));
 		// redirect if not loggedin
 		if(!$this->session->userdata('logged_in')){
@@ -31,6 +32,9 @@ class User extends CI_Controller
 			
 		$data['limit']=$limit;
 		$data['title']=$this->lang->line('userlist');
+
+		$data['quiz'] = $this->quiz_model->quiz_list($limit=0);
+		
 		// fetching user list
 		$data['result']=$this->user_model->user_list($limit);
 		$data['group_list']=$this->user_model->group_list();          		
@@ -99,7 +103,7 @@ class User extends CI_Controller
 		redirect('user');
 	}
 
-	public function reset_user($uid)
+	public function reset($uid)
 	{
 
 		$logged_in=$this->session->userdata('logged_in');
@@ -110,13 +114,32 @@ class User extends CI_Controller
 			exit($this->lang->line('permission_denied'));
 		}
 		
-		if(($this->user_model->reset_user($uid, 'answers')) && ($this->user_model->reset_user($uid, 'disc_answers')) && ($this->user_model->reset_user($uid, 'result'))){
+		if(($this->user_model->reset($uid, 'answers')) && ($this->user_model->reset($uid, 'disc_answers')) && ($this->user_model->reset($uid, 'result'))){
             $this->session->set_flashdata('message', "<div class='alert alert-success'>".$this->lang->line('reset_successfully')." </div>");
 		}else{
 		    $this->session->set_flashdata('message', "<div class='alert alert-danger'>".$this->lang->line('error_to_reset')." </div>");
 		}
 		redirect('user');
 	}
+
+	// public function reset_quiz($quid, $uid)
+	// {
+	// 	$logged_in=$this->session->userdata('logged_in');
+	// 	if($logged_in['su']!='1'){
+	// 		exit($this->lang->line('permission_denied'));
+	// 	}
+	// 	if($uid=='1'){
+	// 		exit($this->lang->line('permission_denied'));
+	// 	}
+
+	// 	if($this->user_model->reset_quiz($quid, $uid)) {
+	// 		$this->session->set_flashdata('message', "<div class='alert alert-success'>".$this->lang->line('reset_successfully')." </div>");
+	// 	}else{
+	// 	    $this->session->set_flashdata('message', "<div class='alert alert-danger'>".$this->lang->line('error_to_reset')." </div>");
+	// 	}
+
+	// 	redirect('user');
+	// }
 
 	public function edit_user($uid)
 	{

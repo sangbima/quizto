@@ -282,7 +282,7 @@ Class User_model extends CI_Model
 	 	}
  	}
 
- 	function reset_user($uid, $table)
+ 	function reset($uid, $table)
  	{
  		$this->db->where('uid', $uid);
 
@@ -292,6 +292,51 @@ Class User_model extends CI_Model
  			return false;
  		}
  	}
+
+ 	// function reset_quiz($quid, $uid)
+ 	// {
+ 	// 	if($this->reset_quiz_table_answers($quid) && $this->reset_quiz_table_result($quid, $uid) && $this->reset_quiz_table_disc_answers($quid)) {
+ 	// 		return true;
+ 	// 	} else {
+ 	// 		return false;
+ 	// 	}
+ 	// }
+
+ 	// function reset_quiz_table_answers($quid)
+ 	// {
+ 	// 	// $this->db->where('uid', $uid);
+ 	// 	$this->db->where('uid', $uid);
+
+ 	// 	if($this->db->delete('answers')) {
+ 	// 		return true;
+ 	// 	} else {
+ 	// 		return false;
+ 	// 	}
+ 	// }
+
+ 	// function reset_quiz_table_result($quid, $uid)
+ 	// {
+ 	// 	$this->db->where('uid', $uid);
+ 	// 	$this->db->where('quid', $quid);
+
+ 	// 	if($this->db->delete('result')) {
+ 	// 		return true;
+ 	// 	} else {
+ 	// 		return false;
+ 	// 	}
+ 	// }
+
+ 	// function reset_quiz_table_disc_answers($quid, $uid)
+ 	// {
+ 	// 	$this->db->where('uid', $uid);
+ 	// 	$this->db->where('quid', $quid);
+
+ 	// 	if($this->db->delete('disc_answers')) {
+ 	// 		return true;
+ 	// 	} else {
+ 	// 		return false;
+ 	// 	}
+ 	// }
  
  	function remove_group($gid)
  	{
