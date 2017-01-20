@@ -1,9 +1,16 @@
 <?php
 Class Hasil_model extends CI_Model
 {
-    function hasil_resume($limit=0,$status='0')
+    function hasil_resume($limit=0,$full_range=false)
     {
-        $offset_start= $limit * $this->config->item('number_of_rows');
+        if ( $full_range) {
+           $offset_start=0; 
+           $qoption="";
+        } else {    
+           $offset_start= $limit * $this->config->item('number_of_rows');
+           $qoption= " limit " . $this->config->item('number_of_rows') .  " offset " . $offset_start;
+        }
+
         $script = 'SELECT d.uid,concat(d.first_name,\' \',d.last_name) as fullname,';
         
         // GET CATEGORY ID
@@ -24,7 +31,7 @@ Class Hasil_model extends CI_Model
                 left join users d on d.uid = a.uid
                 where su != 1
                 group by d.uid
-                order by total desc' . " limit " . $this->config->item('number_of_rows') .  " offset " . $offset_start;
+                order by total desc ' . $qoption;
 
         $query =  $query=$this->db->query($script);
         $result = $query->result_array();
@@ -33,12 +40,17 @@ Class Hasil_model extends CI_Model
         return $result;
     }    
 
-    function hasil_list($limit=0,$status='0')
+    function hasil_list($limit=0,$full_range=false)
     {
         
-        $offset_start= $limit * $this->config->item('number_of_rows');
-        $script = 'SELECT d.uid,concat(d.first_name,\' \',d.last_name) as fullname,';
-        
+        if ( $full_range) {
+           $offset_start=0; 
+           $qoption="";
+        } else {    
+           $offset_start= $limit * $this->config->item('number_of_rows');
+           $qoption= " limit " . $this->config->item('number_of_rows') .  " offset " . $offset_start;
+        }
+                
         // GET CATEGORY ID
         $this->db->order_by('cid','asc');
         $this->db->where('grup', '1');
@@ -58,7 +70,7 @@ Class Hasil_model extends CI_Model
                 left join users d on d.uid = a.uid
                 where su != 1
                 group by d.uid
-                order by total desc' . " limit " . $this->config->item('number_of_rows') .  " offset " . $offset_start;
+                order by total desc' . $qoption;
 
         // Dengan admin
         // $script .= '

@@ -33,10 +33,13 @@ class User extends CI_Controller
 		$data['limit']=$limit;
 		$data['title']=$this->lang->line('userlist');
 
-		$data['quiz'] = $this->quiz_model->quiz_list($limit=0);
+		// $data['quiz'] = $this->quiz_model->quiz_list($xlimit=0);
 		
 		// fetching user list
 		$data['result']=$this->user_model->user_list($limit);
+
+		// var_dump($data['result']);
+
 		$data['group_list']=$this->user_model->group_list();          		
 		
 		$this->load->view('header',$data);
