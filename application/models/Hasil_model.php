@@ -7,7 +7,7 @@ Class Hasil_model extends CI_Model
            $offset_start=0; 
            $qoption="";
         } else {    
-           $offset_start= $limit * $this->config->item('number_of_rows');
+           $offset_start= $limit;
            $qoption= " limit " . $this->config->item('number_of_rows') .  " offset " . $offset_start;
         }
 
