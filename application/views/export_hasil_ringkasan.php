@@ -11,13 +11,7 @@
 	$objPHPExcel->getProperties()->setDescription("Test document for Office 2007 XLSX, generated using PHP classes.");
 
 	$objPHPExcel->setActiveSheetIndex(0);
-	     		/*
-				$objPHPExcel->getActiveSheet()->SetCellValue('A1', 'Hello');
-				$objPHPExcel->getActiveSheet()->SetCellValue('B2', 'world!');
-				$objPHPExcel->getActiveSheet()->SetCellValue('C1', 'Hello');
-				$objPHPExcel->getActiveSheet()->SetCellValue('D2', 'world!');
-                */
-									
+										
     foreach($header as $key=>$value) {
 				$objPHPExcel->getActiveSheet()->SetCellValue($key. '1', $value);				
 	}	
@@ -34,11 +28,13 @@
 		   $objPHPExcel->getActiveSheet()->SetCellValue('H' . $c_row, $value['ist7'] ? $value['ist7'] : 0);
 		   $objPHPExcel->getActiveSheet()->SetCellValue('I' . $c_row, $value['ist8'] ? $value['ist8'] : 0);
 		   $objPHPExcel->getActiveSheet()->SetCellValue('J' . $c_row, $value['ist9'] ? $value['ist9'] : 0);
-		   $objPHPExcel->getActiveSheet()->SetCellValue('K' . $c_row, $value['total']);
+		   $objPHPExcel->getActiveSheet()->SetCellValue('K' . $c_row, $value['ist10'] ? $value['ist10'] : 0);
+		   $objPHPExcel->getActiveSheet()->SetCellValue('L' . $c_row, $value['ist11'] ? $value['ist11'] : 0);
+		   $objPHPExcel->getActiveSheet()->SetCellValue('M' . $c_row, $value['total']);
 	}		
 										
     $objPHPExcel->getActiveSheet()->getColumnDimension('A')->setAutoSize(true);	
-	$objPHPExcel->getActiveSheet()->getStyle('A1:K1')->getFont()->setBold(true);
+	$objPHPExcel->getActiveSheet()->getStyle('A1:M1')->getFont()->setBold(true);
 	
 	$objPHPExcel->getActiveSheet()->setTitle($title);
 		
@@ -47,8 +43,8 @@
 	$objWriter->save('php://output');
 	$excelOutput = ob_get_clean();
 
-	//$filename = "hasil_ist_" . date('Ymd') . ".xlsx";
-
+	//$filename = "hasil_ringkasan_" . date('Ymd') . ".xlsx";
+		
 	header("Content-Disposition: attachment; filename=\"$filename\"");
 	header("Content-Type: application/vnd.ms-excel");
 	echo $excelOutput;

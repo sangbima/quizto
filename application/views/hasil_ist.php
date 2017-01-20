@@ -9,13 +9,19 @@
             ?>
             <div class="panel panel-primary">
 			    <div class="panel-heading">
-				     Hasil Test <a href="<?php echo site_url('hasil/export_hasil/'. $limit);?>" title="Export ke Excel" class="btn btn-default pull-right"><i class="fa fa-file-excel-o" aria-hidden="true"></i></a><br><br>					 					 
-				</div>	
-                <div class="panel-body">  						
-                     <table class="table table-condensed table-hover table-bordered" id="table-hasil">
+				    Hasil Test IST
+            <div class="btn-group pull-right">
+                <button id="w6" class="btn btn-default dropdown-toggle" title="Export data in Excel" data-toggle="dropdown" aria-expanded="false"><i class="glyphicon glyphicon-export"></i> <span class="caret"></span></button>
+                <ul id="w7" class="dropdown-menu">
+                    <li title="Export All Data To Excel"><a id="all-excell" class="export-full-html" href="<?php echo site_url('hasil/download/ist/'. $limit . '/1');?>" tabindex="-1"><i class="fa fa-file-excel-o"></i> Export All</a></li>
+                    <li title="Export Per Page To Excel"><a id="page-excell" class="export-full-html" href="<?php echo site_url('hasil/download/ist/'. $limit . '/0');?>" tabindex="-1"><i class="fa fa-file-excel-o"></i> Export Per Page</a></li>
+                </ul>
+            </div>
+				</div>	                  					
+                     <table class="table table-condensed table-hover" id="table-hasil">
                            <thead>
                                 <tr>
-                                   <th>ID</th>
+                                   <th>#</th>
                                    <th>Fullname</th>
                                    <th>WA</th>
                                    <th>SE</th>
@@ -37,10 +43,11 @@
                                      <td colspan="3"><?php echo $this->lang->line('no_record_found');?></td>
                                 </tr>															
                             <?php
-								} 							
+								} 			
+								 $mkey=$limit; 
 							     foreach ($result as $key => $value) { ?>
                                 <tr>
-                                   <td><?php echo $value['uid'] ?></td>
+                                   <td><?php echo $mkey+1; ?></td>
                                    <td><?php echo $value['fullname']; ?></td>
                                    <td><?php echo $value['ist1'] ? $value['ist1'] : 0; ?></td>
                                    <td><?php echo $value['ist2'] ? $value['ist2'] : 0; ?></td>
@@ -54,26 +61,19 @@
                                    <td><?php echo $value['total']; ?></td>
                                    <td><a href="<?php echo site_url('hasil/detailist/'.$value['uid']);?>"><i class="fa fa-eye"></i></a></td>
                                  </tr>
-                            <?php } ?>
-                      </table>
+                            <?php ++$mkey;} ?>
+                      </table>					  						   						                				
+            </div>				
+            <?php 
+                }											
+            ?>
                       <?php
                            if(($limit-($this->config->item('number_of_rows')))>=0){ $back=$limit-($this->config->item('number_of_rows')); }else{ $back='0'; } ?>
                            <a href="<?php echo site_url('hasil/ist/'.$back);?>"  class="btn btn-primary"><?php echo $this->lang->line('back');?></a>
                            &nbsp;&nbsp;
                            <?php
                             $next=$limit+($this->config->item('number_of_rows'));  ?>
-                           <a href="<?php echo site_url('hasil/ist/'.$next);?>"  class="btn btn-primary"><?php echo $this->lang->line('next');?></a>					  						   						   
-                </div>
-				
-            </div>				
-            <?php 
-                }											
-            ?>
-        </div>
-    </div>
-
-
-	
-	
-	
+                           <a href="<?php echo site_url('hasil/ist/'.$next);?>"  class="btn btn-primary"><?php echo $this->lang->line('next');?></a>			
+        </div>		
+    </div>		
 </div>

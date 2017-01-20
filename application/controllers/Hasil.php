@@ -35,7 +35,7 @@ class Hasil extends CI_Controller
         
         $data['title']=$this->lang->line('resultlist');
         // fetching user list
-        $data['result']=$this->hasil_model->hasil_resume($limit,$cid,$lid);
+        $data['result']=$this->hasil_model->hasil_resume($limit,false);
         $this->load->view('header',$data);
         $this->load->view('hasil_list',$data);
         $this->load->view('footer',$data);
@@ -134,13 +134,63 @@ class Hasil extends CI_Controller
         
         $data['title']=$this->lang->line('resultlist');
         // fetching user list
-        $data['result']=$this->hasil_model->hasil_list($limit,$cid,$lid);
+        $data['result']=$this->hasil_model->hasil_list($limit,false);
         $this->load->view('header',$data);
         $this->load->view('hasil_ist',$data);
         $this->load->view('footer',$data);
     }
+    
 
-    public function export_hasil($limit='0',$cid='0',$lid='0')
+    public function download($qtype='ist',$limit='0',$full=false) 
+    {       
+        $logged_in=$this->session->userdata('logged_in');
+        if($logged_in['su']!='1'){
+            exit($this->lang->line('permission_denied'));
+        }
+        
+        if ( $qtype=='ist' ) {  
+            $this->export_hasil_ist($limit,$full);
+        }       
+        
+        if ( $qtype=='disc' ) {  
+            $this->export_hasil_disc($limit,$full);
+        }
+                
+        if ($qtype=='default') {
+            $this->export_hasil_ringkasan($limit,$full);
+        }       
+        
+    }   
+    
+    public function export_hasil_ringkasan($limit='0',$full=false)
+    {
+        $data['limit']=$limit;
+        $data['title']='Hasil Ringkasan';
+        $data['header']=array('A'=>'FULLNAME',
+                              'B'=>'TPU',
+                              'C'=>'TPA',                             
+                              'D'=>'WA',
+                              'E'=>'SE',
+                              'F'=>'AN',
+                              'G'=>'GE',
+                              'H'=>'RA',                              
+                              'I'=>'ZR',
+                              'J'=>'FA',
+                              'K'=>'WU',
+                              'L'=>'ME',
+                              'M'=>'TOTAL'
+                              );        
+        
+         $data['result']=$this->hasil_model->hasil_resume($limit,$full);
+         if ( $full) {
+            $data['filename'] = "hasil_ringkasan_full_" . date('Ymd') . ".xlsx";         
+         } else {
+            $data['filename'] = "hasil_ringkasan_"  . $limit. " _". date('Ymd') . ".xlsx";       
+         }   
+         $this->load->view('export_hasil_ringkasan',$data);      
+    }
+    
+    public function export_hasil_ist($limit='0',$full=false)
     {    
 
         $logged_in=$this->session->userdata('logged_in');
@@ -149,10 +199,8 @@ class Hasil extends CI_Controller
         }
             
         $data['limit']=$limit;
-        $data['cid']=$cid;
-        $data['lid']=$lid;  
         $data['title']='Hasil IST';
-        $data['header']=array('A'=>'Fullname',
+        $data['header']=array('A'=>'FULLNAME',
                               'B'=>'WA',
                               'C'=>'SE',
                               'D'=>'AN',
@@ -164,11 +212,44 @@ class Hasil extends CI_Controller
                               'J'=>'ME',
                               'K'=>'TOTAL'
                               );
-         $data['result']=$this->hasil_model->hasil_list($limit,$cid,$lid);                            
+         $data['result']=$this->hasil_model->hasil_list($limit,$full); 
+         if ( $full) {
+            $data['filename'] = "hasil_ist_full_" . date('Ymd') . ".xlsx";       
+         } else {
+            $data['filename'] = "hasil_ist_"  . $limit. " _". date('Ymd') . ".xlsx";         
+         }                      
          $this->load->view('export_hasil_ist',$data);
     }
 
-
+     public function export_hasil_disc($limit,$full=false) 
+     {
+        $logged_in=$this->session->userdata('logged_in');
+        if($logged_in['su']!='1'){
+            exit($this->lang->line('permission_denied'));
+        }
+            
+        $data['limit']=$limit;
+        $data['title']=$this->lang->line('resultlist');        
+        $data['result']=$this->hasil_model->hasil_disc($limit,$full);
+        $data['header']=array('A'=>'FULLNAME',
+                              'B'=>'MOST',
+                              'C'=>'LEAST',
+                              'D'=>'CHANGE'
+                              );
+        foreach($data['result'] as $mkey=>$mval) {
+            $data['result'][$mkey]['mscale']=$this->norma_model->data_scale_m($data['result'][$mkey]['uid']);                                       
+            $data['result'][$mkey]['lscale']=$this->norma_model->data_scale_l($data['result'][$mkey]['uid']);
+            $data['result'][$mkey]['cscale']=$this->norma_model->data_scale_c($data['result'][$mkey]['uid']);                                                   
+        }        
+        
+        if ( $full) {
+            $data['filename'] = "hasil_disc_full_" . date('Ymd') . ".xlsx";      
+         } else {
+            $data['filename'] = "hasil_disc_"  . $limit. " _". date('Ymd') . ".xlsx";        
+        }                       
+        $this->load->view('export_hasil_disc',$data);       
+     }
+     
     // public function hasilist()
     // {
     //     $this->load->view('header',$data);
@@ -178,6 +259,7 @@ class Hasil extends CI_Controller
 
     public function disc($limit='0',$cid='0',$lid='0')
     {
+        $this->load->model("norma_model");      
         $this->load->helper('form');
         $logged_in=$this->session->userdata('logged_in');
         if($logged_in['su']!='1'){
@@ -191,6 +273,13 @@ class Hasil extends CI_Controller
         $data['title']=$this->lang->line('resultlist');
         // fetching user list
         $data['result']=$this->hasil_model->hasil_disc($limit,$cid,$lid);
+
+        foreach($data['result'] as $mkey=>$mval) {
+            $data['result'][$mkey]['mscale']=$this->norma_model->data_scale_m($data['result'][$mkey]['uid']);                                       
+            $data['result'][$mkey]['lscale']=$this->norma_model->data_scale_l($data['result'][$mkey]['uid']);
+            $data['result'][$mkey]['cscale']=$this->norma_model->data_scale_c($data['result'][$mkey]['uid']);                                                   
+        }           
+        
         $this->load->view('header', $data);
         $this->load->view('hasil_disc', $data);
         $this->load->view('footer', $data);
@@ -221,5 +310,8 @@ class Hasil extends CI_Controller
         $this->load->view('hasil_detail_disc',$data);
         $this->load->view('footer',$data);
     }
+    
+    
+    
 
 }

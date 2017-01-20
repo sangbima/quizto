@@ -3,14 +3,16 @@ Class Hasil_model extends CI_Model
 {
     function hasil_resume($limit=0,$full_range=false)
     {
+        
         if ( $full_range) {
            $offset_start=0; 
            $qoption="";
         } else {    
+           //$offset_start= $limit * $this->config->item('number_of_rows');
            $offset_start= $limit;
            $qoption= " limit " . $this->config->item('number_of_rows') .  " offset " . $offset_start;
-        }
-
+        }   
+    
         $script = 'SELECT d.uid,concat(d.first_name,\' \',d.last_name) as fullname,';
         
         // GET CATEGORY ID
@@ -35,9 +37,10 @@ Class Hasil_model extends CI_Model
 
         $query =  $query=$this->db->query($script);
         $result = $query->result_array();
-
+        
         // var_dump($result);die();
         return $result;
+                
     }    
 
     function hasil_list($limit=0,$full_range=false)
@@ -50,9 +53,9 @@ Class Hasil_model extends CI_Model
            $offset_start= $limit;
            $qoption= " limit " . $this->config->item('number_of_rows') .  " offset " . $offset_start;
         }
-
-        $script = 'SELECT d.uid,concat(d.first_name,\' \',d.last_name) as fullname,';
                 
+        $script = 'SELECT d.uid,concat(d.first_name,\' \',d.last_name) as fullname,';
+        
         // GET CATEGORY ID
         $this->db->order_by('cid','asc');
         $this->db->where('grup', '1');
@@ -160,7 +163,7 @@ Class Hasil_model extends CI_Model
                 left join users d on d.uid = a.uid
                 where su != 1
                 group by d.uid
-                order by total desc' . " limit " . $this->config->item('number_of_rows') .  " offset " . $offset_start;
+                order by total desc ' . " limit " . $this->config->item('number_of_rows') .  " offset " . $offset_start;
         
         // Dengan admin
         // $script .= '
@@ -179,11 +182,20 @@ Class Hasil_model extends CI_Model
         return $result;
     }
 
-    function hasil_disc($limit=0,$status='0')
+    function hasil_disc($limit=0,$full_range=false)
     {
         $this->load->model("norma_model");
+        
 
-        $offset_start= $limit * $this->config->item('number_of_rows');
+        if ( $full_range) {
+           $offset_start=0; 
+           $qoption="";
+        } else {    
+           //$offset_start= $limit * $this->config->item('number_of_rows');
+           $offset_start= $limit;
+           $qoption= " limit " . $this->config->item('number_of_rows') .  " offset " . $offset_start;
+        }           
+        
         $script = 'SELECT d.uid,concat(d.first_name,\' \',d.last_name) as fullname,';
         
          // GET CATEGORY ID
@@ -205,7 +217,7 @@ Class Hasil_model extends CI_Model
                 left join users d on d.uid = a.uid
                 where su != 1
                 group by d.uid
-                order by total desc' . " limit " . $this->config->item('number_of_rows') .  " offset " . $offset_start;
+                order by total desc ' . $qoption;
         
         // Dengan admin
         // $script .= '
@@ -223,9 +235,5 @@ Class Hasil_model extends CI_Model
         // var_dump($result);die();
         return $result;
     }
-
-    function hasil_norma_ist($uid)
-    {
-        
-    }
+   
 }
