@@ -474,3 +474,15 @@ div#timer-left.col-md-3 {
 .is-hide {
   display: none;
 }
+
+/* Halaman RESET*/
+.parent-reset {
+  height: 50%;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -113,7 +113,7 @@ class Hasil extends CI_Controller
         
         $data['title']=$this->lang->line('resultlist');
         // fetching user list
-        $data['result']=$this->hasil_model->hasil_tpu_tpa($limit,$cid,$lid);
+        $data['result']=$this->hasil_model->hasil_tpu_tpa($limit,false);
         $this->load->view('header', $data);
         $this->load->view('hasil_tpu_tpa', $data);
         $this->load->view('footer', $data);
@@ -147,6 +147,10 @@ class Hasil extends CI_Controller
         if($logged_in['su']!='1'){
             exit($this->lang->line('permission_denied'));
         }
+
+        if ( $qtype=='tpu_tpa' ) {  
+            $this->export_hasil_tpu_tpa($limit,$full);
+        }               
         
         if ( $qtype=='ist' ) {  
             $this->export_hasil_ist($limit,$full);
@@ -188,6 +192,31 @@ class Hasil extends CI_Controller
             $data['filename'] = "hasil_ringkasan_"  . $limit. " _". date('Ymd') . ".xlsx";       
          }   
          $this->load->view('export_hasil_ringkasan',$data);      
+    }
+
+    public function export_hasil_tpu_tpa($limit='0',$full=false)
+    {
+        $this->load->helper('form');
+        $logged_in=$this->session->userdata('logged_in');
+        if($logged_in['su']!='1'){
+            exit($this->lang->line('permission_denied'));
+        }
+            
+        $data['limit']=$limit;        
+        $data['title']=$this->lang->line('resultlist');
+        $data['header']=array('A'=>'FULLNAME',
+                              'B'=>'TPU',
+                              'C'=>'TPA',
+                              'D'=>'TOTAL'
+                              );        
+        $data['result']=$this->hasil_model->hasil_tpu_tpa($limit,$full);
+        if ( $full) {
+            $data['filename'] = "hasil_tpu_tpa_full_" . date('Ymd') . ".xlsx";       
+         } else {
+            $data['filename'] = "hasil_tpu_tpa_"  . $limit. " _". date('Ymd') . ".xlsx";         
+        }       
+        $this->load->view('export_hasil_tpu_tpa', $data);
+     
     }
     
     public function export_hasil_ist($limit='0',$full=false)

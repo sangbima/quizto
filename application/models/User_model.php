@@ -48,11 +48,11 @@ Class User_model extends CI_Model
 	{
 		if($this->input->post('search')){
 			$search=$this->input->post('search');
-			$this->db->or_where('users.email',$search);
-			$this->db->or_where('users.registration_no',$search);
-			$this->db->or_where('users.first_name',$search);
-			$this->db->or_where('users.last_name',$search);
-			$this->db->or_where('users.contact_no',$search);
+			$this->db->or_like('users.email',$search);
+			$this->db->or_like('users.registration_no',$search);
+			$this->db->or_like('users.first_name',$search);
+			$this->db->or_like('users.last_name',$search);
+			$this->db->or_like('users.contact_no',$search);
 		}
 		$this->db->limit($this->config->item('number_of_rows'),$limit);
 		$this->db->order_by('users.uid','desc');
