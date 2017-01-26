@@ -7,7 +7,7 @@ class Reset extends CI_Controller
     {
         parent::__construct();
         $this->load->database();
-        $this->load->model("user_model");
+        $this->load->model("reset_model");
         $this->lang->load('basic', $this->config->item('language'));
         // redirect if not loggedin
         if(!$this->session->userdata('logged_in')){
@@ -22,10 +22,31 @@ class Reset extends CI_Controller
 
     public function index()
     {
+        $logged_in=$this->session->userdata('logged_in');
+        if($logged_in['su']!='1'){
+            exit($this->lang->line('permission_denied'));
+        }
+
         $data['title'] = 'RESET ALL';
 
         $this->load->view('header',$data);
         $this->load->view('reset',$data);
         $this->load->view('footer',$data);
+    }
+
+    public function confirm()
+    {
+
+        $logged_in=$this->session->userdata('logged_in');
+        if($logged_in['su']!='1'){
+            exit($this->lang->line('permission_denied'));
+        }
+        
+        if($this->reset_model->reset()){
+            $this->session->set_flashdata('message', "<div class='alert alert-success'>".$this->lang->line('removed_successfully')." </div>");
+        }else{
+            $this->session->set_flashdata('message', "<div class='alert alert-danger'>".$this->lang->line('error_to_remove')." </div>");
+        }
+        redirect('reset');
     }
 }

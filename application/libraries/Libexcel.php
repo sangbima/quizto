@@ -4,7 +4,7 @@ ini_set('error_reporting', E_STRICT);
 
 require_once APPPATH."/third_party/PHPExcel.php"; 
 
-class Excel extends PHPExcel
+class Libexcel extends PHPExcel
 { 
     public function __construct()
     { 
