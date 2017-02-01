@@ -11,23 +11,32 @@
 	$objPHPExcel->getProperties()->setDescription("Test document for Office 2007 XLSX, generated using PHP classes.");
 
 	$objPHPExcel->setActiveSheetIndex(0);
+	$objSheet=$objPHPExcel->getActiveSheet();
 										
     foreach($header as $key=>$value) {
-				$objPHPExcel->getActiveSheet()->SetCellValue($key. '1', $value);				
+				$objSheet->SetCellValue($key. '1', $value);				
 	}	
 	
 	foreach($result as $key=>$value) {
 		   $c_row=$key+2;
-		   $objPHPExcel->getActiveSheet()->SetCellValue('A' . $c_row, $value['fullname']);			   
-		   $objPHPExcel->getActiveSheet()->SetCellValue('B' . $c_row, $value['mscale']['value']);
-		   $objPHPExcel->getActiveSheet()->SetCellValue('C' . $c_row, $value['lscale']['value']);
-		   $objPHPExcel->getActiveSheet()->SetCellValue('D' . $c_row, $value['cscale']['value']);
+		   $objSheet->SetCellValue('A' . $c_row, $value['fullname']);			   
+		   $objSheet->SetCellValue('B' . $c_row, $value['mscale']['value']);
+		   $objSheet->SetCellValue('C' . $c_row, $value['lscale']['value']);
+		   $objSheet->SetCellValue('D' . $c_row, $value['cscale']['value']);
 	}		
 										
-    $objPHPExcel->getActiveSheet()->getColumnDimension('A')->setAutoSize(true);	
-	$objPHPExcel->getActiveSheet()->getStyle('A1:M1')->getFont()->setBold(true);
+    $objSheet->getColumnDimension('A')->setAutoSize(true);	
+	$objSheet->getColumnDimension('B')->setAutoSize(true);	
+	$objSheet->getColumnDimension('C')->setAutoSize(true);	
+    $objSheet->getColumnDimension('D')->setAutoSize(true);	
 	
-	$objPHPExcel->getActiveSheet()->setTitle($title);
+	$objSheet->getStyle('A1:M1')->getFont()->setBold(true);
+	
+	$objSheet->getStyle('A1:D1')->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID)->getStartColor()->setARGB('FFE8E5E5');
+	
+	$objSheet->getStyle('O1')->getFont()->setBold(true);
+	
+	$objSheet->setTitle($title);
 		
 	$objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);                 				
 	ob_start();

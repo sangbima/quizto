@@ -4,12 +4,13 @@
                 $logged_in=$this->session->userdata('logged_in');
             ?>
             <?php 
-                if($logged_in['su']=='1'){
+                if($logged_in['su']=='1' || $logged_in['su']=='2'){
             ?>
+
             <div class="row">
                 <div class="col-md-6">
                     <div class="panel panel-warning">
-                        <div class="panel-heading"><i class="fa fa-user"></i> Detail Peserta</div>
+                        <div class="panel-heading"><i class="fa fa-user"></i> Detail Peserta <a href="<?php echo site_url('hasil/download/default_detail/'. $user['uid']);?>" title="Export ke Excel" class="btn btn-primary pull-right"><i class="fa fa-file-excel-o" aria-hidden="true"></i></a></div>
                         <table class="table table-bordered table-condensed">
                             <tr>
                                 <th>No. Peserta</th>
@@ -35,6 +36,23 @@
                                 <th>TPA</th>
                                 <td><?php //echo $tputpa; ?></td>
                             </tr> -->
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="panel panel-info">
+                        <div class="panel-heading"><i class="fa fa-bar-chart"></i> TPU/TPA</div>
+                        <table class="table table-bordered table-condensed">
+                            <tr>
+                                <th>TPU</th>
+                                <td>100</td>
+                            </tr>
+                            <tr>
+                                <th>TPA</th>
+                                <td>100</td>
+                            </tr>
                         </table>
                     </div>
                 </div>

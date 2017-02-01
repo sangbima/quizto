@@ -191,6 +191,7 @@ $lang['select_level'] = "Pilih level";
 $lang['account_type'] = "Tipe akun";
 $lang['administrator'] = "Administrator";
 $lang['user'] = "Pengguna";
+$lang['operator'] = "Operator";
 $lang['attempt'] = "Mencoba";
 $lang['start_quiz'] = "Mulai ujian";
 $lang['camera_instructions'] = "Ujian membutuhkan webcam untuk mengambil foto Anda. <br>Patikan Anda memiliki webcam yang terhubung ke sistem Anda.<br> Silahkan klik tombol 'Allow' atau 'Share selected device' ( jika ada ) yang muncul di layar Anda.<br>

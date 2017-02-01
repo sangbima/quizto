@@ -5,7 +5,7 @@
                 $logged_in=$this->session->userdata('logged_in');
             ?>
             <?php 
-                if($logged_in['su']=='1'){
+                if($logged_in['su']=='1' || $logged_in['su']=='2'){
             ?>
             <div class="panel panel-primary">
 			    <div class="panel-heading">

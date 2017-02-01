@@ -44,7 +44,7 @@ Class User_model extends CI_Model
 		return $query->num_rows();
 	}
 
- 	function user_list($limit)
+ 	function user_list($limit, $created_by=null)
 	{
 		if($this->input->post('search')){
 			$search=$this->input->post('search');
@@ -57,6 +57,14 @@ Class User_model extends CI_Model
 		$this->db->limit($this->config->item('number_of_rows'),$limit);
 		$this->db->order_by('users.uid','desc');
 		$this -> db -> join('group', 'users.gid=group.gid');
+		// Tampilkan hanya user biasa
+		$this->db->where('su = 0');
+
+		// Tampilkan hanya user sesuai dengan user operator yang membuatnya
+		if($created_by != null) {
+			$this->db->where('created_by', $created_by);	
+		}
+		
 		$query=$this->db->get('users');
 		return $query->result_array();
 	}
@@ -89,6 +97,7 @@ Class User_model extends CI_Model
  
 	function insert_user()
 	{
+		$logged_in=$this->session->userdata('logged_in');
 		$userdata=array(
 			'email'=>$this->input->post('email'),
 			'registration_no'=>$this->input->post('registration_no'),
@@ -98,7 +107,8 @@ Class User_model extends CI_Model
 			'contact_no'=>$this->input->post('contact_no'),
 			'gid'=>$this->input->post('gid'),
 			'subscription_expired'=>strtotime($this->input->post('subscription_expired')),
-			'su'=>$this->input->post('su')		
+			'su'=>$this->input->post('su'),
+			'created_by' => $logged_in['uid']
 		);
 
 		if($this->db->insert('users',$userdata)){
@@ -219,14 +229,12 @@ Class User_model extends CI_Model
 
 	function update_user($uid)
 	{
-		$logged_in=$this->session->userdata('logged_in');
-						 
 		$userdata=array(
 			'first_name'=>$this->input->post('first_name'),
 			'last_name'=>$this->input->post('last_name'),
 			'contact_no'=>$this->input->post('contact_no')	
 		);
-		if($logged_in['su']=='1'){
+		if($logged_in['su']=='1' || $logged_in['su']=='2'){
 			$userdata['email']=$this->input->post('email');
 			$userdata['registration_no']=$this->input->post('registration_no');
 			$userdata['gid']=$this->input->post('gid');
@@ -386,6 +394,7 @@ Class User_model extends CI_Model
 
  	function import_user($user){
 		//echo "<pre>"; print_r($question);exit;
+		$logged_in=$this->session->userdata('logged_in');
 		$group_id=$this->input->post('gid');		
 		foreach($user as $key => $singleuser){
 			if(($key != 0) and ($singleuser['0'] . "" != "")){
@@ -411,7 +420,8 @@ Class User_model extends CI_Model
 			          'contact_no'=>$singleuser[5],
 			          'gid'=>$group_id,
 		         	  'subscription_expired'=>strtotime($singleuser[6]),
-         			  'su'=>'0'												
+         			  'su'=>'0',
+         			  'created_by' => $logged_in['uid']
 				   );				
 				
 				   $this->db->insert('users',$insert_data);

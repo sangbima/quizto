@@ -18,7 +18,7 @@ class Login extends CI_Controller
 	{
 		if($this->session->userdata('logged_in')){
 			$logged_in=$this->session->userdata('logged_in');
-			if($logged_in['su']=='1'){
+			if($logged_in['su']=='1' || $logged_in['su']=='2'){
 				redirect('dashboard');
 			}else{
 				// redirect('quiz');	
@@ -63,7 +63,7 @@ class Login extends CI_Controller
 			// creating login cookie
 			$this->session->set_userdata('logged_in', $user);
 			// redirect to dashboard
-			if($user['su']=='1'){
+			if($user['su']=='1' || $user['su']=='2'){
 				redirect('dashboard');
 			}else{
 				// redirect('quiz');	

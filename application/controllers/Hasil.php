@@ -25,7 +25,12 @@ class Hasil extends CI_Controller
     {
         $this->load->helper('form');
         $logged_in=$this->session->userdata('logged_in');
-        if($logged_in['su']!='1'){
+        if ($logged_in['su'] == 1) {
+            $created_by = null;
+        } else {
+            $created_by = $logged_in['uid'];
+        }
+        if($logged_in['su']!='1' && $logged_in['su']!='2'){
             exit($this->lang->line('permission_denied'));
         }
             
@@ -35,7 +40,7 @@ class Hasil extends CI_Controller
         
         $data['title']=$this->lang->line('resultlist');
         // fetching user list
-        $data['result']=$this->hasil_model->hasil_resume($limit,false);
+        $data['result']=$this->hasil_model->hasil_resume($limit,false,$created_by);
         $this->load->view('header',$data);
         $this->load->view('hasil_list',$data);
         $this->load->view('footer',$data);
@@ -47,14 +52,14 @@ class Hasil extends CI_Controller
         $this->load->model("norma_model");
         $this->load->helper('form');
         $logged_in=$this->session->userdata('logged_in');
-        if($logged_in['su']!='1'){
+        if($logged_in['su']!='1' && $logged_in['su']!='2'){
             exit($this->lang->line('permission_denied'));
         }
         
         $data['title']="Detail Peserta";
         // fetching user list
         $data['user']=$this->user_model->get_user($uid);
-        $data['tputpa'] = 'TPU TPA';
+        $data['tputpa'] = $this->hasil_model->hasil_tpu_tpa_detail($uid);
         $data['result'] = $this->hasil_model->hasil_detail($uid, '1');
         $data['disc_m'] = $this->norma_model->hasil_disc_m($uid);
         $data['disc_l'] = $this->norma_model->hasil_disc_l($uid);
@@ -73,7 +78,7 @@ class Hasil extends CI_Controller
         $this->load->model("norma_model");
         $this->load->helper('form');
         $logged_in=$this->session->userdata('logged_in');
-        if($logged_in['su']!='1'){
+        if($logged_in['su']!='1' && $logged_in['su']!='2'){
             exit($this->lang->line('permission_denied'));
         }
         
@@ -103,7 +108,12 @@ class Hasil extends CI_Controller
     {
         $this->load->helper('form');
         $logged_in=$this->session->userdata('logged_in');
-        if($logged_in['su']!='1'){
+        if ($logged_in['su'] == 1) {
+            $created_by = null;
+        } else {
+            $created_by = $logged_in['uid'];
+        }
+        if($logged_in['su']!='1' && $logged_in['su']!='2'){
             exit($this->lang->line('permission_denied'));
         }
             
@@ -113,7 +123,7 @@ class Hasil extends CI_Controller
         
         $data['title']=$this->lang->line('resultlist');
         // fetching user list
-        $data['result']=$this->hasil_model->hasil_tpu_tpa($limit,false);
+        $data['result']=$this->hasil_model->hasil_tpu_tpa($limit,false, $created_by);
         $this->load->view('header', $data);
         $this->load->view('hasil_tpu_tpa', $data);
         $this->load->view('footer', $data);
@@ -124,7 +134,12 @@ class Hasil extends CI_Controller
     {
         $this->load->helper('form');
         $logged_in=$this->session->userdata('logged_in');
-        if($logged_in['su']!='1'){
+        if ($logged_in['su'] == 1) {
+            $created_by = null;
+        } else {
+            $created_by = $logged_in['uid'];
+        }
+        if($logged_in['su']!='1' && $logged_in['su']!='2'){
             exit($this->lang->line('permission_denied'));
         }
             
@@ -134,7 +149,7 @@ class Hasil extends CI_Controller
         
         $data['title']=$this->lang->line('resultlist');
         // fetching user list
-        $data['result']=$this->hasil_model->hasil_list($limit,false);
+        $data['result']=$this->hasil_model->hasil_list($limit,false, $created_by);
         $this->load->view('header',$data);
         $this->load->view('hasil_ist',$data);
         $this->load->view('footer',$data);
@@ -144,7 +159,7 @@ class Hasil extends CI_Controller
     public function download($qtype='ist',$limit='0',$full=false) 
     {       
         $logged_in=$this->session->userdata('logged_in');
-        if($logged_in['su']!='1'){
+        if($logged_in['su']!='1' && $logged_in['su']!='2'){
             exit($this->lang->line('permission_denied'));
         }
 
@@ -155,19 +170,41 @@ class Hasil extends CI_Controller
         if ( $qtype=='ist' ) {  
             $this->export_hasil_ist($limit,$full);
         }       
+		
+        if ( $qtype=='ist_detail' ) {  
+            $this->export_hasil_ist_detail($limit,$full);
+        }       		
         
         if ( $qtype=='disc' ) {  
             $this->export_hasil_disc($limit,$full);
         }
-                
+
+        if ( $qtype=='disc_detail' ) {  
+            $this->export_hasil_disc_detail($limit,$full);
+        }		
+				
         if ($qtype=='default') {
             $this->export_hasil_ringkasan($limit,$full);
-        }       
+        }  
+        if ($qtype=='default_detail') {
+            $this->export_hasil_ringkasan_detail($limit,$full);			
+        }			
+		
+        if ($qtype=='test_chart') {
+            $this->test_export_chart($limit,$full);			
+        }					
         
     }   
     
     public function export_hasil_ringkasan($limit='0',$full=false)
     {
+        $logged_in=$this->session->userdata('logged_in');
+        if ($logged_in['su'] == 1) {
+            $created_by = null;
+        } else {
+            $created_by = $logged_in['uid'];
+        }
+
         $data['limit']=$limit;
         $data['title']='Hasil Ringkasan';
         $data['header']=array('A'=>'FULLNAME',
@@ -185,7 +222,7 @@ class Hasil extends CI_Controller
                               'M'=>'TOTAL'
                               );        
         
-         $data['result']=$this->hasil_model->hasil_resume($limit,$full);
+         $data['result']=$this->hasil_model->hasil_resume($limit,$full,$created_by);
          if ( $full) {
             $data['filename'] = "hasil_ringkasan_full_" . date('Ymd') . ".xlsx";         
          } else {
@@ -198,18 +235,24 @@ class Hasil extends CI_Controller
     {
         $this->load->helper('form');
         $logged_in=$this->session->userdata('logged_in');
-        if($logged_in['su']!='1'){
+        if ($logged_in['su'] == 1) {
+            $created_by = null;
+        } else {
+            $created_by = $logged_in['uid'];
+        }
+        
+        if($logged_in['su']!='1' && $logged_in['su']!='2'){
             exit($this->lang->line('permission_denied'));
         }
             
         $data['limit']=$limit;        
-        $data['title']=$this->lang->line('resultlist');
+        $data['title']="Hasil TPU TPA";
         $data['header']=array('A'=>'FULLNAME',
                               'B'=>'TPU',
                               'C'=>'TPA',
                               'D'=>'TOTAL'
                               );        
-        $data['result']=$this->hasil_model->hasil_tpu_tpa($limit,$full);
+        $data['result']=$this->hasil_model->hasil_tpu_tpa($limit,$full, $created_by);
         if ( $full) {
             $data['filename'] = "hasil_tpu_tpa_full_" . date('Ymd') . ".xlsx";       
          } else {
@@ -223,7 +266,12 @@ class Hasil extends CI_Controller
     {    
 
         $logged_in=$this->session->userdata('logged_in');
-        if($logged_in['su']!='1'){
+        if ($logged_in['su'] == 1) {
+            $created_by = null;
+        } else {
+            $created_by = $logged_in['uid'];
+        }
+        if($logged_in['su']!='1' && $logged_in['su']!='2'){
             exit($this->lang->line('permission_denied'));
         }
             
@@ -241,7 +289,7 @@ class Hasil extends CI_Controller
                               'J'=>'ME',
                               'K'=>'TOTAL'
                               );
-         $data['result']=$this->hasil_model->hasil_list($limit,$full); 
+         $data['result']=$this->hasil_model->hasil_list($limit,$full,$created_by); 
          if ( $full) {
             $data['filename'] = "hasil_ist_full_" . date('Ymd') . ".xlsx";       
          } else {
@@ -253,13 +301,18 @@ class Hasil extends CI_Controller
      public function export_hasil_disc($limit,$full=false) 
      {
         $logged_in=$this->session->userdata('logged_in');
-        if($logged_in['su']!='1'){
+        if ($logged_in['su'] == 1) {
+            $created_by = null;
+        } else {
+            $created_by = $logged_in['uid'];
+        }
+        if($logged_in['su']!='1' && $logged_in['su']!='2'){
             exit($this->lang->line('permission_denied'));
         }
-            
+  
         $data['limit']=$limit;
-        $data['title']=$this->lang->line('resultlist');        
-        $data['result']=$this->hasil_model->hasil_disc($limit,$full);
+        $data['title']="Hasil DISC";        
+        $data['result']=$this->hasil_model->hasil_disc($limit,$full,$created_by);
         $data['header']=array('A'=>'FULLNAME',
                               'B'=>'MOST',
                               'C'=>'LEAST',
@@ -291,7 +344,14 @@ class Hasil extends CI_Controller
         $this->load->model("norma_model");      
         $this->load->helper('form');
         $logged_in=$this->session->userdata('logged_in');
-        if($logged_in['su']!='1'){
+        
+        if ($logged_in['su'] == 1) {
+            $created_by = null;
+        } else {
+            $created_by = $logged_in['uid'];
+        }
+
+        if($logged_in['su']!='1' && $logged_in['su']!='2'){
             exit($this->lang->line('permission_denied'));
         }
             
@@ -301,7 +361,7 @@ class Hasil extends CI_Controller
         
         $data['title']=$this->lang->line('resultlist');
         // fetching user list
-        $data['result']=$this->hasil_model->hasil_disc($limit,$cid,$lid);
+        $data['result']=$this->hasil_model->hasil_disc($limit,$cid,$created_by);
 
         foreach($data['result'] as $mkey=>$mval) {
             $data['result'][$mkey]['mscale']=$this->norma_model->data_scale_m($data['result'][$mkey]['uid']);                                       
@@ -320,13 +380,14 @@ class Hasil extends CI_Controller
         $this->load->model("norma_model");
         $this->load->helper('form');
         $logged_in=$this->session->userdata('logged_in');
-        if($logged_in['su']!='1'){
+        if($logged_in['su']!='1' && $logged_in['su']!='2'){
             exit($this->lang->line('permission_denied'));
         }
         
         $data['title']="Detail Peserta";
         // fetching user list
         $data['user']=$this->user_model->get_user($uid);
+		
         $data['result'] = $this->hasil_model->hasil_detail($uid);
         $data['disc_m'] = $this->norma_model->hasil_disc_m($uid);
         $data['disc_l'] = $this->norma_model->hasil_disc_l($uid);
@@ -342,5 +403,79 @@ class Hasil extends CI_Controller
     
     
     
+	
+	public function export_hasil_ringkasan_detail($uid)
+    {
+        $this->load->model("user_model");
+        $this->load->model("norma_model");
+        $this->load->helper('form');
+        $logged_in=$this->session->userdata('logged_in');
+        if($logged_in['su']!='1' && $logged_in['su']!='2'){
+            exit($this->lang->line('permission_denied'));
+        }
+        
+        $data['title']="Ringkasan Hasil Peserta";        
+        $data['user']=$this->user_model->get_user($uid);
+        $data['user']['fullname']=$data['user']['first_name'] . ' ' . $data['user']['last_name'];		        
+		$data['tputpa'] = $this->hasil_model->hasil_tpu_tpa_detail($uid);
+        $data['result'] = $this->hasil_model->hasil_detail($uid, '1');
+        $data['disc_m'] = $this->norma_model->hasil_disc_m($uid);
+        $data['disc_l'] = $this->norma_model->hasil_disc_l($uid);
+        $data['mscale'] = $this->norma_model->data_scale_m($uid);
+        $data['lscale'] = $this->norma_model->data_scale_l($uid);
+        $data['cscale'] = $this->norma_model->data_scale_c($uid);
+        $data['filename'] = $uid . "-" .$data['user']['fullname'] ." - hasil_ringkasan-". date('Ymd') . ".xlsx"; 
+        $this->load->view('export_hasil_ringkasan_detail',$data);
+    }
+	
+
+	public function export_hasil_ist_detail($uid)
+    {
+        $this->load->model("user_model");
+        $this->load->model("norma_model");
+        $this->load->helper('form');
+        $logged_in=$this->session->userdata('logged_in');
+        if($logged_in['su']!='1' && $logged_in['su']!='2'){
+            exit($this->lang->line('permission_denied'));
+        }
+        
+        $data['title']="Detail Hasil IST Peserta";        
+        $data['user']=$this->user_model->get_user($uid);
+        $data['user']['fullname']=$data['user']['first_name'] . ' ' . $data['user']['last_name'];		
+        $data['tputpa'] = 'TPU TPA';
+        $data['result'] = $this->hasil_model->hasil_detail($uid, '1');
+        $data['disc_m'] = $this->norma_model->hasil_disc_m($uid);
+        $data['disc_l'] = $this->norma_model->hasil_disc_l($uid);
+        $data['mscale'] = $this->norma_model->data_scale_m($uid);
+        $data['lscale'] = $this->norma_model->data_scale_l($uid);
+        $data['cscale'] = $this->norma_model->data_scale_c($uid);
+        $data['filename'] = $uid . "-" .$data['user']['fullname'] ." - hasil_ist-". date('Ymd') . ".xlsx"; 
+        $this->load->view('export_hasil_ist_detail',$data);
+    }	
+	
+	public function export_hasil_disc_detail($uid)
+    {
+        $this->load->model("user_model");
+        $this->load->model("norma_model");
+        $this->load->helper('form');
+        $logged_in=$this->session->userdata('logged_in');
+        if($logged_in['su']!='1' && $logged_in['su']!='2'){
+            exit($this->lang->line('permission_denied'));
+        }
+        
+        $data['title']="Detail Hasil DISC Peserta";        
+        $data['user']=$this->user_model->get_user($uid);
+        $data['user']['fullname']=$data['user']['first_name'] . ' ' . $data['user']['last_name'];		
+        $data['tputpa'] = 'TPU TPA';
+        $data['result'] = $this->hasil_model->hasil_detail($uid, '1');
+        $data['disc_m'] = $this->norma_model->hasil_disc_m($uid);
+        $data['disc_l'] = $this->norma_model->hasil_disc_l($uid);
+        $data['mscale'] = $this->norma_model->data_scale_m($uid);
+        $data['lscale'] = $this->norma_model->data_scale_l($uid);
+        $data['cscale'] = $this->norma_model->data_scale_c($uid);
+        $data['filename'] = $uid . "-" .$data['user']['fullname'] ." - hasil_disc-". date('Ymd') . ".xlsx"; 
+        $this->load->view('export_hasil_disc_detail',$data);
+    }		
+	
 
 }

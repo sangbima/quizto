@@ -1,3 +1,4 @@
+<?php $logged_in=$this->session->userdata('logged_in'); ?>
 <div class="container">
     <div class="row">
         <div class="col-md-4">
@@ -35,6 +36,9 @@
                         </div>
                     </div>
                 </div>
+                <?php  
+                if($logged_in['su']==1){
+                ?>
                 <a href="<?php echo site_url('quiz');?>">
                 <div class="panel-footer">
                     <span class="pull-left"><?php echo $this->lang->line('quiz_list');?></span>
@@ -42,6 +46,13 @@
                     <div class="clearfix"></div>
                 </div>
                 </a>
+                <?php } else { ?>
+                <div class="panel-footer">
+                    <span class="pull-left">Login sebagai Admin untuk detail</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+                <?php } ?>
             </div>
         </div>
         <div class="col-md-4">
@@ -57,6 +68,9 @@
                         </div>
                     </div>
                 </div>
+                <?php  
+                if($logged_in['su']==1){
+                ?>
                 <a href="<?php echo site_url('qbank');?>">
                 <div class="panel-footer">
                     <span class="pull-left"><?php echo $this->lang->line('question_list');?></span>
@@ -64,6 +78,13 @@
                     <div class="clearfix"></div>
                 </div>
                 </a>
+                <?php } else { ?>
+                <div class="panel-footer">
+                    <span class="pull-left">Login sebagai Admin untuk detail</span>
+                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                    <div class="clearfix"></div>
+                </div>
+                <?php } ?>
             </div>
         </div>
     </div>

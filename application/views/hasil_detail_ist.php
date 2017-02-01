@@ -4,7 +4,7 @@
                 $logged_in=$this->session->userdata('logged_in');
             ?>
             <?php 
-                if($logged_in['su']=='1'){
+                if($logged_in['su']=='1' || $logged_in['su']=='2'){
             ?>
             <div class="row">
                 <div class="col-md-6">
@@ -30,6 +30,9 @@
                         </table>
                     </div>
                 </div>
+                <div>
+				   <a href="<?php echo site_url('hasil/download/ist_detail/'. $user['uid']);?>" title="Export ke Excel" class="btn btn-default pull-right"><i class="fa fa-file-excel-o" aria-hidden="true"></i></a>
+				</div>				
             </div>
             <div class="row">
                 <div class="col-md-12">

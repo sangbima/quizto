@@ -29,9 +29,15 @@ class Dashboard extends CI_Controller
 		$data['title']=$this->lang->line('dashboard');
 		
 		$logged_in=$this->session->userdata('logged_in');
-		if($logged_in['su']=='1'){
+		if ($logged_in['su'] == 1) {
+			$created_by = null;
+		} else {
+			$created_by = $logged_in['uid'];
+		}
+
+		if($logged_in['su']=='1' || $logged_in['su']=='2'){
 				
-			$data['result']=$this->user_model->user_list(0);
+			$data['result']=$this->user_model->user_list(0, $created_by);
 					
 			$data['num_users']=$this->user_model->num_users();
 			$data['num_qbank']=$this->qbank_model->num_qbank();

@@ -1,3 +1,4 @@
+<?php $logged_in=$this->session->userdata('logged_in'); ?>
 <div class="container">
 	<h3><?php echo $title;?></h3>
 	<div class="row">
@@ -69,7 +70,12 @@
 									<label><?php echo $this->lang->line('account_type');?></label> 
 									<select class="form-control" name="su">
 										<option value="0"><?php echo $this->lang->line('user');?></option>
+										<?php  
+					                    if($logged_in['su']==1){
+					                    ?>
 										<option value="1"><?php echo $this->lang->line('administrator');?></option>
+										<option value="2"><?php echo $this->lang->line('operator');?></option>
+										<?php } ?>
 									</select>
 								</div>
 							</div>

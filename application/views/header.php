@@ -47,10 +47,14 @@
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav pull-right">
                     <?php  
-                    if($logged_in['su']==1){
+                    if($logged_in['su']==1 || $logged_in['su']==2){
                     ?>
 
                     <li <?php if($this->uri->segment(1)=='dashboard'){ echo "class='active'"; } ?> ><a href="<?php echo site_url('dashboard');?>"><?php echo $this->lang->line('dashboard');?></a></li>
+                    <?php  
+                    }
+                    if($logged_in['su']==1 || $logged_in['su']==2){
+                    ?>                    
                     <li class="dropdown" <?php if($this->uri->segment(1)=='user'){ echo "class='active'"; } ?> >
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $this->lang->line('users');?> <span class="caret"></span></a>
                         <ul class="dropdown-menu">
@@ -59,6 +63,10 @@
 
                         </ul>
                     </li>
+                    <?php 
+                    }
+                    if($logged_in['su']==1){
+                    ?>
                     <li class="dropdown" <?php if($this->uri->segment(1)=='qbank'){ echo "class='active'"; } ?> >
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $this->lang->line('qbank');?> <span class="caret"></span></a>
                         <ul class="dropdown-menu">
@@ -89,7 +97,7 @@
                         ?>
                     </li>
                     <?php  
-                    if($logged_in['su']==1){
+                    if($logged_in['su']==1 || $logged_in['su']==2){
                     ?>
                     <!-- <li><a href="<?php // echo site_url('hasil');?>"><?php // echo $this->lang->line('result');?></a></li> -->
                     <!-- Star Menu Hasil -->
@@ -104,6 +112,10 @@
                         </ul>
                     </li>
                     <!-- End Menu Hasil -->
+                    <?php
+                    }
+                    if($logged_in['su']==1){
+                    ?>
                     <li class="dropdown" <?php if($this->uri->segment(1)=='user_group'){ echo "class='active'"; } ?> >
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $this->lang->line('setting');?> <span class="caret"></span></a>
                         <ul class="dropdown-menu">
