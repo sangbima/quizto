@@ -7,6 +7,34 @@
             <?php 
                 if($logged_in['su']=='1' || $logged_in['su']=='2'){
             ?>
+            <!-- Filter -->
+            <div class="panel-group panel-group-lists" id="accordion2">
+              <div class="panel">
+                <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion2" href="#collapseFour">
+                      Filter
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapseFour" class="panel-collapse collapse">
+                  <div class="panel-body">
+                    <form class="form-inline" method="post" action="<?php echo site_url('hasil/index/');?>">
+                      <div class="form-group">
+                        <label class="sr-only" for="operatorid">Operator</label>
+                        <select name="operator" id="operatorid" class="form-control">
+                            <option value="">-- Pilih Operator --</option>
+                            <?php foreach($operators as $operator) {?>
+                            <option value="<?php echo $operator['uid']?>"><?php echo $operator['first_name'] . ' ' .$operator['last_name']?></option>
+                            <?php } ?>
+                        </select>
+                      </div>
+                      <button type="submit" class="btn btn-default"><?php echo $this->lang->line('search');?></button>
+                    </form>           
+                  </div>
+                </div>
+              </div>
+            </div>
             <div class="panel panel-primary">
                 <div class="panel-heading">
 				    Hasil Semua Test
@@ -25,8 +53,8 @@
                         <th>Fullname</th>
                         <th>TPU</th>
                         <th>TPA</th>
-                        <th>WA</th>
                         <th>SE</th>
+                        <th>WE</th>
                         <th>AN</th>
                         <th>GE</th>
                         <th>RA</th>

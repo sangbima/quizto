@@ -9,6 +9,7 @@ class Hasil extends CI_Controller
         parent::__construct();
         $this->load->database();
         $this->load->model("hasil_model");
+        $this->load->model("user_model");
         $this->lang->load('basic', $this->config->item('language'));
         // redirect if not loggedin
         if(!$this->session->userdata('logged_in')){
@@ -40,6 +41,8 @@ class Hasil extends CI_Controller
         
         $data['title']=$this->lang->line('resultlist');
         // fetching user list
+        $data['operators'] = $this->user_model->user_list(0, $created_by=null, $usertype=2);
+        // var_dump($data['operator']);
         $data['result']=$this->hasil_model->hasil_resume($limit,false,$created_by);
         $this->load->view('header',$data);
         $this->load->view('hasil_list',$data);
@@ -60,7 +63,7 @@ class Hasil extends CI_Controller
         // fetching user list
         $data['user']=$this->user_model->get_user($uid);
         $data['tputpa'] = $this->hasil_model->hasil_tpu_tpa_detail($uid);
-        $data['result'] = $this->hasil_model->hasil_detail($uid, '1');
+        $data['result'] = $this->hasil_model->hasil_detail($uid);
         $data['disc_m'] = $this->norma_model->hasil_disc_m($uid);
         $data['disc_l'] = $this->norma_model->hasil_disc_l($uid);
         $data['mscale'] = $this->norma_model->data_scale_m($uid);

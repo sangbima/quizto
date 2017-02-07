@@ -47,11 +47,11 @@
                         <table class="table table-bordered table-condensed">
                             <tr>
                                 <th>TPU</th>
-                                <td>100</td>
+                                <td><?php echo $result['ist1'] ? $result['ist1'] : 0; ?></td>
                             </tr>
                             <tr>
                                 <th>TPA</th>
-                                <td>100</td>
+                                <td><?php echo $result['ist2'] ? $result['ist2'] : 0; ?></td>
                             </tr>
                         </table>
                     </div>
@@ -79,10 +79,10 @@
                                     <tr>
                                         <th>SE</th>
                                         <td>Decision Making</td>
-                                        <td align="center"><?php echo $result['ist1']; ?></td>
+                                        <td align="center"><?php echo $result['ist3']; ?></td>
                                         <td align="center">
                                             <?php 
-                                                $ist1 = $this->norma_model->norma_convert('ist1', $result['ist1']);
+                                                $ist1 = $this->norma_model->norma_convert('ist1', $result['ist3']);
                                                 echo $ist1['ws'];
                                             ?>
                                         </td>
@@ -93,10 +93,10 @@
                                     <tr>
                                         <th>WE</th>
                                         <td>Verbal Reasoning</td>
-                                        <td align="center"><?php echo $result['ist2']; ?></td>
+                                        <td align="center"><?php echo $result['ist4']; ?></td>
                                         <td align="center">
                                             <?php 
-                                                $ist2 = $this->norma_model->norma_convert('ist2', $result['ist2']);
+                                                $ist2 = $this->norma_model->norma_convert('ist2', $result['ist4']);
                                                 echo $ist2['ws'];
                                             ?>
                                         </td>
@@ -107,10 +107,10 @@
                                     <tr>
                                         <th>AN</th>
                                         <td>Creativity</td>
-                                        <td align="center"><?php echo $result['ist3']; ?></td>
+                                        <td align="center"><?php echo $result['ist5']; ?></td>
                                         <td align="center">
                                             <?php 
-                                                $ist3 = $this->norma_model->norma_convert('ist3', $result['ist3']);
+                                                $ist3 = $this->norma_model->norma_convert('ist3', $result['ist5']);
                                                 echo $ist3['ws'];
                                             ?>
                                         </td>
@@ -121,10 +121,10 @@
                                     <tr>
                                         <th>GE</th>
                                         <td>Abstract Reasoning</td>
-                                        <td align="center"><?php echo $result['ist4']; ?></td>
+                                        <td align="center"><?php echo $result['ist6']; ?></td>
                                         <td align="center">
                                             <?php 
-                                                $ist4 = $this->norma_model->norma_convert('ist4', $result['ist4']);
+                                                $ist4 = $this->norma_model->norma_convert('ist4', $result['ist6']);
                                                 echo $ist4['ws'];
                                             ?>
                                         </td>
@@ -135,10 +135,10 @@
                                     <tr>
                                         <th>RA</th>
                                         <td>Numerical Reasoning</td>
-                                        <td align="center"><?php echo $result['ist5']; ?></td>
+                                        <td align="center"><?php echo $result['ist7']; ?></td>
                                         <td align="center">
                                             <?php 
-                                                $ist5 = $this->norma_model->norma_convert('ist5', $result['ist5']);
+                                                $ist5 = $this->norma_model->norma_convert('ist5', $result['ist7']);
                                                 echo $ist5['ws'];
                                             ?>
                                         </td>
@@ -149,10 +149,10 @@
                                     <tr>
                                         <th>ZR</th>
                                         <td>Analogical Thinking</td>
-                                        <td align="center"><?php echo $result['ist6']; ?></td>
+                                        <td align="center"><?php echo $result['ist8']; ?></td>
                                         <td align="center">
                                             <?php 
-                                                $ist6 = $this->norma_model->norma_convert('ist6', $result['ist6']);
+                                                $ist6 = $this->norma_model->norma_convert('ist6', $result['ist8']);
                                                 echo $ist6['ws'];
                                             ?>
                                         </td>
@@ -163,10 +163,10 @@
                                     <tr>
                                         <th>FA</th>
                                         <td>Synthetical Thinking</td>
-                                        <td align="center"><?php echo $result['ist7']; ?></td>
+                                        <td align="center"><?php echo $result['ist9']; ?></td>
                                         <td align="center">
                                             <?php 
-                                                $ist7 = $this->norma_model->norma_convert('ist7', $result['ist7']);
+                                                $ist7 = $this->norma_model->norma_convert('ist7', $result['ist9']);
                                                 echo $ist7['ws'];
                                             ?>
                                         </td>
@@ -177,10 +177,10 @@
                                     <tr>
                                         <th>WU</th>
                                         <td>Analithical Thinking</td>
-                                        <td align="center"><?php echo $result['ist8']; ?></td>
+                                        <td align="center"><?php echo $result['ist10']; ?></td>
                                         <td align="center">
                                             <?php 
-                                                $ist8 = $this->norma_model->norma_convert('ist8', $result['ist8']);
+                                                $ist8 = $this->norma_model->norma_convert('ist8', $result['ist10']);
                                                 echo $ist8['ws'];
                                             ?>
                                         </td>
@@ -191,10 +191,10 @@
                                     <tr>
                                         <th>ME</th>
                                         <td>Memorical Reasoning</td>
-                                        <td align="center"><?php echo $result['ist9']; ?></td>
+                                        <td align="center"><?php echo $result['ist11']; ?></td>
                                         <td align="center">
                                             <?php 
-                                                $ist9 = $this->norma_model->norma_convert('ist9', $result['ist9']);
+                                                $ist9 = $this->norma_model->norma_convert('ist9', $result['ist12']);
                                                 echo $ist9['ws'];
                                             ?>
                                         </td>
@@ -209,12 +209,13 @@
                                         <th>IQ</th>
                                         <th align="center"><?php echo $result['total']; ?></th>
                                         <th align="center">
-                                            <?php 
-                                                echo $this->norma_model->norma_iq_score($result['total']);
+                                            <?php
+                                                $total =  $result['ist3'] + $result['ist4'] + $result['ist5'] + $result['ist6'] + $result['ist7'] + $result['ist8'] + $result['ist9'] + $result['ist10'] + $result['ist11'];
+                                                echo $this->norma_model->norma_iq_score($total);
                                             ?>
                                         </th>
                                         <th>
-                                            <?php echo $this->norma_model->norma_iq($result['total'])?>
+                                            <?php echo $this->norma_model->norma_iq($total)?>
                                         </th>
                                     </tr>
                                 </tfoot>
