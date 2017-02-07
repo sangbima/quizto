@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="panel panel-warning">
-                        <div class="panel-heading"><i class="fa fa-user"></i> Detail Peserta</div>
+                        <div class="panel-heading"><i class="fa fa-user"></i> Detail Peserta <a href="<?php echo site_url('hasil/download/disc_detail/'. $user['uid']);?>" title="Export ke Excel" class="btn btn-primary pull-right"><i class="fa fa-file-excel-o" aria-hidden="true"></i></a></div>
                         <table class="table table-bordered table-condensed">
                             <tr>
                                 <th>No. Peserta</th>
@@ -30,9 +30,6 @@
                         </table>
                     </div>
                 </div>
-                <div>
-				   <a href="<?php echo site_url('hasil/download/disc_detail/'. $user['uid']);?>" title="Export ke Excel" class="btn btn-default pull-right"><i class="fa fa-file-excel-o" aria-hidden="true"></i></a>
-				</div>				
             </div>
             <div class="row">
                 <div class="col-md-12">

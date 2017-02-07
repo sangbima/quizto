@@ -37,7 +37,7 @@
                     if(count($result)==0){
                 ?>
                 <tr>
-                    <td colspan="3"><?php echo $this->lang->line('no_record_found');?></td>
+                    <td colspan="4"><?php echo $this->lang->line('no_record_found');?></td>
                 </tr>	
 
 

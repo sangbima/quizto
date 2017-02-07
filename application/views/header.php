@@ -60,7 +60,10 @@
                         <ul class="dropdown-menu">
                             <li><a href="<?php echo site_url('user/new_user');?>"><?php echo $this->lang->line('add_new');?></a></li>
                             <li><a href="<?php echo site_url('user');?>"><?php echo $this->lang->line('user_list');?></a></li>
-
+                            <?php if($logged_in['su']==1){ ?>
+                            <li><a href="<?php echo site_url('user/administrator');?>"><?php echo $this->lang->line('adminlist');?></a></li>
+                            <li><a href="<?php echo site_url('user/operator');?>"><?php echo $this->lang->line('operatorlist');?></a></li>
+                            <?php } ?>
                         </ul>
                     </li>
                     <?php 

@@ -160,7 +160,9 @@ class User extends CI_Controller
 		$data['uid']=$uid;
 	 	$data['title']=$this->lang->line('edit').' '.$this->lang->line('user');
 		// fetching user
+		
 		$data['result']=$this->user_model->get_user($uid);
+		
 		$this->load->model("payment_model");
 		$data['payment_history']=$this->payment_model->get_payment_history($uid);
 		// fetching group list
@@ -364,5 +366,49 @@ class User extends CI_Controller
 			echo "Error: " . $_FILES["file"]["error"];
 		}	
 
+	}
+
+	public function administrator($limit=0)
+	{
+		$logged_in=$this->session->userdata('logged_in');
+		if ($logged_in['su'] == 1) {
+			$created_by = null;
+		} else {
+			$created_by = $logged_in['uid'];
+		}
+		 
+		if($logged_in['su']!='1'){
+			// exit($this->lang->line('permission_denied'));
+			redirect('user');
+		}
+
+		$data['limit']=$limit;
+		$data['title']=$this->lang->line('adminlist');
+		$data['result']=$this->user_model->user_list($limit, $created_by, $usertype=1);
+		$this->load->view('header',$data);
+		$this->load->view('administrator',$data);
+		$this->load->view('footer',$data);
+	}
+
+	public function operator($limit=0)
+	{
+		$logged_in=$this->session->userdata('logged_in');
+		if ($logged_in['su'] == 1) {
+			$created_by = null;
+		} else {
+			$created_by = $logged_in['uid'];
+		}
+		 
+		if($logged_in['su']!='1'){
+			// exit($this->lang->line('permission_denied'));
+			redirect('user');
+		}
+
+		$data['limit']=$limit;
+		$data['title']=$this->lang->line('operatorlist');
+		$data['result']=$this->user_model->user_list($limit, $created_by, $usertype=2);
+		$this->load->view('header',$data);
+		$this->load->view('operator',$data);
+		$this->load->view('footer',$data);
 	}
 }

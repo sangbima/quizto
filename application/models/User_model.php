@@ -44,7 +44,44 @@ Class User_model extends CI_Model
 		return $query->num_rows();
 	}
 
- 	function user_list($limit, $created_by=null)
+ 	function user_list($limit, $created_by=null, $usertype=0)
+	{
+		
+		if($this->input->post('search')){
+			$search=$this->input->post('search');
+			$this->db->or_like('users.email',$search);
+			$this->db->or_like('users.registration_no',$search);
+			$this->db->or_like('users.first_name',$search);
+			$this->db->or_like('users.last_name',$search);
+			$this->db->or_like('users.contact_no',$search);
+		}
+
+		$this->db->limit($this->config->item('number_of_rows'),$limit);
+		$this->db->order_by('users.uid','desc');
+		$this -> db -> join('group', 'users.gid=group.gid');
+		
+		if($usertype != 0) {
+			// Tampilkan hanya user Administrator atau Operator
+			$this->db->where('su = ' . $usertype);
+		} else {
+			// Tampilkan hanya user biasa
+			$this->db->where('su = 0');
+		}
+		
+
+		// Tampilkan hanya user sesuai dengan user operator yang membuatnya
+		if($created_by != null) {
+			$this->db->where('created_by', $created_by);	
+		}
+		
+		$query=$this->db->get('users');
+		
+		$result = $query->result_array();
+
+		return $result;
+	}
+
+	function admin_list($limit, $created_by=null)
 	{
 		if($this->input->post('search')){
 			$search=$this->input->post('search');
@@ -58,7 +95,32 @@ Class User_model extends CI_Model
 		$this->db->order_by('users.uid','desc');
 		$this -> db -> join('group', 'users.gid=group.gid');
 		// Tampilkan hanya user biasa
-		$this->db->where('su = 0');
+		$this->db->where('su = 1');
+
+		// Tampilkan hanya user sesuai dengan user operator yang membuatnya
+		if($created_by != null) {
+			$this->db->where('created_by', $created_by);	
+		}
+		
+		$query=$this->db->get('users');
+		return $query->result_array();
+	}
+
+	function operator_list($limit, $created_by=null)
+	{
+		if($this->input->post('search')){
+			$search=$this->input->post('search');
+			$this->db->or_like('users.email',$search);
+			$this->db->or_like('users.registration_no',$search);
+			$this->db->or_like('users.first_name',$search);
+			$this->db->or_like('users.last_name',$search);
+			$this->db->or_like('users.contact_no',$search);
+		}
+		$this->db->limit($this->config->item('number_of_rows'),$limit);
+		$this->db->order_by('users.uid','desc');
+		$this -> db -> join('group', 'users.gid=group.gid');
+		// Tampilkan hanya user biasa
+		$this->db->where('su = 2');
 
 		// Tampilkan hanya user sesuai dengan user operator yang membuatnya
 		if($created_by != null) {
@@ -229,12 +291,13 @@ Class User_model extends CI_Model
 
 	function update_user($uid)
 	{
+		$logged_in=$this->session->userdata('logged_in');
 		$userdata=array(
 			'first_name'=>$this->input->post('first_name'),
 			'last_name'=>$this->input->post('last_name'),
 			'contact_no'=>$this->input->post('contact_no')	
 		);
-		if($logged_in['su']=='1' || $logged_in['su']=='2'){
+		if($logged_in['su']=='1' OR $logged_in['su']=='2'){
 			$userdata['email']=$this->input->post('email');
 			$userdata['registration_no']=$this->input->post('registration_no');
 			$userdata['gid']=$this->input->post('gid');

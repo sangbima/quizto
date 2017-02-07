@@ -76,8 +76,8 @@ Class Disc_model extends CI_Model
 
         $quiz=$query->row_array();
 
-        var_dump(quiz);
-        var_dump($_POST);die();
+        // var_dump(quiz);
+        // var_dump($_POST);die();
 
         return true;
     }

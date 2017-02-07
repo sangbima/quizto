@@ -41,6 +41,8 @@ Class Hasil_model extends CI_Model
                 'group by d.uid
                 order by total desc ' . $qoption;
 
+        // echo $script;
+
         $query =  $query=$this->db->query($script);
         $result = $query->result_array();
         
@@ -265,28 +267,35 @@ Class Hasil_model extends CI_Model
            $qoption= " limit " . $this->config->item('number_of_rows') .  " offset " . $offset_start;
         }           
         
-        $script = 'SELECT d.uid,concat(d.first_name,\' \',d.last_name) as fullname,';
+        $script = 'SELECT d.uid,concat(d.first_name,\' \',d.last_name) as fullname ';
         
          // GET CATEGORY ID
         $this->db->order_by('cid','asc');
         $this->db->where('grup', '2');
-        $query_cat = $this->db->get('category');
-        $result_cat = $query_cat->result_array();
+        // $query_cat = $this->db->get('category');
+        // $result_cat = $query_cat->result_array();
         
-        foreach ($result_cat as $key => $value) {
-            $c = $key+1;
-            $script .= 'round(sum(case when c.cid='.$value['cid'].' then a.score_u else null end), 0) as ist'.$c.',';
-        }
+        // foreach ($result_cat as $key => $value) {
+        //     $c = $key+1;
+        //     $script .= 'round(sum(case when c.cid='.$value['cid'].' then a.score_u else null end), 0) as ist'.$c.',';
+        // }
         
+        // $script .= '
+        //         round(sum(a.score_u), 0) as total
+        //         from answers a
+        //         left join qbank b on b.qid = a.qid
+        //         left join category c on c.cid = b.cid
+        //         left join users d on d.uid = a.uid
+        //         where su != 1 ' . $creator_id .
+        //         ' group by d.uid
+        //         order by total desc ' . $qoption;
+
         $script .= '
-                round(sum(a.score_u), 0) as total
-                from answers a
-                left join qbank b on b.qid = a.qid
-                left join category c on c.cid = b.cid
-                left join users d on d.uid = a.uid
+                FROM disc_answers a
+                LEFT JOIN users d ON a.uid = d.uid
+                LEFT JOIN result b ON a.rid = b.rid
                 where su != 1 ' . $creator_id .
-                ' group by d.uid
-                order by total desc ' . $qoption;
+                'GROUP BY d.uid ' . $qoption;
         
         // Dengan admin
         // $script .= '

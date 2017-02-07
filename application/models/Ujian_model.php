@@ -263,9 +263,14 @@ Class Ujian_model extends CI_Model
             5 => '*',
         );
 
+        $q_disc=$this->db->query("select * from result where result.rid='$rid' "); 
+        $q_quiz=$q_disc->row_array();
+
+        // var_dump($q_quiz['quid']);die();
+
         foreach ($mosts as $key => $most) {
             $userdata = array(
-                'quid' => $quid[9],
+                'quid' => $q_quiz['quid'],
                 'qid' => $statements[$key],
                 'uid' => $logged_in['uid'],
                 'most' => $disc[$most],

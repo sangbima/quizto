@@ -363,6 +363,8 @@ class Hasil extends CI_Controller
         // fetching user list
         $data['result']=$this->hasil_model->hasil_disc($limit,$cid,$created_by);
 
+        // var_dump($data['result']);
+
         foreach($data['result'] as $mkey=>$mval) {
             $data['result'][$mkey]['mscale']=$this->norma_model->data_scale_m($data['result'][$mkey]['uid']);                                       
             $data['result'][$mkey]['lscale']=$this->norma_model->data_scale_l($data['result'][$mkey]['uid']);
