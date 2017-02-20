@@ -1,2 +1,2 @@
-TABLE `register` ADD UNIQUE(`email`);
-TABLE `register` ADD UNIQUE(`registration_no`);
+ALTER TABLE `register` ADD UNIQUE(`email`);
+ALTER TABLE `register` ADD UNIQUE(`registration_no`);
