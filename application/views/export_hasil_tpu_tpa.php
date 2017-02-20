@@ -23,12 +23,14 @@
 		   $objSheet->SetCellValue('B' . $c_row, $value['ist1'] ? $value['ist1'] : 0);
 		   $objSheet->SetCellValue('C' . $c_row, $value['ist2'] ? $value['ist2'] : 0);
 		   $objSheet->SetCellValue('D' . $c_row, ($value['ist1'] ? $value['ist1'] : 0) + ($value['ist2'] ? $value['ist2'] : 0));
+		   $objSheet->SetCellValue('E' . $c_row, $value['group_name']);		   		   
+		   $objSheet->SetCellValue('F' . $c_row, $value['created_by_name']);		   		   
 	}		
 										
     $objSheet->getColumnDimension('A')->setAutoSize(true);	
-	$objSheet->getStyle('A1:D1')->getFont()->setBold(true);
+	$objSheet->getStyle('A1:F1')->getFont()->setBold(true);
 	
-	$objSheet->getStyle('A1:D1')->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID)->getStartColor()->setARGB('FFE8E5E5');
+	$objSheet->getStyle('A1:F1')->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID)->getStartColor()->setARGB('FFE8E5E5');
 	
 	$objSheet->getStyle('O1')->getFont()->setBold(true);
 	

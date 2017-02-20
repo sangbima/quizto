@@ -29,6 +29,15 @@
                             <?php } ?>
                         </select>
                       </div>
+                      <div class="form-group">
+                        <label class="sr-only" for="groupid">Group</label>
+                        <select name="group" id="groupid" class="form-control">
+                            <option value="">-- Pilih Group --</option>
+                            <?php foreach($groups as $group) {?>
+                            <option value="<?php echo $group['gid']?>"><?php echo $group['group_name']?></option>
+                            <?php } ?>
+                        </select>
+                      </div>
                       <button type="submit" class="btn btn-default"><?php echo $this->lang->line('search');?></button>
                     </form>           
                   </div>
@@ -40,9 +49,9 @@
 				    Hasil Semua Test
                     <div class="btn-group pull-right">
                         <button id="w6" class="btn btn-default dropdown-toggle" title="Export data in Excel" data-toggle="dropdown" aria-expanded="false"><i class="glyphicon glyphicon-export"></i> <span class="caret"></span></button>
-                        <ul id="w7" class="dropdown-menu">
-                            <li title="Export All Data To Excel"><a id="all-excell" class="export-full-html" href="<?php echo site_url('hasil/download/default/'. $limit . '/1');?>" tabindex="-1"><i class="fa fa-file-excel-o"></i> Export All</a></li>
-                            <li title="Export Per Page To Excel"><a id="page-excell" class="export-full-html" href="<?php echo site_url('hasil/download/default/'. $limit . '/0');?>" tabindex="-1"><i class="fa fa-file-excel-o"></i> Export Per Page</a></li>
+                        <ul id="w7" class="dropdown-menu">						    
+                            <li title="Export All Data To Excel"><a id="all-excell" class="export-full-html" href="<?php echo site_url('hasil/download/default/'. $limit . '/1/'. $search['gid'].'/' . $search['created_by']);?>" tabindex="-1"><i class="fa fa-file-excel-o"></i> Export All</a></li>
+                            <li title="Export Per Page To Excel"><a id="page-excell" class="export-full-html" href="<?php echo site_url('hasil/download/default/'. $limit . '/0/' . $search['gid']  . '/' . $search['created_by']);?>" tabindex="-1"><i class="fa fa-file-excel-o"></i> Export Per Page</a></li>
                         </ul>
                     </div>
 				</div>
@@ -93,12 +102,12 @@
     <?php
     if(($limit-($this->config->item('number_of_rows')))>=0){ $back=$limit-($this->config->item('number_of_rows')); }else{ $back='0'; } ?>
 
-    <a href="<?php echo site_url('hasil/index/'.$back);?>"  class="btn btn-primary"><?php echo $this->lang->line('back');?></a>
+    <a href="<?php echo site_url('hasil/index/'.$back .'/' . $search['gid'].'/' . $search['created_by']);?>"  class="btn btn-primary"><?php echo $this->lang->line('back');?></a>
     &nbsp;&nbsp;
     <?php
     $next=$limit+($this->config->item('number_of_rows'));  ?>
 
-    <a href="<?php echo site_url('hasil/index/'.$next);?>"  class="btn btn-primary"><?php echo $this->lang->line('next');?></a>					
+    <a href="<?php echo site_url('hasil/index/'.$next .'/' . $search['gid'].'/' . $search['created_by']);?>"  class="btn btn-primary"><?php echo $this->lang->line('next');?></a>					
         </div>
     </div>	
 </div>

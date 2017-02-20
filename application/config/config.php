@@ -58,11 +58,13 @@ $config['protocol']="mail";
 // smtp hostname eg. smtp.gmail.com
 $config['smtp_hostname'] = "ssl://smtp.gmail.com";
 // smtp username
-$config['smtp_username'] = "";
+$config['smtp_username'] = "cat.kemendikbud@gmail.com";
 // smtp password
-$config['smtp_password'] = "";
+$config['smtp_password'] = '$$gedungFSudirman';
 // smtp outgoing port. eg for gmail its 465, outlook 587, yahoo 465 for other contact your mailing administrator
-$config['smtp_port'] = "465";
+$config['smtp_port'] = "587";
+$config['smtp_secure'] = "tls";
+$config['smtp_auth'] = TRUE;
 // smtp timeout default 5 seconds
 $config['smtp_timeout'] = "5";
 // smtp tls
@@ -73,6 +75,9 @@ $config['newline'] = "\r\n";
 // In html email make sure you don't have any relative links or relative image paths otherwise they will not work.
 $config['smtp_mailtype'] = "text";
 
+$config['email_subject'] = "Pendaftaran Anda Sukses";
+
+$config['email_message'] = "Terima kasih, berikut data lengkap Anda untuk login. \r\n Username Anda: [registration_no]\r\n Password Anda: [password] \r\n Simpanlah Username dan Password ini dengan aman untuk mengikuti ujian. Terima kasih";
 
 // activation email subject
 $config['activation_subject'] = "Action required to verify your account";
@@ -96,9 +101,9 @@ $config['result_subject'] = "Result generated for quiz [quiz_name]";
 
 
 // email send from
-$config['fromemail']="noeply@gmailll.com";
+$config['fromemail']="cat.kemendikbud@gmail.com";
 // from name
-$config['fromname']="Administrator - Quiz Portal";
+$config['fromname']="Panitia Ujian CAT";
 
 
 
@@ -533,7 +538,8 @@ $config['standardize_newlines'] = FALSE;
 |          for backwards compatibility purposes!
 |
 */
-$config['global_xss_filtering'] = FALSE;
+// $config['global_xss_filtering'] = FALSE;
+$config['global_xss_filtering'] = TRUE;
 
 /*
 |--------------------------------------------------------------------------

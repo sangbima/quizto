@@ -32,14 +32,16 @@
 		   $objSheet->SetCellValue('K' . $c_row, $value['ist10'] ? $value['ist10'] : 0);
 		   $objSheet->SetCellValue('L' . $c_row, $value['ist11'] ? $value['ist11'] : 0);
 		   $objSheet->SetCellValue('M' . $c_row, $value['total']);
+		   $objSheet->SetCellValue('N' . $c_row, $value['group_name']);		   		   
+		   $objSheet->SetCellValue('O' . $c_row, $value['created_by_name']);
 	}		
 										
     $objSheet->getColumnDimension('A')->setAutoSize(true);	
-	$objSheet->getStyle('A1:M1')->getFont()->setBold(true);
+	$objSheet->getStyle('A1:P1')->getFont()->setBold(true);
 		
-	$objSheet->getStyle('A1:M1')->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID)->getStartColor()->setARGB('FFE8E5E5');
+	$objSheet->getStyle('A1:P1')->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID)->getStartColor()->setARGB('FFE8E5E5');
 	
-	$objSheet->getStyle('O1')->getFont()->setBold(true);
+	$objSheet->getStyle('P1')->getFont()->setBold(true);
 	
 	$objSheet->setTitle($title);
 		

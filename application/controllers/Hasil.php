@@ -22,7 +22,7 @@ class Hasil extends CI_Controller
         }
     }
 
-    public function index($limit='0',$cid='0',$lid='0')
+    public function index($limit='0',$gid_filter='0',$oid_filter='0')
     {
         $this->load->helper('form');
         $logged_in=$this->session->userdata('logged_in');
@@ -34,16 +34,37 @@ class Hasil extends CI_Controller
         if($logged_in['su']!='1' && $logged_in['su']!='2'){
             exit($this->lang->line('permission_denied'));
         }
-            
+		
+       if($oid_filter != null and $oid_filter !=0) {
+           $data['search']['created_by']=$oid_filter;		        		
+	   } else {
+		    if ($this->input->post('operator')) { 
+                $data['search']['created_by']=$this->input->post('operator');		 
+	       	} else {			
+			    $data['search']['created_by']=0;		 
+            }
+	   }
+	   
+       if($gid_filter != null and $gid_filter !=0) {
+           $data['search']['gid']=$gid_filter;		        		
+	   } else {	   
+           if ($this->input->post('group')) { 
+               $data['search']['gid']=$this->input->post('group');		 
+		   } else {
+			   $data['search']['gid']=0;		 
+           }		
+	   }
+		
         $data['limit']=$limit;
-        $data['cid']=$cid;
-        $data['lid']=$lid;
+        //$data['cid']=$cid;
+        //$data['lid']=$lid;
         
         $data['title']=$this->lang->line('resultlist');
         // fetching user list
-        $data['operators'] = $this->user_model->user_list(0, $created_by=null, $usertype=2);
+        $data['operators'] = $this->user_model->user_list(0, null, 2);
+        $data['groups'] = $this->user_model->group_list();
         // var_dump($data['operator']);
-        $data['result']=$this->hasil_model->hasil_resume($limit,false,$created_by);
+        $data['result']=$this->hasil_model->hasil_resume($limit,false,$gid_filter,$oid_filter);
         $this->load->view('header',$data);
         $this->load->view('hasil_list',$data);
         $this->load->view('footer',$data);
@@ -107,7 +128,7 @@ class Hasil extends CI_Controller
         $this->load->view('footer');
     }
 
-    public function tpu_tpa($limit='0',$cid='0',$lid='0')
+    public function tpu_tpa($limit='0',$gid_filter='0',$oid_filter='0')
     {
         $this->load->helper('form');
         $logged_in=$this->session->userdata('logged_in');
@@ -120,20 +141,44 @@ class Hasil extends CI_Controller
             exit($this->lang->line('permission_denied'));
         }
             
+
+        if($oid_filter != null and $oid_filter !=0) {
+           $data['search']['created_by']=$oid_filter;		        		
+	   } else {
+		    if ($this->input->post('operator')) { 
+                $data['search']['created_by']=$this->input->post('operator');		 
+	       	} else {			
+			    $data['search']['created_by']=0;		 
+            }
+	   }
+	   
+       if($gid_filter != null and $gid_filter !=0) {
+           $data['search']['gid']=$gid_filter;		        		
+	   } else {	   
+           if ($this->input->post('group')) { 
+               $data['search']['gid']=$this->input->post('group');		 
+		   } else {
+			   $data['search']['gid']=0;		 
+           }		
+	   }
+			
+			
         $data['limit']=$limit;
-        $data['cid']=$cid;
-        $data['lid']=$lid;
+        //$data['cid']=$cid;
+        //$data['lid']=$lid;
         
         $data['title']=$this->lang->line('resultlist');
-        // fetching user list
-        $data['result']=$this->hasil_model->hasil_tpu_tpa($limit,false, $created_by);
+        // fetching user list		
+        $data['operators'] = $this->user_model->user_list(0, null, 2);
+        $data['groups'] = $this->user_model->group_list();		
+        $data['result']=$this->hasil_model->hasil_tpu_tpa($limit,false,$gid_filter,$oid_filter);
         $this->load->view('header', $data);
         $this->load->view('hasil_tpu_tpa', $data);
         $this->load->view('footer', $data);
     }
 
     
-    public function ist($limit='0',$cid='0',$lid='0')
+    public function ist($limit='0',$gid_filter='0',$oid_filter='0')
     {
         $this->load->helper('form');
         $logged_in=$this->session->userdata('logged_in');
@@ -146,32 +191,56 @@ class Hasil extends CI_Controller
             exit($this->lang->line('permission_denied'));
         }
             
+       if($oid_filter != null and $oid_filter !=0) {
+           $data['search']['created_by']=$oid_filter;		        		
+	   } else {
+		    if ($this->input->post('operator')) { 
+                $data['search']['created_by']=$this->input->post('operator');		 
+	       	} else {			
+			    $data['search']['created_by']=0;		 
+            }
+	   }
+	   
+       if($gid_filter != null and $gid_filter !=0) {
+           $data['search']['gid']=$gid_filter;		        		
+	   } else {	   
+           if ($this->input->post('group')) { 
+               $data['search']['gid']=$this->input->post('group');		 
+		   } else {
+			   $data['search']['gid']=0;		 
+           }		
+	   }
+       
+			
+			
         $data['limit']=$limit;
-        $data['cid']=$cid;
-        $data['lid']=$lid;
+        //$data['cid']=$cid;
+        //$data['lid']=$lid;
         
         $data['title']=$this->lang->line('resultlist');
         // fetching user list
-        $data['result']=$this->hasil_model->hasil_list($limit,false, $created_by);
+        $data['operators'] = $this->user_model->user_list(0, null, 2);
+        $data['groups'] = $this->user_model->group_list();		
+        $data['result']=$this->hasil_model->hasil_list($limit,false,$gid_filter,$oid_filter);
         $this->load->view('header',$data);
         $this->load->view('hasil_ist',$data);
         $this->load->view('footer',$data);
     }
     
 
-    public function download($qtype='ist',$limit='0',$full=false) 
-    {       
+    public function download($qtype='ist',$limit='0',$full=false,$gid=null,$created_by=null) 
+    {       			  
         $logged_in=$this->session->userdata('logged_in');
         if($logged_in['su']!='1' && $logged_in['su']!='2'){
             exit($this->lang->line('permission_denied'));
         }
 
         if ( $qtype=='tpu_tpa' ) {  
-            $this->export_hasil_tpu_tpa($limit,$full);
+            $this->export_hasil_tpu_tpa($limit,$full,$gid,$created_by);
         }               
         
         if ( $qtype=='ist' ) {  
-            $this->export_hasil_ist($limit,$full);
+            $this->export_hasil_ist($limit,$full,$gid,$created_by);
         }       
 		
         if ( $qtype=='ist_detail' ) {  
@@ -179,7 +248,7 @@ class Hasil extends CI_Controller
         }       		
         
         if ( $qtype=='disc' ) {  
-            $this->export_hasil_disc($limit,$full);
+            $this->export_hasil_disc($limit,$full,$gid,$created_by);
         }
 
         if ( $qtype=='disc_detail' ) {  
@@ -187,7 +256,7 @@ class Hasil extends CI_Controller
         }		
 				
         if ($qtype=='default') {
-            $this->export_hasil_ringkasan($limit,$full);
+            $this->export_hasil_ringkasan($limit,$full,$gid,$created_by);
         }  
         if ($qtype=='default_detail') {
             $this->export_hasil_ringkasan_detail($limit,$full);			
@@ -199,15 +268,14 @@ class Hasil extends CI_Controller
         
     }   
     
-    public function export_hasil_ringkasan($limit='0',$full=false)
-    {
+    public function export_hasil_ringkasan($limit='0',$full=false,$gid=null,$created_by=null)
+    {         	
         $logged_in=$this->session->userdata('logged_in');
-        if ($logged_in['su'] == 1) {
-            $created_by = null;
-        } else {
+		
+        if ($logged_in['su'] != 1) {
             $created_by = $logged_in['uid'];
         }
-
+        
         $data['limit']=$limit;
         $data['title']='Hasil Ringkasan';
         $data['header']=array('A'=>'FULLNAME',
@@ -222,19 +290,23 @@ class Hasil extends CI_Controller
                               'J'=>'FA',
                               'K'=>'WU',
                               'L'=>'ME',
-                              'M'=>'TOTAL'
-                              );        
+                              'M'=>'TOTAL',
+                              'N'=>'GROUP',							  
+							  'O'=>'CREATED BY'
+							  );        
         
-         $data['result']=$this->hasil_model->hasil_resume($limit,$full,$created_by);
+         $data['result']=$this->hasil_model->hasil_resume($limit,$full,$gid,$created_by);
+		 		 
          if ( $full) {
             $data['filename'] = "hasil_ringkasan_full_" . date('Ymd') . ".xlsx";         
          } else {
             $data['filename'] = "hasil_ringkasan_"  . $limit. " _". date('Ymd') . ".xlsx";       
          }   
          $this->load->view('export_hasil_ringkasan',$data);      
+		 
     }
 
-    public function export_hasil_tpu_tpa($limit='0',$full=false)
+    public function export_hasil_tpu_tpa($limit='0',$full=false,$gid=null,$created_by=null)
     {
         $this->load->helper('form');
         $logged_in=$this->session->userdata('logged_in');
@@ -253,9 +325,11 @@ class Hasil extends CI_Controller
         $data['header']=array('A'=>'FULLNAME',
                               'B'=>'TPU',
                               'C'=>'TPA',
-                              'D'=>'TOTAL'
+                              'D'=>'TOTAL',
+                              'E'=>'GROUP',							  
+							  'F'=>'CREATED BY'							  
                               );        
-        $data['result']=$this->hasil_model->hasil_tpu_tpa($limit,$full, $created_by);
+        $data['result']=$this->hasil_model->hasil_tpu_tpa($limit,$full,$gid,$created_by);
         if ( $full) {
             $data['filename'] = "hasil_tpu_tpa_full_" . date('Ymd') . ".xlsx";       
          } else {
@@ -265,7 +339,7 @@ class Hasil extends CI_Controller
      
     }
     
-    public function export_hasil_ist($limit='0',$full=false)
+    public function export_hasil_ist($limit='0',$full=false,$gid=null,$created_by=null)
     {    
 
         $logged_in=$this->session->userdata('logged_in');
@@ -290,9 +364,11 @@ class Hasil extends CI_Controller
                               'H'=>'FA',
                               'I'=>'WU',
                               'J'=>'ME',
-                              'K'=>'TOTAL'
+                              'K'=>'TOTAL',
+                              'L'=>'GROUP',							  
+							  'M'=>'CREATED BY'							  
                               );
-         $data['result']=$this->hasil_model->hasil_list($limit,$full,$created_by); 
+         $data['result']=$this->hasil_model->hasil_list($limit,$full,$gid,$created_by); 
          if ( $full) {
             $data['filename'] = "hasil_ist_full_" . date('Ymd') . ".xlsx";       
          } else {
@@ -301,7 +377,7 @@ class Hasil extends CI_Controller
          $this->load->view('export_hasil_ist',$data);
     }
 
-     public function export_hasil_disc($limit,$full=false) 
+     public function export_hasil_disc($limit,$full=false,$gid=null,$created_by=null) 
      {
         $logged_in=$this->session->userdata('logged_in');
         if ($logged_in['su'] == 1) {
@@ -315,11 +391,13 @@ class Hasil extends CI_Controller
   
         $data['limit']=$limit;
         $data['title']="Hasil DISC";        
-        $data['result']=$this->hasil_model->hasil_disc($limit,$full,$created_by);
+        $data['result']=$this->hasil_model->hasil_disc($limit,$full,$gid,$created_by);
         $data['header']=array('A'=>'FULLNAME',
                               'B'=>'MOST',
                               'C'=>'LEAST',
-                              'D'=>'CHANGE'
+                              'D'=>'CHANGE',
+                              'E'=>'GROUP',							  
+							  'F'=>'CREATED BY'							  
                               );
         foreach($data['result'] as $mkey=>$mval) {
             $data['result'][$mkey]['mscale']=$this->norma_model->data_scale_m($data['result'][$mkey]['uid']);                                       
@@ -342,7 +420,7 @@ class Hasil extends CI_Controller
     //     $this->load->view('footer',$data);
     // }
 
-    public function disc($limit='0',$cid='0',$lid='0')
+    public function disc($limit='0',$gid_filter='0',$oid_filter='0')
     {
         $this->load->model("norma_model");      
         $this->load->helper('form');
@@ -358,13 +436,37 @@ class Hasil extends CI_Controller
             exit($this->lang->line('permission_denied'));
         }
             
+       if($oid_filter != null and $oid_filter !=0) {
+           $data['search']['created_by']=$oid_filter;		        		
+	   } else {
+		    if ($this->input->post('operator')) { 
+                $data['search']['created_by']=$this->input->post('operator');		 
+	       	} else {			
+			    $data['search']['created_by']=0;		 
+            }
+	   }
+	   
+       if($gid_filter != null and $gid_filter !=0) {
+           $data['search']['gid']=$gid_filter;		        		
+	   } else {	   
+           if ($this->input->post('group')) { 
+               $data['search']['gid']=$this->input->post('group');		 
+		   } else {
+			   $data['search']['gid']=0;		 
+           }		
+	   }			
+ 
+			
+			
         $data['limit']=$limit;
-        $data['cid']=$cid;
-        $data['lid']=$lid;
+        //$data['cid']=$cid;
+        //$data['lid']=$lid;
         
         $data['title']=$this->lang->line('resultlist');
         // fetching user list
-        $data['result']=$this->hasil_model->hasil_disc($limit,$cid,$created_by);
+        $data['operators'] = $this->user_model->user_list(0, null, 2);
+        $data['groups'] = $this->user_model->group_list();		
+        $data['result']=$this->hasil_model->hasil_disc($limit,false,$gid_filter,$oid_filter);
 
         // var_dump($data['result']);
 

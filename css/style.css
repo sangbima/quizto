@@ -63,11 +63,11 @@ img{
 .navbar {
 	border-radius: 0px;
 }
-/*.dropdown-menu {
+.dropdown-menu {
 	background-color: #ffffff;
-}*/
-#navbar>ul>li>ul.dropdown-menu {
-	background-color: #434a54;
+}
+#navbar>ul>li>ul.dropdown-menu, .btn-group .dropdown-menu{
+	background-color: #434a54 !important;
 }
 .labelqbtn {
 	position: relative;
@@ -485,4 +485,10 @@ div#timer-left.col-md-3 {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.datepicker table tr td.active:active, .datepicker table tr td.active.highlighted:active, .datepicker table tr td.active.active, .datepicker table tr td.active.highlighted.active, .open > .dropdown-toggle.datepicker table tr td.active, .open > .dropdown-toggle.datepicker table tr td.active.highlighted {
+    background-color: #285e8e !important;
+    border-color: #285e8e !important;
+    color: #ffffff !important;
 }
