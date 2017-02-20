@@ -23,12 +23,9 @@ Class Register_model extends CI_Model
             'nilai_ipk' => $this->input->post('nilai_ipk'),
         );
 
-        // var_dump($userdata); die();
-
         if($this->db->insert('register',$userdata)){
             if($this->config->item('verify_email')){
-                // send verification link in email
-                // $verilink=site_url('login/verify/'.$veri_code);
+                
                 $this->load->library('email');
 
                 if($this->config->item('protocol')=="smtp"){
@@ -56,14 +53,13 @@ Class Register_model extends CI_Model
             
                 $toemail = $this->input->post('email');
                  
-                $this->email->to($toemail);
-                $this->email->from($fromemail, $fromname);
-                $this->email->subject($subject);
-                $this->email->message($message);
-                if(!$this->email->send()){
+                $headers  = 'From: [cat.kemendikbud]@gmail.com' . "\r\n" .
+                            'MIME-Version: 1.0' . "\r\n" .
+                            'Content-type: text/html; charset=utf-8';
+                if(!mail($toemail, $subject, $message, $headers)) {
                     print_r($this->email->print_debugger());
                     exit;
-                }                
+                }
             }
             return true;
         }else{

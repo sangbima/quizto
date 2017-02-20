@@ -57,7 +57,7 @@ class Register extends CI_Controller
             }
             $this->load->view('register_success',$data);
         }
-        
+        // $this->load->view('register_success',$data);
         $this->load->view('footer',$data);
     }
 
@@ -77,41 +77,15 @@ class Register extends CI_Controller
 
     public function test()
     {
-        // // Format: ThnBln, Ex. 170200000001
-        // $nextRegNo = $this->register_model->generateRegistrationNumber();
-
-        // echo $nextRegNo;
-        ini_set("SMTP","ssl://smtp.gmail.com");
-        ini_set("smtp_port","465");
-        
-        $config['useragent']    = 'CodeIgniter';
-        $config['protocol']     = 'smtp';
-        $config['smtp_host']    = 'smtp.gmail.com';
-        $config['smtp_user']    = 'cat.kemendikbud@gmail.com'; // Your gmail id
-        $config['smtp_pass']    = '$$gedungFSudirman'; // Your gmail Password
-        $config['smtp_port']    = 465;
-        $config['wordwrap']     = TRUE;    
-        $config['wrapchars']    = 76;
-        $config['mailtype']     = 'html';
-        $config['charset']      = 'iso-8859-1';
-        $config['validate']     = FALSE;
-        $config['priority']     = 3;
-        $config['newline']      = "\r\n";
-        $config['crlf']         = "\r\n";
-
-        $this->load->library('email');
-        $this->email->initialize($config);
-
-        $this->email->from('cat.kemendikbud@gmail.com', 'Panitia Ujian CAT');
-        $this->email->to('sangbima.net@gmail.com'); 
-        $this->email->cc('cyber.sms@gmail.com'); 
-
-        $this->email->subject('Email Ini dari CI');
-        $this->email->message('Ini isi email yang dikirim dari CI.');    
-
-        if(!$this->email->send()){
-            print_r($this->email->print_debugger());
-            exit;
-        }   
+        // $to       = 'sangbima.net@gmail.com';
+        // $subject  = 'Coba kirim email dari windows';
+        // $message  = 'Hi, you just received an email using sendmail!';
+        // $headers  = 'From: [cat.kemendikbud]@gmail.com' . "\r\n" .
+        //             'MIME-Version: 1.0' . "\r\n" .
+        //             'Content-type: text/html; charset=utf-8';
+        // if(mail($to, $subject, $message, $headers))
+        //     echo "Email sent";
+        // else
+        //     echo "Email sending failed";  
     }
 }

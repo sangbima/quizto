@@ -13,23 +13,14 @@
             ?>
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Data Anda</h3>
+                    <h3 class="panel-title">Registrasi Anda Berhasil</h3>
                 </div>
                 <div class="panel-body">
-                    <table class="table table-condensed">
-                        <tr>
-                            <td class="col-md-2">Username:</td>
-                            <td class="col-md-10">20178990</td>
-                        </tr>
-                        <tr>
-                            <td class="col-md-2">Password:</td>
-                            <td class="col-md-10">inipasswordku</td>
-                        </tr>
-                        <tr>
-                            <td class="col-md-2">Nama</td>
-                            <td class="col-md-10">Khairil</td>
-                        </tr>
-                    </table>
+                    <p>Silahkan cek email Anda untuk mendapatkan Username dan Password.</p>
+                    <p>
+                        Info lengkap silahkan hubungi: <a href="mailto:cat.kemendikbud@gmail.com">Panitia Ujian</a><br/><br/>
+                        <a href="/" class="btn btn-primary">Kembali</a>
+                    </p>
                 </div>
             </div>
         </div>

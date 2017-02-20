@@ -161,6 +161,18 @@ ul.option_answers_multi li {
   padding:0;
 }
 
+.login-card .btn.btn-reg {
+  font-weight:700;
+  height:36px;
+  line-height:36px;
+  font-size:14px;
+  background:rgb(59, 175, 218);
+  border-radius:3px;
+  border:none;
+  transition:all 0.218s;
+  padding:0;
+}
+
 .login-card .btn.btn-signin:hover, .login-card .btn.btn-signin:active, .login-card .btn.btn-signin:focus {
   background:rgb(193,156,127);
 }
