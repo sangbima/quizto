@@ -1,0 +1,1 @@
+ALTER TABLE `register` ADD `jabatan` VARCHAR(128) NOT NULL AFTER `thn_mengabdi`, ADD `jobdesk` TEXT NOT NULL AFTER `jabatan`;
