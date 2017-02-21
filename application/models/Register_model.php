@@ -25,55 +25,49 @@ Class Register_model extends CI_Model
             'nilai_ipk' => $this->input->post('nilai_ipk'),
         );
 
-        if($this->db->insert('register',$userdata)){
-            if($this->config->item('verify_email')){
-                
-                $this->load->library('email');
+        // var_dump($userdata);die();
 
-                if($this->config->item('protocol')=="smtp"){
-                    $config['protocol'] = 'smtp';
-                    $config['smtp_host'] = $this->config->item('smtp_hostname');
-                    $config['smtp_user'] = $this->config->item('smtp_username');
-                    $config['smtp_pass'] = $this->config->item('smtp_password');
-                    $config['smtp_port'] = $this->config->item('smtp_port');
-                    $config['smtp_timeout'] = $this->config->item('smtp_timeout');
-                    $config['mailtype'] = $this->config->item('smtp_mailtype');
-                    $config['starttls']  = $this->config->item('starttls');
-                    $config['newline']  = $this->config->item('newline');
-                    
-                    $this->email->initialize($config);
-                }
-                
-                $fromemail = $this->config->item('fromemail');
-                $fromname = $this->config->item('fromname');
-                $subject = $this->config->item('email_subject');
-                $message = $this->config->item('email_message');
-                
-                $message = str_replace('[registration_no]', $this->generateRegistrationNumber(), $message);
-                $message = str_replace('[password]', $this->input->post('password'), $message);
-                
+        // $this->load->library('email');
+
+        if($this->config->item('protocol')=="smtp"){
+            $config = array();
+            $config['protocol'] = 'smtp';
+            $config['smtp_host'] = $this->config->item('smtp_hostname');
+            $config['smtp_user'] = $this->config->item('smtp_username');
+            $config['smtp_pass'] = $this->config->item('smtp_password');
+            $config['smtp_port'] = $this->config->item('smtp_port');
+            $config['smtp_timeout'] = $this->config->item('smtp_timeout');
+            $config['mailtype'] = $this->config->item('smtp_mailtype');
+            $config['starttls']  = $this->config->item('starttls');
+            $config['newline']  = $this->config->item('newline');
             
-                $toemail = $this->input->post('email');
-                 
-                $headers  = 'From: [cat.kemendikbud]@gmail.com' . "\r\n" .
-                            'MIME-Version: 1.0' . "\r\n" .
-                            'Content-type: text/html; charset=utf-8';
-                if(!mail($toemail, $subject, $message, $headers)) {
-                    print_r($this->email->print_debugger());
-                    exit;
-                }
-            }
-            return true;
-        }else{
-            return false;
+            $this->email->initialize($config);
         }
 
+        $fromemail = $this->config->item('fromemail');
+        $fromname = $this->config->item('fromname');
+        $subject = $this->config->item('email_subject');
+        $message = $this->config->item('email_message');
+        
+        $message = str_replace('[registration_no]', $userdata['registration_no'], $message);
+        $message = str_replace('[password]', $userdata['password'], $message);
 
-        // if($this->db->insert('register',$userdata)){
-        //     return true;
-        // }else{
-        //     return false;
-        // }
+        $toemail = $this->input->post('email');
+
+        $this->email->to($toemail);
+        $this->email->from($fromemail, $fromname);
+        $this->email->subject($subject);
+        $this->email->message($message);
+        if(!$this->email->send()){
+            print_r($this->email->print_debugger());
+            exit;
+        } else {
+            if($this->db->insert('register',$userdata)){
+                return true;
+            } else {
+                return false;
+            }
+        }
     }
 
     function generateRegistrationNumber()
@@ -99,6 +93,6 @@ Class Register_model extends CI_Model
         $query = $this->db->query('SELECT * FROM register ORDER BY id DESC LIMIT 1');
         $lastId = $query->row();
         
-        return $lastId->registration_no == '' || $lastId->registration_no == NULL ? 0 : $lastId->registration_no;
+        return $lastId == NULL ? 0 : $lastId->registration_no;
     }
 }

@@ -48,7 +48,7 @@ $config['tinymce']=true;
 $config['allow_result_email']=false;
 
 // email sending protocol mail or smtp
-$config['protocol']="mail";
+$config['protocol']="smtp";
 
 /*
 | SMTP configuration to send email to user just after submitting quiz
@@ -62,8 +62,8 @@ $config['smtp_username'] = "cat.kemendikbud@gmail.com";
 // smtp password
 $config['smtp_password'] = '$$gedungFSudirman';
 // smtp outgoing port. eg for gmail its 465, outlook 587, yahoo 465 for other contact your mailing administrator
-$config['smtp_port'] = "587";
-$config['smtp_secure'] = "tls";
+$config['smtp_port'] = 465;
+$config['smtp_secure'] = "ssl";
 $config['smtp_auth'] = TRUE;
 // smtp timeout default 5 seconds
 $config['smtp_timeout'] = "5";
@@ -73,7 +73,7 @@ $config['starttls'] = TRUE;
 $config['newline'] = "\r\n";
 // email message content text of html. 
 // In html email make sure you don't have any relative links or relative image paths otherwise they will not work.
-$config['smtp_mailtype'] = "text";
+$config['smtp_mailtype'] = "html";
 
 $config['email_subject'] = "Pendaftaran Anda Sukses";
 

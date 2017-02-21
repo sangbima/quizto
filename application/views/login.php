@@ -9,9 +9,10 @@
                     	<?php 
 						if($this->session->flashdata('message')){
 						?>
-							<div class="alert alert-danger">
-								<?php echo $this->session->flashdata('message');?>
-							</div>
+							<div class="alert alert-danger alert-dismissable">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                <?php echo $this->session->flashdata('message'); ?>
+                            </div>
 						<?php	
 						}
 						?>
@@ -19,7 +20,7 @@
                         <input class="form-control" type="password" name="password" required="" placeholder="<?php echo $this->lang->line('password');?>" id="inputPassword">
                         <div class="checkbox"></div>
                         <button class="btn btn-primary btn-block btn-lg btn-signin" type="submit"><?php echo $this->lang->line('login');?></button>
-                        <!-- <a class="btn btn-primary btn-block btn-lg btn-reg" href="register">Daftar Ujian</a> -->
+                        <a class="btn btn-primary btn-block btn-lg btn-reg" href="register">Daftar Ujian</a>
                     </form>
                 </div>
             </div>

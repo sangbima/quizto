@@ -1,6 +1,9 @@
 <div class="container">
     <h3><?php echo $title;?></h3>
-    <?php echo form_open('register'); ?>
+    <?php 
+    $attributes = array("name" => "register_form", "id" => "register_form");
+    echo form_open('register/submit', $attributes); 
+    ?>
         <div class="row">
             <div class="col-md-6">
                 <div class="panel panel-primary">
@@ -303,10 +306,13 @@
                 </div>
             </div>
         </div>
-        <button class="btn btn-default" type="submit">Daftar</button>
+        <button class="btn btn-default" type="submit" id="daftar">Daftar</button>
     <?php echo form_close(); ?>
 </div>
 
+<div id="spinner"></div>
+
+<script type="text/javascript" src="<?php echo base_url();?>js/jquery.js"></script>
 <script type="text/javascript">
 // When the document is ready
 $(document).ready(function () {
@@ -315,5 +321,52 @@ $(document).ready(function () {
         format: "dd-mm-yyyy"
     });
 
+});
+
+$body = $("body");
+$(document).on({
+    ajaxStart: function() { $body.addClass("loading");    },
+    ajaxStop: function() { $body.removeClass("loading"); }    
+});
+
+$('#daftar').click(function(){
+    var form_data = {
+        first_name: $('#inputFirstName').val(),
+        last_name: $('#inputLastName').val(),
+        tempat_lahir: $('#inputTempatLahir').val(),
+        tanggal_lahir: $('#inputTanggalLahir').val(),
+        email: $('#inputEmail').val(),
+        password: $('#inputPassword').val(),
+        passconf: $('#inputRepeatPassword').val(),
+        contact_no: $('#contactNo').val(),
+        instansi_name: $('#inputInstansi').val(),
+        bagian: $('#inputDepartemen').val(),
+        alamat_instansi: $('#inputAlamatInstansi').val(),
+        jabatan: $('#inputJabatan').val(),
+        thn_mengabdi: $('#inputTahunPengabdian').val(),
+        jobdesk: $('#inputJobDesk').val(),
+        pendidikan: $('#inputPendidikan').val(),
+        institusi_pendidikan: $('#institusiPendidikan').val(),
+        fakultas: $('#fakultas').val(),
+        no_ijazah: $('#noIjazah').val(),
+        nilai_ipk: $('#nilaiIpk').val()
+    };
+
+    $.ajax({
+        url: "<?php echo site_url('register/submit'); ?>",
+        type: 'POST',
+        data: form_data,
+        success: function(msg) {
+            if(msg == 'YES') {
+                alert('Pendaftaran Berhasil');
+                window.location.replace("<?php echo site_url('register/success'); ?>");
+            } else if (msg == 'NO') {
+                alert('Pendaftaran Gagal ' + msg);
+            } else {
+                alert(msg);
+            }
+        }
+    });
+    return false;
 });
 </script>
