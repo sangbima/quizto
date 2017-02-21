@@ -194,7 +194,7 @@
                                         <td align="center"><?php echo $result['ist11']; ?></td>
                                         <td align="center">
                                             <?php 
-                                                $ist9 = $this->norma_model->norma_convert('ist9', $result['ist12']);
+                                                $ist9 = $this->norma_model->norma_convert('ist9', $result['ist11']);
                                                 echo $ist9['ws'];
                                             ?>
                                         </td>
@@ -207,7 +207,12 @@
                                     <tr>
                                         <th>JUMLAH</th>
                                         <th>IQ</th>
-                                        <th align="center"><?php echo $result['total']; ?></th>
+                                        <th align="center">
+                                            <?php
+                                                $total =  $result['ist3'] + $result['ist4'] + $result['ist5'] + $result['ist6'] + $result['ist7'] + $result['ist8'] + $result['ist9'] + $result['ist10'] + $result['ist11'];
+                                                echo $total;
+                                            ?>
+                                        </th>
                                         <th align="center">
                                             <?php
                                                 $total =  $result['ist3'] + $result['ist4'] + $result['ist5'] + $result['ist6'] + $result['ist7'] + $result['ist8'] + $result['ist9'] + $result['ist10'] + $result['ist11'];

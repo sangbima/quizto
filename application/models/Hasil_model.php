@@ -319,7 +319,7 @@ Class Hasil_model extends CI_Model
     {
         $this->load->model("norma_model");
         
-      if($gid != null and $gid !=0) {
+        if($gid != null and $gid !=0) {
             $group_id = ' and d.gid = '. $gid . ' ';
         } else {		
             if ($this->input->post('group')) {
