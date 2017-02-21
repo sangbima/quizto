@@ -6,6 +6,7 @@
             ?>
             <?php 
                 if($logged_in['su']=='1' || $logged_in['su']=='2'){
+                    if($logged_in['su']=='1') {
             ?>
 			
            <!-- Filter -->
@@ -45,7 +46,7 @@
                 </div>
               </div>
             </div>			
-			
+			<?php } ?>
             <div class="panel panel-primary">
                 <div class="panel-heading">
 				   Hasil Test DISC

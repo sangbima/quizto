@@ -6,6 +6,7 @@
             ?>
             <?php 
                 if($logged_in['su']=='1' || $logged_in['su']=='2'){
+                    if($logged_in['su']=='1') {
             ?>
             <!-- Filter -->
             <div class="panel-group panel-group-lists" id="accordion2">
@@ -44,6 +45,8 @@
                 </div>
               </div>
             </div>
+            <!-- End Filter -->
+            <?php } ?>
             <div class="panel panel-primary">
                 <div class="panel-heading">
 				    Hasil Semua Test
