@@ -1,6 +1,6 @@
 <div class="container">
     <h3><?php echo $title;?></h3>
-    <?php echo form_open('register') ?>
+    <?php echo form_open('register'); ?>
         <div class="row">
             <div class="col-md-6">
                 <div class="panel panel-primary">
