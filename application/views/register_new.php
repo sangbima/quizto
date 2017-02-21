@@ -11,9 +11,8 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <?php // echo form_label($this->lang->line('first_name')); ?>
-                                    <?php 
-                                    echo form_input([
+                                    <?php echo form_label($this->lang->line('first_name')); ?>
+                                    <?php echo form_input([
                                         'name' => 'first_name', 
                                         'id' => 'inputFirstName', 
                                         'class' =>'form-control', 
