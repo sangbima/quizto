@@ -43,7 +43,7 @@ class Register extends CI_Controller
         $this->form_validation->set_rules('nilai_ipk', 'IPK/NEM', 'numeric|required');
         $this->form_validation->set_rules('jobdesk', 'Deskripsi Pekerjaan', 'trim|xss_clean');
         $this->form_validation->set_rules('thn_mengabdi', 'Masa Kerja', 'numeric');
-        
+
         $this->form_validation->set_message('required', 'Input %s wajib diisi.');
         $this->form_validation->set_message('min_length', 'Input %s sekurangnya harus berisi %s karakter.');
         $this->form_validation->set_message('valid_email', 'Input %s harus berisi alamat email yang valid');
@@ -70,7 +70,6 @@ class Register extends CI_Controller
 
     public function success()
     {
-        $this->session->set_flashdata('message', "Registrasi Success");
         $data['title'] = 'Register Success';
         $this->load->view('header',$data);
         $this->load->view('register_success',$data);

@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4 col-md-push-7 phone-preview item">
-                <div class="login-card"><img src="../images/logo.png" class="profile-img-card">
+                <div class="login-card"><img src="images/logo.png" class="profile-img-card">
                     <p class="profile-name-card"> </p>
                     <form class="form-signin" method="post" action="<?php echo site_url('login/verifylogin');?>">
                     	<span class="reauth-email"> </span>
