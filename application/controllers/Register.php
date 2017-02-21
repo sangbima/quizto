@@ -28,10 +28,10 @@ class Register extends CI_Controller
         $this->form_validation->set_rules('tanggal_lahir', 'Tanggal Lahir', 'required');
         $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[register.email]');
         $this->form_validation->set_rules('contact_no', 'Nomor Telepon', 'is_natural|required');
-        $this->form_validation->set_rules('instansi_name', 'Nama Instansi', 'required');
-        $this->form_validation->set_rules('bagian', 'Bagian', 'required');
-        $this->form_validation->set_rules('alamat_instansi', 'Alamat Instansi', 'required');
-        $this->form_validation->set_rules('thn_mengabdi', 'Tahun Mengabdi', 'numeric|required');
+        // $this->form_validation->set_rules('instansi_name', 'Nama Instansi', 'required');
+        // $this->form_validation->set_rules('bagian', 'Bagian', 'required');
+        // $this->form_validation->set_rules('alamat_instansi', 'Alamat Instansi', 'required');
+        // $this->form_validation->set_rules('thn_mengabdi', 'Tahun Mengabdi', 'numeric|required');
         $this->form_validation->set_rules('pendidikan', 'Tingkat Pendidikan', 'required');
         $this->form_validation->set_rules('institusi_pendidikan', 'Institusi Pendidikan', 'required');
         $this->form_validation->set_rules('fakultas', 'Fakultas/Jurusan', 'required');

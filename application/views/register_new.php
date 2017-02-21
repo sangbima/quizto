@@ -131,7 +131,7 @@
             <div class="col-md-6">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Instansi</h3>
+                        <h3 class="panel-title">Pekerjaan Terakhir</h3>
                     </div>
                     <div class="panel-body">
                         <div class="row">
@@ -142,8 +142,7 @@
                                         'name' => 'instansi_name', 
                                         'id' => 'inputInstansi', 
                                         'class' =>'form-control', 
-                                        'placeholder' => $this->lang->line('instansi_name'), 
-                                        'required' => 'required', 
+                                        'placeholder' => $this->lang->line('instansi_name')
                                     ]); ?>
                                     <small><?php echo form_error('instansi_name', '<div class="text-danger">', '</div>');?></small>
                                 </div>
@@ -155,8 +154,7 @@
                                         'name' => 'bagian', 
                                         'id' => 'inputDepartemen', 
                                         'class' =>'form-control', 
-                                        'placeholder' => $this->lang->line('bagian'), 
-                                        'required' => 'required', 
+                                        'placeholder' => $this->lang->line('bagian')
                                     ]); ?>
                                     <small><?php echo form_error('bagian', '<div class="text-danger">', '</div>');?></small>
                                 </div>
@@ -170,26 +168,46 @@
                                         'name' => 'alamat_instansi', 
                                         'id' => 'inputAlamatInstansi', 
                                         'class' =>'form-control', 
-                                        'placeholder' => $this->lang->line('alamat_instansi'), 
-                                        'required' => 'required', 
+                                        'placeholder' => $this->lang->line('alamat_instansi')
                                     ]); ?>
                                     <small><?php echo form_error('alamat_instansi', '<div class="text-danger">', '</div>');?></small>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-3">
+                            <div class="col-md-6">
                                 <div class="form-group">
-                                    <?php echo form_label($this->lang->line('thn_mengabdi'), 'for="inputTahunPengabdian"'); ?>
+                                    <?php echo form_label('Jabatan', 'for="inputJabatan"'); ?>
+                                    <?php echo form_input([
+                                        'name' => 'jabatan', 
+                                        'id' => 'inputJabatan', 
+                                        'class' =>'form-control', 
+                                        'placeholder' => 'Jabatan'
+                                    ]); ?>
+                                    <small><?php echo form_error('jabatan', '<div class="text-danger">', '</div>');?></small>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <?php echo form_label('Masa Kerja (Thn)', 'for="inputTahunPengabdian"'); ?>
                                     <?php echo form_input([
                                         'name' => 'thn_mengabdi', 
                                         'id' => 'inputTahunPengabdian', 
                                         'class' =>'form-control', 
-                                        'placeholder' => $this->lang->line('thn_mengabdi'), 
-                                        'required' => 'required', 
+                                        'placeholder' => 'Masa Kerja'
                                     ]); ?>
                                     <small><?php echo form_error('thn_mengabdi', '<div class="text-danger">', '</div>');?></small>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <?php echo form_label('Deskripsi Pekerjaan', 'for="inputJobDesk"'); ?>
+                                <?php echo form_textarea([
+                                    'name' => 'jobdesk',
+                                    'id' => 'inputJobDesk',
+                                    'class' => 'form-control',
+                                ]); ?>
                             </div>
                         </div>
                     </div>

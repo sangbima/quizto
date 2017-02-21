@@ -16,6 +16,8 @@ Class Register_model extends CI_Model
             'bagian' => $this->input->post('bagian'),
             'alamat_instansi' => $this->input->post('alamat_instansi'),
             'thn_mengabdi' => $this->input->post('thn_mengabdi'),
+            'jabatan' => $this->input->post('jabatan'),
+            'jobdesk' => $this->input->post('jobdesk'),
             'pendidikan' => $this->input->post('pendidikan'),
             'institusi_pendidikan' => $this->input->post('institusi_pendidikan'),
             'fakultas' => $this->input->post('fakultas'),

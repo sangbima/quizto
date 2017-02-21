@@ -1,1 +1,0 @@
-ALTER TABLE `register` ADD `registration_no` VARCHAR(25) NOT NULL AFTER `id`;
