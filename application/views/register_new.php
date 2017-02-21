@@ -13,14 +13,14 @@
                                 <div class="form-group">
                                     <?php 
                                     echo form_label($this->lang->line('first_name'));
-                                    echo form_input([
-                                        'name' => 'first_name', 
-                                        'id' => 'inputFirstName', 
-                                        'class' =>'form-control', 
-                                        'placeholder' => $this->lang->line('first_name'), 
-                                        'required' => 'required', 
-                                        'autofocus' => 'autofocus'
-                                    ]); ?>
+                                    // echo form_input([
+                                    //     'name' => 'first_name', 
+                                    //     'id' => 'inputFirstName', 
+                                    //     'class' =>'form-control', 
+                                    //     'placeholder' => $this->lang->line('first_name'), 
+                                    //     'required' => 'required', 
+                                    //     'autofocus' => 'autofocus'
+                                    // ]); ?>
                                     <small><?php echo form_error('first_name', '<div class="text-danger">', '</div>');?></small>
                                 </div>
                             </div>
