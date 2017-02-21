@@ -99,7 +99,12 @@
                                    <td><?php echo $value['ist7'] ? $value['ist7'] : 0; ?></td>
                                    <td><?php echo $value['ist8'] ? $value['ist8'] : 0; ?></td>
                                    <td><?php echo $value['ist9'] ? $value['ist9'] : 0; ?></td>
-                                   <td><?php echo $value['total']; ?></td>
+                                   <td>
+                                      <?php 
+                                        $total = $value['ist1']+$value['ist2']+$value['ist3']+$value['ist4']+$value['ist5']+$value['ist6']+$value['ist7']+$value['ist8']+$value['ist9']; 
+                                        echo $total;
+                                      ?>
+                                    </td>
                                    <td><a href="<?php echo site_url('hasil/detailist/'.$value['uid']);?>"><i class="fa fa-eye"></i></a></td>
                                  </tr>
                             <?php ++$mkey;} ?>
