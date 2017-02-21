@@ -1,6 +1,6 @@
 <div class="container">
     <h3><?php echo $title;?></h3>
-    <!-- <form method="post" action="<?php // echo site_url('register/reg/');?>"> -->
+    <!-- <form method="post" action="<?php // //echo site_url('register/reg/');?>"> -->
     <?php //echo validation_errors(); ?>
     <?php echo form_open('register') ?>
         <div class="row">
