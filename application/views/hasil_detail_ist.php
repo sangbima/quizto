@@ -126,10 +126,10 @@
                                     <tr>
                                         <th>ZR</th>
                                         <td>Analogical Thinking</td>
-                                        <td align="center"><?php echo $result['ist6']; ?></td>
+                                        <td align="center"><?php echo $result['ist8']; ?></td>
                                         <td align="center">
                                             <?php 
-                                                $ist6 = $this->norma_model->norma_convert('ist8', $result['ist8']);
+                                                $ist6 = $this->norma_model->norma_convert('ist6', $result['ist8']);
                                                 echo $ist6['ws'];
                                             ?>
                                         </td>
