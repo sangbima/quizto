@@ -224,7 +224,7 @@
                                 <div class="form-group">     
                                     <?php echo form_label($this->lang->line('pendidikan'), 'for="inputPendidikan"'); ?>
                                     <?php
-                                        $option = [
+                                        $option = array(
                                             '' => '--'.$this->lang->line('pendidikan').'--',
                                             'SD' => 'Sekolah Dasar',
                                             'SMP' => 'Sekolah Menengah Pertama',
@@ -232,7 +232,7 @@
                                             'DIPLOMA' => 'Diploma',
                                             'S1' => 'Sarjana',
                                             'S2' => 'Megister',
-                                        ];
+                                        );
 
                                         echo form_dropdown('pendidikan', $option, '', array(
                                             'id' => 'inputPendidikan',
