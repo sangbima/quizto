@@ -25,10 +25,6 @@ Class Register_model extends CI_Model
             'nilai_ipk' => $this->input->post('nilai_ipk'),
         );
 
-        // var_dump($userdata);die();
-
-        // $this->load->library('email');
-
         if($this->config->item('protocol')=="smtp"){
             $config = array();
             $config['protocol'] = 'smtp';
@@ -94,5 +90,22 @@ Class Register_model extends CI_Model
         $lastId = $query->row();
         
         return $lastId == NULL ? 0 : $lastId->registration_no;
+    }
+
+    function record_count()
+    {
+        return $this->db->count_all("register");
+    }
+
+    function getListCaper($limit, $start)
+    {
+        $this->db->limit($limit, $start);
+        $query = $this->db->get('register');
+        
+        if($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return false;
+        }
     }
 }

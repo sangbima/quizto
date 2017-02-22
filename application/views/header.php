@@ -69,6 +69,7 @@
                     }
                     if($logged_in['su']==1){
                     ?>
+                    <li <?php if($this->uri->segment(1)=='calonpeserta'){ echo "class='active'"; } ?>><a href="<?php echo site_url('calonpeserta/index');?>">Calon Peserta</a></li>
                     <li class="dropdown" <?php if($this->uri->segment(1)=='qbank'){ echo "class='active'"; } ?> >
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $this->lang->line('qbank');?> <span class="caret"></span></a>
                         <ul class="dropdown-menu">
