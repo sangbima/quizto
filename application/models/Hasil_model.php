@@ -7,21 +7,21 @@ Class Hasil_model extends CI_Model
             $group_id = ' and d.gid = '. $gid . ' ';
         } else {		
             if ($this->input->post('group')) {
-		           $group_id = ' and d.gid = '. $this->input->post('group') . ' ';
-               } else {			
-                   $group_id = '';
-	           }					
+                $group_id = ' and d.gid = '. $this->input->post('group') . ' ';
+            } else {			
+                $group_id = '';
+            }					
         }		
 		
         // Tampilkan hanya user sesuai dengan user operator yang membuatnya
         if($created_by != null and $created_by !=0 ) {
             $creator_id = ' and d.created_by = '. $created_by . ' ';
         } else {
-           if ($this->input->post('operator')) {
-		        $creator_id = ' and d.created_by = '.  $this->input->post('operator') . ' ';
-              } else {          		         		
+            if ($this->input->post('operator')) {
+                $creator_id = ' and d.created_by = '.  $this->input->post('operator') . ' ';
+            } else {          		         		
                 $creator_id = '';
-			  }	
+            }	
         }
 				
         

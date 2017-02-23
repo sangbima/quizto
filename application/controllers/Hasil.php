@@ -26,34 +26,36 @@ class Hasil extends CI_Controller
     {
         $this->load->helper('form');
         $logged_in=$this->session->userdata('logged_in');
+        
         if ($logged_in['su'] == 1) {
             $created_by = null;
         } else {
-            $created_by = $logged_in['uid'];
+            $oid_filter = $logged_in['uid'];
         }
+        
         if($logged_in['su']!='1' && $logged_in['su']!='2'){
             exit($this->lang->line('permission_denied'));
         }
 		
-       if($oid_filter != null and $oid_filter !=0) {
-           $data['search']['created_by']=$oid_filter;		        		
-	   } else {
-		    if ($this->input->post('operator')) { 
-                $data['search']['created_by']=$this->input->post('operator');		 
-	       	} else {			
-			    $data['search']['created_by']=0;		 
-            }
-	   }
+        if($oid_filter != null and $oid_filter !=0) {
+          $data['search']['created_by']=$oid_filter;		        		
+        } else {
+		      if ($this->input->post('operator')) { 
+            $data['search']['created_by']=$this->input->post('operator');		 
+          } else {			
+            $data['search']['created_by']=0;		 
+          }
+        }
 	   
-       if($gid_filter != null and $gid_filter !=0) {
+        if($gid_filter != null and $gid_filter !=0) {
            $data['search']['gid']=$gid_filter;		        		
-	   } else {	   
-           if ($this->input->post('group')) { 
+        } else {	   
+          if ($this->input->post('group')) { 
                $data['search']['gid']=$this->input->post('group');		 
-		   } else {
-			   $data['search']['gid']=0;		 
-           }		
-	   }
+          } else {
+            $data['search']['gid']=0;		 
+          } 		
+        }
 		
         $data['limit']=$limit;
         //$data['cid']=$cid;
@@ -135,7 +137,7 @@ class Hasil extends CI_Controller
         if ($logged_in['su'] == 1) {
             $created_by = null;
         } else {
-            $created_by = $logged_in['uid'];
+            $oid_filter = $logged_in['uid'];
         }
         if($logged_in['su']!='1' && $logged_in['su']!='2'){
             exit($this->lang->line('permission_denied'));
@@ -185,7 +187,7 @@ class Hasil extends CI_Controller
         if ($logged_in['su'] == 1) {
             $created_by = null;
         } else {
-            $created_by = $logged_in['uid'];
+            $oid_filter = $logged_in['uid'];
         }
         if($logged_in['su']!='1' && $logged_in['su']!='2'){
             exit($this->lang->line('permission_denied'));
@@ -429,7 +431,7 @@ class Hasil extends CI_Controller
         if ($logged_in['su'] == 1) {
             $created_by = null;
         } else {
-            $created_by = $logged_in['uid'];
+            $oid_filter = $logged_in['uid'];
         }
 
         if($logged_in['su']!='1' && $logged_in['su']!='2'){
