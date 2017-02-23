@@ -19,7 +19,7 @@ class Calonpeserta extends CI_Controller
             $this->session->unset_userdata('logged_in');        
             redirect('login');
         }
-   }
+    }
 
     public function index($limit=0)
     {
@@ -54,5 +54,10 @@ class Calonpeserta extends CI_Controller
         $this->load->view('header',$data);
         $this->load->view('calon_peserta',$data);
         $this->load->view('footer',$data);
+    }
+
+    public function exportAll()
+    {
+
     }
 }
