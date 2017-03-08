@@ -41,8 +41,16 @@ class Register extends CI_Controller
         $this->form_validation->set_rules('fakultas', 'Fakultas/Jurusan', 'required');
         $this->form_validation->set_rules('no_ijazah', 'No. Ijazah', 'required');
         $this->form_validation->set_rules('nilai_ipk', 'IPK/NEM', 'numeric|required');
-        $this->form_validation->set_rules('jobdesk', 'Deskripsi Pekerjaan', 'trim|xss_clean');
+        $this->form_validation->set_rules('jobdesk', 'Deskripsi Pekerjaan', 'trim');
         $this->form_validation->set_rules('thn_mengabdi', 'Masa Kerja', 'numeric');
+        
+        // $this->form_validation->set_rules('lampiran0', 'Pas Foto', 'required');
+        // $this->form_validation->set_rules('lampiran1', 'Ijazah', 'required');
+        // $this->form_validation->set_rules('lampiran2', 'Transkrip Nilai', 'required');
+        // $this->form_validation->set_rules('lampiran3', 'KTP', 'required');
+        // $this->form_validation->set_rules('lampiran4', 'SKCK', 'required');
+        // $this->form_validation->set_rules('lampiran5', 'SKBN', 'required');
+        // $this->form_validation->set_rules('lampiran6', 'SKS', 'required');
 
         $this->form_validation->set_message('required', 'Input %s wajib diisi.');
         $this->form_validation->set_message('min_length', 'Input %s sekurangnya harus berisi %s karakter.');
@@ -61,6 +69,16 @@ class Register extends CI_Controller
                 echo "NO";
             }
         }
+    }
+
+    public function file_size($str)
+    {
+
+    }
+
+    public function file_type($str)
+    {
+        
     }
 
     public function reg()

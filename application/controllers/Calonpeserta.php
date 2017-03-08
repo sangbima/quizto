@@ -9,7 +9,8 @@ class Calonpeserta extends CI_Controller
        $this->load->database();
        $this->load->model("register_model");
        $this->lang->load('basic', $this->config->item('language'));
-       $this->load->library('pagination');
+       // $this->load->library('pagination');
+       $this->load->library(array('zip', 'pagination'));
         // redirect if not loggedin
         if(!$this->session->userdata('logged_in')){
             redirect('login');
@@ -27,7 +28,7 @@ class Calonpeserta extends CI_Controller
         $config["base_url"] = base_url() . "calonpeserta/index";
         $total_row = $this->register_model->record_count();
         $config["total_rows"] = $total_row;
-        $config["per_page"] = 25;
+        $config["per_page"] = $this->config->item("number_of_rows");
         $config["uri_segment"] = 3;
         $config["use_page_numbers"] = TRUE;
         // $config["num_links"] = $total_row;
@@ -45,19 +46,135 @@ class Calonpeserta extends CI_Controller
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
         $offset = $page == 0 ? 0 : ($page - 1) * $config["per_page"];
 
-        $data['limit']=$config["per_page"];
+        $data['limit']=$config["per_page"];		
         $data['result'] = $this->register_model->getListCaper($config["per_page"], $offset);
         $str_links = $this->pagination->create_links();
         $data["links"] = explode('&nbsp;', $str_links);
-
+        $data['page'] = $page==0? 1:$page;	    
+      	
         $data['title'] = "Daftar Calon Peserta Ujian";
         $this->load->view('header',$data);
         $this->load->view('calon_peserta',$data);
         $this->load->view('footer',$data);
     }
 
-    public function exportAll()
+	public function detail($caper_id)
+    {		
+        $data['title'] = "Profile Calon Peserta Ujian";
+		$data['caper'] = $this->register_model->getCaperData($caper_id);
+        $this->load->view('header',$data);
+		if ($data['caper']['id'] == null || $data['caper']['id'] == "" ) {
+		   redirect('calonpeserta');
+		} else {	
+           $this->load->view('calon_peserta_detail',$data);
+		}
+        $this->load->view('footer',$data);			
+	}
+		
+	public function download($dtype="thumb",$value="",$extra="") 
     {
+        if ($dtype == "thumb") { 
+            $this->download_image($extra,$value,"thumb");    
+        }  		
 
+        if ($dtype == "full") { 
+            $this->download_image($extra,$value,"full");    
+        } 
+
+        if ($dtype == "zip") { 
+            $this->download_zip_detail($extra,$value);    
+        }
+        if ($dtype == "zipall"){          
+            $this->download_zip_all();
+        }
+        if (($dtype == "xlsx") &&  ($value=="allcapers") ){			 
+            $this->download_xlsx_capers(0,"full");
+        }	 
+
+        if (($dtype == "xlsx") &&  ($value=="capers") ){			 
+            $this->download_xlsx_capers($extra,"limited");
+        }		 		 
+	}	
+	
+	public function download_image($registration_no="",$lampiran_name="",$type="thumb")
+    {	
+	    if ($type=="thumb") {
+		    $dirname="upload/data/" . $registration_no ."/thumbnail";
+		} else {
+			$dirname="upload/data/" . $registration_no . "/lampiran";
+        }			
+		 
+        $file_path=realpath($dirname);
+        $file_name=$registration_no ."_" . strtolower($lampiran_name) . ".jpg"; 				 				 
+        $myfile=$file_path . "/" . $file_name;
+        		 		 
+        header('Content-Type: image/jpeg');
+        header('Content-Disposition: inline; filename="' . $file_name .'"');			 		 
+
+        if (file_exists($myfile)) {
+            header("Content-Length: " . filesize($myfile))	;	 
+            readfile($myfile);
+        } else {			 
+            $canvas = imagecreatetruecolor(100, 150);
+            $pink = imagecolorallocate($canvas, 255, 105, 180);
+            $white = imagecolorallocate($canvas, 255, 255, 255);
+            $green = imagecolorallocate($canvas, 132, 135, 28); 
+            $grey = imagecolorallocate($canvas, 128, 128, 128);
+            $black = imagecolorallocate($canvas, 0, 0, 0);
+            $font = 'arialn.ttf';		
+         
+            imagestring ( $canvas , 3 , 25 , 25 , "Not Found" , $grey );
+            imagestring ( $canvas , 3 , 30 , 30 , "Not Found" , $black );
+            //imagettftext($canvas, 20, 0, 25,  25, $grey,$font, 12);     
+            //imagettftext($canvas, 20, 0, 30,  30, $black,$font , 12);			 
+
+            imagejpeg($canvas);
+            imagedestroy($canvas);
+        }
+        exit;
+	}
+	
+	public function download_zip_all()
+    {
+        $namafile = date('Ymd').'_lampiran_semua_peserta.zip';
+        $path="upload/data/";
+        
+        $this->zip->read_dir($path, FALSE);
+
+        $this->zip->download($namafile);
     }
+
+    public function download_zip_detail($registration_no="",$type="detail")
+    {
+        $dirmain="upload/data/" . $registration_no ;			
+        $dirname=$dirmain . "/lampiran";
+        $dirthumb=$dirmain . "/thumbnail" ;	
+
+
+        $file_path=realpath($dirmain);
+        $file_zip=  $registration_no . "_lampiran.zip";
+
+        $myfile = $file_path . "/" .$file_zip;           
+        header("Content-Type: application/zip");
+        header("Content-Disposition: attachment; filename=$file_zip");
+        header("Content-Length: " . filesize($myfile));
+
+        readfile($myfile);
+        exit;		  		  
+	}		
+		
+    public function download_xlsx_capers($page=0,$mode="full")
+    {
+		if ($mode=="full") {
+		    $filename="daftar_semua_calon_peserta_" . date('Ymd') . ".xlsx";
+		} else {
+		    $filename="daftar_sebagian_calon_peserta_" . date('Ymd') . ".xlsx";
+        }			
+		
+		$excel_data=$this->register_model->xlsx_capers($page,$mode);
+	    header("Content-Disposition: attachment; filename=\"$filename\"");
+	    header("Content-Type: application/vnd.ms-excel");		
+		echo $excel_data;		
+		exit;				
+	}
 }
