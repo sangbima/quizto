@@ -56,11 +56,14 @@ $config['protocol']="smtp";
 */
 
 // smtp hostname eg. smtp.gmail.com
-$config['smtp_hostname'] = "ssl://smtp.gmail.com";
+// $config['smtp_hostname'] = "ssl://smtp.gmail.com";
+$config['smtp_hostname'] = "ssl://mail.kemdikbud.go.id";
 // smtp username
-$config['smtp_username'] = "cat.kemendikbud@gmail.com";
+// $config['smtp_username'] = "cat.kemendikbud@gmail.com";
+$config['smtp_username'] = "kepegawaian.setditjenbud";
 // smtp password
-$config['smtp_password'] = '$$gedungFSudirman';
+// $config['smtp_password'] = '$$gedungFSudirman';
+$config['smtp_password'] = 'kepegawaian#2702';
 // smtp outgoing port. eg for gmail its 465, outlook 587, yahoo 465 for other contact your mailing administrator
 $config['smtp_port'] = 465;
 $config['smtp_secure'] = "ssl";
