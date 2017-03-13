@@ -528,3 +528,12 @@ body.loading {
 body.loading #spinner {
   display: block;
 }
+.stepNumber .stepper{
+  height: 0;
+}
+.stepNumber .stepper .up{
+  top: 25px;
+}
+.stepNumber .stepper .down{
+  bottom: -19px;
+}

@@ -18,7 +18,7 @@
                 <div class="panel-body">
                     <p>Silahkan cek email Anda untuk mendapatkan Username dan Password.</p>
                     <p>
-                        Info lengkap silahkan hubungi: <a href="mailto:cat.kemendikbud@gmail.com">Panitia Ujian</a><br/><br/>
+                        Info lengkap silahkan hubungi: <a href="mailto:kepegawaian.setditjenbud@kemdikbud.go.id">Panitia Ujian</a><br/><br/>
                         <a href="/" class="btn btn-primary">Kembali</a>
                     </p>
                 </div>

@@ -189,13 +189,14 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="form-group">
+                                <div class="form-group stepNumber">
                                     <?php echo form_label('Masa Kerja (Thn)', 'inputTahunPengabdian'); ?>
                                     <?php echo form_input(array(
                                         'name' => 'thn_mengabdi', 
                                         'id' => 'inputTahunPengabdian', 
                                         'class' =>'form-control', 
-                                        'placeholder' => 'Masa Kerja'
+                                        'placeholder' => 'Masa Kerja',
+                                        'type' => 'number'
                                     )); ?>
                                     <small><?php echo form_error('thn_mengabdi', '<div class="text-danger">', '</div>');?></small>
                                 </div>
@@ -289,14 +290,15 @@
                                 </div>
                             </div>
                             <div class="col-md-2">
-                                <div class="form-group">
+                                <div class="form-group stepNumber">
                                     <?php echo form_label($this->lang->line('nilai_ipk'), 'nilaiIpk'); ?>
                                     <?php echo form_input(array(
                                         'name' => 'nilai_ipk', 
                                         'id' => 'nilaiIpk', 
                                         'class' =>'form-control', 
                                         'placeholder' => $this->lang->line('nilai_ipk'), 
-                                        'required' => 'required', 
+                                        'required' => 'required',
+                                        'type' => 'number'
                                     )); ?>
                                     <small><?php echo form_error('nilai_ipk', '<div class="text-danger">', '</div>');?></small>
                                 </div>
@@ -330,7 +332,7 @@
                                         'class' =>'form-control', 
                                         'placeholder' => $lid ,                                          
 										'type' => 'file',
-                                        'accept' => '.png, .jpeg, .jpg',
+                                        'accept' => '.jpeg, .jpg',
                                         'required' => 'required'
                                     )); ?>
                                     <small><?php echo form_error($lid, '<div class="text-danger">', '</div>');?></small>
@@ -341,7 +343,7 @@
                            <div class="col-md-8 bg-danger">	
                                 <p>Keterangan:</p>
                                 <ul>
-                                    <li>Semua file harus berbentuk gambar (.png, .jpeg, .jpg)</li>
+                                    <li>Semua file harus berbentuk gambar (.jpeg, .jpg)</li>
                                     <li>Ukuran per file max. 200 Kb</li>
                                     <li>KTP: Kartu Tanda Penduduk</li>
                                     <li>SKCK: Surat Keterangan Catatan Kepolisian</li>

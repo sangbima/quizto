@@ -62,13 +62,7 @@ Class Register_model extends CI_Model
             print_r($this->email->print_debugger());
             exit;
         } else {
-				// save_lampiran($userdata['registration_no']);			
-    //         if($this->db->insert('register',$userdata)){
-    //             return true;
-    //         } else {
-    //             return false;
-    //         }
-            if($this->db->insert('register',$userdata)){    
+			if($this->db->insert('register',$userdata)){    
                 $this->save_lampiran($userdata);                            
                 return true;
             } else {
@@ -129,8 +123,8 @@ Class Register_model extends CI_Model
         } else {
             return false;
         }
-		*/
-		return $query->result();
+		    */
+        return $query->result();
     }
 				
 	function getCaperData($caper_id){
@@ -142,107 +136,106 @@ Class Register_model extends CI_Model
 	function save_lampiran($userdata) 
     {
 		    
-			$registration_no=$userdata['registration_no'];
-			
-	        //--- jika directory belum ada maka buat directory;	
-            $dirtop="upload/data";			
-		    $dirmain=$dirtop . "/" . $registration_no ;			
-			$dirname=$dirmain . "/lampiran";
-			$dirthumb=$dirmain . "/thumbnail" ;
+		$registration_no=$userdata['registration_no'];
+		
+        //--- jika directory belum ada maka buat directory;	
+        $dirtop="upload/data";			
+	    $dirmain=$dirtop . "/" . $registration_no ;			
+		$dirname=$dirmain . "/lampiran";
+		$dirthumb=$dirmain . "/thumbnail" ;
 
-            if (!is_dir($dirtop)) {			  
-               mkdir($dirtop, 0777,true);						   
-		    }			
-            if (!is_dir($dirmain)) {			  
-               mkdir($dirmain, 0777,true);						   
-		    }
-            if (!is_dir($dirname)) {			  
-               mkdir($dirname, 0777,true);						   
-		    }			
-            if (!is_dir($dirthumb)) {			  
-               mkdir($dirthumb, 0777,true);						   
-		    }			
-			
-			//$lname=array('Foto','Ijazah','Transkrip Nilai','KTP','SKCK','SKBN','SKS');
-			$lname=array('foto','ijazah','transkrip_nilai','ktp','skck','skbn','sks');
-			for ($xi=0;$xi<7;++$xi) {
-			  $vname='lampiran' . $xi;	
-			  if(isset($_FILES[$vname])){			
-			       //$targets = $dirname . '/'.  $registration_no . '_' . $lname[$xi] .  '_' . basename($_FILES[$vname]['name']);	
-                   //$thumbfile= $dirthumb . '/'.   $registration_no . '_' . $lname[$xi] .  '_' . basename($_FILES[$vname]['name']);			
-			       $targets = $dirname . '/'.  $registration_no . '_' . $lname[$xi] .  '.jpg';	
-                   $thumbfile= $dirthumb . '/'.   $registration_no . '_' . $lname[$xi] .  '.jpg';					   
-			       move_uploaded_file($_FILES[$vname]['tmp_name'], $targets);
-                   $this->make_thumbnail($targets,$thumbfile);				   
-		       } 
-			}		
-		   $this->make_dokumen_excel($userdata);			
-           $this->zip_lampiran($registration_no);					
+        if (!is_dir($dirtop)) {			  
+           mkdir($dirtop, 0777,true);						   
+	    }			
+        if (!is_dir($dirmain)) {			  
+           mkdir($dirmain, 0777,true);						   
+	    }
+        if (!is_dir($dirname)) {			  
+           mkdir($dirname, 0777,true);						   
+	    }			
+        if (!is_dir($dirthumb)) {			  
+           mkdir($dirthumb, 0777,true);						   
+	    }			
+		
+		//$lname=array('Foto','Ijazah','Transkrip Nilai','KTP','SKCK','SKBN','SKS');
+		$lname=array('foto','ijazah','transkrip_nilai','ktp','skck','skbn','sks');
+		for ($xi=0;$xi<7;++$xi) {
+            $vname='lampiran' . $xi;	
+            if(isset($_FILES[$vname])){			
+		       //$targets = $dirname . '/'.  $registration_no . '_' . $lname[$xi] .  '_' . basename($_FILES[$vname]['name']);	
+               //$thumbfile= $dirthumb . '/'.   $registration_no . '_' . $lname[$xi] .  '_' . basename($_FILES[$vname]['name']);			
+		       $targets = $dirname . '/'.  $registration_no . '_' . $lname[$xi] .  '.jpg';	
+               $thumbfile= $dirthumb . '/'.   $registration_no . '_' . $lname[$xi] .  '.jpg';					   
+		       move_uploaded_file($_FILES[$vname]['tmp_name'], $targets);
+               $this->make_thumbnail($targets,$thumbfile);				   
+            } 
+		}		
+	    $this->make_dokumen_excel($userdata);			
+        $this->zip_lampiran($registration_no);					
 	}	
 	
 	
 	function zip_lampiran($registration_no) 
     {
-				
 		$dirmain="upload/data/" . $registration_no ;			
 		$dirname=$dirmain . "/lampiran";
 		$dirthumb=$dirmain . "/thumbnail" ;				
 				 
-	     // Get real path for our folder
-         $rootPath = realpath($dirmain);
-		 $subPath = realpath($dirname);
+        // Get real path for our folder
+        $rootPath = realpath($dirmain);
+        $subPath = realpath($dirname);
 
-		 $zipfile=$registration_no . "_lampiran.zip";
-		 
-         // Initialize archive object		 
-         $zip = new ZipArchive();
-         $zip->open($dirmain .'/' . $zipfile, ZipArchive::CREATE | ZipArchive::OVERWRITE);
+        $zipfile=$registration_no . "_lampiran.zip";
 
-         // Create recursive directory iterator
-         /** @var SplFileInfo[] $files */
-         $files = new RecursiveIteratorIterator(
-                  new RecursiveDirectoryIterator($subPath),
-                  RecursiveIteratorIterator::LEAVES_ONLY );
+        // Initialize archive object		 
+        $zip = new ZipArchive();
+        $zip->open($dirmain .'/' . $zipfile, ZipArchive::CREATE | ZipArchive::OVERWRITE);
 
-         foreach ($files as $name => $file) {
-                // Skip directories (they would be added automatically)
-               if (!$file->isDir())
-                  {
-                      // Get real and relative path for current file
-                      $filePath = $file->getRealPath();
-                      $relativePath = substr($filePath, strlen($rootPath) + 1);
+        // Create recursive directory iterator
+        /** @var SplFileInfo[] $files */
+        $files = new RecursiveIteratorIterator(
+            new RecursiveDirectoryIterator($subPath),
+            RecursiveIteratorIterator::LEAVES_ONLY 
+        );
 
-                      // Add current file to archive
-                      $zip->addFile($filePath, $relativePath);
-                   }
-          }	
-		
+        foreach ($files as $name => $file) {
+            // Skip directories (they would be added automatically)
+            if (!$file->isDir())
+            {
+                // Get real and relative path for current file
+                $filePath = $file->getRealPath();
+                $relativePath = substr($filePath, strlen($rootPath) + 1);
+
+                // Add current file to archive
+                $zip->addFile($filePath, $relativePath);
+            }
+        }
 	}	
 	
 	function make_thumbnail($img_name,$thumb_name)
     {	
-         $filename = $img_name;		
-      		 
-         list($width, $height) = getimagesize($filename);
-         $newwidth=$width;
-	     $newheight=$height;
-		  
-	     if ($newwidth > 200) {			  			  
-              $newheight = $height * (200/$width);
-	          $newwidth = 200;
-		  }
-		  
-		 if ($newheight > 200) {			  			  
-              $newwidth = $newwidth * (200/$newheight);
-		      $newheight = 200;
-		 } 		  
-			 
-         $thumb = imagecreatetruecolor($newwidth, $newheight);
-         $source = imagecreatefromjpeg($filename);
-			 
-         imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
-		 	
-         imagejpeg($thumb,$thumb_name);
+        $filename = $img_name;		
+        	 
+        list($width, $height) = getimagesize($filename);
+        $newwidth=$width;
+        $newheight=$height;
+
+        if ($newwidth > 200) {			  			  
+            $newheight = $height * (200/$width);
+            $newwidth = 200;
+        }
+
+        if ($newheight > 200) {			  			  
+            $newwidth = $newwidth * (200/$newheight);
+            $newheight = 200;
+        } 		  
+        
+        $thumb = imagecreatetruecolor($newwidth, $newheight);
+        $source = imagecreatefromjpeg($filename);
+         
+        imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+        	
+        imagejpeg($thumb,$thumb_name);
 	}
 	
 	

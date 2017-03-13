@@ -101,7 +101,8 @@ $config['result_subject'] = "Result generated for quiz [quiz_name]";
 
 
 // email send from
-$config['fromemail']="cat.kemendikbud@gmail.com";
+// $config['fromemail']="cat.kemendikbud@gmail.com";
+$config['fromemail'] = "kepegawaian.setditjenbud@kemdikbud.go.id";
 // from name
 $config['fromname']="Panitia Ujian CAT";
 
