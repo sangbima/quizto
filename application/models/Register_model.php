@@ -75,14 +75,6 @@ Class Register_model extends CI_Model
             }
         }
 		
-		
-            // if($this->db->insert('register',$userdata)){	
-            //     $this->save_lampiran($userdata);	                		
-            //     return true;
-            // } else {
-            //     return false;
-            // }				
-		
     }
 
     function generateRegistrationNumber()
@@ -163,16 +155,23 @@ Class Register_model extends CI_Model
 	    }			
 		
 		//$lname=array('Foto','Ijazah','Transkrip Nilai','KTP','SKCK','SKBN','SKS');
-		$lname=array('foto','ijazah','transkrip_nilai','ktp','skck','skbn','sks');
-		for ($xi=0;$xi<7;++$xi) {
+		$lname=array('foto','ijazah','transkrip_nilai','ktp','skck','skbn','sks','bpjs','riwayat_hidup');
+		for ($xi=0;$xi<count($lname);++$xi) {
             $vname='lampiran' . $xi;	
             if(isset($_FILES[$vname])){			
 		       //$targets = $dirname . '/'.  $registration_no . '_' . $lname[$xi] .  '_' . basename($_FILES[$vname]['name']);	
-               //$thumbfile= $dirthumb . '/'.   $registration_no . '_' . $lname[$xi] .  '_' . basename($_FILES[$vname]['name']);			
-		       $targets = $dirname . '/'.  $registration_no . '_' . $lname[$xi] .  '.jpg';	
-               $thumbfile= $dirthumb . '/'.   $registration_no . '_' . $lname[$xi] .  '.jpg';					   
-		       move_uploaded_file($_FILES[$vname]['tmp_name'], $targets);
-               $this->make_thumbnail($targets,$thumbfile);				   
+               //$thumbfile= $dirthumb . '/'.   $registration_no . '_' . $lname[$xi] .  '_' . basename($_FILES[$vname]['name']);
+               $ext = pathinfo(basename($_FILES[$vname]['name']), PATHINFO_EXTENSION);
+
+                if($ext == 'doc' || $ext == 'docx' || $ext == 'pdf') {
+                    $targets = $dirname . '/'.  $registration_no . '_' . $lname[$xi] .  '.'.$ext;
+                    move_uploaded_file($_FILES[$vname]['tmp_name'], $targets);
+                } else {
+                    $targets = $dirname . '/'.  $registration_no . '_' . $lname[$xi] .  '.jpg'; 
+                    $thumbfile= $dirthumb . '/'.   $registration_no . '_' . $lname[$xi] .  '.jpg';
+                    move_uploaded_file($_FILES[$vname]['tmp_name'], $targets);
+                    $this->make_thumbnail($targets,$thumbfile);
+                }			   
             } 
 		}		
 	    $this->make_dokumen_excel($userdata);			

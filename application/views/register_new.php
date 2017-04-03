@@ -381,11 +381,11 @@
                     <div class="panel-heading">
                         <h3 class="panel-title">Lampiran Dokumen (Semua wajib diisi)</h3>
                     </div>
-                    <div class="panel-body">		
-					   <div class="row">
+                    <div class="panel-body">
+                        <div class="row">
                            <?php 
-        				        $lname=array('Foto','Ijazah','Transkrip Nilai','KTP','SKCK','SKBN','SKS');
-        				        for ($xi=0;$xi<7;++$xi) 
+        				        $lname=array('Foto','Ijazah','Transkrip Nilai','KTP','SKCK','SKBN','SKS','BPJS');
+        				        for ($xi=0;$xi<count($lname);++$xi) 
         				           {
         					         $lid='lampiran' . $xi;                             						 					    
         				   ?>					                            
@@ -406,7 +406,27 @@
                                 </div>
                             </div>													
 						   <?php }?>
-                           <div class="col-md-8 bg-danger">	
+                           <div class="col-md-4">
+                                <div class="form-group">        
+                                    <?php echo form_label('Riwayat Hidup', 'riwayathidup'); ?>                              
+                                    <?php echo form_input(array(
+                                        'name' => 'lampiran8',                                         
+                                        'id' => 'lampiran8', 
+                                        'class' =>'form-control', 
+                                        'placeholder' => 'Riwayat Hidup' ,                                          
+                                        'type' => 'file',
+                                        'accept' => '.doc, .docx, .pdf',
+                                        'required' => 'required'
+                                    )); ?>
+                                    <small><?php echo form_error($lid, '<div class="text-danger">', '</div>');?></small>
+                                    <br>                                    
+                                </div>
+                           </div>
+                           
+                        </div>
+                        <div class="row">										
+                            <div class="col-md-6">
+                                <div class="box bg-danger" style="padding: 0 5px 0 5px;">
                                 <p>Keterangan:</p>
                                 <ul>
                                     <li>Semua file harus berbentuk gambar (.jpeg, .jpg)</li>
@@ -415,9 +435,12 @@
                                     <li>SKCK: Surat Keterangan Catatan Kepolisian</li>
                                     <li>SKBN: Surat Keterangan Bebas Narkoba</li>
                                     <li>SKS: Surat Keterangan Sehat</li>
+                                    <li>BPJS yang masih aktif</li>
+                                    <li>Khusus Riwayat Hidup berupa dokumen (.docx, doc, atau .pdf)</li>
                                 </ul>
+                                </div>
                            </div>
-                        </div>											
+                        </div>
                     </div>
                 </div>
             </div>
