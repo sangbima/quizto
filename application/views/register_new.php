@@ -112,6 +112,72 @@
                             </div>
                         </div>
                         <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <?php echo form_label('Alamat', 'inputAlamat'); ?>
+                                    <?php echo form_input(array(
+                                        'name' => 'alamat', 
+                                        'id' => 'inputAlamat', 
+                                        'class' =>'form-control', 
+                                        'placeholder' => 'Alamat'
+                                    )); ?>
+                                    <small><?php echo form_error('alamat', '<div class="text-danger">', '</div>');?></small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <?php echo form_label('Desa/Kelurahan', 'inputDesa'); ?>
+                                    <?php echo form_input(array(
+                                        'name' => 'desakelurahan', 
+                                        'id' => 'inputDesa', 
+                                        'class' =>'form-control', 
+                                        'placeholder' => 'Desa/Kelurahan'
+                                    )); ?>
+                                    <small><?php echo form_error('desakelurahan', '<div class="text-danger">', '</div>');?></small>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <?php echo form_label('Kecamatan', 'inputKecamatan'); ?>
+                                    <?php echo form_input(array(
+                                        'name' => 'kecamatan', 
+                                        'id' => 'inputKecamatan', 
+                                        'class' =>'form-control', 
+                                        'placeholder' => 'Kecamatan'
+                                    )); ?>
+                                    <small><?php echo form_error('kecamatan', '<div class="text-danger">', '</div>');?></small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <?php echo form_label('Kabupaten/Kota', 'inputKabupaten'); ?>
+                                    <?php echo form_input(array(
+                                        'name' => 'kabupatenkota', 
+                                        'id' => 'inputKabupaten', 
+                                        'class' =>'form-control', 
+                                        'placeholder' => 'Kabupaten/Kota'
+                                    )); ?>
+                                    <small><?php echo form_error('kabupatenkota', '<div class="text-danger">', '</div>');?></small>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <?php echo form_label('Provinsi', 'inputProvinsi'); ?>
+                                    <?php echo form_input(array(
+                                        'name' => 'provinsi', 
+                                        'id' => 'inputProvinsi', 
+                                        'class' =>'form-control', 
+                                        'placeholder' => 'Provinsi'
+                                    )); ?>
+                                    <small><?php echo form_error('provinsi', '<div class="text-danger">', '</div>');?></small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">     
                                     <?php echo form_label($this->lang->line('contact_no'), 'contactNo'); ?>

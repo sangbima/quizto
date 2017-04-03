@@ -11,6 +11,11 @@ Class Register_model extends CI_Model
             'tempat_lahir' => $this->input->post('tempat_lahir'),
             'tanggal_lahir' => date('Y-m-d', strtotime($this->input->post('tanggal_lahir'))),
             'email' => $this->input->post('email'),
+            'alamat' => $this->input->post('alamat'),
+            'desakelurahan' => $this->input->post('desakelurahan'),
+            'kecamatan' => $this->input->post('kecamatan'),
+            'kabupatenkota' => $this->input->post('kabupatenkota'),
+            'provinsi' => $this->input->post('provinsi'),
             'contact_no' => $this->input->post('contact_no'),
             'instansi_name' => $this->input->post('instansi_name'),
             'bagian' => $this->input->post('bagian'),
@@ -266,7 +271,7 @@ Class Register_model extends CI_Model
 		  $mpd=array('SD' => 'Sekolah Dasar','SMP' => 'Sekolah Menengah Pertama','SMA' => 'Sekolah Menengah Atas','DIPLOMA' => 'Diploma', 'S1' => 'Sarjana','S2' => 'Megister');
 
 		  $mlabel=array(
-		               array('Informasi Umum','Nama Lengkap','Tempat Lahir','Tanggal Lahir','Email Address','No Telepon'),
+		               array('Informasi Umum','Nama Lengkap','Tempat Lahir','Tanggal Lahir','Email Address','Alamat', 'Desa/Kelurahan', 'Kecamatan', 'Kabupaten/Kota', 'Provinsi', 'No Telepon'),
 		               array('Pekerjaan Terakhir','Nama Instansi','Bagian','Alamat Instansi','Jabatan','Masa Kerja','Deskripsi Pekerjaan'),
 				       array('Informasi Pendidikan','Tingkat Pendidikan','Institusi Pendidikan','Fakultas/Jurusan','No. Ijazah','Nilai IPK'));
 				
@@ -276,7 +281,7 @@ Class Register_model extends CI_Model
           $mhtml = str_replace('<p>','',$mhtml);					   
 				   		   		   
 		  $mvalue=array(
-		          array('Informasi Umum,', $userdata['first_name'] . " " . $userdata['last_name'],$userdata['tempat_lahir'],$userdata['tanggal_lahir'],$userdata['email'],$userdata['contact_no'] ),
+		          array('Informasi Umum,', $userdata['first_name'] . " " . $userdata['last_name'],$userdata['tempat_lahir'],$userdata['tanggal_lahir'],$userdata['email'],$userdata['alamat'], $userdata['desakelurahan'], $userdata['kecamatan'], $userdata['kabupatenkota'], $userdata['provinsi'], $userdata['contact_no'] ),
                   array('Pekerjaan Terakhir', $userdata['instansi_name'],$userdata['bagian'],$userdata['alamat_instansi'],$userdata['jabatan'],$userdata['thn_mengabdi'],$mhtml),
                   array('Informasi Pendidikan', $mpd[$userdata['pendidikan']] . '(' . $userdata['pendidikan']. ')',$userdata['institusi_pendidikan'],$userdata['fakultas'],$userdata['no_ijazah'],$userdata['nilai_ipk'])); 				  
 						 		  
@@ -356,9 +361,9 @@ Class Register_model extends CI_Model
         $objSheet=$objPHPExcel->getActiveSheet();
 
         $mheaders=array(
-            "A1"=>"EMAIL","B1"=>"NO. REGISTRASI","C1"=>"PASSWORD","D1"=>"NAMA DEPAN", "E1"=>"NAMA BELAKANG", "F1"=>"NO. TELP", "G1"=>"TGL. EXPIRE",
-            "H1"=>"PENDIDIKAN","I1"=>"INST. PENDIDIKAN", "J1"=>"FAKULTAS-JURUSAN","K1"=>"NO. IJAZAH","L1"=>"IPK-NEM","M1"=>"NAMA INST. KERJA",
-            "N1"=>"BAGIAN","O1"=>"ALAMAT","P1"=>"JABATAN","Q1"=>"MASA KERJA","R1"=>"DESKRIPSI"
+            "A1"=>"EMAIL","B1"=>"NO. REGISTRASI","C1"=>"PASSWORD","D1"=>"NAMA DEPAN", "E1"=>"NAMA BELAKANG", "F1" =>"Alamat", "G1"=>"Desa/Kelurahan", "H1"=>"Kecamatan", "I1"=>"Kabupaten/Kota", "J1"=>"Provinsi", "K1"=>"NO. TELP", "L1"=>"TGL. EXPIRE",
+            "M1"=>"PENDIDIKAN","N1"=>"INST. PENDIDIKAN", "O1"=>"FAKULTAS-JURUSAN","P1"=>"NO. IJAZAH","Q1"=>"IPK-NEM","R1"=>"NAMA INST. KERJA",
+            "S1"=>"BAGIAN","T1"=>"ALAMAT","U1"=>"JABATAN","V1"=>"MASA KERJA","W1"=>"DESKRIPSI"
         );
         foreach($mheaders as $key => $value) {
             $objSheet->SetCellValue($key, $value);			  
@@ -374,19 +379,24 @@ Class Register_model extends CI_Model
             $objSheet->SetCellValue("C" . $xr, $cvalue['password']);
             $objSheet->SetCellValue("D" . $xr, $cvalue['first_name']);			   
             $objSheet->SetCellValue("E" . $xr, $cvalue['last_name']);
-            $objSheet->SetCellValue("F" . $xr, $cvalue['contact_no']);
-            $objSheet->SetCellValue("G" . $xr, $expire_date);
-            $objSheet->SetCellValue("H" . $xr, $cvalue['pendidikan']);
-            $objSheet->SetCellValue("I" . $xr, $cvalue['institusi_pendidikan']);
-            $objSheet->SetCellValue("J" . $xr, $cvalue['fakultas']);
-            $objSheet->SetCellValue("K" . $xr, $cvalue['no_ijazah']);
-            $objSheet->SetCellValue("L" . $xr, $cvalue['nilai_ipk']);
-            $objSheet->SetCellValue("M" . $xr, $cvalue['instansi_name']);
-            $objSheet->SetCellValue("N" . $xr, $cvalue['bagian']);
-            $objSheet->SetCellValue("O" . $xr, $cvalue['alamat_instansi']);
-            $objSheet->SetCellValue("P" . $xr, $cvalue['jabatan']);
-            $objSheet->SetCellValue("Q" . $xr, $cvalue['thn_mengabdi']);
-            $objSheet->SetCellValue("R" . $xr, $cvalue['jobdesk']);
+            $objSheet->SetCellValue("F" . $xr, $cvalue['alamat']);
+            $objSheet->SetCellValue("G" . $xr, $cvalue['desakelurahan']);
+            $objSheet->SetCellValue("H" . $xr, $cvalue['kecamatan']);
+            $objSheet->SetCellValue("I" . $xr, $cvalue['kabupatenkota']);
+            $objSheet->SetCellValue("J" . $xr, $cvalue['provinsi']);
+            $objSheet->SetCellValue("K" . $xr, $cvalue['contact_no']);
+            $objSheet->SetCellValue("L" . $xr, $expire_date);
+            $objSheet->SetCellValue("M" . $xr, $cvalue['pendidikan']);
+            $objSheet->SetCellValue("N" . $xr, $cvalue['institusi_pendidikan']);
+            $objSheet->SetCellValue("O" . $xr, $cvalue['fakultas']);
+            $objSheet->SetCellValue("P" . $xr, $cvalue['no_ijazah']);
+            $objSheet->SetCellValue("Q" . $xr, $cvalue['nilai_ipk']);
+            $objSheet->SetCellValue("R" . $xr, $cvalue['instansi_name']);
+            $objSheet->SetCellValue("S" . $xr, $cvalue['bagian']);
+            $objSheet->SetCellValue("T" . $xr, $cvalue['alamat_instansi']);
+            $objSheet->SetCellValue("U" . $xr, $cvalue['jabatan']);
+            $objSheet->SetCellValue("V" . $xr, $cvalue['thn_mengabdi']);
+            $objSheet->SetCellValue("W" . $xr, $cvalue['jobdesk']);
         }	  
         		  		  		   		   
         $objSheet->getColumnDimension('A')->setAutoSize(true);	
@@ -407,12 +417,17 @@ Class Register_model extends CI_Model
         $objSheet->getColumnDimension('P')->setAutoSize(true);
         $objSheet->getColumnDimension('Q')->setAutoSize(true);
         $objSheet->getColumnDimension('R')->setAutoSize(true);
+        $objSheet->getColumnDimension('S')->setAutoSize(true);
+        $objSheet->getColumnDimension('T')->setAutoSize(true);
+        $objSheet->getColumnDimension('U')->setAutoSize(true);
+        $objSheet->getColumnDimension('V')->setAutoSize(true);
+        $objSheet->getColumnDimension('W')->setAutoSize(true);
 
-        $objSheet->getStyle('A1:R1')->getFont()->setSize(14);	
-        $objSheet->getStyle('A1:R1')->getFont()->setBold(true);
-        $objSheet->getStyle('A1:R1')->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID)->getStartColor()->setARGB('FFE8E5E5');		  
+        $objSheet->getStyle('A1:W1')->getFont()->setSize(14);	
+        $objSheet->getStyle('A1:W1')->getFont()->setBold(true);
+        $objSheet->getStyle('A1:W1')->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID)->getStartColor()->setARGB('FFE8E5E5');		  
 
-        $objSheet->getStyle('A1:R'.$xr)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);				  			 
+        $objSheet->getStyle('A1:W'.$xr)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);				  			 
 
         $objSheet->setTitle("Daftar Calon Peserta");
 

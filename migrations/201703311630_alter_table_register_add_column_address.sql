@@ -1,0 +1,1 @@
+ALTER TABLE `register` ADD `alamat` VARCHAR(255) NOT NULL AFTER `nilai_ipk`, ADD `desakelurahan` VARCHAR(255) NOT NULL AFTER `alamat`, ADD `kecamatan` VARCHAR(255) NOT NULL AFTER `desakelurahan`, ADD `kabupatenkota` VARCHAR(255) NOT NULL AFTER `kecamatan`, ADD `provinsi` VARCHAR(255) NOT NULL AFTER `kabupatenkota`;

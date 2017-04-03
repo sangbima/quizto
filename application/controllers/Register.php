@@ -35,6 +35,11 @@ class Register extends CI_Controller
         $this->form_validation->set_rules('tempat_lahir', 'Tempat Lahir', 'required');
         $this->form_validation->set_rules('tanggal_lahir', 'Tanggal Lahir', 'required');
         $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[register.email]');
+        $this->form_validation->set_rules('alamat', 'Alamat', 'required');
+        $this->form_validation->set_rules('desakelurahan', 'Desa/Kelurahan', 'required');
+        $this->form_validation->set_rules('kecamatan', 'Kecamatan', 'required');
+        $this->form_validation->set_rules('kabupatenkota', 'Kabupaten/Kota', 'required');
+        $this->form_validation->set_rules('provinsi', 'Provinsi', 'required');
         $this->form_validation->set_rules('contact_no', 'Nomor Telepon', 'is_natural|required');
         $this->form_validation->set_rules('pendidikan', 'Tingkat Pendidikan', 'required');
         $this->form_validation->set_rules('institusi_pendidikan', 'Institusi Pendidikan', 'required');

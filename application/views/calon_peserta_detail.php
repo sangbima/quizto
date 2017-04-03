@@ -9,7 +9,7 @@
                       <table class="table table-bordered table-condensed">
                             <tr>
                                 <th>Nama </th>
-								<td><?php echo $caper['first_name'] . " " . $caper['last_name'] ;?></td>
+								                <td><?php echo $caper['first_name'] . " " . $caper['last_name'] ;?></td>
                             </tr>            
                             <tr>							
                                 <th>Tempat Lahir</th>
@@ -20,13 +20,29 @@
                                 <td><?php echo $caper['tanggal_lahir'] ;?></td>
                             </tr>							
                             <tr>
-								<th>Email Address</th>
-								<td><?php echo $caper['tempat_lahir'] ;?></td>
-                             </tr>
-							 <tr>
-								<th>No Telepon</th>
+              								<th>Email</th>
+              								<td><?php echo $caper['tempat_lahir'] ;?></td>
+                            </tr>
+                            <tr>
+                              <th>Alamat</th>
+                              <td><?php echo $caper['alamat'] ;?></td>
+                            </tr>
+                            <tr>
+                              <th>Desa/Kelurahan</th>
+                              <td><?php echo $caper['desakelurahan'] ;?></td>
+                            </tr>
+                            <tr>
+                              <th>Kecamatan</th>
+                              <td><?php echo $caper['kecamatan'] ;?></td>
+                            </tr>
+                            <tr>
+                              <th>Provinsi</th>
+                              <td><?php echo $caper['provinsi'] ;?></td>
+                            </tr>
+              							<tr>
+              								<th>No Telepon</th>
                                 <td><?php echo $caper['contact_no'] ;?></td>
-							</tr>	
+              							</tr>	
                        </table>                                 
                 </div>
             </div>
