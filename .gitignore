@@ -12,3 +12,4 @@ license_savsoftquiz.txt
 application/config/sq_config.php
 application/logs/
 upload/
+xls/
