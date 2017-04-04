@@ -14,7 +14,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <?php echo form_label($this->lang->line('first_name'), 'inputFirstName'); ?>
+                                    <?php echo form_label('Nama Depan<sup class="required">*</sup>', 'inputFirstName'); ?>
                                     <?php echo form_input(array(
                                         'name' => 'first_name', 
                                         'id' => 'inputFirstName', 
@@ -42,7 +42,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <?php echo form_label($this->lang->line('tempat_lahir'), 'inputTempatLahir'); ?>
+                                    <?php echo form_label('Tempat Lahir<sup class="required">*</sup>', 'inputTempatLahir'); ?>
                                     <?php echo form_input(array(
                                         'name' => 'tempat_lahir', 
                                         'id' => 'inputTempatLahir', 
@@ -55,7 +55,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <?php echo form_label($this->lang->line('tanggal_lahir'), 'inputTanggalLahir'); ?>
+                                    <?php echo form_label('Tanggal Lahir<sup class="required">*</sup>', 'inputTanggalLahir'); ?>
                                     <?php echo form_input(array(
                                         'name' => 'tanggal_lahir', 
                                         'id' => 'inputTanggalLahir', 
@@ -70,7 +70,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <?php echo form_label($this->lang->line('email_address'), 'inputEmail'); ?>
+                                    <?php echo form_label('Alamat Email<sup class="required">*</sup>', 'inputEmail'); ?>
                                     <?php echo form_input(array(
                                         'type' => 'email',
                                         'name' => 'email', 
@@ -86,7 +86,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">      
-                                    <?php echo form_label($this->lang->line('password'), 'inputPassword'); ?>
+                                    <?php echo form_label('Password<sup class="required">*</sup>', 'inputPassword'); ?>
                                     <?php echo form_password(array(
                                         'name' => 'password', 
                                         'id' => 'inputPassword', 
@@ -99,7 +99,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">      
-                                    <?php echo form_label($this->lang->line('password_repeat'), 'inputRepeatPassword'); ?>
+                                    <?php echo form_label('Ulangi Password<sup class="required">*</sup>', 'inputRepeatPassword'); ?>
                                     <?php echo form_password(array(
                                         'name' => 'passconf', 
                                         'id' => 'inputRepeatPassword', 
@@ -114,12 +114,13 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <?php echo form_label('Alamat', 'inputAlamat'); ?>
+                                    <?php echo form_label('Alamat<sup class="required">*</sup>', 'inputAlamat'); ?>
                                     <?php echo form_input(array(
                                         'name' => 'alamat', 
                                         'id' => 'inputAlamat', 
                                         'class' =>'form-control', 
-                                        'placeholder' => 'Alamat'
+                                        'placeholder' => 'Alamat',
+                                        'required' => 'required'
                                     )); ?>
                                     <small><?php echo form_error('alamat', '<div class="text-danger">', '</div>');?></small>
                                 </div>
@@ -128,24 +129,26 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <?php echo form_label('Desa/Kelurahan', 'inputDesa'); ?>
+                                    <?php echo form_label('Desa/Kelurahan<sup class="required">*</sup>', 'inputDesa'); ?>
                                     <?php echo form_input(array(
                                         'name' => 'desakelurahan', 
                                         'id' => 'inputDesa', 
                                         'class' =>'form-control', 
-                                        'placeholder' => 'Desa/Kelurahan'
+                                        'placeholder' => 'Desa/Kelurahan',
+                                        'required' => 'required'
                                     )); ?>
                                     <small><?php echo form_error('desakelurahan', '<div class="text-danger">', '</div>');?></small>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <?php echo form_label('Kecamatan', 'inputKecamatan'); ?>
+                                    <?php echo form_label('Kecamatan<sup class="required">*</sup>', 'inputKecamatan'); ?>
                                     <?php echo form_input(array(
                                         'name' => 'kecamatan', 
                                         'id' => 'inputKecamatan', 
                                         'class' =>'form-control', 
-                                        'placeholder' => 'Kecamatan'
+                                        'placeholder' => 'Kecamatan',
+                                        'required' => 'required'
                                     )); ?>
                                     <small><?php echo form_error('kecamatan', '<div class="text-danger">', '</div>');?></small>
                                 </div>
@@ -154,24 +157,26 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <?php echo form_label('Kabupaten/Kota', 'inputKabupaten'); ?>
+                                    <?php echo form_label('Kabupaten/Kota<sup class="required">*</sup>', 'inputKabupaten'); ?>
                                     <?php echo form_input(array(
                                         'name' => 'kabupatenkota', 
                                         'id' => 'inputKabupaten', 
                                         'class' =>'form-control', 
-                                        'placeholder' => 'Kabupaten/Kota'
+                                        'placeholder' => 'Kabupaten/Kota',
+                                        'required' => 'required'
                                     )); ?>
                                     <small><?php echo form_error('kabupatenkota', '<div class="text-danger">', '</div>');?></small>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <?php echo form_label('Provinsi', 'inputProvinsi'); ?>
+                                    <?php echo form_label('Provinsi<sup class="required">*</sup>', 'inputProvinsi'); ?>
                                     <?php echo form_input(array(
                                         'name' => 'provinsi', 
                                         'id' => 'inputProvinsi', 
                                         'class' =>'form-control', 
-                                        'placeholder' => 'Provinsi'
+                                        'placeholder' => 'Provinsi',
+                                        'required' => 'required'
                                     )); ?>
                                     <small><?php echo form_error('provinsi', '<div class="text-danger">', '</div>');?></small>
                                 </div>
@@ -180,7 +185,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">     
-                                    <?php echo form_label($this->lang->line('contact_no'), 'contactNo'); ?>
+                                    <?php echo form_label('Nomor Telepon<sup class="required">*</sup>', 'contactNo'); ?>
                                     <?php echo form_input(array(
                                         'name' => 'contact_no', 
                                         'id' => 'contactNo', 
@@ -292,7 +297,7 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">     
-                                    <?php echo form_label($this->lang->line('pendidikan'), 'inputPendidikan'); ?>
+                                    <?php echo form_label('Tingkat Pendidikan<sup class="required">*</sup>', 'inputPendidikan'); ?>
                                     <?php
                                         $option = array(
                                             '' => '--'.$this->lang->line('pendidikan').'--',
@@ -316,7 +321,7 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <?php echo form_label($this->lang->line('institusi_pendidikan'), 'institusiPendidikan'); ?>
+                                    <?php echo form_label('Institusi Pendidikan<sup class="required">*</sup>', 'institusiPendidikan'); ?>
                                     <?php echo form_input(array(
                                         'name' => 'institusi_pendidikan', 
                                         'id' => 'institusiPendidikan', 
@@ -329,7 +334,7 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <?php echo form_label($this->lang->line('fakultas'), 'fakultas'); ?>
+                                    <?php echo form_label('Fakultas/Jurusan<sup class="required">*</sup>', 'fakultas'); ?>
                                     <?php echo form_input(array(
                                         'name' => 'fakultas', 
                                         'id' => 'fakultas', 
@@ -344,7 +349,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <?php echo form_label($this->lang->line('no_ijazah'), 'noIjazah'); ?>
+                                    <?php echo form_label('No. Ijazah<sup class="required">*</sup>', 'noIjazah'); ?>
                                     <?php echo form_input(array(
                                         'name' => 'no_ijazah', 
                                         'id' => 'noIjazah', 
@@ -357,7 +362,7 @@
                             </div>
                             <div class="col-md-2">
                                 <div class="form-group stepNumber">
-                                    <?php echo form_label($this->lang->line('nilai_ipk'), 'nilaiIpk'); ?>
+                                    <?php echo form_label('IPK/NEM (Ex. 3.4)<sup class="required">*</sup>', 'nilaiIpk'); ?>
                                     <?php echo form_input(array(
                                         'name' => 'nilai_ipk', 
                                         'id' => 'nilaiIpk', 
@@ -384,7 +389,7 @@
                     <div class="panel-body">
                         <div class="row">
                            <?php 
-        				        $lname=array('Foto','Ijazah','Transkrip Nilai','KTP','SKCK','SKBN','SKS','BPJS');
+        				        $lname=array('Foto<sup class="required">*</sup>','Ijazah<sup class="required">*</sup>','Transkrip Nilai<sup class="required">*</sup>','KTP<sup class="required">*</sup>','SKCK<sup class="required">*</sup>','SKBN<sup class="required">*</sup>','SKS<sup class="required">*</sup>','BPJS<sup class="required">*</sup>');
         				        for ($xi=0;$xi<count($lname);++$xi) 
         				           {
         					         $lid='lampiran' . $xi;                             						 					    
@@ -408,7 +413,7 @@
 						   <?php }?>
                            <div class="col-md-4">
                                 <div class="form-group">        
-                                    <?php echo form_label('Riwayat Hidup', 'riwayathidup'); ?>                              
+                                    <?php echo form_label('Riwayat Hidup<sup class="required">*</sup>', 'riwayathidup'); ?>                              
                                     <?php echo form_input(array(
                                         'name' => 'lampiran8',                                         
                                         'id' => 'lampiran8', 
@@ -429,6 +434,7 @@
                                 <div class="box bg-danger" style="padding: 0 5px 0 5px;">
                                 <p>Keterangan:</p>
                                 <ul>
+                                    <li><sup class="required">*</sup> Wajib diisi</li>
                                     <li>Semua file harus berbentuk gambar (.jpeg, .jpg)</li>
                                     <li>Ukuran per file max. 200 Kb</li>
                                     <li>KTP: Kartu Tanda Penduduk</li>

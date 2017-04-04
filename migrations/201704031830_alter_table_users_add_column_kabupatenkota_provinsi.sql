@@ -1,0 +1,1 @@
+ALTER TABLE `users` ADD `kabupatenkota` VARCHAR(150) NOT NULL AFTER `contact_no`, ADD `provinsi` VARCHAR(150) NOT NULL AFTER `kabupatenkota`;

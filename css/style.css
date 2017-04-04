@@ -537,3 +537,6 @@ body.loading #spinner {
 .stepNumber .stepper .down{
   bottom: -19px;
 }
+sup.required{
+  color: red;
+}

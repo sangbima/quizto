@@ -612,13 +612,20 @@ Class Qbank_model extends CI_Model
 				$description= str_replace("\n","<br>",$description);
 								
 				
-				$correct_option=explode(',',$qvalue['3']);				
-				$option=array('0'=>$qvalue['4'], 
-				              '1'=>$qvalue['5'], 
-							  '2'=>$qvalue['6'], 
-							  '3'=>$qvalue['7'], 
-							  '4'=>$qvalue['8']
-							  );
+				$correct_option=explode(',',$qvalue['3']);
+
+				$a=4;
+                while (isset($qvalue[$a]) and $qvalue[$a] . "" != "" ) {
+	                 $option[$a-4]=$qvalue[$a];
+	                 ++$a;
+                }       
+                $a_opt=$a-4;		
+				// $option=array('0'=>$qvalue['4'], 
+				//               '1'=>$qvalue['5'], 
+				// 			  '2'=>$qvalue['6'], 
+				// 			  '3'=>$qvalue['7'], 
+				// 			  '4'=>$qvalue['8']
+				// 			  );
 				
 				switch($q_type) {					
 				   case 0:
@@ -658,7 +665,7 @@ Class Qbank_model extends CI_Model
 				
 				if ($this->db->insert('qbank',$insert_tb_qbank)) {
 				   $qid=$this->db->insert_id();
-				   for($xi=0;$xi<5;++$xi) {
+				   for($xi=0;$xi<$a_opt;++$xi) {
 					   $q_score=0;
 					   foreach($correct_option as $nkey => $nvalue) {
 						    if ( $xi==($nvalue-1)) $q_score=1;
