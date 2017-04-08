@@ -114,22 +114,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <?php echo form_label('NIK<sup class="required">*</sup>', 'inputNik'); ?>
-                                    <?php echo form_input(array(
-                                        'name' => 'nik', 
-                                        'id' => 'inputNik', 
-                                        'class' =>'form-control', 
-                                        'placeholder' => 'Nomor Induk Kependudukan',
-                                        'required' => 'required'
-                                    )); ?>
-                                    <small><?php echo form_error('nik', '<div class="text-danger">', '</div>');?></small>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <?php echo form_label('Alamat (Sesuai KTP)<sup class="required">*</sup>', 'inputAlamat'); ?>
+                                    <?php echo form_label('Alamat<sup class="required">*</sup>', 'inputAlamat'); ?>
                                     <?php echo form_input(array(
                                         'name' => 'alamat', 
                                         'id' => 'inputAlamat', 
@@ -143,41 +128,18 @@
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <div class="form-group" id="selectProvinsi">
-                                    <?php echo form_label('Provinsi<sup class="required">*</sup>', 'inputprovinsi'); ?>
-                                    
-                                    <?php 
-                                        $noselect = array('#' => '-- Pilih Provinsi --');
-                                        $options = array_merge($noselect, $provinsi);
-                                        echo form_dropdown('provinsi', $options, '#', array(
-                                            'id' => 'inputprovinsi',
-                                            'class' => 'form-control',
-                                            'data-selecter-options' => '{"cover":"true"}',
-                                            'required' => 'required'
-                                        )); 
-                                    ?>
-
-                                    <small><?php echo form_error('provinsi', '<div class="text-danger">', '</div>');?></small>
+                                <div class="form-group">
+                                    <?php echo form_label('Desa/Kelurahan<sup class="required">*</sup>', 'inputDesa'); ?>
+                                    <?php echo form_input(array(
+                                        'name' => 'desakelurahan', 
+                                        'id' => 'inputDesa', 
+                                        'class' =>'form-control', 
+                                        'placeholder' => 'Desa/Kelurahan',
+                                        'required' => 'required'
+                                    )); ?>
+                                    <small><?php echo form_error('desakelurahan', '<div class="text-danger">', '</div>');?></small>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group" id="selectKabkota">
-                                    <?php echo form_label('Kabupaten/Kota<sup class="required">*</sup>', 'inputkabupaten'); ?>
-                                    <?php 
-                                        $options = array('#' => '-- Pilih Kabupaten/Kota --');
-                                        echo form_dropdown('kabupatenkota', $options, '#', array(
-                                            'id' => 'inputkabupaten',
-                                            'class' => 'form-control',
-                                            'data-selecter-options' => '{"cover":"true"}',
-                                            'required' => 'required'
-                                        )); 
-                                    ?>
-
-                                    <small><?php echo form_error('kabupatenkota', '<div class="text-danger">', '</div>');?></small>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <?php echo form_label('Kecamatan<sup class="required">*</sup>', 'inputKecamatan'); ?>
@@ -191,17 +153,32 @@
                                     <small><?php echo form_error('kecamatan', '<div class="text-danger">', '</div>');?></small>
                                 </div>
                             </div>
+                        </div>
+                        <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <?php echo form_label('Desa/Kelurahan<sup class="required">*</sup>', 'inputDesa'); ?>
+                                    <?php echo form_label('Kabupaten/Kota<sup class="required">*</sup>', 'inputKabupaten'); ?>
                                     <?php echo form_input(array(
-                                        'name' => 'desakelurahan', 
-                                        'id' => 'inputDesa', 
+                                        'name' => 'kabupatenkota', 
+                                        'id' => 'inputKabupaten', 
                                         'class' =>'form-control', 
-                                        'placeholder' => 'Desa/Kelurahan',
+                                        'placeholder' => 'Kabupaten/Kota',
                                         'required' => 'required'
                                     )); ?>
-                                    <small><?php echo form_error('desakelurahan', '<div class="text-danger">', '</div>');?></small>
+                                    <small><?php echo form_error('kabupatenkota', '<div class="text-danger">', '</div>');?></small>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <?php echo form_label('Provinsi<sup class="required">*</sup>', 'inputProvinsi'); ?>
+                                    <?php echo form_input(array(
+                                        'name' => 'provinsi', 
+                                        'id' => 'inputProvinsi', 
+                                        'class' =>'form-control', 
+                                        'placeholder' => 'Provinsi',
+                                        'required' => 'required'
+                                    )); ?>
+                                    <small><?php echo form_error('provinsi', '<div class="text-danger">', '</div>');?></small>
                                 </div>
                             </div>
                         </div>
@@ -334,7 +311,7 @@
 
                                         echo form_dropdown('pendidikan', $option, '', array(
                                             'id' => 'inputPendidikan',
-                                            'class' => 'form-control',
+                                            'class' => 'selecter_3',
                                             'data-selecter-options' => '{"cover":"true"}',
                                             'required' => 'required'
                                         ));
@@ -412,7 +389,7 @@
                     <div class="panel-body">
                         <div class="row">
                            <?php 
-        				        $lname=array('Foto<sup class="required">*</sup>','Ijazah<sup class="required">*</sup>','Transkrip Nilai<sup class="required">*</sup>','KTP<sup class="required">*</sup>','Surat Pernyataan<sup class="required">*</sup>',);
+        				        $lname=array('Foto<sup class="required">*</sup>','Ijazah<sup class="required">*</sup>','Transkrip Nilai<sup class="required">*</sup>','KTP<sup class="required">*</sup>','SKCK<sup class="required">*</sup>','SKBN<sup class="required">*</sup>','SKS<sup class="required">*</sup>','BPJS<sup class="required">*</sup>');
         				        for ($xi=0;$xi<count($lname);++$xi) 
         				           {
         					         $lid='lampiran' . $xi;                             						 					    
@@ -434,12 +411,12 @@
                                 </div>
                             </div>													
 						   <?php }?>
-                            <div class="col-md-4">
+                           <div class="col-md-4">
                                 <div class="form-group">        
-                                    <?php echo form_label('Riwayat Hidup<sup class="required">*</sup>', 'lampiran5'); ?>                              
+                                    <?php echo form_label('Riwayat Hidup<sup class="required">*</sup>', 'riwayathidup'); ?>                              
                                     <?php echo form_input(array(
-                                        'name' => 'lampiran5',                                         
-                                        'id' => 'lampiran5', 
+                                        'name' => 'lampiran8',                                         
+                                        'id' => 'lampiran8', 
                                         'class' =>'form-control', 
                                         'placeholder' => 'Riwayat Hidup' ,                                          
                                         'type' => 'file',
@@ -449,26 +426,10 @@
                                     <small><?php echo form_error($lid, '<div class="text-danger">', '</div>');?></small>
                                     <br>                                    
                                 </div>
-                            </div>
+                           </div>
                            
                         </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">        
-                                    <?php echo form_label('Surat Lamaran<sup class="required">*</sup>', 'lampiran6'); ?>                              
-                                    <?php echo form_input(array(
-                                        'name' => 'lampiran6',                                         
-                                        'id' => 'lampiran6', 
-                                        'class' =>'form-control', 
-                                        'placeholder' => 'Surat Lamaran' ,                                          
-                                        'type' => 'file',
-                                        'accept' => '.doc, .docx, .pdf',
-                                        'required' => 'required'
-                                    )); ?>
-                                    <small><?php echo form_error($lid, '<div class="text-danger">', '</div>');?></small>
-                                    <br>                                    
-                                </div>
-                            </div>										
+                        <div class="row">										
                             <div class="col-md-6">
                                 <div class="box bg-danger" style="padding: 0 5px 0 5px;">
                                 <p>Keterangan:</p>
@@ -476,7 +437,12 @@
                                     <li><sup class="required">*</sup> Wajib diisi</li>
                                     <li>Semua file harus berbentuk gambar (.jpeg, .jpg)</li>
                                     <li>Ukuran per file max. 200 Kb</li>
-                                    <li>Khusus Surat Lamaran dan Riwayat Hidup berupa dokumen (.docx, doc, atau .pdf)</li>
+                                    <li>KTP: Kartu Tanda Penduduk</li>
+                                    <li>SKCK: Surat Keterangan Catatan Kepolisian</li>
+                                    <li>SKBN: Surat Keterangan Bebas Narkoba</li>
+                                    <li>SKS: Surat Keterangan Sehat</li>
+                                    <li>BPJS yang masih aktif</li>
+                                    <li>Khusus Riwayat Hidup berupa dokumen (.docx, doc, atau .pdf)</li>
                                 </ul>
                                 </div>
                            </div>
@@ -495,31 +461,11 @@
 <script type="text/javascript" src="<?php echo base_url();?>js/jquery.js"></script>
 <script type="text/javascript">
 // When the document is ready
-
-$(document).ready(function () {
+$(document).ready(function () {    
     $('#inputTanggalLahir').datepicker({
         format: "dd-mm-yyyy"
     });
 
-    $("#inputprovinsi").change(function(){
-        $("#inputkabupaten > option").remove();
-        var provinsi_name = $('#inputprovinsi').val();
-        $.ajax({
-            type: "GET",
-            dataType: "json",
-            url: "<?php echo site_url('register/getkotabyprovinsi') . '/'; ?>"+escape(provinsi_name),
-            success: function(data)
-            {
-                $.each(data, function(key, value){
-                    var opt = $('<option />');
-                    opt.val(key);
-                    opt.text(value);
-                    $('#inputkabupaten').append(opt);
-                });
-            }
-        });
-    });
-    
 });
 
 $body = $("body");
@@ -549,5 +495,4 @@ $('form#register_form').submit(function(){
     });
     return false;
 });
-
 </script>

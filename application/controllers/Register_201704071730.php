@@ -13,8 +13,6 @@ class Register extends CI_Controller
 
         $this->load->database();
         $this->load->model("register_model");
-        $this->load->model("provinsi_model");
-        $this->load->model("kotakabupaten_model");
         $this->load->library('email');
         $this->load->helper(array('form', 'url'));
         $this->load->library('form_validation');
@@ -24,8 +22,6 @@ class Register extends CI_Controller
     public function index()
     {
         $data['title'] = 'Register';
-        $data['provinsi'] = $this->provinsi_model->get();
-        // var_dump($data['provinsi']);die();
         $this->load->view('header',$data);
         $this->load->view('register_new',$data);    
         $this->load->view('footer',$data);
@@ -39,7 +35,6 @@ class Register extends CI_Controller
         $this->form_validation->set_rules('tempat_lahir', 'Tempat Lahir', 'required');
         $this->form_validation->set_rules('tanggal_lahir', 'Tanggal Lahir', 'required');
         $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[register.email]');
-        $this->form_validation->set_rules('nik', 'NIK', 'is_natural|required');
         $this->form_validation->set_rules('alamat', 'Alamat', 'required');
         $this->form_validation->set_rules('desakelurahan', 'Desa/Kelurahan', 'required');
         $this->form_validation->set_rules('kecamatan', 'Kecamatan', 'required');
@@ -54,28 +49,14 @@ class Register extends CI_Controller
         $this->form_validation->set_rules('jobdesk', 'Deskripsi Pekerjaan', 'trim');
         $this->form_validation->set_rules('thn_mengabdi', 'Masa Kerja', 'numeric');
         
-        if (empty($_FILES['lampiran0']['name'])){
-            $this->form_validation->set_rules('lampiran0', 'Pas Foto', 'required');
-        }
-        if (empty($_FILES['lampiran1']['name'])){
-            $this->form_validation->set_rules('lampiran1', 'Ijazah', 'required');
-        }
-        if (empty($_FILES['lampiran2']['name'])){
-            $this->form_validation->set_rules('lampiran2', 'Transkrip Nilai', 'required'); 
-        }
-        if (empty($_FILES['lampiran3']['name'])){
-            $this->form_validation->set_rules('lampiran3', 'KTP', 'required');
-        }
-        if (empty($_FILES['lampiran4']['name'])){
-            $this->form_validation->set_rules('lampiran4', 'Surat Pernyataan', 'required'); 
-        }
-        if (empty($_FILES['lampiran5']['name'])){
-            $this->form_validation->set_rules('lampiran5', 'Daftar Riwayat Hidup', 'required');
-        }
-        if (empty($_FILES['lampiran6']['name'])){
-            $this->form_validation->set_rules('lampiran6', 'Surat Lamaran', 'required');
-        }
-        
+        // $this->form_validation->set_rules('lampiran0', 'Pas Foto', 'required');
+        // $this->form_validation->set_rules('lampiran1', 'Ijazah', 'required');
+        // $this->form_validation->set_rules('lampiran2', 'Transkrip Nilai', 'required');
+        // $this->form_validation->set_rules('lampiran3', 'KTP', 'required');
+        // $this->form_validation->set_rules('lampiran4', 'SKCK', 'required');
+        // $this->form_validation->set_rules('lampiran5', 'SKBN', 'required');
+        // $this->form_validation->set_rules('lampiran6', 'SKS', 'required');
+
         $this->form_validation->set_message('required', 'Input %s wajib diisi.');
         $this->form_validation->set_message('min_length', 'Input %s sekurangnya harus berisi %s karakter.');
         $this->form_validation->set_message('valid_email', 'Input %s harus berisi alamat email yang valid');
@@ -116,12 +97,6 @@ class Register extends CI_Controller
         $this->load->view('header',$data);
         $this->load->view('register_success',$data);
         $this->load->view('footer',$data);
-    }
-
-    public function getkotabyprovinsi($provinsi)
-    {
-        header('Content-Type: application/x-json; charset=utf-8');
-        echo(json_encode($this->kotakabupaten_model->get_kotakabupaten_by_provinsi(urldecode($provinsi))));
     }
 
     public function test()

@@ -11,7 +11,6 @@ Class Register_model extends CI_Model
             'tempat_lahir' => $this->input->post('tempat_lahir'),
             'tanggal_lahir' => date('Y-m-d', strtotime($this->input->post('tanggal_lahir'))),
             'email' => $this->input->post('email'),
-            'nik' => $this->input->post('nik'),
             'alamat' => $this->input->post('alamat'),
             'desakelurahan' => $this->input->post('desakelurahan'),
             'kecamatan' => $this->input->post('kecamatan'),
@@ -156,8 +155,7 @@ Class Register_model extends CI_Model
 	    }			
 		
 		//$lname=array('Foto','Ijazah','Transkrip Nilai','KTP','SKCK','SKBN','SKS');
-		// $lname=array('foto','ijazah','transkrip_nilai','ktp','skck','skbn','sks','bpjs','riwayat_hidup');
-        $lname=array('foto','ijazah','transkrip_nilai','ktp','surat_pernyataan','surat_lamaran','riwayat_hidup');
+		$lname=array('foto','ijazah','transkrip_nilai','ktp','skck','skbn','sks','bpjs','riwayat_hidup');
 		for ($xi=0;$xi<count($lname);++$xi) {
             $vname='lampiran' . $xi;	
             if(isset($_FILES[$vname])){			

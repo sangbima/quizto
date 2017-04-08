@@ -25,8 +25,9 @@
                 </div>
             </div>
             <div class="col-md-6 col-md-pull-3 get-it">
-                <h1>CAT KEMENDIKBUD</h1>
-                <p>Ujian CAT Online untuk Pegawai Non PNS</p>
+                <h1>UJIAN ONLINE</h1>
+                <h3>Direktorat Jenderal Kebudayaan</h3>
+                <p>Kementerian Pendidikan Dan Kebudayaan</p>
             </div>
         </div>
     </div>
