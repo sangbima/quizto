@@ -412,7 +412,7 @@
                     <div class="panel-body">
                         <div class="row">
                            <?php 
-        				        $lname=array('Foto<sup class="required">*</sup>','Ijazah<sup class="required">*</sup>','Transkrip Nilai<sup class="required">*</sup>','KTP<sup class="required">*</sup>','Surat Pernyataan<sup class="required">*</sup>',);
+        				        $lname=array('Foto (Ukuran 4x6)<sup class="required">*</sup>','Ijazah<sup class="required">*</sup>','Transkrip Nilai<sup class="required">*</sup>','KTP<sup class="required">*</sup>','Surat Pernyataan<sup class="required">*</sup>',);
         				        for ($xi=0;$xi<count($lname);++$xi) 
         				           {
         					         $lid='lampiran' . $xi;                             						 					    
