@@ -80,7 +80,11 @@ $config['smtp_mailtype'] = "html";
 
 $config['email_subject'] = "Pendaftaran Anda Sukses";
 
-$config['email_message'] = "Terima kasih, berikut data lengkap Anda untuk login. \r\n Username Anda: [registration_no]\r\n Password Anda: [password] \r\n Simpanlah Username dan Password ini dengan aman untuk mengikuti ujian. Terima kasih";
+// $config['email_message'] = "Terima kasih, berikut data lengkap Anda untuk login. \r\n Username Anda: [registration_no]\r\n Password Anda: [password] \r\n Simpanlah Username dan Password ini dengan aman untuk mengikuti ujian. Terima kasih";
+
+// $config['email_message'] = "Proses Pendaftaran Anda sebagai penggiat budaya telah sukses. <br/><br/> Berikut data lengkap Anda untuk login.<br/><br/> Username Anda: <b>[registration_no]</b><br/>Password Anda: <b>[password]</b><br/><br/>Informasi Hasil Seleksi Administrasi akan disampaikan melalui laman kebudayaan.kemdikbud.go.id tanggal <u>24 April 2017</u><br/><br/>Untuk info lebih lanjut kunjungi laman http://kebudayaan.kemdikbud.go.id <br/><br/>Terima Kasih <br/><br/> Salam,<br/>Panitia Penerimaan Penggiat Budaya<br/>Direktorat Jenderal Kebudayaan<br/>Kementerian Pendidikan dan Kebudayaan";
+
+$config['email_message'] = "Proses Pendaftaran Anda sebagai penggiat budaya telah sukses. <br/><br/> Informasi Hasil Seleksi Administrasi akan disampaikan melalui laman kebudayaan.kemdikbud.go.id tanggal <u>24 April 2017</u><br/><br/>Untuk info lebih lanjut kunjungi laman http://kebudayaan.kemdikbud.go.id <br/><br/>Terima Kasih <br/><br/> Salam,<br/>Panitia Penerimaan Penggiat Budaya<br/>Direktorat Jenderal Kebudayaan<br/>Kementerian Pendidikan dan Kebudayaan";
 
 // activation email subject
 $config['activation_subject'] = "Action required to verify your account";
