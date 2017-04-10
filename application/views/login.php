@@ -20,7 +20,7 @@
                         <input class="form-control" type="password" name="password" required="" placeholder="<?php echo $this->lang->line('password');?>" id="inputPassword">
                         <div class="checkbox"></div>
                         <button class="btn btn-primary btn-block btn-lg btn-signin" type="submit"><?php echo $this->lang->line('login');?></button>
-                        <a class="btn btn-primary btn-block btn-lg btn-reg" href="register">Daftar Ujian</a>
+                        <a class="btn btn-primary btn-block btn-lg btn-reg" href="register">Daftar</a>
                     </form>
                 </div>
             </div>
