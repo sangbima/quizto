@@ -3,6 +3,7 @@ Class Provinsi_model extends CI_Model
 {
     public function get()
     {
+        $this->db->select('provinsi');
         $this->db->group_by('provinsi');
         $this->db->order_by('provinsi', 'asc');
         $query =  $this->db->get("locations");
