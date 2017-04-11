@@ -18,7 +18,8 @@
                                     <?php echo form_input(array(
                                         'name' => 'first_name', 
                                         'id' => 'inputFirstName', 
-                                        'class' =>'form-control', 
+                                        'class' =>'form-control',
+                                        // 'value' => set_value('first_name'),
                                         'placeholder' => $this->lang->line('first_name'), 
                                         'required' => 'required', 
                                         'autofocus' => 'autofocus'
@@ -446,7 +447,7 @@
                                         'accept' => '.doc, .docx, .pdf',
                                         'required' => 'required'
                                     )); ?>
-                                    <small><?php echo form_error($lid, '<div class="text-danger">', '</div>');?></small>
+                                    <small><?php echo form_error('lampiran5', '<div class="text-danger">', '</div>');?></small>
                                     <br>                                    
                                 </div>
                             </div>
@@ -465,7 +466,7 @@
                                         'accept' => '.doc, .docx, .pdf',
                                         'required' => 'required'
                                     )); ?>
-                                    <small><?php echo form_error($lid, '<div class="text-danger">', '</div>');?></small>
+                                    <small><?php echo form_error('lampiran6', '<div class="text-danger">', '</div>');?></small>
                                     <br>                                    
                                 </div>
                             </div>										

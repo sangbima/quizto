@@ -54,27 +54,13 @@ class Register extends CI_Controller
         $this->form_validation->set_rules('jobdesk', 'Deskripsi Pekerjaan', 'trim');
         $this->form_validation->set_rules('thn_mengabdi', 'Masa Kerja', 'numeric');
         
-        if (empty($_FILES['lampiran0']['name'])){
-            $this->form_validation->set_rules('lampiran0', 'Pas Foto', 'required');
-        }
-        if (empty($_FILES['lampiran1']['name'])){
-            $this->form_validation->set_rules('lampiran1', 'Ijazah', 'required');
-        }
-        if (empty($_FILES['lampiran2']['name'])){
-            $this->form_validation->set_rules('lampiran2', 'Transkrip Nilai', 'required'); 
-        }
-        if (empty($_FILES['lampiran3']['name'])){
-            $this->form_validation->set_rules('lampiran3', 'KTP', 'required');
-        }
-        if (empty($_FILES['lampiran4']['name'])){
-            $this->form_validation->set_rules('lampiran4', 'Surat Pernyataan', 'required'); 
-        }
-        if (empty($_FILES['lampiran5']['name'])){
-            $this->form_validation->set_rules('lampiran5', 'Daftar Riwayat Hidup', 'required');
-        }
-        if (empty($_FILES['lampiran6']['name'])){
-            $this->form_validation->set_rules('lampiran6', 'Surat Lamaran', 'required');
-        }
+        $this->form_validation->set_rules('lampiran0', 'Pas Foto', 'callback_gambar_upload['.$_FILES['lampiran0']['name'].']');
+        $this->form_validation->set_rules('lampiran1', 'Ijazah', 'callback_gambar_upload['.$_FILES['lampiran1']['name'].']');
+        $this->form_validation->set_rules('lampiran2', 'Transkrip Nilai', 'callback_gambar_upload['.$_FILES['lampiran2']['name'].']'); 
+        $this->form_validation->set_rules('lampiran3', 'KTP', 'callback_gambar_upload['.$_FILES['lampiran3']['name'].']');
+        $this->form_validation->set_rules('lampiran4', 'Surat Pernyataan', 'callback_gambar_upload['.$_FILES['lampiran4']['name'].']'); 
+        $this->form_validation->set_rules('lampiran5', 'Daftar Riwayat Hidup', 'callback_document_upload['.$_FILES['lampiran5']['name'].']');
+        $this->form_validation->set_rules('lampiran6', 'Surat Lamaran', 'callback_document_upload['.$_FILES['lampiran6']['name'].']');
         
         $this->form_validation->set_message('required', 'Input %s wajib diisi.');
         $this->form_validation->set_message('min_length', 'Input %s sekurangnya harus berisi %s karakter.');
@@ -82,6 +68,11 @@ class Register extends CI_Controller
         $this->form_validation->set_message('is_unique', '%s ini sudah terdaftar');
         $this->form_validation->set_message('matches', 'Input %s tidak sama dengan input password sebelumnya');
         $this->form_validation->set_message('numeric', 'Input %s harus berupa angka');
+        $this->form_validation->set_message('required', 'Input %s wajib diisi.');
+        $this->form_validation->set_message('files_required', 'Dokumen %s wajib diisi.');
+        $this->form_validation->set_message('document_upload', "File %s harus berupa file *.doc, *.docx atau *.pdf");
+        $this->form_validation->set_message('gambar_upload', "File foto/scan %s harus berupa file *.jpg atau *.jpeg");
+        $this->form_validation->set_message('ukuran_file', "File maksimal berukuran 200KB");
 
         if($this->form_validation->run() == FALSE) {
             $errors = validation_errors();
@@ -92,6 +83,39 @@ class Register extends CI_Controller
             } else {
                 echo "NO";
             }
+        }
+    }
+
+    public function files_required($field, $files)
+    {
+        if(!empty($files)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function document_upload($field, $files)
+    {
+        $ext = pathinfo(basename($files), PATHINFO_EXTENSION);
+        
+        $ext_allowed = array('doc', 'docx', 'pdf');
+        if(in_array(strtolower($ext), $ext_allowed)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function gambar_upload($field, $files)
+    {
+        $ext = pathinfo(basename($files), PATHINFO_EXTENSION);
+        
+        $ext_allowed = array('jpg', 'jpeg');
+        if(in_array(strtolower($ext), $ext_allowed)) {
+            return true;
+        } else {
+            return false;
         }
     }
 

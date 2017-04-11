@@ -34,14 +34,21 @@
 		   $objSheet->SetCellValue('M' . $c_row, $value['total']);
 		   $objSheet->SetCellValue('N' . $c_row, $value['group_name']);		   		   
 		   $objSheet->SetCellValue('O' . $c_row, $value['created_by_name']);
+		   $objSheet->SetCellValue('P' . $c_row, $value['kabupatenkota']);
+		   $objSheet->SetCellValue('Q' . $c_row, $value['provinsi']);		   
+		   
 	}		
 										
     $objSheet->getColumnDimension('A')->setAutoSize(true);	
-	$objSheet->getStyle('A1:P1')->getFont()->setBold(true);
+	$objSheet->getColumnDimension('N')->setAutoSize(true);
+	$objSheet->getColumnDimension('O')->setAutoSize(true);
+	$objSheet->getColumnDimension('P')->setAutoSize(true);
+	$objSheet->getColumnDimension('Q')->setAutoSize(true);
+	$objSheet->getStyle('A1:R1')->getFont()->setBold(true);
 		
-	$objSheet->getStyle('A1:P1')->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID)->getStartColor()->setARGB('FFE8E5E5');
+	$objSheet->getStyle('A1:R1')->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID)->getStartColor()->setARGB('FFE8E5E5');
 	
-	$objSheet->getStyle('P1')->getFont()->setBold(true);
+	$objSheet->getStyle('R1')->getFont()->setBold(true);
 	
 	$objSheet->setTitle($title);
 		

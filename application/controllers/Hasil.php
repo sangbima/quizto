@@ -294,7 +294,9 @@ class Hasil extends CI_Controller
                               'L'=>'ME',
                               'M'=>'TOTAL',
                               'N'=>'GROUP',							  
-							  'O'=>'CREATED BY'
+							  'O'=>'CREATED BY',
+							  'P'=>'KABUPATEN/KOTA',
+							  'Q'=>'PROVINSI'							  
 							  );        
         
          $data['result']=$this->hasil_model->hasil_resume($limit,$full,$gid,$created_by);
@@ -329,7 +331,9 @@ class Hasil extends CI_Controller
                               'C'=>'TPA',
                               'D'=>'TOTAL',
                               'E'=>'GROUP',							  
-							  'F'=>'CREATED BY'							  
+							  'F'=>'CREATED BY',
+							  'G'=>'KABUPATEN/KOTA',
+							  'H'=>'PROVINSI'	
                               );        
         $data['result']=$this->hasil_model->hasil_tpu_tpa($limit,$full,$gid,$created_by);
         if ( $full) {
@@ -368,7 +372,9 @@ class Hasil extends CI_Controller
                               'J'=>'ME',
                               'K'=>'TOTAL',
                               'L'=>'GROUP',							  
-							  'M'=>'CREATED BY'							  
+							  'M'=>'CREATED BY',
+							  'N'=>'KABUPATEN/KOTA',
+							  'O'=>'PROVINSI'							  
                               );
          $data['result']=$this->hasil_model->hasil_list($limit,$full,$gid,$created_by); 
          if ( $full) {
@@ -399,7 +405,9 @@ class Hasil extends CI_Controller
                               'C'=>'LEAST',
                               'D'=>'CHANGE',
                               'E'=>'GROUP',							  
-							  'F'=>'CREATED BY'							  
+							  'F'=>'CREATED BY',
+							  'N'=>'KABUPATEN/KOTA',
+							  'O'=>'PROVINSI'							  
                               );
         foreach($data['result'] as $mkey=>$mval) {
             $data['result'][$mkey]['mscale']=$this->norma_model->data_scale_m($data['result'][$mkey]['uid']);                                       

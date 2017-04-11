@@ -481,6 +481,8 @@ Class User_model extends CI_Model
 			          'first_name'=>$singleuser[3],
 			          'last_name'=>$singleuser[4],
 			          'contact_no'=>$singleuser[5],
+					  'kabupatenkota'=>$singleuser[7],
+					  'provinsi'=>$singleuser[8],
 			          'gid'=>$group_id,
 		         	  'subscription_expired'=>strtotime($singleuser[6]),
          			  'su'=>'0',

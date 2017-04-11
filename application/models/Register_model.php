@@ -169,10 +169,10 @@ Class Register_model extends CI_Model
                     $targets = $dirname . '/'.  $registration_no . '_' . $lname[$xi] .  '.'.$ext;
                     move_uploaded_file($_FILES[$vname]['tmp_name'], $targets);
                 } else {
-                    $targets = $dirname . '/'.  $registration_no . '_' . $lname[$xi] .  '.jpg'; 
-                    $thumbfile= $dirthumb . '/'.   $registration_no . '_' . $lname[$xi] .  '.jpg';
+                    $targets = $dirname . '/'.  $registration_no . '_' . $lname[$xi] .  '.'.$ext; 
+                    $thumbfile= $dirthumb . '/'.   $registration_no . '_' . $lname[$xi] .  '.'.$ext;
                     move_uploaded_file($_FILES[$vname]['tmp_name'], $targets);
-                    $this->make_thumbnail($targets,$thumbfile);
+                    // $this->make_thumbnail($targets,$thumbfile);
                 }			   
             } 
 		}		

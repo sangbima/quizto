@@ -36,7 +36,8 @@ Class Hasil_model extends CI_Model
     
         $script = 'SELECT d.uid,concat(d.first_name,\' \',d.last_name) as fullname,' . 
 		           'd.gid as gid,d.created_by as created_by_id,g.group_name as group_name,'  .
-				   'concat(cb.first_name,\' \',cb.last_name) as created_by_name,';
+				   'concat(cb.first_name,\' \',cb.last_name) as created_by_name, ' .
+				   'd.kabupatenkota as kabupatenkota, d.provinsi as provinsi, ';
         
         // GET CATEGORY ID
         $this->db->order_by('cid','asc');
@@ -113,7 +114,9 @@ Class Hasil_model extends CI_Model
                 
         $script = 'SELECT d.uid,concat(d.first_name,\' \',d.last_name) as fullname,' .
 		           'd.gid as gid,d.created_by as created_by_id,g.group_name as group_name,'  .		
-				   'concat(cb.first_name,\' \',cb.last_name) as created_by_name,';
+				   'concat(cb.first_name,\' \',cb.last_name) as created_by_name,' .
+				   'd.kabupatenkota as kabupatenkota, d.provinsi as provinsi,' ;
+				   
         
         // GET CATEGORY ID
         $this->db->order_by('cid','asc');
@@ -235,7 +238,8 @@ Class Hasil_model extends CI_Model
         //$offset_start= $limit * $this->config->item('number_of_rows');
         $script = 'SELECT d.uid,concat(d.first_name,\' \',d.last_name) as fullname,' .
 		           'd.gid as gid,d.created_by as created_by_id,g.group_name as group_name,'  .		
-				   'concat(cb.first_name,\' \',cb.last_name) as created_by_name,';
+				   'concat(cb.first_name,\' \',cb.last_name) as created_by_name,' .
+				   'd.kabupatenkota as kabupatenkota, d.provinsi as provinsi,' ;
         
         // GET CATEGORY ID
         $this->db->order_by('cid','asc');
@@ -353,7 +357,8 @@ Class Hasil_model extends CI_Model
         
         $script = 'SELECT d.uid,concat(d.first_name,\' \',d.last_name) as fullname,' .
 		           'd.gid as gid,d.created_by as created_by_id,g.group_name as group_name,'  .		
-				   'concat(cb.first_name,\' \',cb.last_name) as created_by_name ';
+				   'concat(cb.first_name,\' \',cb.last_name) as created_by_name,' .
+                   'd.kabupatenkota as kabupatenkota, d.provinsi as provinsi ' ;				   
         
          // GET CATEGORY ID
         $this->db->order_by('cid','asc');
