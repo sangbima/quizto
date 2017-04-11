@@ -364,7 +364,7 @@ Class Register_model extends CI_Model
         $mheaders=array(
             "A1"=>"EMAIL","B1"=>"NO. REGISTRASI","C1"=>"PASSWORD","D1"=>"NAMA DEPAN", "E1"=>"NAMA BELAKANG", "F1" =>"Alamat", "G1"=>"Desa/Kelurahan", "H1"=>"Kecamatan", "I1"=>"Kabupaten/Kota", "J1"=>"Provinsi", "K1"=>"NO. TELP", "L1"=>"TGL. EXPIRE",
             "M1"=>"PENDIDIKAN","N1"=>"INST. PENDIDIKAN", "O1"=>"FAKULTAS-JURUSAN","P1"=>"NO. IJAZAH","Q1"=>"IPK-NEM","R1"=>"NAMA INST. KERJA",
-            "S1"=>"BAGIAN","T1"=>"ALAMAT","U1"=>"JABATAN","V1"=>"MASA KERJA","W1"=>"DESKRIPSI"
+            "S1"=>"BAGIAN","T1"=>"ALAMAT","U1"=>"JABATAN","V1"=>"MASA KERJA","W1"=>"DESKRIPSI","X1"=>"NIK"
         );
         foreach($mheaders as $key => $value) {
             $objSheet->SetCellValue($key, $value);			  
@@ -397,7 +397,8 @@ Class Register_model extends CI_Model
             $objSheet->SetCellValue("T" . $xr, $cvalue['alamat_instansi']);
             $objSheet->SetCellValue("U" . $xr, $cvalue['jabatan']);
             $objSheet->SetCellValue("V" . $xr, $cvalue['thn_mengabdi']);
-            $objSheet->SetCellValue("W" . $xr, $cvalue['jobdesk']);
+            $objSheet->SetCellValue("W" . $xr, strip_tags($cvalue['jobdesk']));
+            $objSheet->SetCellValue("X" . $xr, $cvalue['nik']);
         }	  
         		  		  		   		   
         $objSheet->getColumnDimension('A')->setAutoSize(true);	
@@ -423,12 +424,13 @@ Class Register_model extends CI_Model
         $objSheet->getColumnDimension('U')->setAutoSize(true);
         $objSheet->getColumnDimension('V')->setAutoSize(true);
         $objSheet->getColumnDimension('W')->setAutoSize(true);
+        $objSheet->getColumnDimension('X')->setAutoSize(true);
 
-        $objSheet->getStyle('A1:W1')->getFont()->setSize(14);	
-        $objSheet->getStyle('A1:W1')->getFont()->setBold(true);
-        $objSheet->getStyle('A1:W1')->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID)->getStartColor()->setARGB('FFE8E5E5');		  
+        $objSheet->getStyle('A1:X1')->getFont()->setSize(14);	
+        $objSheet->getStyle('A1:X1')->getFont()->setBold(true);
+        $objSheet->getStyle('A1:X1')->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID)->getStartColor()->setARGB('FFE8E5E5');		  
 
-        $objSheet->getStyle('A1:W'.$xr)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);				  			 
+        $objSheet->getStyle('A1:X'.$xr)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);				  			 
 
         $objSheet->setTitle("Daftar Calon Peserta");
 
