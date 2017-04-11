@@ -112,7 +112,7 @@ Class Register_model extends CI_Model
     function getListCaper($limit, $start)
     {
         $this->db->from('register');
-        $this->db->order_by('nilai_ipk DESC, first_name ASC');
+        $this->db->order_by('registration_no DESC');
         $this->db->limit($limit, $start);
         $query = $this->db->get();
         /*
@@ -334,7 +334,7 @@ Class Register_model extends CI_Model
 	function getAllCaper() 
     {
         $this->db->from('register');
-        $this->db->order_by('id', 'DESC');
+        $this->db->order_by('registration_no', 'DESC');
         $query = $this->db->get();
         return $query->result_array();		
 	}	
