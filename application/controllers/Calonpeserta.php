@@ -8,7 +8,7 @@ class Calonpeserta extends CI_Controller
        parent::__construct();
        $this->load->database();
        $this->load->model("register_model");
-       $this->load->helper('url');
+       $this->load->helper(array('url', 'file', 'directory'));
        $this->lang->load('basic', $this->config->item('language'));
        // $this->load->library('pagination');
        $this->load->library(array('zip', 'pagination'));
@@ -109,10 +109,20 @@ class Calonpeserta extends CI_Controller
 		    $dirname="upload/data/" . $registration_no ."/thumbnail";
 		} else {
 			$dirname="upload/data/" . $registration_no . "/lampiran";
-        }			
-		 
+        }
+
+        $maps = directory_map('./upload/data/'.$registration_no.'/lampiran/');
+
+        $nama_file = $registration_no ."_" . strtolower($lampiran_name);
+
+        $file_names = preg_grep('/'.$nama_file.'/', $maps);
+
+        foreach ($file_names as $key => $value) {
+            $file_name = $value;
+        }
+        
         $file_path=realpath($dirname);
-        $file_name=$registration_no ."_" . strtolower($lampiran_name) . ".jpg"; 				 				 
+        // $file_name=$registration_no ."_" . strtolower($lampiran_name) . ".jpg"; 				 				 
         $myfile=$file_path . "/" . $file_name;
         		 		 
         header('Content-Type: image/jpeg');
