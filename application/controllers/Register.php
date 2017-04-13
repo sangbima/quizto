@@ -16,7 +16,7 @@ class Register extends CI_Controller
         $this->load->model("provinsi_model");
         $this->load->model("kotakabupaten_model");
         $this->load->library('email');
-        $this->load->helper(array('form', 'url'));
+        $this->load->helper(array('form', 'url', 'file'));
         $this->load->library('form_validation');
         $this->lang->load('basic', $this->config->item('language'));
     }
@@ -54,13 +54,13 @@ class Register extends CI_Controller
         $this->form_validation->set_rules('jobdesk', 'Deskripsi Pekerjaan', 'trim');
         $this->form_validation->set_rules('thn_mengabdi', 'Masa Kerja', 'numeric');
         
-        $this->form_validation->set_rules('lampiran0', 'Pas Foto', 'callback_gambar_upload['.$_FILES['lampiran0']['name'].']');
-        $this->form_validation->set_rules('lampiran1', 'Ijazah', 'callback_gambar_upload['.$_FILES['lampiran1']['name'].']');
-        $this->form_validation->set_rules('lampiran2', 'Transkrip Nilai', 'callback_gambar_upload['.$_FILES['lampiran2']['name'].']'); 
-        $this->form_validation->set_rules('lampiran3', 'KTP', 'callback_gambar_upload['.$_FILES['lampiran3']['name'].']');
-        $this->form_validation->set_rules('lampiran4', 'Surat Pernyataan', 'callback_gambar_upload['.$_FILES['lampiran4']['name'].']'); 
-        $this->form_validation->set_rules('lampiran5', 'Daftar Riwayat Hidup', 'callback_document_upload['.$_FILES['lampiran5']['name'].']');
-        $this->form_validation->set_rules('lampiran6', 'Surat Lamaran', 'callback_document_upload['.$_FILES['lampiran6']['name'].']');
+        $this->form_validation->set_rules('lampiran0', 'Pas Foto', 'callback_file_lampiran0_check');
+        $this->form_validation->set_rules('lampiran1', 'Ijazah', 'callback_file_lampiran1_check');
+        $this->form_validation->set_rules('lampiran2', 'Transkrip Nilai', 'callback_file_lampiran2_check'); 
+        $this->form_validation->set_rules('lampiran3', 'KTP', 'callback_file_lampiran3_check');
+        $this->form_validation->set_rules('lampiran4', 'Surat Pernyataan', 'callback_file_lampiran4_check'); 
+        $this->form_validation->set_rules('lampiran5', 'Daftar Riwayat Hidup', 'callback_file_lampiran5_check');
+        $this->form_validation->set_rules('lampiran6', 'Surat Lamaran', 'callback_file_lampiran6_check');
         
         $this->form_validation->set_message('required', 'Input %s wajib diisi.');
         $this->form_validation->set_message('min_length', 'Input %s sekurangnya harus berisi %s karakter.');
@@ -86,47 +86,164 @@ class Register extends CI_Controller
         }
     }
 
-    public function files_required($field, $files)
+    public function file_lampiran0_check($str)
     {
-        if(!empty($files)) {
-            return true;
+        // Berupa image
+        $allowed_mime_type_arr = array('image/jpeg');
+        $mime = get_mime_by_extension($_FILES['lampiran0']['name']);
+        if(isset($_FILES['lampiran0']['name']) && $_FILES['lampiran0']['name'] != '') {
+            if(in_array($mime, $allowed_mime_type_arr)) {
+                if($_FILES['lampiran0']['size'] < 204800) {
+                    return true;
+                } else {
+                    $this->form_validation->set_message('file_lampiran0_check', 'Foto harus berukuran maksimal 200KB');
+                    return false;
+                }
+            } else {
+                $this->form_validation->set_message('file_lampiran0_check', 'Foto harus berupa file .jpg atau .jpeg');
+                return false;
+            }
         } else {
+            $this->form_validation->set_message('file_lampiran0_check', 'Foto harus diunggah');
             return false;
         }
     }
 
-    public function document_upload($field, $files)
+    public function file_lampiran1_check($str)
     {
-        $ext = pathinfo(basename($files), PATHINFO_EXTENSION);
-        
-        $ext_allowed = array('doc', 'docx', 'pdf');
-        if(in_array(strtolower($ext), $ext_allowed)) {
-            return true;
+        // Berupa image
+        $allowed_mime_type_arr = array('image/jpeg');
+        $mime = get_mime_by_extension($_FILES['lampiran1']['name']);
+        if(isset($_FILES['lampiran1']['name']) && $_FILES['lampiran1']['name'] != '') {
+            if(in_array($mime, $allowed_mime_type_arr)) {
+                if($_FILES['lampiran1']['size'] < 204800) {
+                    return true;
+                } else {
+                    $this->form_validation->set_message('file_lampiran1_check', 'Ijazah harus berukuran maksimal 200KB');
+                    return false;
+                }
+            } else {
+                $this->form_validation->set_message('file_lampiran1_check', 'Ijazah harus berupa file .jpg atau .jpeg');
+                return false;
+            }
         } else {
+            $this->form_validation->set_message('file_lampiran1_check', 'Ijazah harus diunggah');
             return false;
         }
     }
 
-    public function gambar_upload($field, $files)
+    public function file_lampiran2_check($str)
     {
-        $ext = pathinfo(basename($files), PATHINFO_EXTENSION);
-        
-        $ext_allowed = array('jpg', 'jpeg');
-        if(in_array(strtolower($ext), $ext_allowed)) {
-            return true;
+        // Berupa image
+        $allowed_mime_type_arr = array('image/jpeg');
+        $mime = get_mime_by_extension($_FILES['lampiran2']['name']);
+        if(isset($_FILES['lampiran2']['name']) && $_FILES['lampiran2']['name'] != '') {
+            if(in_array($mime, $allowed_mime_type_arr)) {
+                if($_FILES['lampiran2']['size'] < 204800) {
+                    return true;
+                } else {
+                    $this->form_validation->set_message('file_lampiran2_check', 'Transkrip Nilai harus berukuran maksimal 200KB');
+                    return false;
+                }
+            } else {
+                $this->form_validation->set_message('file_lampiran2_check', 'Transkrip Nilai harus berupa file .jpg atau .jpeg');
+                return false;
+            }
         } else {
+            $this->form_validation->set_message('file_lampiran2_check', 'Transkrip Nilai harus diunggah');
             return false;
         }
     }
 
-    public function file_size($str)
+    public function file_lampiran3_check($str)
     {
-
+        // Berupa image
+        $allowed_mime_type_arr = array('image/jpeg');
+        $mime = get_mime_by_extension($_FILES['lampiran3']['name']);
+        if(isset($_FILES['lampiran3']['name']) && $_FILES['lampiran3']['name'] != '') {
+            if(in_array($mime, $allowed_mime_type_arr)) {
+                if($_FILES['lampiran3']['size'] < 204800) {
+                    return true;
+                } else {
+                    $this->form_validation->set_message('file_lampiran3_check', 'KTP harus berukuran maksimal 200KB');
+                    return false;
+                }
+            } else {
+                $this->form_validation->set_message('file_lampiran3_check', 'KTP harus berupa file .jpg atau .jpeg');
+                return false;
+            }
+        } else {
+            $this->form_validation->set_message('file_lampiran3_check', 'KTP harus diunggah');
+            return false;
+        }
     }
 
-    public function file_type($str)
+    public function file_lampiran4_check($str)
     {
-        
+        // Berupa image
+        $allowed_mime_type_arr = array('image/jpeg');
+        $mime = get_mime_by_extension($_FILES['lampiran4']['name']);
+        if(isset($_FILES['lampiran4']['name']) && $_FILES['lampiran4']['name'] != '') {
+            if(in_array($mime, $allowed_mime_type_arr)) {
+                if($_FILES['lampiran4']['size'] < 204800) {
+                    return true;
+                } else {
+                    $this->form_validation->set_message('file_lampiran4_check', 'Surat Pernyataan harus berukuran maksimal 200KB');
+                    return false;
+                }
+            } else {
+                $this->form_validation->set_message('file_lampiran4_check', 'Surat Pernyataan harus berupa file .jpg atau .jpeg');
+                return false;
+            }
+        } else {
+            $this->form_validation->set_message('file_lampiran4_check', 'Surat Pernyataan harus diunggah');
+            return false;
+        }
+    }
+
+    public function file_lampiran5_check($str)
+    {
+        // Berupa Dokumen
+        $allowed_mime_type_arr = array('application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document');
+        $mime = get_mime_by_extension($_FILES['lampiran5']['name']);
+        if(isset($_FILES['lampiran5']['name']) && $_FILES['lampiran5']['name'] != '') {
+            if(in_array($mime, $allowed_mime_type_arr)) {
+                if($_FILES['lampiran5']['size'] < 204800) {
+                    return true;
+                } else {
+                    $this->form_validation->set_message('file_lampiran5_check', 'Daftar Riwayat Hidup harus berukuran maksimal 200KB');
+                return false;
+                }
+            } else {
+                $this->form_validation->set_message('file_lampiran5_check', 'Daftar Riwayat Hidup harus berupa file .doc, .docx atau .pdf');
+                return false;
+            }
+        } else {
+            $this->form_validation->set_message('file_lampiran5_check', 'Daftar Riwayat Hidup harus diunggah');
+            return false;
+        }
+    }
+
+    public function file_lampiran6_check($str)
+    {
+        // Berupa dokumen
+        $allowed_mime_type_arr = array('application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document');
+        $mime = get_mime_by_extension($_FILES['lampiran6']['name']);
+        if(isset($_FILES['lampiran6']['name']) && $_FILES['lampiran6']['name'] != '') {
+            if(in_array($mime, $allowed_mime_type_arr)) {
+                if($_FILES['lampiran6']['size'] < 204800) {
+                    return true;
+                } else {
+                    $this->form_validation->set_message('file_lampiran6_check', 'Surat Lamaran harus berupa file .doc, .docx atau .pdf');
+                }
+            } else {
+                $this->form_validation->set_message('file_lampiran6_check', 'Surat Lamaran harus berukuran maksimal 200KB');
+                return false;
+            }
+        } else {
+            $this->form_validation->set_message('file_lampiran6_check', 'Surat Lamaran harus diunggah');
+            return false;
+        }
     }
 
     public function reg()

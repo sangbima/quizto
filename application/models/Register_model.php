@@ -74,8 +74,7 @@ Class Register_model extends CI_Model
             } else {
                 return false;
             }
-        }
-		
+        }		
     }
 
     function generateRegistrationNumber()

@@ -428,7 +428,8 @@
                                         'placeholder' => $lid ,                                          
 										'type' => 'file',
                                         'accept' => '.jpeg, .jpg',
-                                        'required' => 'required'
+                                        'required' => 'required',
+                                        // 'onchange' => "checkName(this, 'fname', 'daftar')"
                                     )); ?>
                                     <small><?php echo form_error($lid, '<div class="text-danger">', '</div>');?></small>
                                     <br>									
@@ -550,5 +551,42 @@ $('form#register_form').submit(function(){
     });
     return false;
 });
+
+// var ar_ext = ['jpg', 'jpeg'];
+// var doc_ext = ['doc', 'docx', 'pdf'];
+
+// function checkName(el, sbm) {
+//     // - coursesweb.net
+//     // get the file name and split it to separe the extension
+//     var name = el.value;
+//     var ar_name = name.split('.');
+
+//     // for IE - separe dir paths (\) from name
+//     var ar_nm = ar_name[0].split('\\');
+//     for(var i=0; i<ar_nm.length; i++) var nm = ar_nm[i];
+
+//     // add the name in 'to'
+//     // document.getElementById(to).value = nm;
+
+//     // check the file extension
+//     var re = 0;
+//     for(var i=0; i<ar_ext.length; i++) {
+//         if(ar_ext[i] == ar_name[1]) {
+//             re = 1;
+//             break;
+//         }
+//     }
+
+//     // if re is 1, the extension is in the allowed list
+//     if(re==1) {
+//         // enable submit
+//         document.getElementById(sbm).disabled = false;
+//     } else {
+//         // delete the file name, disable Submit, Alert message
+//         el.value = '';
+//         document.getElementById(sbm).disabled = true;
+//         alert('".'+ ar_name[1]+ '" is not an file type allowed for upload');
+//     }
+// }
 
 </script>
