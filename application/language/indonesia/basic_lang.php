@@ -16,7 +16,7 @@ $lang['value_d'] = "Value D";
 $lang['value_i'] = "Value I";
 $lang['value_s'] = "Value S";
 $lang['value_c'] = "Value C";
-$lang['title'] = "CAT KEMENDIKBUD";
+$lang['title'] = "PENGGIAT BUDAYA";
 $lang['installation_process'] = "Proses Instalasi";
 $lang['installation_completed'] = "Instalasi komplet. Kunjungi URL {base_url} untuk login.<br><br>Login default:<br> Email: admin@example.com <br>Password: admin<br><br>Untuk informasi atau kustomisasi kunjungi <a href='http://example.com/'>www.example.com/</a> ";
 $lang['installation_failed'] = "Instalasi gagal";

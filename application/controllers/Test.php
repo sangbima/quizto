@@ -16,7 +16,7 @@ class Test extends CI_Controller
         // $this->load->model("provinsi_model");
         // $this->load->model("kotakabupaten_model");
         // $this->load->library('email');
-        $this->load->helper(array('form', 'url', 'file'));
+        $this->load->helper(array('form', 'url', 'file', 'directory'));
         $this->load->library('form_validation');
         $this->lang->load('basic', $this->config->item('language'));
     }
@@ -175,5 +175,23 @@ class Test extends CI_Controller
         } else {
             return false;
         }
+    }
+
+    public function bacadir()
+    {
+        $registration_no = '170300000043';
+
+        $dokumen = array('foto', 'ijazah', 'ktp', 'skbn', 'skck', 'sks', 'transkrip_nilai', 'surat_lamaran', 'daftar_riwayat_hidup', 'bpjs', 'surat_pernyataan');
+
+        $maps = directory_map('./upload/data/'.$registration_no.'/lampiran/');
+
+        var_dump($maps);
+
+        
+        $data['title'] = 'Test Baca Direktori';
+        
+        $this->load->view('header',$data);
+        $this->load->view('test_bacadir',$data);    
+        $this->load->view('footer',$data);
     }
 }

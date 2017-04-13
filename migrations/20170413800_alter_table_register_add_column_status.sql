@@ -1,0 +1,1 @@
+ALTER TABLE `register` ADD `status` ENUM('OK','GAGAL') NOT NULL DEFAULT 'GAGAL' AFTER `provinsi`;

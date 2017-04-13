@@ -8,6 +8,7 @@ class Calonpeserta extends CI_Controller
        parent::__construct();
        $this->load->database();
        $this->load->model("register_model");
+       $this->load->helper('url');
        $this->lang->load('basic', $this->config->item('language'));
        // $this->load->library('pagination');
        $this->load->library(array('zip', 'pagination'));
@@ -56,6 +57,12 @@ class Calonpeserta extends CI_Controller
         $this->load->view('header',$data);
         $this->load->view('calon_peserta',$data);
         $this->load->view('footer',$data);
+    }
+
+    public function status($userid)
+    {
+        $this->register_model->ubahstatus($userid);
+        redirect('calonpeserta');
     }
 
 	public function detail($caper_id)

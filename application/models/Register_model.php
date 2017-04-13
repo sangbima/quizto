@@ -77,6 +77,23 @@ Class Register_model extends CI_Model
         }		
     }
 
+    function ubahstatus($userid)
+    {
+        $this->db->where('register.id', $userid);
+        $query = $this->db->get('register');        
+        $calon = $query->row_array();
+
+        if($calon['status'] == 'OK') {
+            $newstatus = array('status' => 'GAGAL');
+            $this->db->where('register.id', $userid);
+            return $this->db->update('register', $newstatus);
+        } else {
+            $newstatus = array('status' => 'OK');
+            $this->db->where('register.id', $userid);
+            return $this->db->update('register', $newstatus);
+        }
+    }
+
     function generateRegistrationNumber()
     {
         $lastRegNo = $this->getLastInsertRegNo();

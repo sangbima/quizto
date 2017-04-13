@@ -137,8 +137,9 @@
                     <div class="panel-body">		
 					
                    <?php 
-				        $lname=array('Foto','Ijazah','Transkrip Nilai','KTP','SKCK','SKBN','SKS');
-				        for ($xi=0;$xi<7;++$xi) 
+				        // $lname=array('Foto','Ijazah','Transkrip Nilai','KTP','SKCK','SKBN','SKS');
+                   $lname=array('Foto','Ijazah','Transkrip Nilai','KTP','Surat Pernyataan');
+				        for ($xi=0;$xi<count($lname);++$xi) 
 				           {
 					         $lid='lampiran' . $xi;    
                              $imgfull="calonpeserta/download/full/" .

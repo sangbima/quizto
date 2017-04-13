@@ -16,3 +16,4 @@ xls/
 index.php
 application/controller/Test.php
 application/views/test_page.php
+application/views/test_bacadir.php
