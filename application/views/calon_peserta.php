@@ -128,7 +128,7 @@
                 <h4 class="modal-title" id="image-gallery-title"></h4>
             </div>
             <div class="modal-body text-center">
-                <img class="" src="#"/>
+                <img class="img-responsive" src="#"/>
             </div>
             <div class="modal-footer">
                 <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
