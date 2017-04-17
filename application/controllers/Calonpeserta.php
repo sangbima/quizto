@@ -59,10 +59,14 @@ class Calonpeserta extends CI_Controller
         $this->load->view('footer',$data);
     }
 
-    public function status($userid)
+    public function status()
     {
-        $this->register_model->ubahstatus($userid);
-        redirect('calonpeserta');
+        $userid = $this->input->post('caper_id');
+        if($this->register_model->ubahstatus($userid)) {
+            echo "success";
+        } else {
+            echo "error";
+        }
     }
 
 	public function detail($caper_id)

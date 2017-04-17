@@ -125,11 +125,16 @@ Class Register_model extends CI_Model
         return $this->db->count_all("register");
     }
 
-    function getListCaper($limit, $start)
+    function getListCaper($limit, $start, $filter=null)
     {
+        $min_ipk = 2.75;
+
         $this->db->from('register');
         $this->db->order_by('registration_no DESC');
         $this->db->limit($limit, $start);
+        if($filter == 'ipk') {
+            $this->db->where('nilai_ipk >=', $min_ipk);
+        }
         $query = $this->db->get();
         /*
         if($query->num_rows() > 0) {
@@ -380,7 +385,7 @@ Class Register_model extends CI_Model
         $mheaders=array(
             "A1"=>"EMAIL","B1"=>"NO. REGISTRASI","C1"=>"PASSWORD","D1"=>"NAMA DEPAN", "E1"=>"NAMA BELAKANG", "F1" =>"Alamat", "G1"=>"Desa/Kelurahan", "H1"=>"Kecamatan", "I1"=>"Kabupaten/Kota", "J1"=>"Provinsi", "K1"=>"NO. TELP", "L1"=>"TGL. EXPIRE",
             "M1"=>"PENDIDIKAN","N1"=>"INST. PENDIDIKAN", "O1"=>"FAKULTAS-JURUSAN","P1"=>"NO. IJAZAH","Q1"=>"IPK-NEM","R1"=>"NAMA INST. KERJA",
-            "S1"=>"BAGIAN","T1"=>"ALAMAT","U1"=>"JABATAN","V1"=>"MASA KERJA","W1"=>"DESKRIPSI","X1"=>"NIK"
+            "S1"=>"BAGIAN","T1"=>"ALAMAT","U1"=>"JABATAN","V1"=>"MASA KERJA","W1"=>"DESKRIPSI","X1"=>"NIK","Y1"=>"STATUS"
         );
         foreach($mheaders as $key => $value) {
             $objSheet->SetCellValue($key, $value);			  
@@ -415,6 +420,7 @@ Class Register_model extends CI_Model
             $objSheet->SetCellValue("V" . $xr, $cvalue['thn_mengabdi']);
             $objSheet->SetCellValue("W" . $xr, strip_tags($cvalue['jobdesk']));
             $objSheet->SetCellValue("X" . $xr, $cvalue['nik']);
+            $objSheet->SetCellValue("Y" . $xr, $cvalue['status']);
         }	  
         		  		  		   		   
         $objSheet->getColumnDimension('A')->setAutoSize(true);	
@@ -441,12 +447,13 @@ Class Register_model extends CI_Model
         $objSheet->getColumnDimension('V')->setAutoSize(true);
         $objSheet->getColumnDimension('W')->setAutoSize(true);
         $objSheet->getColumnDimension('X')->setAutoSize(true);
+        $objSheet->getColumnDimension('Y')->setAutoSize(true);
 
-        $objSheet->getStyle('A1:X1')->getFont()->setSize(14);	
-        $objSheet->getStyle('A1:X1')->getFont()->setBold(true);
-        $objSheet->getStyle('A1:X1')->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID)->getStartColor()->setARGB('FFE8E5E5');		  
+        $objSheet->getStyle('A1:Y1')->getFont()->setSize(14);	
+        $objSheet->getStyle('A1:Y1')->getFont()->setBold(true);
+        $objSheet->getStyle('A1:Y1')->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID)->getStartColor()->setARGB('FFE8E5E5');		  
 
-        $objSheet->getStyle('A1:X'.$xr)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);				  			 
+        $objSheet->getStyle('A1:Y'.$xr)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);				  			 
 
         $objSheet->setTitle("Daftar Calon Peserta");
 

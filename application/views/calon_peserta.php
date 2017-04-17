@@ -23,7 +23,7 @@
                         </ul>
                     </div>
                 </div>
-                <table class="table table-bordered">
+                <table id="tbl-caper" class="table table-bordered">
                     <tr>
                         <th>#</th>
                         <th>NO. REGISTRASI</th>
@@ -40,7 +40,7 @@
                     foreach($result as $key => $value) {
 						++$xi;
                     ?> 
-                    <tr>
+                    <tr <?= $value->nilai_ipk < 2.75 ? 'class="danger"' : ''?>>
                         <td><?php echo $xi;?></td>
                         <td><?php echo $value->registration_no; ?></td>
                         <td><?php echo $value->first_name .' '.$value->last_name; ?></td>
@@ -94,9 +94,9 @@
                         </td>
                         <td>
                             <?php
-                                $segments = array('calonpeserta', 'status', $value->id);
-                                $status_ok = anchor(site_url($segments), '<i class="fa fa-check"></i>', array('class' => 'btn btn-sm btn-success'));
-                                $status_gagal = anchor(site_url($segments), '<i class="fa fa-remove"></i>', array('class' => 'btn btn-sm btn-danger'));
+                                // $segments = array('calonpeserta', 'status', $value->id);
+                                $status_ok = anchor(site_url('#'), '<i class="fa fa-check"></i>', array('class' => 'btn btn-sm btn-success changestatus', 'data-id' => $value->id));
+                                $status_gagal = anchor(site_url('#'), '<i class="fa fa-remove"></i>', array('class' => 'btn btn-sm btn-danger changestatus', 'data-id' => $value->id));
                                 
                                 echo $value->status == 'OK' ? $status_ok : $status_gagal;
                             ?>
@@ -140,5 +140,23 @@
 <script type="text/javascript">
     $('.image-floating').click(function(e){
         $('#myModal img').attr('src', $(this).attr('data-img-url'));
+    });
+
+    $('.changestatus').click(function(e){
+        e.preventDefault();
+        var caper_id = $(this).data('id');
+        $.ajax({
+            type: 'POST',
+            url: '/calonpeserta/status',
+            data: {caper_id: caper_id},
+            success: function(response) {
+                // alert(response);
+                if(response == 'success') {
+                    location.reload();
+                } else {
+                    alert('Ada masalah di server');
+                }
+            }
+        });
     });
 </script>
