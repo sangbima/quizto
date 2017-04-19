@@ -12,6 +12,9 @@ $config['base_url'] = $sq_base_url;
 // show pass_percentage ( true or false )
 $config['pass_percentage']=false;
 
+// batas akhir waktu registrasi
+$config['batas_pendaftaran']='2017-04-20 16:00:00';
+
 // show timelapse to right ( true or false )
 $config['show_timelapse_right']=true;
 

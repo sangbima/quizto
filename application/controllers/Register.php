@@ -7,6 +7,14 @@ class Register extends CI_Controller
     {
         parent::__construct();
 
+        // $batas_pendaftaran = date('2017-04-20 16:00:00');
+        $now = date('Y-m-d H:i:s', time());
+        // $now = date('2017-04-20 23:59:59');
+        
+        if($now >= date($this->config->item('batas_pendaftaran'))) {
+            redirect('login');
+        }
+
         if($this->session->userdata('logged_in')){
             redirect('dashboard');
         }
