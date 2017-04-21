@@ -106,7 +106,7 @@ Class Register_model extends CI_Model
     {
         $this->db->from('register');
         $this->db->select("provinsi, kabupatenkota, count(*) as total, count(IF(status='OK',1,NULL)) as lolos, concat(round((count(IF(status='OK',1,NULL))/count(*) * 100),2),'%') as percent");
-        $this->db->group_by('provinsi');
+        $this->db->group_by('provinsi,kabupatenkota');
         $this->db->order_by('provinsi ASC');
         $this->db->limit($limit, $start);
         $query = $this->db->get();
@@ -118,7 +118,7 @@ Class Register_model extends CI_Model
     {
         $this->db->from('register');
         $this->db->select("provinsi, kabupatenkota, count(*) as total, count(IF(status='OK',1,NULL)) as lolos, concat(round((count(IF(status='OK',1,NULL))/count(*) * 100),2),'%') as percent");
-        $this->db->group_by('provinsi');
+        $this->db->group_by('provinsi,kabupatenkota');
         $this->db->order_by('provinsi ASC');
 
         $query = $this->db->get();
