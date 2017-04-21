@@ -69,7 +69,14 @@
                     }
                     if($logged_in['su']==1){
                     ?>
-                    <li <?php if($this->uri->segment(1)=='calonpeserta'){ echo "class='active'"; } ?>><a href="<?php echo site_url('calonpeserta/index');?>">Calon Peserta</a></li>
+                    <li <?php if($this->uri->segment(1)=='calonpeserta'){ echo "class='active'"; } ?>>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Peserta <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="<?php echo site_url('calonpeserta/index');?>">Calon Peserta</a></li>
+                            <li><a href="<?php echo site_url('calonpeserta/statprov');?>">Sebaran Provinsi</a></li>
+                            <li><a href="<?php echo site_url('calonpeserta/statkab');?>">Sebaran Kota/Kabupaten</a></li>
+                        </ul>
+                    </li>
                     <li class="dropdown" <?php if($this->uri->segment(1)=='qbank'){ echo "class='active'"; } ?> >
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $this->lang->line('qbank');?> <span class="caret"></span></a>
                         <ul class="dropdown-menu">
@@ -80,8 +87,16 @@
                     <?php 
                     }else{
                     ?>
-                    <li><a href="<?php echo site_url('user/edit_user/'.$logged_in['uid']);?>"><?php echo $this->lang->line('myaccount');?></a></li>
+                    <li <?php if($this->uri->segment(1)=='user'){ echo "class='active'"; } ?>><a href="<?php echo site_url('user/edit_user/'.$logged_in['uid']);?>"><?php echo $this->lang->line('myaccount');?></a></li>
                     <?php 
+                        $now = date('Y-m-d H:i:s', time());
+                        $batas_awal = $this->config->item('awal_berkas_2');
+                        $batas_akhir = $this->config->item('akhir_berkas_2');
+                        if($now >= date($batas_awal) && $now <= date($batas_akhir)) {
+                    ?>
+                    <li <?php if($this->uri->segment(1)=='berkas'){ echo "class='active'"; } ?>><a href="<?php echo site_url('berkas/');?>">Upload Berkas</a></li>
+                    <?php 
+                        }
                     }
                     ?>
                     <?php  

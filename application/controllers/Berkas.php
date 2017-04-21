@@ -6,6 +6,16 @@ class Berkas extends CI_Controller
     function __construct()
     {
        parent::__construct();
+
+       // $batas_pendaftaran = date('2017-04-20 16:00:00');
+        $now = date('Y-m-d H:i:s', time());
+       
+        $batas_awal = $this->config->item('awal_berkas_2');
+        $batas_akhir = $this->config->item('akhir_berkas_2');
+        if($now <= date($batas_awal) || $now >= date($batas_akhir)) {
+            redirect('ujian');
+        }
+
        $this->load->database();
 	   $this->load->model("user_model");
 	   $this->load->model("berkas_model");	   

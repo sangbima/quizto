@@ -15,6 +15,10 @@ $config['pass_percentage']=false;
 // batas akhir waktu registrasi
 $config['batas_pendaftaran']='2017-04-20 16:00:00';
 
+// Pengumpulan berkas tahap 2
+$config['awal_berkas_2']='2017-04-21 11:30:00';
+$config['akhir_berkas_2']='2017-04-21 11:31:59';
+
 // show timelapse to right ( true or false )
 $config['show_timelapse_right']=true;
 

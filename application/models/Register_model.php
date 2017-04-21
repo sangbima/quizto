@@ -77,6 +77,55 @@ Class Register_model extends CI_Model
         }		
     }
 
+    function getStatProv($limit, $start)
+    {
+
+        $this->db->from('register');
+        $this->db->select("provinsi, count(*) as total, count(IF(status='OK',1,NULL)) as lolos, concat(round((count(IF(status='OK',1,NULL))/count(*) * 100),2),' %') as percent");
+        $this->db->group_by('provinsi');
+        $this->db->order_by('provinsi ASC');
+        $this->db->limit($limit, $start);
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
+    function num_record_statprov()
+    {
+        $this->db->from('register');
+        $this->db->select("provinsi, count(*) as total, count(IF(status='OK',1,NULL)) as lolos, concat(round((count(IF(status='OK',1,NULL))/count(*) * 100),2),' %') as percent");
+        $this->db->group_by('provinsi');
+        $this->db->order_by('provinsi ASC');
+
+        $query = $this->db->get();
+
+        return $query->num_rows();
+    }
+
+    function getStatKab($limit, $start)
+    {
+        $this->db->from('register');
+        $this->db->select("provinsi, kabupatenkota, count(*) as total, count(IF(status='OK',1,NULL)) as lolos, concat(round((count(IF(status='OK',1,NULL))/count(*) * 100),2),'%') as percent");
+        $this->db->group_by('provinsi');
+        $this->db->order_by('provinsi ASC');
+        $this->db->limit($limit, $start);
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
+    function num_record_statkab()
+    {
+        $this->db->from('register');
+        $this->db->select("provinsi, kabupatenkota, count(*) as total, count(IF(status='OK',1,NULL)) as lolos, concat(round((count(IF(status='OK',1,NULL))/count(*) * 100),2),'%') as percent");
+        $this->db->group_by('provinsi');
+        $this->db->order_by('provinsi ASC');
+
+        $query = $this->db->get();
+
+        return $query->num_rows();
+    }
+
     function ubahstatus($userid)
     {
         $this->db->where('register.id', $userid);

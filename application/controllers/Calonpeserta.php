@@ -198,4 +198,80 @@ class Calonpeserta extends CI_Controller
 		echo $excel_data;		
 		exit;				
 	}
+
+    public function statprov()
+    {
+        $config = array();
+        $config["base_url"] = base_url() . "calonpeserta/statprov";
+        $total_row = $this->register_model->num_record_statprov();
+        $config["total_rows"] = $total_row;
+        $config["per_page"] = $this->config->item("number_of_rows");
+        $config["uri_segment"] = 3;
+        $config["use_page_numbers"] = TRUE;
+        // $config["num_links"] = $total_row;
+        $config["next_link"] = 'Next';
+        $config["prev_link"] = 'Previous';
+
+        $config['first_tag_open'] = $config['last_tag_open'] = $config['next_tag_open'] = $config['prev_tag_open'] = $config['num_tag_open'] = '<li>';
+        $config['first_tag_close'] = $config['last_tag_close'] = $config['next_tag_close'] = $config['prev_tag_close'] = $config['num_tag_close'] = '</li>';
+         
+        $config['cur_tag_open'] = '<li class="active"><span><b>';
+        $config['cur_tag_close'] = '</b></span></li>';
+
+        $this->pagination->initialize($config);
+        
+        $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+        $offset = $page == 0 ? 0 : ($page - 1) * $config["per_page"];
+
+        $data['limit']=$config["per_page"];     
+        
+        $data['statprov'] = $this->register_model->getStatProv($config["per_page"], $offset);
+
+        $str_links = $this->pagination->create_links();
+        $data["links"] = explode('&nbsp;', $str_links);
+        $data['page'] = $page==0? 1:$page;
+
+        $data['title'] = "Sebaran Peserta Berdasarkan Provinsi";
+        $this->load->view('header',$data);
+        $this->load->view('calon_peserta_statprov',$data);
+        $this->load->view('footer',$data);
+    }
+
+    public function statkab()
+    {
+        $config = array();
+        $config["base_url"] = base_url() . "calonpeserta/statkab";
+        $total_row = $this->register_model->num_record_statkab();
+        $config["total_rows"] = $total_row;
+        $config["per_page"] = $this->config->item("number_of_rows");
+        $config["uri_segment"] = 3;
+        $config["use_page_numbers"] = TRUE;
+        // $config["num_links"] = $total_row;
+        $config["next_link"] = 'Next';
+        $config["prev_link"] = 'Previous';
+
+        $config['first_tag_open'] = $config['last_tag_open'] = $config['next_tag_open'] = $config['prev_tag_open'] = $config['num_tag_open'] = '<li>';
+        $config['first_tag_close'] = $config['last_tag_close'] = $config['next_tag_close'] = $config['prev_tag_close'] = $config['num_tag_close'] = '</li>';
+         
+        $config['cur_tag_open'] = '<li class="active"><span><b>';
+        $config['cur_tag_close'] = '</b></span></li>';
+
+        $this->pagination->initialize($config);
+        
+        $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+        $offset = $page == 0 ? 0 : ($page - 1) * $config["per_page"];
+
+        $data['limit']=$config["per_page"];     
+        
+        $data['statprov'] = $this->register_model->getStatKab($config["per_page"], $offset);
+
+        $str_links = $this->pagination->create_links();
+        $data["links"] = explode('&nbsp;', $str_links);
+        $data['page'] = $page==0? 1:$page;
+
+        $data['title'] = "Sebaran Peserta Berdasarkan Provinsi";
+        $this->load->view('header',$data);
+        $this->load->view('calon_peserta_statkab',$data);
+        $this->load->view('footer',$data);
+    }
 }
