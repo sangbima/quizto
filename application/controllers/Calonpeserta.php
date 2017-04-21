@@ -104,7 +104,15 @@ class Calonpeserta extends CI_Controller
 
         if (($dtype == "xlsx") &&  ($value=="capers") ){			 
             $this->download_xlsx_capers($extra,"limited");
-        }		 		 
+        }
+
+        if (($dtype == "xlsx") &&  ($value=="statprov") ){             
+            $this->download_xlsx_statprov();
+        }	 		 
+
+        if (($dtype == "xlsx") &&  ($value=="statkab") ){             
+            $this->download_xlsx_statkab();
+        }
 	}	
 	
 	public function download_image($registration_no="",$lampiran_name="",$type="thumb")
@@ -198,6 +206,30 @@ class Calonpeserta extends CI_Controller
 		echo $excel_data;		
 		exit;				
 	}
+
+    public function download_xlsx_statprov()
+    {
+        
+        $filename="daftar_sebaran_peserta_provinsi_" . date('Ymd') . ".xlsx";
+        
+        $excel_data=$this->register_model->xlsx_statprov();
+        header("Content-Disposition: attachment; filename=\"$filename\"");
+        header("Content-Type: application/vnd.ms-excel");       
+        echo $excel_data;       
+        exit;               
+    }
+
+    public function download_xlsx_statkab()
+    {
+        
+        $filename="daftar_sebaran_kabupatenkota_" . date('Ymd') . ".xlsx";
+        
+        $excel_data=$this->register_model->xlsx_statkab();
+        header("Content-Disposition: attachment; filename=\"$filename\"");
+        header("Content-Type: application/vnd.ms-excel");       
+        echo $excel_data;       
+        exit;               
+    }
 
     public function statprov()
     {

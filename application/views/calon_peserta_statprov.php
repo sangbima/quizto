@@ -7,7 +7,7 @@
                     <div class="btn-group pull-right">
                         <button id="w6" class="btn btn-default dropdown-toggle" title="Export data in Excel" data-toggle="dropdown" aria-expanded="false"><i class="glyphicon glyphicon-export"></i> <span class="caret"></span></button>
                         <ul id="w7" class="dropdown-menu">                          
-                            <li title="Export All Data To Excel"><a id="all-excell" class="export-full-html" href="<?php echo site_url('calonpeserta/download/xlsx/sattprov') ;?>" tabindex="-1"><i class="fa fa-file-excel-o"></i> Export All</a></li>                            
+                            <li title="Export All Data To Excel"><a id="all-excell" class="export-full-html" href="<?php echo site_url('calonpeserta/download/xlsx/statprov') ;?>" tabindex="-1"><i class="fa fa-file-excel-o"></i> Export All</a></li>                            
                         </ul>
                     </div>
                 </div>

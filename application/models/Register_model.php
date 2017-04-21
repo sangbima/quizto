@@ -77,14 +77,17 @@ Class Register_model extends CI_Model
         }		
     }
 
-    function getStatProv($limit, $start)
+    function getStatProv($limit = null, $start = null)
     {
 
         $this->db->from('register');
         $this->db->select("provinsi, count(*) as total, count(IF(status='OK',1,NULL)) as lolos, concat(round((count(IF(status='OK',1,NULL))/count(*) * 100),2),' %') as percent");
         $this->db->group_by('provinsi');
         $this->db->order_by('provinsi ASC');
-        $this->db->limit($limit, $start);
+        if(isset($limit) && isset($start)) {
+            $this->db->limit($limit, $start);    
+        }
+        
         $query = $this->db->get();
 
         return $query->result();
@@ -102,13 +105,15 @@ Class Register_model extends CI_Model
         return $query->num_rows();
     }
 
-    function getStatKab($limit, $start)
+    function getStatKab($limit=null, $start=null)
     {
         $this->db->from('register');
         $this->db->select("provinsi, kabupatenkota, count(*) as total, count(IF(status='OK',1,NULL)) as lolos, concat(round((count(IF(status='OK',1,NULL))/count(*) * 100),2),'%') as percent");
         $this->db->group_by('provinsi,kabupatenkota');
         $this->db->order_by('provinsi ASC');
-        $this->db->limit($limit, $start);
+        if(!empty($limit) && !empty($start)) {
+            $this->db->limit($limit, $start);
+        }
         $query = $this->db->get();
 
         return $query->result();
@@ -513,7 +518,125 @@ Class Register_model extends CI_Model
 
         return $excelOutput;
 
-    }	
+    }
+
+    function xlsx_statprov()
+    {
+        require_once ('application/third_party/PHPExcel.php');
+        require_once ('application/third_party/PHPExcel/Writer/Excel2007.php');
+
+        $capers=$this->getStatProv();
+
+        $objPHPExcel = new PHPExcel();
+
+        $objPHPExcel->getProperties()->setCreator("Kemendikbud");
+        $objPHPExcel->getProperties()->setLastModifiedBy("Kemendikbud");
+        $objPHPExcel->getProperties()->setTitle("Office 2007 XLSX Test Document");
+        $objPHPExcel->getProperties()->setSubject("Office 2007 XLSX Test Document");
+        $objPHPExcel->getProperties()->setDescription("Test document for Office 2007 XLSX, generated using PHP classes.");
+
+        $objPHPExcel->setActiveSheetIndex(0);
+        $objSheet=$objPHPExcel->getActiveSheet();
+
+        $mheaders=array(
+            "A1"=>"PROVINSI","B1"=>"PENDAFTAR","C1"=>"LOLOS","D1"=>"PERSENTASE"
+        );
+        foreach($mheaders as $key => $value) {
+            $objSheet->SetCellValue($key, $value);            
+        }     
+          
+        $xr=1;
+        $date_awal = date('d-m-Y');
+        $expire_date = date('d-m-Y', strtotime('+6 month', strtotime($date_awal)));
+        foreach($capers as $cvalue) {
+            ++$xr;
+            $objSheet->SetCellValue("A" . $xr, $cvalue->provinsi);
+            $objSheet->SetCellValue("B" . $xr, $cvalue->total);
+            $objSheet->SetCellValue("C" . $xr, $cvalue->lolos);
+            $objSheet->SetCellValue("D" . $xr, $cvalue->percent);
+        }     
+                                           
+        $objSheet->getColumnDimension('A')->setAutoSize(true);  
+        $objSheet->getColumnDimension('B')->setAutoSize(true);  
+        $objSheet->getColumnDimension('C')->setAutoSize(true);  
+        $objSheet->getColumnDimension('D')->setAutoSize(true);
+
+        $objSheet->getStyle('A1:D1')->getFont()->setSize(14);   
+        $objSheet->getStyle('A1:D1')->getFont()->setBold(true);
+        $objSheet->getStyle('A1:D1')->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID)->getStartColor()->setARGB('FFE8E5E5');          
+
+        $objSheet->getStyle('A1:D'.$xr)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);                           
+
+        $objSheet->setTitle("Sebaran Peserta Provinsi");
+
+        $objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);                                          
+        ob_start();
+        $objWriter->save('php://output');
+        $excelOutput = ob_get_clean();
+
+        return $excelOutput;
+
+    }
+
+    function xlsx_statkab()
+    {
+        require_once ('application/third_party/PHPExcel.php');
+        require_once ('application/third_party/PHPExcel/Writer/Excel2007.php');
+
+        $capers=$this->getStatKab();
+
+        $objPHPExcel = new PHPExcel();
+
+        $objPHPExcel->getProperties()->setCreator("Kemendikbud");
+        $objPHPExcel->getProperties()->setLastModifiedBy("Kemendikbud");
+        $objPHPExcel->getProperties()->setTitle("Office 2007 XLSX Test Document");
+        $objPHPExcel->getProperties()->setSubject("Office 2007 XLSX Test Document");
+        $objPHPExcel->getProperties()->setDescription("Test document for Office 2007 XLSX, generated using PHP classes.");
+
+        $objPHPExcel->setActiveSheetIndex(0);
+        $objSheet=$objPHPExcel->getActiveSheet();
+
+        $mheaders=array(
+            "A1"=>"PROVINSI","B1"=>"KABUPATEN/KOTA", "C1"=>"PENDAFTAR","D1"=>"LOLOS","E1"=>"PERSENTASE"
+        );
+        foreach($mheaders as $key => $value) {
+            $objSheet->SetCellValue($key, $value);            
+        }     
+          
+        $xr=1;
+        $date_awal = date('d-m-Y');
+        $expire_date = date('d-m-Y', strtotime('+6 month', strtotime($date_awal)));
+        foreach($capers as $cvalue) {
+            ++$xr;
+            $objSheet->SetCellValue("A" . $xr, $cvalue->provinsi);
+            $objSheet->SetCellValue("B" . $xr, $cvalue->kabupatenkota);
+            $objSheet->SetCellValue("C" . $xr, $cvalue->total);
+            $objSheet->SetCellValue("D" . $xr, $cvalue->lolos);
+            $objSheet->SetCellValue("E" . $xr, $cvalue->percent);
+        }     
+                                           
+        $objSheet->getColumnDimension('A')->setAutoSize(true);  
+        $objSheet->getColumnDimension('B')->setAutoSize(true);  
+        $objSheet->getColumnDimension('C')->setAutoSize(true);  
+        $objSheet->getColumnDimension('D')->setAutoSize(true);
+        $objSheet->getColumnDimension('E')->setAutoSize(true);
+
+        $objSheet->getStyle('A1:E1')->getFont()->setSize(14);   
+        $objSheet->getStyle('A1:E1')->getFont()->setBold(true);
+        $objSheet->getStyle('A1:E1')->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID)->getStartColor()->setARGB('FFE8E5E5');          
+
+        $objSheet->getStyle('A1:E'.$xr)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);                           
+
+        $objSheet->setTitle("Sebaran Peserta Kabupatenkota");
+
+        $objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);                                          
+        ob_start();
+        $objWriter->save('php://output');
+        $excelOutput = ob_get_clean();
+
+        return $excelOutput;
+
+    }
 	
 	function gen_data($pUsers)
     {		
