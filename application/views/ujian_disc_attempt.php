@@ -167,7 +167,7 @@
 
         </div><!-- End col-md-8 -->
         <div class="col-md-2" style="padding-bottom:80px;">
-            <div class="text-center" style="font-size: 40px; font-weight: bold;">
+            <div class="text-center timercount" style="font-size: 40px; font-weight: bold;">
 
                 Time left: <br>
                 <center><span id="timer" style="color: red;"><script type="text/javascript">window.onload = CreateTimer("timer", <?php echo $seconds;?>);</script></span></center>

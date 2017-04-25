@@ -66,7 +66,7 @@
                         <th>TPU</th>
                         <th>TPA</th>
                         <th>SE</th>
-                        <th>WE</th>
+                        <th>WA</th>
                         <th>AN</th>
                         <th>GE</th>
                         <th>RA</th>
