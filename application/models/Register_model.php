@@ -663,6 +663,34 @@ Class Register_model extends CI_Model
         );
 	
 		$this->db->insert('register',$userdata);
-    }		
+    }
+
+    function checkMaxDate($date)
+    {
+        $birthday = new DateTime($date);
+        $checkdate = new DateTime($this->config->item('check_date_age'));
+        
+        $diff = $checkdate->diff($birthday);
+        
+        if($diff->y <= $this->config->item("umur_max") && $diff->y >= $this->config->item("umur_min")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function registerOk($limit=0)
+    {
+        $this->db->select('id,registration_no,CONCAT(first_name," ",last_name) as fullname,email,password,status');
+        $this->db->where('status', 'OK');
+        $this->db->where('email_status', 0);
+        if($limit != 0) {
+            $this->db->limit($limit);
+        }
+        
+        $query = $this->db->get('register');  
+
+        return $query->result();
+    }
 	
 }

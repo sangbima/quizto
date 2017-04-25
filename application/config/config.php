@@ -19,6 +19,11 @@ $config['batas_pendaftaran']='2017-04-20 16:00:00';
 $config['awal_berkas_2']='2017-04-21 11:30:00';
 $config['akhir_berkas_2']='2017-04-21 11:31:59';
 
+// umur
+$config['check_date_age'] = '2017-04-30';
+$config['umur_max'] = 40;
+$config['umur_min'] = 25;
+
 // show timelapse to right ( true or false )
 $config['show_timelapse_right']=true;
 

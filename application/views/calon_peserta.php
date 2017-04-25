@@ -39,11 +39,21 @@
 					$xi=($page-1) * $this->config->item('number_of_rows') ;
                     foreach($result as $key => $value) {
 						++$xi;
+                        $birthday = new DateTime($value->tanggal_lahir);
+                        $checkdate = new DateTime($this->config->item('check_date_age'));
+                        $diff = $checkdate->diff($birthday);
+                        
+                        if($diff->y <= $this->config->item("umur_max") && $diff->y >= $this->config->item("umur_min")) {
+                            $check_age = '<label class="label label-success" data-toggle="tooltip" data-placement="top" title="'.$this->config->item("umur_min").' < Usia < '.$this->config->item("umur_max").'"><i class="fa fa-check"></i></label>';
+                        } else {
+                            $check_age = '<label class="label label-danger" data-toggle="tooltip" data-placement="top" title="Usia < '.$this->config->item("umur_min").' atau Usia > '.$this->config->item("umur_max").'"><i class="fa fa-ban"></i></label>';
+                        }
+
                     ?> 
                     <tr <?= $value->nilai_ipk < 2.75 ? 'class="danger"' : ''?>>
                         <td><?php echo $xi;?></td>
                         <td><?php echo $value->registration_no; ?></td>
-                        <td><?php echo $value->first_name .' '.$value->last_name; ?></td>
+                        <td><?php echo $check_age . ' '.$value->first_name .' '.$value->last_name; ?></td>
                         <td>
                             <?php
                                 $ijazahfull="calonpeserta/download/full/ijazah/" . $value->registration_no;
@@ -159,4 +169,8 @@
             }
         });
     });
+
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
 </script>
