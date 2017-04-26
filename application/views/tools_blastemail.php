@@ -2,7 +2,7 @@
     <h3><?php echo $title;?></h3>
     <?php 
     $attributes = array("name" => "tools_form", "id" => "tools_form");   
-    echo form_open('tools/sendemail', $attributes); 
+    echo form_open('capers/sendemail', $attributes); 
     ?>
         <div class="row">
             <div class="col-md-6">
@@ -119,7 +119,7 @@
         var caper_id = $(this).data('id');
         $.ajax({
             type: 'POST',
-            url: '/tools/sendsingleemail',
+            url: '/capers/sendsingleemail',
             data: {caper_id: caper_id},
             success: function(response) {
                 if(response == 'success') {

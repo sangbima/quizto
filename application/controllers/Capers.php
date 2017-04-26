@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Tools extends CI_Controller 
+class Capers extends CI_Controller 
 {
     function __construct()
     {
