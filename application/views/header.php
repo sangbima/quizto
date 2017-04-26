@@ -26,7 +26,7 @@
         
     </head>
 <body>
-  	
+  	<?php include_once("_analyticstracking.php") ?>
 	<?php 
 		if($this->session->userdata('logged_in')){
 			if($this->uri->segment(2)!='attempt'){
