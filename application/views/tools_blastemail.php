@@ -14,7 +14,7 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">     
-                                    <?php echo form_label('Jumla email<sup class="required">*</sup>', 'jmlemail'); ?>
+                                    <?php echo form_label('Jumlah email<sup class="required">*</sup>', 'jmlemail'); ?>
                                     <?php
                                         $option = array(
                                             '' => '-- Jumlah Email --',

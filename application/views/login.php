@@ -32,7 +32,7 @@
                 </div>
             </div>
             <div class="col-md-6 col-md-pull-3 get-it">
-                <h1>UJIAN ONLINE</h1>
+                <h1>Seleksi Online Penggiat Budaya</h1>
                 <h3>Direktorat Jenderal Kebudayaan</h3>
                 <p>Kementerian Pendidikan Dan Kebudayaan</p>
             </div>
