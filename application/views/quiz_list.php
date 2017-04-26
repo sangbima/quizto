@@ -61,7 +61,7 @@
                         if($logged_in['su']=='1'){
                     ?>
                             <a class="btn btn-primary" href="<?php echo site_url('quiz/edit_quiz/'.$val['quid']);?>"><i class="fa fa-edit"></i></a>
-                            <a class="btn btn-danger" href="javascript:remove_entry('quiz/remove_quiz/<?php echo $val['quid'];?>');"><i class="fa fa-trash"></i></a>
+                            <!-- <a class="btn btn-danger" href="javascript:remove_entry('quiz/remove_quiz/<?php //echo $val['quid'];?>');"><i class="fa fa-trash"></i></a> -->
                     <?php 
                         }
                     ?>
