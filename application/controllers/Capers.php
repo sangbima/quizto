@@ -52,7 +52,7 @@ class Capers extends CI_Controller
         $data['title'] = 'Kirim email ke Peserta';
 
         $config = array();
-        $config["base_url"] = base_url() . "tools/sendemail";
+        $config["base_url"] = base_url() . "capers/sendemail";
         $total_row = $this->caper1_model->record_count();
         $config["total_rows"] = $total_row;
         $config["per_page"] = $this->config->item("number_of_rows");
