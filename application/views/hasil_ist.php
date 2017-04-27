@@ -64,8 +64,8 @@
                                 <tr>
                                    <th>#</th>
                                    <th>Fullname</th>
-                                   <th>WA</th>
                                    <th>SE</th>
+                                   <th>WA</th>
                                    <th>AN</th>
                                    <th>GE</th>
                                    <th>RA</th>
