@@ -116,7 +116,7 @@
           // awal 36000(36 detik) tiap pernyataan
           // baru 5000(5 detik) tiap pernyataan
 
-          $divs.eq(current).delay(5000).fadeOut('fast', function() {
+          $divs.eq(current).delay(10000).fadeOut('fast', function() {
             current++;
             $divs.eq(current).fadeIn('fast');
             showNext();
@@ -124,7 +124,7 @@
         } else {
           setInterval(function(){
             $(location).attr('href',url);
-          }, 5000);
+          }, 10000);
         }
       }
       showNext();
