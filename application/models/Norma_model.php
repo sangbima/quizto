@@ -151,11 +151,11 @@ Class Norma_model extends CI_Model
     function hasil_disc_l($uid)
     {
         $q_n_least = 'SELECT
-            COUNT(CASE WHEN disc_answers.least = \'D\' THEN disc_answers.most ELSE null END) as d,
-            COUNT(CASE WHEN disc_answers.least = \'I\' THEN disc_answers.most ELSE null END) as i,
-            COUNT(CASE WHEN disc_answers.least = \'S\' THEN disc_answers.most ELSE null END) as s,
-            COUNT(CASE WHEN disc_answers.least = \'C\' THEN disc_answers.most ELSE null END) as c,
-            COUNT(CASE WHEN disc_answers.least = \'*\' THEN disc_answers.most ELSE null END) as x,
+            COUNT(CASE WHEN disc_answers.least = \'D\' THEN disc_answers.least ELSE null END) as d,
+            COUNT(CASE WHEN disc_answers.least = \'I\' THEN disc_answers.least ELSE null END) as i,
+            COUNT(CASE WHEN disc_answers.least = \'S\' THEN disc_answers.least ELSE null END) as s,
+            COUNT(CASE WHEN disc_answers.least = \'C\' THEN disc_answers.least ELSE null END) as c,
+            COUNT(CASE WHEN disc_answers.least = \'*\' THEN disc_answers.least ELSE null END) as x,
             COUNT(CASE WHEN disc_answers.least = \'D\' THEN disc_answers.least ELSE null END)+
             COUNT(CASE WHEN disc_answers.least = \'I\' THEN disc_answers.least ELSE null END)+
             COUNT(CASE WHEN disc_answers.least = \'S\' THEN disc_answers.least ELSE null END)+
