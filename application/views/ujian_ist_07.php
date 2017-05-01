@@ -1,5 +1,4 @@
 <div class="container">
-    <h3><?php echo $title;?></h3>
     <div class="row">
         <form method="post" id="quiz_detail" action="<?php echo site_url('/ujian/validate_ujian_fa/'.$quiz['quid']);?>">
             <div class="col-md-12">

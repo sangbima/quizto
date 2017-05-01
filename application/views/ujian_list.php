@@ -21,13 +21,21 @@
                     <td><?php echo $value['noq']?></td>
                     <td><?php echo $value['duration']?></td>
                 </tr>
-                <?php } ?>
+                <?php 
+                    }                     
+                    $url_submit = site_url('ujian/'.$quiz_current['short_name'].'/');                                            
+                ?>
             </table>
             <?php
                if ($masih_ada_kesempatan)
                {
+                    // $url_submit = site_url('ujian/tpu/');
+
+
+
+                    // echo $value['quid'];
             ?>
-            <form name="preujian" method="post" action="<?php echo site_url('ujian/tpu/');?>">
+            <form name="preujian" method="post" action="<?php echo $url_submit;?>">
                 <button class="btn btn-success" type="submit" name="submit"><?php echo $this->lang->line('start_quiz');?></button>
             </form>
             <?php } else { ?>

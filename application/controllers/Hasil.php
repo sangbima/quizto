@@ -10,6 +10,7 @@ class Hasil extends CI_Controller
         $this->load->database();
         $this->load->model("hasil_model");
         $this->load->model("user_model");
+		    $this->load->model("provinsi_model");
         $this->lang->load('basic', $this->config->item('language'));
         // redirect if not loggedin
         if(!$this->session->userdata('logged_in')){
@@ -22,7 +23,7 @@ class Hasil extends CI_Controller
         }
     }
 
-    public function index($limit='0',$gid_filter='0',$oid_filter='0')
+    public function index($limit='0',$gid_filter='0',$oid_filter='0',$prov_filter='')
     {
         $this->load->helper('form');
         $logged_in=$this->session->userdata('logged_in');
@@ -57,6 +58,16 @@ class Hasil extends CI_Controller
           } 		
         }
 		
+        if($prov_filter != null and $prov_filter !='') {
+           $data['search']['provinsi']=$prov_filter;		        		
+        } else {	   
+          if ($this->input->post('group')) { 
+               $data['search']['provinsi']=$this->input->post('provinsi');		 
+          } else {
+            $data['search']['provinsi']='';		 
+          } 		
+        }		
+		
         $data['limit']=$limit;
         //$data['cid']=$cid;
         //$data['lid']=$lid;
@@ -65,6 +76,7 @@ class Hasil extends CI_Controller
         // fetching user list
         $data['operators'] = $this->user_model->user_list(0, null, 2);
         $data['groups'] = $this->user_model->group_list();
+		$data['provinsi']=$this->provinsi_model->get();
         // var_dump($data['operator']);
         $data['result']=$this->hasil_model->hasil_resume($limit,false,$gid_filter,$oid_filter);
         $this->load->view('header',$data);
@@ -165,6 +177,17 @@ class Hasil extends CI_Controller
 	   }
 			
 			
+        if($prov_filter != null and $prov_filter !='') {
+           $data['search']['provinsi']=$prov_filter;		        		
+        } else {	   
+          if ($this->input->post('group')) { 
+               $data['search']['provinsi']=$this->input->post('provinsi');		 
+          } else {
+            $data['search']['provinsi']='';		 
+          } 		
+        }		
+					
+			
         $data['limit']=$limit;
         //$data['cid']=$cid;
         //$data['lid']=$lid;
@@ -173,6 +196,7 @@ class Hasil extends CI_Controller
         // fetching user list		
         $data['operators'] = $this->user_model->user_list(0, null, 2);
         $data['groups'] = $this->user_model->group_list();		
+		$data['provinsi']=$this->provinsi_model->get();
         $data['result']=$this->hasil_model->hasil_tpu_tpa($limit,false,$gid_filter,$oid_filter);
         $this->load->view('header', $data);
         $this->load->view('hasil_tpu_tpa', $data);
@@ -213,7 +237,16 @@ class Hasil extends CI_Controller
            }		
 	   }
        
-			
+        if($prov_filter != null and $prov_filter !='') {
+           $data['search']['provinsi']=$prov_filter;		        		
+        } else {	   
+          if ($this->input->post('group')) { 
+               $data['search']['provinsi']=$this->input->post('provinsi');		 
+          } else {
+            $data['search']['provinsi']='';		 
+          } 		
+        }		
+					
 			
         $data['limit']=$limit;
         //$data['cid']=$cid;
@@ -223,6 +256,7 @@ class Hasil extends CI_Controller
         // fetching user list
         $data['operators'] = $this->user_model->user_list(0, null, 2);
         $data['groups'] = $this->user_model->group_list();		
+		$data['provinsi']=$this->provinsi_model->get();
         $data['result']=$this->hasil_model->hasil_list($limit,false,$gid_filter,$oid_filter);
         $this->load->view('header',$data);
         $this->load->view('hasil_ist',$data);
@@ -476,6 +510,7 @@ class Hasil extends CI_Controller
         // fetching user list
         $data['operators'] = $this->user_model->user_list(0, null, 2);
         $data['groups'] = $this->user_model->group_list();		
+		$data['provinsi']=$this->provinsi_model->get();
         $data['result']=$this->hasil_model->hasil_disc($limit,false,$gid_filter,$oid_filter);
 
         // var_dump($data['result']);

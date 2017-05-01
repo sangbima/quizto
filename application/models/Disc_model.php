@@ -3,15 +3,17 @@ Class Disc_model extends CI_Model
 {
 
     function disc_list_group_by_no() {
-        $this->db->order_by('disc_statement.id','asc');
-        $this->db->group_by('disc_statement.no_pernyataan');
+		$this->db->select('*');
+        $this->db->order_by('id','asc');
+        $this->db->group_by('no_pernyataan');
         $query=$this->db->get('disc_statement');
         return $query->result_array();
     }
 
     function disc_list_by_no($no) {
-        $this->db->order_by('disc_statement.id','asc');
-        $this->db->where('disc_statement.no_pernyataan', $no);
+		$this->db->select('*');		
+        $this->db->order_by('id','asc');		
+        $this->db->where('no_pernyataan', $no);
         $query=$this->db->get('disc_statement');
         return $query->result_array();
     }

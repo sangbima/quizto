@@ -127,6 +127,34 @@ Class Norma_model extends CI_Model
 
     function hasil_disc_m($uid)
     {
+        // $q_n_most = "SELECT * FROM (
+        //     SELECT 
+        //     COUNT(CASE WHEN d.most = 'D' THEN d.most ELSE null END) as d,
+        //     COUNT(CASE WHEN d.most = 'I' THEN d.most ELSE null END) as i,
+        //     COUNT(CASE WHEN d.most = 'S' THEN d.most ELSE null END) as s,
+        //     COUNT(CASE WHEN d.most = 'C' THEN d.most ELSE null END) as c,
+        //     COUNT(CASE WHEN d.most = '*' THEN d.most ELSE null END) as x,
+        //     COUNT(CASE WHEN d.most = 'D' THEN d.most ELSE null END)+
+        //     COUNT(CASE WHEN d.most = 'I' THEN d.most ELSE null END)+
+        //     COUNT(CASE WHEN d.most = 'S' THEN d.most ELSE null END)+
+        //     COUNT(CASE WHEN d.most = 'C' THEN d.most ELSE null END)+
+        //     COUNT(CASE WHEN d.most = '*' THEN d.most ELSE null END)
+        //     as t
+
+        //     FROM disc_answers d
+        //     WHERE 
+        //     d.id IN (
+        //         SELECT id FROM (
+        //             SELECT distinct qid, id FROM disc_answers
+        //             WHERE uid=$uid
+        //             group by uid,qid
+        //         ) AS DATA
+        //     )
+        //     GROUP BY d.uid,d.quid
+        //     ORDER BY d.uid
+        // ) AS DATA";
+
+
         $q_n_most = 'SELECT
             COUNT(CASE WHEN disc_answers.most = \'D\' THEN disc_answers.most ELSE null END) as d,
             COUNT(CASE WHEN disc_answers.most = \'I\' THEN disc_answers.most ELSE null END) as i,
@@ -145,11 +173,40 @@ Class Norma_model extends CI_Model
 
         $result_m = $query_m->row_array();
 
+        // var_dump($result_m);
+
         return $result_m;
     }
 
     function hasil_disc_l($uid)
     {
+        // $q_n_least = "SELECT * FROM (
+        //     SELECT 
+        //     COUNT(CASE WHEN d.least = 'D' THEN d.least ELSE null END) as d,
+        //     COUNT(CASE WHEN d.least = 'I' THEN d.least ELSE null END) as i,
+        //     COUNT(CASE WHEN d.least = 'S' THEN d.least ELSE null END) as s,
+        //     COUNT(CASE WHEN d.least = 'C' THEN d.least ELSE null END) as c,
+        //     COUNT(CASE WHEN d.least = '*' THEN d.least ELSE null END) as x,
+        //     COUNT(CASE WHEN d.least = 'D' THEN d.least ELSE null END)+
+        //     COUNT(CASE WHEN d.least = 'I' THEN d.least ELSE null END)+
+        //     COUNT(CASE WHEN d.least = 'S' THEN d.least ELSE null END)+
+        //     COUNT(CASE WHEN d.least = 'C' THEN d.least ELSE null END)+
+        //     COUNT(CASE WHEN d.least = '*' THEN d.least ELSE null END)
+        //     as t
+
+        //     FROM disc_answers d
+        //     WHERE 
+        //     d.id IN (
+        //         SELECT id FROM (
+        //             SELECT distinct qid, id FROM disc_answers
+        //             WHERE uid=$uid
+        //             group by uid,qid
+        //         ) AS DATA
+        //     )
+        //     GROUP BY d.uid,d.quid
+        //     ORDER BY d.uid
+        // ) AS DATA";
+
         $q_n_least = 'SELECT
             COUNT(CASE WHEN disc_answers.least = \'D\' THEN disc_answers.least ELSE null END) as d,
             COUNT(CASE WHEN disc_answers.least = \'I\' THEN disc_answers.least ELSE null END) as i,

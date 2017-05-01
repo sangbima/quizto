@@ -42,7 +42,7 @@ class Reset extends CI_Controller
             exit($this->lang->line('permission_denied'));
         }
         
-        if($this->reset_model->reset()){
+        if($this->reset_model->reset('OK')){
             $this->session->set_flashdata('message', "<div class='alert alert-success'>".$this->lang->line('removed_successfully')." </div>");
         }else{
             $this->session->set_flashdata('message', "<div class='alert alert-danger'>".$this->lang->line('error_to_remove')." </div>");

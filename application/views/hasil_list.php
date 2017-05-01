@@ -39,6 +39,15 @@
                             <?php } ?>
                         </select>
                       </div>
+                      <div class="form-group">
+                        <label class="sr-only" for="provinsi">Provinsi</label>
+                        <select name="provinsi" id="provinsi" class="form-control">
+                            <option value="">-- Pilih Provinsi --</option>
+                            <?php foreach($provinsi as $pval) {?>
+                            <option value="<?php echo $pval;?>"><?php echo $pval;?></option>
+                            <?php } ?>
+                        </select>
+                      </div>					  
                       <button type="submit" class="btn btn-default"><?php echo $this->lang->line('search');?></button>
                     </form>           
                   </div>

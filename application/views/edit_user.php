@@ -59,6 +59,41 @@
 						</div>
 						<div class="row">
 							<div class="col-md-6">
+								<div class="form-group" id="selectProvinsi">
+                                    <?php echo form_label('Provinsi<sup class="required">*</sup>', 'inputprovinsi'); ?>
+                                    
+                                    <?php 
+                                        $noselect = array('#' => '-- Pilih Provinsi --');
+                                        $options = array_merge($noselect, $provinsi);
+                                        echo form_dropdown('provinsi', $options, $result['provinsi'], array(
+                                            'id' => 'inputprovinsi',
+                                            'class' => 'form-control',
+                                            'data-selecter-options' => '{"cover":"true"}',
+                                            'required' => 'required'
+                                        )); 
+                                        //echo $result['provinsi'];
+                                    ?>
+                                    <small><?php echo form_error('provinsi', '<div class="text-danger">', '</div>');?></small>
+                                </div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group" id="selectKabkota">
+                                    <?php echo form_label('Kabupaten/Kota<sup class="required">*</sup>', 'inputkabupaten'); ?>
+                                    <?php 
+                                        echo form_dropdown('kabupatenkota', $kabupatenkota, $result['kabupatenkota'], array(
+                                            'id' => 'inputkabupaten',
+                                            'class' => 'form-control',
+                                            'data-selecter-options' => '{"cover":"true"}',
+                                            'required' => 'required'
+                                        )); 
+                                    ?>
+
+                                    <small><?php echo form_error('kabupatenkota', '<div class="text-danger">', '</div>');?></small>
+                                </div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
 								<div class="form-group">	 
 									<label   ><?php echo $this->lang->line('select_group');?></label> 
 									<select class="form-control" name="gid"  onChange="getexpiry();" id="gid">
@@ -118,7 +153,26 @@ $(document).ready(function () {
     
     $('#subscription_expired').datepicker({
         format: "dd-mm-yyyy"
-    });  
+    });
+
+    $("#inputprovinsi").change(function(){
+        $("#inputkabupaten > option").remove();
+        var provinsi_name = $('#inputprovinsi').val();
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            url: "<?php echo site_url('user/getkotabyprovinsi') . '/'; ?>"+escape(provinsi_name),
+            success: function(data)
+            {
+                $.each(data, function(key, value){
+                    var opt = $('<option />');
+                    opt.val(key);
+                    opt.text(value);
+                    $('#inputkabupaten').append(opt);
+                });
+            }
+        });
+    });
 
 });
 </script>

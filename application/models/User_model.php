@@ -166,6 +166,8 @@ Class User_model extends CI_Model
 			'password'=>md5($this->input->post('password')),
 			'first_name'=>$this->input->post('first_name'),
 			'last_name'=>$this->input->post('last_name'),
+			'kabupatenkota'=>$this->input->post('kabupatenkota'),
+			'provinsi'=>$this->input->post('provinsi'),
 			'contact_no'=>$this->input->post('contact_no'),
 			'gid'=>$this->input->post('gid'),
 			'subscription_expired'=>strtotime($this->input->post('subscription_expired')),
@@ -295,6 +297,8 @@ Class User_model extends CI_Model
 		$userdata=array(
 			'first_name'=>$this->input->post('first_name'),
 			'last_name'=>$this->input->post('last_name'),
+			'kabupatenkota'=>$this->input->post('kabupatenkota'),
+			'provinsi'=>$this->input->post('provinsi'),
 			'contact_no'=>$this->input->post('contact_no')	
 		);
 		if($logged_in['su']=='1' OR $logged_in['su']=='2'){

@@ -94,6 +94,7 @@
         <h4><?php echo $this->lang->line('recently_registered');?></h4>
         <table class="table table-bordered" >
             <tr>
+                <th><?php echo $this->lang->line('registration_no');?></th>
                 <th><?php echo $this->lang->line('email');?></th>
                 <th><?php echo $this->lang->line('first_name');?> <?php echo $this->lang->line('last_name');?></th>
                 <th><?php echo $this->lang->line('group_name');?> </th>
@@ -110,6 +111,7 @@
             foreach($result as $key => $val){
             ?>
             <tr>
+                <td><?php echo $val['registration_no'];?></td>
                 <td><?php echo $val['email'];?></td>
                 <td><?php echo $val['first_name'];?> <?php echo $val['last_name'];?></td>
                 <td><?php echo $val['group_name'];?></td>

@@ -9,6 +9,8 @@ class User extends CI_Controller
 		$this->load->database();
 		$this->load->model("user_model");
 		$this->load->model("quiz_model");
+		$this->load->model("provinsi_model");
+        $this->load->model("kotakabupaten_model");
 		$this->lang->load('basic', $this->config->item('language'));
 		// redirect if not loggedin
 		if(!$this->session->userdata('logged_in')){
@@ -62,6 +64,7 @@ class User extends CI_Controller
 		$data['title']=$this->lang->line('add_new').' '.$this->lang->line('user');
 		// fetching group list
 		$data['group_list']=$this->user_model->group_list();
+		$data['provinsi'] = $this->provinsi_model->get();
 		$this->load->view('header',$data);
 		$this->load->view('new_user',$data);
 		$this->load->view('footer',$data);
@@ -166,7 +169,13 @@ class User extends CI_Controller
 		$this->load->model("payment_model");
 		$data['payment_history']=$this->payment_model->get_payment_history($uid);
 		// fetching group list
+		
+		$prov = $data['result']['provinsi'];
+
 		$data['group_list']=$this->user_model->group_list();
+		$data['provinsi'] = $this->provinsi_model->get();
+		$data['kabupatenkota'] = $this->provinsi_model->getkabkota($prov);
+
 	 	$this->load->view('header',$data);
 		if($logged_in['su']=='1' || $logged_in['su']=='2'){
 			$this->load->view('edit_user',$data);
@@ -411,4 +420,10 @@ class User extends CI_Controller
 		$this->load->view('operator',$data);
 		$this->load->view('footer',$data);
 	}
+
+	public function getkotabyprovinsi($provinsi)
+    {
+        header('Content-Type: application/x-json; charset=utf-8');
+        echo(json_encode($this->kotakabupaten_model->get_kotakabupaten_by_provinsi(urldecode($provinsi))));
+    }
 }

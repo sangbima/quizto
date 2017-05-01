@@ -31,26 +31,34 @@ class Ujian extends CI_Controller
       // fetching quiz list
       $data['result'] = $this->ujian_model->ujian_list();   
 
-      $data['result_all'] = $this->ujian_model->ujian_list_all();   
-    
+      $data['result_all'] = $this->ujian_model->ujian_list_all();
+      
+	  
       //$data['reach_max'] = $this->ujian_model->is_reach_max($logged_in['uid']);
     $data['uid']=$logged_in['uid'];
-      $data['masih_ada_kesempatan'] = false;
-      foreach ($data['result'] as $key => $value) {
+    $data['masih_ada_kesempatan'] = false;
+			
+    foreach ($data['result'] as $key => $value) {
         $data['quid'][$key] = $value['quid'];   
-    
-    $ma = $this->ujian_model->count_result($value['quid'],$data['uid']);    
-            
-    if ( $ma < $data['result'][$key]['maximum_attempts']  ) {
+		
+        $ma = $this->ujian_model->count_result($value['quid'],$data['uid']);    
+		
+        if ( $ma < $data['result'][$key]['maximum_attempts']  ) {
                $data['masih_ada_kesempatan'] = true;      
-    }       
-        $key++;
+           }       
+           $key++;
       }
     
       foreach ($data['result_all'] as $key => $value) {
         $data['quid_all'][$key] = $value['quid'];
         $key++;
       }   
+	  	
+	
+	  $data['quiz_current']=$this->current_quiz($data['quid'][0]);	  	 
+      $data['quiz_next']=$this->next_quiz($data['quid'][0]);	  	 
+	  	 
+		 
       $this->session->set_userdata('quid', $data['quid']);
       $this->session->set_userdata('quid_all', $data['quid_all']);
 
@@ -69,17 +77,23 @@ class Ujian extends CI_Controller
       $gid=$logged_in['gid'];   
       $quid = $this->session->userdata('quid');
       $quid_all = $this->session->userdata('quid_all');   
-      if ( $this->ujian_model->is_quiz_enabled(0) and  ! $this->ujian_model->is_reach_max($logged_in['uid'],$quid_all[0] )) 
+
+      $gids = $this->ujian_model->is_group_in_quiz($quid_all[0]);
+	  
+	  $next_q=$this->next_quiz($quid_all[0]);
+
+      if ( $this->ujian_model->is_quiz_enabled(0) and $gids and ! $this->ujian_model->is_reach_max($logged_in['uid'],$quid_all[0] ))
     {         
           $data['title'] = 'TEST TPU (TEST PENGETAHUAN UMUM)';
           // $data['quiz']=$this->ujian_model->get_quiz($quid[0]);
           $data['quiz']=$this->ujian_model->get_quiz($quid_all[0]);
-      
+          $data['quiz_next']=$next_q; 
+		
           $this->load->view('header',$data);
           $this->load->view('ujian_tpu',$data);
           $this->load->view('footer',$data);
     } else {
-       redirect('ujian/tpa'); 
+       redirect('ujian/' . $next_q['short_name']); 
     }   
     }
 
@@ -180,8 +194,9 @@ class Ujian extends CI_Controller
           $this->session->set_flashdata('message', "<div class='alert alert-danger'>".$this->lang->line('error_to_submit')." </div>");
       }
       $this->session->unset_userdata('rid');    
-            
-      redirect('ujian/tpa');
+      $quid_all = $this->session->userdata('quid_all');      	  
+      $next_q=$this->next_quiz($quid_all[0]);      
+      redirect('ujian/' . $next_q['short_name']);
     }
 
     // END UJIAN TPU
@@ -193,19 +208,23 @@ class Ujian extends CI_Controller
       $logged_in=$this->session->userdata('logged_in');
       $gid=$logged_in['gid'];   
       $quid = $this->session->userdata('quid');
-    $quid_all = $this->session->userdata('quid_all');     
-    
-      if ( $this->ujian_model->is_quiz_enabled(1) and  ! $this->ujian_model->is_reach_max($logged_in['uid'],$quid_all[1]) ) {         
+        $quid_all = $this->session->userdata('quid_all');
+        $gids = $this->ujian_model->is_group_in_quiz($quid_all[1]);
+		
+		$next_q=$this->next_quiz($quid_all[1]);
 
+      if ( $this->ujian_model->is_quiz_enabled(1) and $gids and ! $this->ujian_model->is_reach_max($logged_in['uid'],$quid_all[1] )) {
+    
           $data['title'] = 'TEST TPA (TEST PENGETAHUAN AKADEMIK)';
           // $data['quiz']=$this->ujian_model->get_quiz($quid[0]);
           $data['quiz']=$this->ujian_model->get_quiz($quid_all[1]);
-      
+          $data['quiz_next']=$next_q;
+	  
           $this->load->view('header',$data);
           $this->load->view('ujian_tpa',$data);
           $this->load->view('footer',$data);
     } else {
-      redirect('ujian/se');
+      redirect('ujian/' . $next_q['short_name']);
     }   
     }
 
@@ -305,9 +324,10 @@ class Ujian extends CI_Controller
       }else{
           $this->session->set_flashdata('message', "<div class='alert alert-danger'>".$this->lang->line('error_to_submit')." </div>");
       }
-      $this->session->unset_userdata('rid');    
-            
-      redirect('ujian/se');
+      $this->session->unset_userdata('rid');  
+      $quid_all = $this->session->userdata('quid_all');      	  
+      $next_q=$this->next_quiz($quid_all[1]);      
+      redirect('ujian/' . $next_q['short_name']);	              
     }
 
     // END UJIAN TPA
@@ -381,7 +401,7 @@ class Ujian extends CI_Controller
     
       // // insert result row and get rid (result id)
       $rid=$this->ujian_model->insert_result($quid,$uid);
-      var_dump($rid);
+      // var_dump($rid);
       
       $this->session->set_userdata('rid', $rid);
       redirect('ujian/wa_attempt/'.$rid);
@@ -710,21 +730,32 @@ class Ujian extends CI_Controller
     {
       $logged_in=$this->session->userdata('logged_in');
       $gid=$logged_in['gid'];   
-    $quid = $this->session->userdata('quid');
-    $quid_all = $this->session->userdata('quid_all');
-      if ( $this->ujian_model->is_quiz_enabled(2) and   ! $this->ujian_model->is_reach_max($logged_in['uid'],$quid_all[2]) ) {      
+      $quid = $this->session->userdata('quid');
+      $quid_all = $this->session->userdata('quid_all');      
+	  $gids = $this->ujian_model->is_group_in_quiz($quid_all[2]);
+	  
+	  //var_dump($gids);
+	  
+      $next_q=$this->next_quiz($quid_all[2]);
+	  	   	   
+      if ( $this->ujian_model->is_quiz_enabled(2) and ! $this->ujian_model->is_reach_max($logged_in['uid'],$quid_all[2] )) {
+      // if ( $this->ujian_model->is_quiz_enabled(2) and   ! $this->ujian_model->is_reach_max($logged_in['uid'],$quid_all[2]) ) {      
     
            $data['title'] = 'IST';
            $data['quiz']=$this->ujian_model->get_quiz($quid_all[2]);
- 
+		   $data['quiz_next']=$next_q;
+          
            $this->load->view('header',$data);
            $this->load->view('ujian_ist_01',$data);
-           $this->load->view('footer',$data);
-    } else {
-       redirect('ujian/wa');  
+           $this->load->view('footer',$data);		   
+    } else {	   
+       redirect('ujian/'. $next_q['short_name'] . '/');  
       }     
     }
 
+	
+
+	
     // public function se_attempt()
     // {
     //   $quid = $this->session->userdata('quid');
@@ -803,16 +834,24 @@ class Ujian extends CI_Controller
      $logged_in=$this->session->userdata('logged_in');
      $gid=$logged_in['gid'];    
      $quid = $this->session->userdata('quid');
-     $quid_all = $this->session->userdata('quid_all');      
-     if ( $this->ujian_model->is_quiz_enabled(3) and   ! $this->ujian_model->is_reach_max($logged_in['uid'],$quid_all[3])) {          
+     $quid_all = $this->session->userdata('quid_all');
+     $gids = $this->ujian_model->is_group_in_quiz($quid_all[3]);
+	 
+	 $next_q=$this->next_quiz($quid_all[3]);
+	 
+	
+
+     if ( $this->ujian_model->is_quiz_enabled(3) and ! $this->ujian_model->is_reach_max($logged_in['uid'],$quid_all[3] ))  {   
+     // if ( $this->ujian_model->is_quiz_enabled(3) and   ! $this->ujian_model->is_reach_max($logged_in['uid'],$quid_all[3])) {          
           $data['title'] = 'IST';
           $data['quiz']=$this->ujian_model->get_quiz($quid_all[3]);
+		  $data['quiz_next']=$next_q;
 
           $this->load->view('header',$data);
           $this->load->view('ujian_ist_02',$data);
           $this->load->view('footer',$data);
-   } else {
-      redirect('ujian/an');
+     } else {		
+           redirect('ujian/' . $next_q['short_name']);
      }       
     }
 
@@ -867,17 +906,23 @@ class Ujian extends CI_Controller
       $logged_in=$this->session->userdata('logged_in');
       $gid=$logged_in['gid'];   
       $quid = $this->session->userdata('quid');
-    $quid_all = $this->session->userdata('quid_all');     
-      if ( $this->ujian_model->is_quiz_enabled(4) and  ! $this->ujian_model->is_reach_max($logged_in['uid'],$quid_all[4])) {      
+    $quid_all = $this->session->userdata('quid_all'); 
+        $gids = $this->ujian_model->is_group_in_quiz($quid_all[4]);
+
+	$next_q=$this->next_quiz($quid_all[4]);	
+		
+      if ( $this->ujian_model->is_quiz_enabled(4) and $gids and ! $this->ujian_model->is_reach_max($logged_in['uid'],$quid_all[4] )) {   
+      // if ( $this->ujian_model->is_quiz_enabled(4) and  ! $this->ujian_model->is_reach_max($logged_in['uid'],$quid_all[4])) {      
 
           $data['title'] = 'IST';
           $data['quiz']=$this->ujian_model->get_quiz($quid_all[4]);
+		  $data['quiz_next']=$next_q;
 
           $this->load->view('header',$data);
           $this->load->view('ujian_ist_03',$data);
           $this->load->view('footer',$data);
     } else {
-      redirect('ujian/ge');
+      redirect('ujian/' . $next_q['short_name']);
       }     
     }
 
@@ -933,17 +978,23 @@ class Ujian extends CI_Controller
       $gid=$logged_in['gid'];   
       $quid = $this->session->userdata('quid');
     $quid_all = $this->session->userdata('quid_all'); 
+    $gids = $this->ujian_model->is_group_in_quiz($quid_all[5]);
+	
+	$next_q=$this->next_quiz($quid_all[5]);
+
+      if ( $this->ujian_model->is_quiz_enabled(5) and $gids and ! $this->ujian_model->is_reach_max($logged_in['uid'],$quid_all[5] )) {
     
-    if ( $this->ujian_model->is_quiz_enabled(5) and  ! $this->ujian_model->is_reach_max($logged_in['uid'],$quid_all[5])) {    
+    // if ( $this->ujian_model->is_quiz_enabled(5) and  ! $this->ujian_model->is_reach_max($logged_in['uid'],$quid_all[5])) {    
 
           $data['title'] = 'IST';
           $data['quiz']=$this->ujian_model->get_quiz($quid_all[5]);
+		  $data['quiz_next']=$next_q;
 
           $this->load->view('header',$data);
           $this->load->view('ujian_ist_04',$data);
           $this->load->view('footer',$data);
     } else {    
-        redirect('ujian/ra');
+        redirect('ujian/' . $next_q['short_name']);
     }
     }
 
@@ -998,16 +1049,22 @@ class Ujian extends CI_Controller
     $logged_in=$this->session->userdata('logged_in');
     $gid=$logged_in['gid'];   
     $quid = $this->session->userdata('quid');
-    $quid_all = $this->session->userdata('quid_all');     
-      if ( $this->ujian_model->is_quiz_enabled(6) and  ! $this->ujian_model->is_reach_max($logged_in['uid'],$quid_all[6])) {          
+    $quid_all = $this->session->userdata('quid_all'); 
+        $gids = $this->ujian_model->is_group_in_quiz($quid_all[6]);
+		
+	$next_q=$this->next_quiz($quid_all[6]);	
+
+      if ( $this->ujian_model->is_quiz_enabled(6) and $gids and ! $this->ujian_model->is_reach_max($logged_in['uid'],$quid_all[6] )) {  
+      // if ( $this->ujian_model->is_quiz_enabled(6) and  ! $this->ujian_model->is_reach_max($logged_in['uid'],$quid_all[6])) {          
       $data['title'] = 'IST';
       $data['quiz']=$this->ujian_model->get_quiz($quid_all[6]);
+	  $data['quiz_next']=$next_q;
 
       $this->load->view('header',$data);
       $this->load->view('ujian_ist_05',$data);
       $this->load->view('footer',$data);
     } else {
-        redirect('ujian/zr');
+        redirect('ujian/' . $next_q['short_name']);
       }     
     }
 
@@ -1062,18 +1119,23 @@ class Ujian extends CI_Controller
      $logged_in=$this->session->userdata('logged_in');
      $gid=$logged_in['gid'];
        $quid = $this->session->userdata('quid');
-     $quid_all = $this->session->userdata('quid_all');  
+     $quid_all = $this->session->userdata('quid_all'); 
+        $gids = $this->ujian_model->is_group_in_quiz($quid_all[7]);
+		$next_q=$this->next_quiz($quid_all[7]);
+
+      if ( $this->ujian_model->is_quiz_enabled(7) and $gids and ! $this->ujian_model->is_reach_max($logged_in['uid'],$quid_all[7] )) {
     
-       if ( $this->ujian_model->is_quiz_enabled(7)  and  ! $this->ujian_model->is_reach_max($logged_in['uid'],$quid_all[7])) {      
+       // if ( $this->ujian_model->is_quiz_enabled(7)  and  ! $this->ujian_model->is_reach_max($logged_in['uid'],$quid_all[7])) {      
    
       $data['title'] = 'IST';
       $data['quiz']=$this->ujian_model->get_quiz($quid_all[7]);
+	  $data['quiz_next']=$next_q;
 
       $this->load->view('header',$data);
       $this->load->view('ujian_ist_06',$data);
       $this->load->view('footer',$data);
       } else {
-      redirect('ujian/fa');
+      redirect('ujian/' . $next_q['short_name']);
       }  
     }
 
@@ -1128,17 +1190,21 @@ class Ujian extends CI_Controller
     $logged_in=$this->session->userdata('logged_in');
     $gid=$logged_in['gid']; 
     $quid = $this->session->userdata('quid');
-    $quid_all = $this->session->userdata('quid_all');   
-      if ( $this->ujian_model->is_quiz_enabled(8) and  ! $this->ujian_model->is_reach_max($logged_in['uid'],$quid_all[8])) {      
+    $quid_all = $this->session->userdata('quid_all');  
+        $gids = $this->ujian_model->is_group_in_quiz($quid_all[8]);
+		$next_q=$this->next_quiz($quid_all[8]);
+
+      if ( $this->ujian_model->is_quiz_enabled(8) and $gids and ! $this->ujian_model->is_reach_max($logged_in['uid'],$quid_all[8] )) {
+      // if ( $this->ujian_model->is_quiz_enabled(8) and  ! $this->ujian_model->is_reach_max($logged_in['uid'],$quid_all[8])) {      
   
       $data['title'] = 'IST';
       $data['quiz']=$this->ujian_model->get_quiz($quid_all[8]);
-
+       $data['quiz_next']=$next_q;
       $this->load->view('header',$data);
       $this->load->view('ujian_ist_07',$data);
       $this->load->view('footer',$data);
     } else {
-      redirect('ujian/wu');
+      redirect('ujian/' . $next_q['short_name']);
       }     
     }
 
@@ -1193,17 +1259,23 @@ class Ujian extends CI_Controller
       $logged_in=$this->session->userdata('logged_in');
       $gid=$logged_in['gid'];   
       $quid = $this->session->userdata('quid');
-    $quid_all = $this->session->userdata('quid_all'); 
+    $quid_all = $this->session->userdata('quid_all');
+    $gids = $this->ujian_model->is_group_in_quiz($quid_all[9]);
+	
+	  $next_q=$this->next_quiz($quid_all[9]);
+
+      if ( $this->ujian_model->is_quiz_enabled(9) and $gids and ! $this->ujian_model->is_reach_max($logged_in['uid'],$quid_all[9] )) {
     
-      if ( $this->ujian_model->is_quiz_enabled(9) and  ! $this->ujian_model->is_reach_max($logged_in['uid'],$quid_all[9])) {          
+      // if ( $this->ujian_model->is_quiz_enabled(9) and  ! $this->ujian_model->is_reach_max($logged_in['uid'],$quid_all[9])) {          
       $data['title'] = 'IST';
       $data['quiz']=$this->ujian_model->get_quiz($quid_all[9]);
+	  $data['quiz_next'] = $next_q;
 
       $this->load->view('header',$data);
       $this->load->view('ujian_ist_08',$data);
       $this->load->view('footer',$data);
     } else {
-      redirect('ujian/me');
+      redirect('ujian/' . $next_q['short_name']);
     }   
     
     }
@@ -1259,16 +1331,21 @@ class Ujian extends CI_Controller
     $logged_in=$this->session->userdata('logged_in');
     $gid=$logged_in['gid']; 
     $quid = $this->session->userdata('quid');
-    $quid_all = $this->session->userdata('quid_all'); 
-    if ( $this->ujian_model->is_quiz_enabled(10) and ! $this->ujian_model->is_reach_max($logged_in['uid'],$quid_all[10]) ) {    
+    $quid_all = $this->session->userdata('quid_all');
+    $gids = $this->ujian_model->is_group_in_quiz($quid_all[10]);
+	$next_q=$this->next_quiz($quid_all[10]);
+
+      if ( $this->ujian_model->is_quiz_enabled(10) and $gids and ! $this->ujian_model->is_reach_max($logged_in['uid'],$quid_all[10] )) {
+    // if ( $this->ujian_model->is_quiz_enabled(10) and ! $this->ujian_model->is_reach_max($logged_in['uid'],$quid_all[10]) ) {    
       $data['title'] = 'IST';
       $data['quiz']=$this->ujian_model->get_quiz($quid_all[10]);
-
+      $data['quiz_next']=$next_q;
+	  
       $this->load->view('header',$data);
       $this->load->view('ujian_ist_09',$data);
       $this->load->view('footer',$data);
     } else {
-            redirect('ujian/disc'); 
+            redirect('ujian/' . $next_q['short_name']); 
       }     
     }
 
@@ -1324,17 +1401,22 @@ class Ujian extends CI_Controller
     $logged_in=$this->session->userdata('logged_in');
     $gid=$logged_in['gid']; 
     $quid = $this->session->userdata('quid');
-    $quid_all = $this->session->userdata('quid_all');   
-      if ( $this->ujian_model->is_quiz_enabled(11) and ! $this->ujian_model->is_reach_max($logged_in['uid'],$quid_all[11]) ) {    
+    $quid_all = $this->session->userdata('quid_all'); 
+    $gids = $this->ujian_model->is_group_in_quiz($quid_all[11]);
+    $next_q=$this->next_quiz($quid_all[11]);
+	
+      if ( $this->ujian_model->is_quiz_enabled(11) and $gids and ! $this->ujian_model->is_reach_max($logged_in['uid'],$quid_all[11] )) {
+      // if ( $this->ujian_model->is_quiz_enabled(11) and ! $this->ujian_model->is_reach_max($logged_in['uid'],$quid_all[11]) ) {    
 
       $data['title'] = 'DISC';
       $data['quiz']=$this->ujian_model->get_quiz($quid_all[11]);
-
+      $data['quiz_next']=$next_q;
+	  
       $this->load->view('header',$data);
       $this->load->view('ujian_disc',$data);
       $this->load->view('footer',$data);
       } else {
-            redirect('ujian/index');
+            redirect('ujian/' . $next_q['short_name']);
     }     
     }
 
@@ -1446,9 +1528,14 @@ class Ujian extends CI_Controller
       }else{
           $this->session->set_flashdata('message', "<div class='alert alert-danger'>".$this->lang->line('error_to_submit')." </div>");
       }
-      $this->session->unset_userdata('rid');    
-            
-      redirect('ujian/wa');
+      $this->session->unset_userdata('rid'); 
+	  
+	  $quid_all = $this->session->userdata('quid_all');
+
+      $next_q=$this->next_quiz($quid_all[2]);  
+       	   
+      redirect('ujian/' . $next_q['short_name']);	  
+                  
     }
 
     function submit_quiz_wa()
@@ -1459,9 +1546,13 @@ class Ujian extends CI_Controller
       }else{
           $this->session->set_flashdata('message', "<div class='alert alert-danger'>".$this->lang->line('error_to_submit')." </div>");
       }
-      $this->session->unset_userdata('rid');    
-            
-      redirect('ujian/an');
+	  
+      $this->session->unset_userdata('rid'); 
+	  
+	  $quid_all = $this->session->userdata('quid_all');
+      $next_q=$this->next_quiz($quid_all[3]);      
+      redirect('ujian/' . $next_q['short_name']);            
+      
     }
 
     function submit_quiz_an()
@@ -1472,9 +1563,12 @@ class Ujian extends CI_Controller
       }else{
           $this->session->set_flashdata('message', "<div class='alert alert-danger'>".$this->lang->line('error_to_submit')." </div>");
       }
-      $this->session->unset_userdata('rid');    
-            
-      redirect('ujian/ge');
+      $this->session->unset_userdata('rid');   
+
+      $quid_all = $this->session->userdata('quid_all');	  
+      $next_q=$this->next_quiz($quid_all[4]);      
+      redirect('ujian/' . $next_q['short_name']);            
+
     }
 
     function submit_quiz_ge()
@@ -1486,8 +1580,11 @@ class Ujian extends CI_Controller
           $this->session->set_flashdata('message', "<div class='alert alert-danger'>".$this->lang->line('error_to_submit')." </div>");
       }
       $this->session->unset_userdata('rid');    
-            
-      redirect('ujian/ra');
+      
+      $quid_all = $this->session->userdata('quid_all');      
+      $next_q=$this->next_quiz($quid_all[5]);      
+      redirect('ujian/' . $next_q['short_name']);			
+      //redirect('ujian/ra');
     }
 
     function submit_quiz_ra()
@@ -1499,8 +1596,11 @@ class Ujian extends CI_Controller
           $this->session->set_flashdata('message', "<div class='alert alert-danger'>".$this->lang->line('error_to_submit')." </div>");
       }
       $this->session->unset_userdata('rid');    
+      $quid_all = $this->session->userdata('quid_all');      	  
+      $next_q=$this->next_quiz($quid_all[6]);      
+      redirect('ujian/' . $next_q['short_name']);	  
             
-      redirect('ujian/zr');
+      //redirect('ujian/zr');
     }
 
     function submit_quiz_zr()
@@ -1512,8 +1612,11 @@ class Ujian extends CI_Controller
           $this->session->set_flashdata('message', "<div class='alert alert-danger'>".$this->lang->line('error_to_submit')." </div>");
       }
       $this->session->unset_userdata('rid');    
-            
-      redirect('ujian/fa');
+	  
+      $quid_all = $this->session->userdata('quid_all');      	  
+      $next_q=$this->next_quiz($quid_all[7]);      
+      redirect('ujian/' . $next_q['short_name']);	             
+      //redirect('ujian/fa');
     }
 
     function submit_quiz_fa()
@@ -1525,8 +1628,12 @@ class Ujian extends CI_Controller
           $this->session->set_flashdata('message', "<div class='alert alert-danger'>".$this->lang->line('error_to_submit')." </div>");
       }
       $this->session->unset_userdata('rid');    
+	  
+      $quid_all = $this->session->userdata('quid_all');      	  
+	  $next_q=$this->next_quiz($quid_all[8]);      
+      redirect('ujian/' . $next_q['short_name']);
             
-      redirect('ujian/wu');
+      //redirect('ujian/wu');
     }
 
     function submit_quiz_wu()
@@ -1538,8 +1645,12 @@ class Ujian extends CI_Controller
           $this->session->set_flashdata('message', "<div class='alert alert-danger'>".$this->lang->line('error_to_submit')." </div>");
       }
       $this->session->unset_userdata('rid');    
+	  
+      $quid_all = $this->session->userdata('quid_all');      	  
+	 $next_q=$this->next_quiz($quid_all[9]);      
+      redirect('ujian/' . $next_q['short_name']);
             
-      redirect('ujian/me');
+      //redirect('ujian/me');
     }
 
     function submit_quiz_me()
@@ -1550,9 +1661,13 @@ class Ujian extends CI_Controller
       }else{
           $this->session->set_flashdata('message', "<div class='alert alert-danger'>".$this->lang->line('error_to_submit')." </div>");
       }
-      $this->session->unset_userdata('rid');    
+      $this->session->unset_userdata('rid');  
+
+      $quid_all = $this->session->userdata('quid_all');      	  
+      $next_q=$this->next_quiz($quid_all[10]);      
+      redirect('ujian/' . $next_q['short_name']);	  
             
-      redirect('ujian/disc');
+      //redirect('ujian/disc');
     }
 
     /* SAVE Ujian DISC */
@@ -1601,4 +1716,87 @@ class Ujian extends CI_Controller
       $this->load->view('quiz_detail',$data);
       $this->load->view('footer',$data);
     }
+	
+	
+	
+	
+	public function next_quiz($cur_quid=0) {
+		$q_url = array('tpu','tpa','se','wa','an','ge','ra','zr','fa','wu','me','disc');
+                    
+        $this->db->order_by("quid", "asc");
+        $query = $this->db->get('quiz');
+        $quizs = $query->result_array();
+		//----
+		
+		$quiz_only = $this->ujian_model->ujian_list();
+		
+						
+		foreach($quiz_only as $qkey=>$qval) {
+			if($qval['quid']==$cur_quid) {
+				$nq=($qkey+1);			
+			}	
+			//echo $qval['quid'] . "|" . $qval['quiz_name']. "_";	
+			}	
+						
+		if ($nq<count($quiz_only)) {
+			$nqz=$quiz_only[$nq]['quid'];
+			foreach($q_url as $ukey=>$uval) {
+				if ($quizs[$ukey]['quid']==$nqz) {
+					$nq_return=array('quid'=>$nqz, 
+					                 'long_name'=>$quizs[$ukey]['quiz_name'],   
+					                 'short_name'=>$q_url[$ukey] ,
+									 'state'=>true);
+				}	
+			}			   			
+				
+		} else {
+			$nq_return=array('quid'=>0, 
+   		                     'long_name'=>"index",   
+					         'short_name'=>"index",
+							 'state'=>false);	
+        }
+        return $nq_return;					
+
+	}
+
+	public function current_quiz($cur_quid=0) {
+		$q_url = array('tpu','tpa','se','wa','an','ge','ra','zr','fa','wu','me','disc');
+                    
+        $this->db->order_by("quid", "asc");
+        $query = $this->db->get('quiz');
+        $quizs = $query->result_array();
+		//----
+		
+		$quiz_only = $this->ujian_model->ujian_list();
+		
+						
+		foreach($quiz_only as $qkey=>$qval) {
+			if($qval['quid']==$cur_quid) {
+				$nq=$qkey;			
+			}	
+			//echo $qval['quid'] . "|" . $qval['quiz_name']. "_";	
+			}	
+						
+		if ($nq<count($quiz_only)) {
+			$nqz=$quiz_only[$nq]['quid'];
+			foreach($q_url as $ukey=>$uval) {
+				if ($quizs[$ukey]['quid']==$nqz) {
+					$nq_return=array('quid'=>$nqz, 
+					                 'long_name'=>$quizs[$ukey]['quiz_name'],   
+					                 'short_name'=>$q_url[$ukey],
+									 'state'=>true );
+				}	
+			}			   							
+		} else {
+			$nq_return=array('quid'=>0, 
+   		                     'long_name'=>"index",   
+					         'short_name'=>"index",
+							 'state'=>false);		
+        }
+		return $nq_return;					
+        	
+
+	}	
+	
+	
 }

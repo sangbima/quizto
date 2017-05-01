@@ -7,8 +7,8 @@ Class Ujian_model extends CI_Model
         $logged_in=$this->session->userdata('logged_in');
         if($logged_in['su']=='0'){
             $gid=$logged_in['gid'];
-		    $where="FIND_IN_SET('".$gid."', gids)";              			        
-            $this->db->where($where);
+		    //$where="FIND_IN_SET('".$gid."', gids)";              			        
+            //$this->db->where($where);
         }
         
         // $this->db->limit($this->config->item('number_of_rows'),$limit);
@@ -694,14 +694,16 @@ Class Ujian_model extends CI_Model
 		$logged_in=$this->session->userdata('logged_in');
         if($logged_in['su']=='0'){
             $gid=$logged_in['gid'];
-		    $where="FIND_IN_SET('".$gid."', gids)";              
-            $this->db->where($where);
+		    //$where="FIND_IN_SET('".$gid."', gids)";              
+            //$this->db->where($where);
         }
         
         // $this->db->limit($this->config->item('number_of_rows'),$limit);
         $this->db->order_by('quid','asc');
         $query=$this->db->get('quiz');
 		$hasil=$query->result_array();
+
+        // var_dump($hasil);exit();
 		
 		if ( $hasil[$priority]['status']=="1") {
 			$quiz_enabled=true;
@@ -710,6 +712,22 @@ Class Ujian_model extends CI_Model
 		} 				
 		return $quiz_enabled;
 	}
+
+    function is_group_in_quiz($quid) {
+        $logged_in=$this->session->userdata('logged_in');
+        $gid = $logged_in["gid"];
+
+        $quiz = $this->ujian_model->get_quiz($quid);
+
+        $gids = $quiz["gids"];
+
+        if (in_array($gid, explode(',', $gids))) {
+            return true;
+        } else {
+            return false;
+        }
+        
+    }
 
     function count_result($quid,$uid){
         $this->db->where('quid',$quid);

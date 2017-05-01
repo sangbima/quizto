@@ -116,7 +116,10 @@
                     </li>
                     <?php  
                     if($logged_in['su']==1 || $logged_in['su']==2){
-                    ?>
+                    ?>					
+                    
+                    <!-- <li><a href="<?php //echo site_url('nhasil/');?>">N HASIL</a></li>      -->
+              
                     <!-- <li><a href="<?php // echo site_url('hasil');?>"><?php // echo $this->lang->line('result');?></a></li> -->
                     <!-- Star Menu Hasil -->
                     <li class="dropdown" <?php if($this->uri->segment(1)=='result'){ echo "class='active'"; } ?> >
