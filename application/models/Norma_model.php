@@ -82,16 +82,14 @@ Class Norma_model extends CI_Model
         $query = $this->db->get('score_iq');
 
         $result = $query->row_array();
-
         if ($result) {
-            return $result['iq'];
-        } else {
-            return 0;
-        }
-        
+        return $result['iq'];
+		} else {
+			return false;
+		}
     }
 
-    function norma_iq($ws_score)
+    function norma_iq($ws_score=0)
     {
         /*
         119 - Keatas    Very Superior (+)
@@ -102,7 +100,19 @@ Class Norma_model extends CI_Model
          80 -  ke bawah Dibawah rata-rata
         */
 
-        $iq_score = $this->norma_iq_score($ws_score);
+		
+        if ($iq_score = $this->norma_iq_score($ws_score)) {		
+  		  if ($iq_score >=119 ) {$ist_norma_iq = 'VERY SUPERIOR';}
+		  if ($iq_score <= 118 && $iq_score >= 105) {$ist_norma_iq = 'SUPERIOR';}
+		  if ($iq_score <= 104 && $iq_score >= 100) {$ist_norma_iq = 'RATA-RATA ATAS';}
+		  if ($iq_score <= 99 && $iq_score >= 95) {$ist_norma_iq = 'RATA-RATA';}
+		  if ($iq_score <= 94 && $iq_score >= 81) {$ist_norma_iq = 'RATA-RATA BAWAH';}
+		  if ($iq_score <= 80 ) {$ist_norma_iq = 'DI BAWAH RATA-RATA';}
+		} else {  
+		   $ist_norma_iq = 'UNDEFINE';
+		}
+		
+		/*
         switch ($iq_score) {
             case $iq_score >= 119:
                 $ist_norma_iq = 'VERY SUPERIOR';
@@ -122,10 +132,11 @@ Class Norma_model extends CI_Model
             case $iq_score <= 80:
                 $ist_norma_iq = 'DI BAWAH RATA-RATA';
                 break;
-            //default:
-            //    $ist_norma_iq = 'UNDEFINE';
-            //    break;
+            default:
+                $ist_norma_iq = 'UNDEFINE';
+                break;
         }
+		*/
 
         return $ist_norma_iq;
     }

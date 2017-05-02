@@ -34,7 +34,12 @@ Class Hasil_model extends CI_Model
 		
         // Tampilkan hanya user sesuai dengan yang di cari       
         if ($this->input->post('n_search')) {
-              $n_search = ' and ( d.first_name like \'%'.  $this->input->post('n_search') . '%\' ||  d.last_name like \'%'.  $this->input->post('n_search') . '%\') ';
+              $n_search = ' and ( ' . 
+			              'concat(d.first_name,\' \',d.last_name) like \'%'.  $this->input->post('n_search') . '%\'' .			              
+						  '||  d.registration_no like \'%'.  $this->input->post('n_search') . '%\''  . 
+						  '||  d.email like \'%'.  $this->input->post('n_search') . '%\''  . 
+						  ') ';
+						  
             } else {          		         		
                 $n_search = '';
         }			
@@ -130,7 +135,11 @@ Class Hasil_model extends CI_Model
         			
         // Tampilkan hanya user sesuai dengan yang di cari       
         if ($this->input->post('n_search')) {
-              $n_search = ' and ( d.first_name like \'%'.  $this->input->post('n_search') . '%\' ||  d.last_name like \'%'.  $this->input->post('n_search') . '%\') ';
+              $n_search = ' and ( ' . 
+			              'concat(d.first_name,\' \',d.last_name) like \'%'.  $this->input->post('n_search') . '%\'' .			              
+						  '||  d.registration_no like \'%'.  $this->input->post('n_search') . '%\''  . 
+						  '||  d.email like \'%'.  $this->input->post('n_search') . '%\''  . 
+						  ') ';						  			              
             } else {          		         		
                 $n_search = '';
         }								
@@ -266,8 +275,13 @@ Class Hasil_model extends CI_Model
         }	
         	
         // Tampilkan hanya user sesuai dengan yang di cari       
-        if ($this->input->post('n_search')) {
-              $n_search = ' and ( d.first_name like \'%'.  $this->input->post('n_search') . '%\' ||  d.last_name like \'%'.  $this->input->post('n_search') . '%\') ';
+        if ($this->input->post('n_search')) {              
+              $n_search = ' and ( ' . 
+			              'concat(d.first_name,\' \',d.last_name) like \'%'.  $this->input->post('n_search') . '%\'' .			              
+						  '||  d.registration_no like \'%'.  $this->input->post('n_search') . '%\''  . 
+						  '||  d.email like \'%'.  $this->input->post('n_search') . '%\''  . 
+						  ') ';
+						  			  
             } else {          		         		
                 $n_search = '';
         }			
@@ -400,7 +414,12 @@ Class Hasil_model extends CI_Model
 
         // Tampilkan hanya user sesuai dengan yang di cari       
         if ($this->input->post('n_search')) {
-              $n_search = ' and ( d.first_name like \'%'.  $this->input->post('n_search') . '%\' ||  d.last_name like \'%'.  $this->input->post('n_search') . '%\') ';
+              $n_search = ' and ( ' . 
+			              'concat(d.first_name,\' \',d.last_name) like \'%'.  $this->input->post('n_search') . '%\'' .			              
+						  '||  d.registration_no like \'%'.  $this->input->post('n_search') . '%\''  . 
+						  '||  d.email like \'%'.  $this->input->post('n_search') . '%\''  . 
+						  ') ';
+						  			  
             } else {          		         		
                 $n_search = '';
         }			

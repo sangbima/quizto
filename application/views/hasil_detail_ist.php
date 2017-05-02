@@ -187,17 +187,29 @@
                                         <th align="center">
                                             <?php
                                                 $total =  $result['ist3'] + $result['ist4'] + $result['ist5'] + $result['ist6'] + $result['ist7'] + $result['ist8'] + $result['ist9'] + $result['ist10'] + $result['ist11'];
-                                                echo $total;
+                                                echo $total;												
                                             ?>
                                         </th>
                                         <th align="center">
                                             <?php
                                                 $total =  $result['ist3'] + $result['ist4'] + $result['ist5'] + $result['ist6'] + $result['ist7'] + $result['ist8'] + $result['ist9'] + $result['ist10'] + $result['ist11'];
-                                                echo $this->norma_model->norma_iq_score($total);
+												//$total_i=$this->norma_model->norma_iq_score($total);
+                                                if ($total_i=$this->norma_model->norma_iq_score($total)) {
+													echo $total_i;
+												} else {
+													echo "?";
+                                                }													
+													
+												
                                             ?>
                                         </th>
                                         <th>
-                                            <?php echo $this->norma_model->norma_iq($result['total'])?>
+                                            <?php 
+											 //echo $result['total'] . "|";
+											 //echo $this->norma_model->norma_iq_score($result['total']) . "|"; 
+											 //echo $this->norma_model->norma_iq($result['total']);
+											 echo $this->norma_model->norma_iq($total);?>
+											
                                         </th>
                                     </tr>
                                 </tfoot>

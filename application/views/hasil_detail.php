@@ -217,7 +217,6 @@
                                             <?php
                                                 $total =  $result['ist3'] + $result['ist4'] + $result['ist5'] + $result['ist6'] + $result['ist7'] + $result['ist8'] + $result['ist9'] + $result['ist10'] + $result['ist11'];
                                                 $total_i = $this->norma_model->norma_iq_score($total);
-                                                var_dump($total_i);
                                             ?>
                                         </th>
                                         <th>
