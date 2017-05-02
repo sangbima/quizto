@@ -47,7 +47,11 @@
                             <option value="<?php echo $pval;?>"><?php echo $pval;?></option>
                             <?php } ?>
                         </select>
-                      </div>					  
+                      </div>			
+                     <div class="form-group">
+                        <label class="sr-only" for="n_search">Kata Kunci</label>
+                        <input type="text" name="n_search" id="n_search" class="form-control">                          
+                      </div>					  					  					  
                       <button type="submit" class="btn btn-default"><?php echo $this->lang->line('search');?></button>
                     </form>           
                   </div>

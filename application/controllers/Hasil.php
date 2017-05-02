@@ -23,7 +23,7 @@ class Hasil extends CI_Controller
         }
     }
 
-    public function index($limit='0',$gid_filter='0',$oid_filter='0',$prov_filter='')
+    public function index($limit='0',$gid_filter='0',$oid_filter='0',$prov_filter='',$nsr_filter='')
     {
         $this->load->helper('form');
         $logged_in=$this->session->userdata('logged_in');
@@ -67,6 +67,16 @@ class Hasil extends CI_Controller
             $data['search']['provinsi']='';		 
           } 		
         }		
+		
+		if($nsr_filter != null and $nsr_filter !='') {
+           $data['search']['n_search']=$nsr_filter;		        		
+        } else {	   
+          if ($this->input->post('n_search')) { 
+               $data['search']['n_search']=$this->input->post('n_search');		 
+          } else {
+            $data['search']['n_search']='';		 
+          } 		
+		}
 		
         $data['limit']=$limit;
         //$data['cid']=$cid;
@@ -142,7 +152,7 @@ class Hasil extends CI_Controller
         $this->load->view('footer');
     }
 
-    public function tpu_tpa($limit='0',$gid_filter='0',$oid_filter='0')
+    public function tpu_tpa($limit='0',$gid_filter='0',$oid_filter='0',$prov_filter='',$nsr_filter='')
     {
         $this->load->helper('form');
         $logged_in=$this->session->userdata('logged_in');
@@ -175,7 +185,16 @@ class Hasil extends CI_Controller
 			   $data['search']['gid']=0;		 
            }		
 	   }
-			
+		
+		if($nsr_filter != null and $nsr_filter !='') {
+           $data['search']['n_search']=$nsr_filter;		        		
+        } else {	   
+          if ($this->input->post('n_search')) { 
+               $data['search']['n_search']=$this->input->post('n_search');		 
+          } else {
+            $data['search']['n_search']='';		 
+          } 		
+		}		
 			
         if($prov_filter != null and $prov_filter !='') {
            $data['search']['provinsi']=$prov_filter;		        		
@@ -204,7 +223,7 @@ class Hasil extends CI_Controller
     }
 
     
-    public function ist($limit='0',$gid_filter='0',$oid_filter='0')
+    public function ist($limit='0',$gid_filter='0',$oid_filter='0',$prov_filter='',$nsr_filter='')
     {
         $this->load->helper('form');
         $logged_in=$this->session->userdata('logged_in');
@@ -247,7 +266,16 @@ class Hasil extends CI_Controller
           } 		
         }		
 					
-			
+		if($nsr_filter != null and $nsr_filter !='') {
+           $data['search']['n_search']=$nsr_filter;		        		
+        } else {	   
+          if ($this->input->post('n_search')) { 
+               $data['search']['n_search']=$this->input->post('n_search');		 
+          } else {
+            $data['search']['n_search']='';		 
+          } 		
+		}
+		
         $data['limit']=$limit;
         //$data['cid']=$cid;
         //$data['lid']=$lid;
@@ -464,7 +492,7 @@ class Hasil extends CI_Controller
     //     $this->load->view('footer',$data);
     // }
 
-    public function disc($limit='0',$gid_filter='0',$oid_filter='0')
+    public function disc($limit='0',$gid_filter='0',$oid_filter='0',$prov_filter='',$nsr_filter='')
     {
         $this->load->model("norma_model");      
         $this->load->helper('form');
@@ -500,7 +528,15 @@ class Hasil extends CI_Controller
            }		
 	   }			
  
-			
+		if($nsr_filter != null and $nsr_filter !='') {
+           $data['search']['n_search']=$nsr_filter;		        		
+        } else {	   
+          if ($this->input->post('n_search')) { 
+               $data['search']['n_search']=$this->input->post('n_search');		 
+          } else {
+            $data['search']['n_search']='';		 
+          } 		
+		}			
 			
         $data['limit']=$limit;
         //$data['cid']=$cid;

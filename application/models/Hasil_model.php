@@ -128,6 +128,12 @@ Class Hasil_model extends CI_Model
                 $provinsi = '';
         }	
         			
+        // Tampilkan hanya user sesuai dengan yang di cari       
+        if ($this->input->post('n_search')) {
+              $n_search = ' and ( d.first_name like \'%'.  $this->input->post('n_search') . '%\' ||  d.last_name like \'%'.  $this->input->post('n_search') . '%\') ';
+            } else {          		         		
+                $n_search = '';
+        }								
 		
         if ( $full_range) {
            $offset_start=0; 
@@ -162,7 +168,7 @@ Class Hasil_model extends CI_Model
                 left join users d on d.uid = a.uid
 				left join `group` g on g.gid=d.gid
 				left join `users` cb on cb.uid = d.created_by
-                where d.su != 1 ' . $creator_id . $group_id . $provinsi .				                
+                where d.su != 1 ' . $creator_id . $group_id . $provinsi . $n_search .				                
                 ' group by d.uid
                 order by total desc ' . $qoption;
 
@@ -259,7 +265,13 @@ Class Hasil_model extends CI_Model
                 $provinsi = '';
         }	
         	
-				
+        // Tampilkan hanya user sesuai dengan yang di cari       
+        if ($this->input->post('n_search')) {
+              $n_search = ' and ( d.first_name like \'%'.  $this->input->post('n_search') . '%\' ||  d.last_name like \'%'.  $this->input->post('n_search') . '%\') ';
+            } else {          		         		
+                $n_search = '';
+        }			
+		
         
         if ( $full_range) {
            $offset_start=0; 
@@ -293,7 +305,7 @@ Class Hasil_model extends CI_Model
                 left join users d on d.uid = a.uid
                 left join `group` g on g.gid=d.gid
 				left join `users` cb on cb.uid = d.created_by
-                where d.su != 1 ' . $creator_id . $group_id .	$provinsi .							                
+                where d.su != 1 ' . $creator_id . $group_id .	$provinsi .	$n_search .						                
                 ' group by d.uid
                 order by total desc ' . $qoption;
         
@@ -385,7 +397,14 @@ Class Hasil_model extends CI_Model
                 $provinsi = '';
         }	
         	
-								
+
+        // Tampilkan hanya user sesuai dengan yang di cari       
+        if ($this->input->post('n_search')) {
+              $n_search = ' and ( d.first_name like \'%'.  $this->input->post('n_search') . '%\' ||  d.last_name like \'%'.  $this->input->post('n_search') . '%\') ';
+            } else {          		         		
+                $n_search = '';
+        }			
+			
 		
         if ( $full_range) {
            $offset_start=0; 
@@ -428,7 +447,7 @@ Class Hasil_model extends CI_Model
                 LEFT JOIN result b ON a.rid = b.rid
                 left join `group` g on g.gid=d.gid
 				left join `users` cb on cb.uid = d.created_by
-                where d.su != 1 ' . $creator_id . $group_id .	$provinsi .			
+                where d.su != 1 ' . $creator_id . $group_id .	$provinsi .	$n_search .		
                 'GROUP BY d.uid ' . $qoption;
         
         // Dengan admin

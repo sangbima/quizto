@@ -83,7 +83,12 @@ Class Norma_model extends CI_Model
 
         $result = $query->row_array();
 
-        return $result['iq'];
+        if ($result) {
+            return $result['iq'];
+        } else {
+            return 0;
+        }
+        
     }
 
     function norma_iq($ws_score)
@@ -117,9 +122,9 @@ Class Norma_model extends CI_Model
             case $iq_score <= 80:
                 $ist_norma_iq = 'DI BAWAH RATA-RATA';
                 break;
-            default:
-                $ist_norma_iq = 'UNDEFINE';
-                break;
+            //default:
+            //    $ist_norma_iq = 'UNDEFINE';
+            //    break;
         }
 
         return $ist_norma_iq;
