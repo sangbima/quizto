@@ -39,7 +39,8 @@
                 <button class="btn btn-success" type="submit" name="submit"><?php echo $this->lang->line('start_quiz');?></button>
             </form>
             <?php } else { ?>
-                <h3>Kesempatan Sudah Habis</h3>
+                <!-- <h3>Kesempatan Sudah Habis</h3> -->
+                <h3>Selamat, Anda sudah selesai mengerjakan Ujian Online. Silahkan Logout!</h3>
             <?php } ?>
         </div>
     </div>
