@@ -342,31 +342,32 @@ class Hasil extends CI_Controller
         
         $data['limit']=$limit;
         $data['title']='Hasil Ringkasan';
-        $data['header']=array('A'=>'FULLNAME',
-                              'B'=>'TPU',
-                              'C'=>'TPA',                             
-                              'D'=>'WA',
-                              'E'=>'SE',
-                              'F'=>'AN',
-                              'G'=>'GE',
-                              'H'=>'RA',                              
-                              'I'=>'ZR',
-                              'J'=>'FA',
-                              'K'=>'WU',
-                              'L'=>'ME',
-                              'M'=>'TOTAL',
-                              'N'=>'GROUP',							  
-							  'O'=>'CREATED BY',
-							  'P'=>'KABUPATEN/KOTA',
-							  'Q'=>'PROVINSI'							  
+        $data['header']=array('A'=>'NO. REGISTRASI',
+                              'B'=>'FULLNAME',
+                              'C'=>'TPU',
+                              'D'=>'TPA',                             
+                              'E'=>'WA',
+                              'F'=>'SE',
+                              'G'=>'AN',
+                              'H'=>'GE',
+                              'I'=>'RA',                              
+                              'J'=>'ZR',
+                              'K'=>'FA',
+                              'L'=>'WU',
+                              'M'=>'ME',
+                              'N'=>'TOTAL',
+                              'O'=>'GROUP',							  
+							  'P'=>'CREATED BY',
+							  'Q'=>'KABUPATEN/KOTA',
+							  'R'=>'PROVINSI'							  
 							  );        
         
          $data['result']=$this->hasil_model->hasil_resume($limit,$full,$gid,$created_by);
 		 		 
          if ( $full) {
-            $data['filename'] = "hasil_ringkasan_full_" . date('Ymd') . ".xlsx";         
+            $data['filename'] = "hasil_ringkasan_full_" . date('Ymdhi') . ".xlsx";         
          } else {
-            $data['filename'] = "hasil_ringkasan_"  . $limit. " _". date('Ymd') . ".xlsx";       
+            $data['filename'] = "hasil_ringkasan_"  . $limit. " _". date('Ymdhi') . ".xlsx";       
          }   
          $this->load->view('export_hasil_ringkasan',$data);      
 		 

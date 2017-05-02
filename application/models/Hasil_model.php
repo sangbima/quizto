@@ -55,7 +55,7 @@ Class Hasil_model extends CI_Model
            $qoption= " limit " . $this->config->item('number_of_rows') .  " offset " . $offset_start;
         }   
     
-        $script = 'SELECT d.uid,concat(d.first_name,\' \',d.last_name) as fullname,' . 
+        $script = 'SELECT d.registration_no,d.uid,concat(d.first_name,\' \',d.last_name) as fullname,' . 
 		           'd.gid as gid,d.created_by as created_by_id,g.group_name as group_name,'  .
 				   'concat(cb.first_name,\' \',cb.last_name) as created_by_name, ' .
 				   'd.kabupatenkota as kabupatenkota, d.provinsi as provinsi, ';
