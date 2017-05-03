@@ -21,6 +21,26 @@ Class Berkas_model extends CI_Model
 		
     }
 
+	
+	function if_berkas_exist($berkas_name,$no_reg=''){
+		$registration_no=$no_reg;
+		
+        //--- jika directory belum ada maka buat directory;	
+        $dirtop="upload/data";			
+	    $dirmain=$dirtop . "/" . $registration_no ;			
+		$dirname=$dirmain . "/lampiran";
+		$dirthumb=$dirmain . "/thumbnail";
+		
+		$targets0 = $dirname . '/'.  $registration_no . '_' . $berkas_name .  '.JPG';
+		$targets1 = strtolower($targets0);
+		
+        if (file_exists($targets0)||file_exists($targets1)) {
+			return false;
+        } else {
+			return true;
+        } 			
+	}	
+	
 	function save_berkas($no_reg) 
     {		    
 		// $config['upload_path']          = './uploads/';
@@ -66,14 +86,15 @@ Class Berkas_model extends CI_Model
            mkdir($dirthumb, 0777,true);						   
 	    }			
 		
-		$lname=array('SKCK','SKBN','SKS','BPJS');
+		$lname=array('SKCK','SKSJ','SKSR','SKBN','BPJS','KIS');
 		
 		for ($xi=0;$xi<count($lname);++$xi) {
             $vname='berkas' . $xi;	
             if(isset($_FILES[$vname])){			
-               $ext = pathinfo(basename($_FILES[$vname]['name']), PATHINFO_EXTENSION);               
-               $targets = $dirname . '/'.  $registration_no . '_' . $lname[$xi] .  '.'.$ext; 
-               $thumbfile= $dirthumb . '/'.   $registration_no . '_' . $lname[$xi] .  '.'.$ext;
+               //$ext = pathinfo(basename($_FILES[$vname]['name']), PATHINFO_EXTENSION);               
+			   $ext='.jpg';
+               $targets = strtolower($dirname . '/'.  $registration_no . '_' . $lname[$xi] . $ext); 
+               $thumbfile= strtolower($dirthumb . '/'.   $registration_no . '_' . $lname[$xi] . $ext);
                move_uploaded_file($_FILES[$vname]['tmp_name'], $targets);
                $this->make_thumbnail($targets,$thumbfile);                			  
             } 
@@ -81,7 +102,7 @@ Class Berkas_model extends CI_Model
 		
         $this->zip_lampiran($registration_no);					
 	}	
-	
+		
 	function zip_lampiran($registration_no) 
     {
 		$dirmain="upload/data/" . $registration_no ;			

@@ -334,7 +334,7 @@ section.testimonials {
 .site-footer {
   padding: 0 !important;
   text-align:center;
-  /*position: fixed;*/
+  position: fixed;
   bottom: 0;
   width: 100%;
   /*overflow:hidden;*/

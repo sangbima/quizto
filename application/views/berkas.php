@@ -8,15 +8,24 @@
             <div class="col-md-12">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Lampiran Dokumen (Semua wajib diisi)</h3>
+                        <h3 class="panel-title">Lampiran Dokumen</h3>
                     </div>
                     <div class="panel-body">
                         <div class="row">
                            <?php 
-        				        $lname=array('SKCK<sup class="required">*</sup>','SKBN<sup class="required">*</sup>','SKS<sup class="required">*</sup>','BPJS<sup class="required">*</sup>',);
+        				        $lname=array('SKCK',
+								             'SKSJ',
+											 'SKSR',
+											 'SKBN',
+											 'BPJS',
+											 'KIS'											 
+											 );
+                                $br = false;
         				        for ($xi=0;$xi<count($lname);++$xi) 
         				           {
-        					         $lid='berkas' . $xi;                             						 					    
+        					         $lid='berkas' . $xi;   
+                                     if ($this->berkas_model->if_berkas_exist($lname[$xi],$registration_no)){
+                                         $br = true;
         				   ?>					                            
                             <div class="col-md-4">
                                 <div class="form-group">        
@@ -27,14 +36,13 @@
                                         'class' =>'form-control', 
                                         'placeholder' => $lid ,                                          
 										'type' => 'file',
-                                        'accept' => '.jpeg, .jpg',
-                                        'required' => 'required'
+                                        'accept' => '.jpeg, .jpg'
                                     )); ?>
                                     <small><?php echo form_error($lid, '<div class="text-danger">', '</div>');?></small>
                                     <br>									
                                 </div>
                             </div>													
-						   <?php }?>
+                                <?php }}?>
                            
                         </div>
                         <div class="row">
@@ -42,13 +50,14 @@
                                 <div class="box bg-danger" style="padding: 0 5px 0 5px;">
                                 <p>Keterangan:</p>
                                 <ul>
-                                    <li><sup class="required">*</sup> Wajib diisi</li>
                                     <li>Semua file harus berbentuk gambar (.jpeg, .jpg)</li>
                                     <li>Ukuran per file max. 200 Kb</li>
                                     <li>SKCK: Surat Keterangan Catatan Kepolisian</li>
+                                    <li>SKSJ: Surat Keterangan Sehat Jasmani</li>									
+                                    <li>SKSR: Surat Keterangan Sehat Rohani</li>																		
                                     <li>SKBN: Surat Keterangan Bebas Narkoba</li>
-                                    <li>SKS: Surat Keterangan Sehat</li>
                                     <li>BPJS yang masih aktif</li>                                    
+                                    <li>KIS: Kartu Indonesia Sehat</li>									
                                 </ul>
                                 </div>
                            </div>
@@ -57,8 +66,9 @@
                 </div>
             </div>
         </div>		
-				
-        <button class="btn btn-default" type="submit" id="daftar">Upload</button>
+		<?php if($br) { ?>	
+            <button class="btn btn-default" type="submit" id="daftar">Upload</button>
+        <?php } ?>
     <?php echo form_close(); ?>
 </div>
 

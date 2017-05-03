@@ -1,19 +1,11 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <?php 
-                if($this->session->flashdata('message')){
-            ?>
-                    <div class="alert alert-success alert-dismissable">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                        <?php echo $this->session->flashdata('message'); ?>
-                    </div>
-            <?php
-                }
-            ?>
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Upload Dokumen Anda Berhasil</h3>
+            <div class="jumbotron">
+                <div class="container">
+                    <h1>Berkas Anda Sudah Di Unggah</h1>
+                    <p>Jika Anda belum melengkapi berkas, Anda dapat melengkapi berkas Anda dengan mengunggah kembali berkas yang kurang pada halaman yang sama</p>
+                    <p><a class="btn btn-primary btn-lg" href="/" role="button">Kembali</a></p>
                 </div>
             </div>
         </div>

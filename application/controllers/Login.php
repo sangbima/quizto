@@ -22,7 +22,8 @@ class Login extends CI_Controller
 				redirect('dashboard');
 			}else{
 				// redirect('quiz');	
-				redirect('ujian');	
+				// redirect('ujian');
+				redirect('welcome');
 			}
 		}
 		$data['title']=$this->lang->line('login');

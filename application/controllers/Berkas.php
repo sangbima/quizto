@@ -12,6 +12,10 @@ class Berkas extends CI_Controller
        
         $batas_awal = $this->config->item('awal_berkas_2');
         $batas_akhir = $this->config->item('akhir_berkas_2');
+
+		//$batas_awal= "2017-05-01 00:00:00";
+		//$batas_akhir="2017-06-01 00:00:00";		
+		
         if($now <= date($batas_awal) || $now >= date($batas_akhir)) {
             redirect('ujian');
         }
@@ -38,6 +42,7 @@ class Berkas extends CI_Controller
 	    $this->load->helper('form');
 	    $logged_in=$this->session->userdata('logged_in');
 	    $data['uid']=$logged_in['uid'];
+		$data['registration_no']=$logged_in['registration_no'];
         $data['title'] = "Upload Dokumen Peserta Ujian";
         $this->load->view('header',$data);
         $this->load->view('berkas',$data);
@@ -47,11 +52,13 @@ class Berkas extends CI_Controller
     public function submit()
     {   
         $logged_in=$this->session->userdata('logged_in');
-
+									
         $this->form_validation->set_rules('berkas0', 'SKCK', 'callback_file_berkas0_check');
-        $this->form_validation->set_rules('berkas1', 'SKBN', 'callback_file_berkas1_check');
-        $this->form_validation->set_rules('berkas2', 'SKS', 'callback_file_berkas2_check'); 
-        $this->form_validation->set_rules('berkas3', 'BPJS', 'callback_file_berkas3_check');
+        $this->form_validation->set_rules('berkas1', 'SKSJ', 'callback_file_berkas1_check');
+        $this->form_validation->set_rules('berkas2', 'SKSR', 'callback_file_berkas2_check'); 
+        $this->form_validation->set_rules('berkas3', 'SKBN', 'callback_file_berkas3_check');
+        $this->form_validation->set_rules('berkas4', 'BPJS', 'callback_file_berkas4_check'); 
+        $this->form_validation->set_rules('berkas5', 'KIS', 'callback_file_berkas5_check');
         
         $this->form_validation->set_message('required', 'Input %s wajib diisi.');
         
@@ -74,7 +81,7 @@ class Berkas extends CI_Controller
         $this->load->view('upload_berkas_success',$data);
         $this->load->view('footer',$data);
     }
-
+	
 
     public function file_berkas0_check($str)
     {
@@ -109,15 +116,15 @@ class Berkas extends CI_Controller
                 if($_FILES['berkas1']['size'] < 204800) {
                     return true;
                 } else {
-                    $this->form_validation->set_message('file_berkas1_check', 'SKBN harus berukuran maksimal 200KB');
+                    $this->form_validation->set_message('file_berkas1_check', 'SKSJ harus berukuran maksimal 200KB');
                     return false;
                 }
             } else {
-                $this->form_validation->set_message('file_berkas1_check', 'SKBN harus berupa file .jpg atau .jpeg');
+                $this->form_validation->set_message('file_berkas1_check', 'SKSJ harus berupa file .jpg atau .jpeg');
                 return false;
             }
         } else {
-            $this->form_validation->set_message('file_berkas1_check', 'SKBN harus diunggah');
+            $this->form_validation->set_message('file_berkas1_check', 'SKSJ harus diunggah');
             return false;
         }
     }
@@ -132,15 +139,15 @@ class Berkas extends CI_Controller
                 if($_FILES['berkas2']['size'] < 204800) {
                     return true;
                 } else {
-                    $this->form_validation->set_message('file_berkas2_check', 'SKS Nilai harus berukuran maksimal 200KB');
+                    $this->form_validation->set_message('file_berkas2_check', 'SKSR Nilai harus berukuran maksimal 200KB');
                     return false;
                 }
             } else {
-                $this->form_validation->set_message('file_berkas2_check', 'SKS Nilai harus berupa file .jpg atau .jpeg');
+                $this->form_validation->set_message('file_berkas2_check', 'SKSR Nilai harus berupa file .jpg atau .jpeg');
                 return false;
             }
         } else {
-            $this->form_validation->set_message('file_berkas2_check', 'SKS Nilai harus diunggah');
+            $this->form_validation->set_message('file_berkas2_check', 'SKSR Nilai harus diunggah');
             return false;
         }
     }
@@ -155,18 +162,65 @@ class Berkas extends CI_Controller
                 if($_FILES['berkas3']['size'] < 204800) {
                     return true;
                 } else {
-                    $this->form_validation->set_message('file_berkas3_check', 'BPJS harus berukuran maksimal 200KB');
+                    $this->form_validation->set_message('file_berkas3_check', 'SKBN harus berukuran maksimal 200KB');
                     return false;
                 }
             } else {
-                $this->form_validation->set_message('file_berkas3_check', 'BPJS harus berupa file .jpg atau .jpeg');
+                $this->form_validation->set_message('file_berkas3_check', 'SKBN harus berupa file .jpg atau .jpeg');
                 return false;
             }
         } else {
-            $this->form_validation->set_message('file_berkas3_check', 'BPJS harus diunggah');
+            $this->form_validation->set_message('file_berkas3_check', 'SKBN harus diunggah');
             return false;
         }
     }
+	
+    public function file_berkas4_check($str)
+    {
+        // Berupa image
+        $allowed_mime_type_arr = array('image/jpeg');
+        $mime = get_mime_by_extension($_FILES['berkas4']['name']);
+        if(isset($_FILES['berkas4']['name']) && $_FILES['berkas4']['name'] != '') {
+            if(in_array($mime, $allowed_mime_type_arr)) {
+                if($_FILES['berkas4']['size'] < 204800) {
+                    return true;
+                } else {
+                    $this->form_validation->set_message('file_berkas4_check', 'BPJS harus berukuran maksimal 200KB');
+                    return false;
+                }
+            } else {
+                $this->form_validation->set_message('file_berkas4_check', 'BPJS harus berupa file .jpg atau .jpeg');
+                return false;
+            }
+        } else {
+            $this->form_validation->set_message('file_berkas4_check', 'BPJS harus diunggah');
+            return false;
+        }
+    }	
+	
+    public function file_berkas5_check($str)
+    {
+        // Berupa image
+        $allowed_mime_type_arr = array('image/jpeg');
+        $mime = get_mime_by_extension($_FILES['berkas5']['name']);
+        if(isset($_FILES['berkas5']['name']) && $_FILES['berkas5']['name'] != '') {
+            if(in_array($mime, $allowed_mime_type_arr)) {
+                if($_FILES['berkas5']['size'] < 204800) {
+                    return true;
+                } else {
+                    $this->form_validation->set_message('file_berkas5_check', 'KIS harus berukuran maksimal 200KB');
+                    return false;
+                }
+            } else {
+                $this->form_validation->set_message('file_berkas5_check', 'KIS harus berupa file .jpg atau .jpeg');
+                return false;
+            }
+        } else {
+            $this->form_validation->set_message('file_berkas5_check', 'KIS harus diunggah');
+            return false;
+        }
+    }		
+
 
     public function file_size($field, $files)
     {
