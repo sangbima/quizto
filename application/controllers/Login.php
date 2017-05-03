@@ -68,7 +68,8 @@ class Login extends CI_Controller
 				redirect('dashboard');
 			}else{
 				// redirect('quiz');	
-				redirect('ujian');
+				// redirect('ujian');
+				redirect('welcome');
 			}
 		}else{
 			// invalid login
