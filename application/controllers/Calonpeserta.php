@@ -334,7 +334,7 @@ class Calonpeserta extends CI_Controller
     public function caper2()
     {
         $config = array();
-        $config["base_url"] = base_url() . "calonpeserta/index";
+        $config["base_url"] = base_url() . "calonpeserta/caper2";
         $total_row = $this->user_model->record_count_status2();
         $config["total_rows"] = $total_row;
         $config["per_page"] = $this->config->item("number_of_rows");
