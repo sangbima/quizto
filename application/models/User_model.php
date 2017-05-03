@@ -498,6 +498,139 @@ Class User_model extends CI_Model
 			}	
 		}
 	}
+
+	function ubahstatus2($userid)
+    {
+        $this->db->where('users.uid', $userid);
+        $query = $this->db->get('users');        
+        $calon = $query->row_array();
+
+        if($calon['status2'] == 1) {
+            $newstatus = array('status2' => 0);
+            $this->db->where('users.uid', $userid);
+            return $this->db->update('users', $newstatus);
+        } else {
+            $newstatus = array('status2' => 1);
+            $this->db->where('users.uid', $userid);
+            return $this->db->update('users', $newstatus);
+        }
+    }
+
+	function getAllCaper2() 
+    {
+        $this->db->from('users');
+		$this->db->where('su !=', 1);
+		$this->db->where('su !=', 2);
+        $this->db->order_by('registration_no', 'DESC');
+        $query = $this->db->get();
+        return $query->result_array();		
+	}
+
+	function getLimitCaper2($page="1")
+    {
+		if ($page==0) {
+			$page=1;
+		}	
+		$mlimit=$this->config->item("number_of_rows");
+		$moffset=($page-1) * $mlimit;
+		
+		$this->db->limit($mlimit, $moffset);
+		$this->db->where('su !=', 1);
+		$this->db->where('su !=', 2);
+		$query = $this->db->get('users');
+		return $query->result_array();
+	}
+
+	function record_count_status2()
+    {
+        return $this->db->count_all("users");
+    }
+
+	function getListCaper2($limit, $start)
+    {
+        $this->db->from('users');
+        $this->db->order_by('registration_no DESC');
+        $this->db->limit($limit, $start);
+        $this->db->where('su !=', 1);
+		$this->db->where('su !=', 2);
+        $query = $this->db->get();
+        
+		foreach($query->result() as $key => $val) {
+			$result[] = [
+				'uid' => $val->uid,
+				'registration_no' => $val->registration_no,
+				'fullname' => $val->first_name . ' ' . $val->last_name,
+				'email' => $val->email,
+				'status2' => $val->status2,
+			];
+		}
+
+        return $result;
+    }
+
+	function xlsx_capers($page=0,$mode="full")
+    {
+        require_once ('application/third_party/PHPExcel.php');
+        require_once ('application/third_party/PHPExcel/Writer/Excel2007.php');
+
+        if ($mode=="full") {
+            $capers=$this->getAllCaper2();
+        } else {
+            $capers=$this->getLimitCaper($page);   
+        }	  
+
+        $objPHPExcel = new PHPExcel();
+
+        $objPHPExcel->getProperties()->setCreator("Kemendikbud");
+        $objPHPExcel->getProperties()->setLastModifiedBy("Kemendikbud");
+        $objPHPExcel->getProperties()->setTitle("Office 2007 XLSX Test Document");
+        $objPHPExcel->getProperties()->setSubject("Office 2007 XLSX Test Document");
+        $objPHPExcel->getProperties()->setDescription("Test document for Office 2007 XLSX, generated using PHP classes.");
+
+        $objPHPExcel->setActiveSheetIndex(0);
+        $objSheet=$objPHPExcel->getActiveSheet();
+
+        $mheaders=array(
+            "A1"=>"NO. REGISTRASI", "B1"=>"EMAIL", "C1"=>"NAMA DEPAN", "D1"=>"NAMA BELAKANG","E1"=>"STATUS"
+        );
+        foreach($mheaders as $key => $value) {
+            $objSheet->SetCellValue($key, $value);			  
+        }	  
+		  
+        $xr=1;
+        $date_awal = date('d-m-Y');
+        $expire_date = date('d-m-Y', strtotime('+6 month', strtotime($date_awal)));
+        foreach($capers as $ckey => $cvalue) {
+            ++$xr;
+            $objSheet->SetCellValue("A" . $xr, $cvalue['registration_no']);
+            $objSheet->SetCellValue("B" . $xr, $cvalue['email']);
+            $objSheet->SetCellValue("C" . $xr, $cvalue['first_name']);			   
+            $objSheet->SetCellValue("D" . $xr, $cvalue['last_name']);
+            $objSheet->SetCellValue("E" . $xr, $cvalue['status2'] == 0 ? "GAGAL" : "OK");
+        }	  
+        		  		  		   		   
+        $objSheet->getColumnDimension('A')->setAutoSize(true);	
+        $objSheet->getColumnDimension('B')->setAutoSize(true);	
+        $objSheet->getColumnDimension('C')->setAutoSize(true);	
+        $objSheet->getColumnDimension('D')->setAutoSize(true);
+        $objSheet->getColumnDimension('E')->setAutoSize(true);  
+
+        $objSheet->getStyle('A1:E1')->getFont()->setSize(14);	
+        $objSheet->getStyle('A1:E1')->getFont()->setBold(true);
+        $objSheet->getStyle('A1:E1')->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID)->getStartColor()->setARGB('FFE8E5E5');		  
+
+        $objSheet->getStyle('A1:E'.$xr)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);				  			 
+
+        $objSheet->setTitle("Pemberkasan Tahap 2");
+
+        $objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);                 					       
+        ob_start();
+        $objWriter->save('php://output');
+        $excelOutput = ob_get_clean();
+
+        return $excelOutput;
+
+    }
 }
 
 ?>

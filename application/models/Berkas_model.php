@@ -113,7 +113,7 @@ Class Berkas_model extends CI_Model
         $rootPath = realpath($dirmain);
         $subPath = realpath($dirname);
 
-        $zipfile=$registration_no . "_berkas.zip";
+        $zipfile=$registration_no . "_lampiran.zip";
 
         // Initialize archive object		 
         $zip = new ZipArchive();

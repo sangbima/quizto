@@ -8,6 +8,7 @@ class Calonpeserta extends CI_Controller
        parent::__construct();
        $this->load->database();
        $this->load->model("register_model");
+       $this->load->model("user_model");
        $this->load->helper(array('url', 'file', 'directory'));
        $this->lang->load('basic', $this->config->item('language'));
        // $this->load->library('pagination');
@@ -106,6 +107,14 @@ class Calonpeserta extends CI_Controller
             $this->download_xlsx_capers($extra,"limited");
         }
 
+        if (($dtype == "xlsx") &&  ($value=="allcapers2") ){			 
+            $this->download_xlsx_capers2(0,"full");
+        }
+
+        if (($dtype == "xlsx") &&  ($value=="capers2") ){			 
+            $this->download_xlsx_capers2($extra,"limited");
+        }
+
         if (($dtype == "xlsx") &&  ($value=="statprov") ){             
             $this->download_xlsx_statprov();
         }	 		 
@@ -201,6 +210,21 @@ class Calonpeserta extends CI_Controller
         }			
 		
 		$excel_data=$this->register_model->xlsx_capers($page,$mode);
+	    header("Content-Disposition: attachment; filename=\"$filename\"");
+	    header("Content-Type: application/vnd.ms-excel");		
+		echo $excel_data;		
+		exit;				
+	}
+
+    public function download_xlsx_capers2($page=0,$mode="full")
+    {
+		if ($mode=="full") {
+		    $filename="daftar_semua_calon_peserta_tahap2" . date('Ymd') . ".xlsx";
+		} else {
+		    $filename="daftar_sebagian_calon_peserta_tahap2" . date('Ymd') . ".xlsx";
+        }			
+		
+		$excel_data=$this->user_model->xlsx_capers($page,$mode);
 	    header("Content-Disposition: attachment; filename=\"$filename\"");
 	    header("Content-Type: application/vnd.ms-excel");		
 		echo $excel_data;		
@@ -305,5 +329,53 @@ class Calonpeserta extends CI_Controller
         $this->load->view('header',$data);
         $this->load->view('calon_peserta_statkab',$data);
         $this->load->view('footer',$data);
+    }
+
+    public function caper2()
+    {
+        $config = array();
+        $config["base_url"] = base_url() . "calonpeserta/index";
+        $total_row = $this->user_model->record_count_status2();
+        $config["total_rows"] = $total_row;
+        $config["per_page"] = $this->config->item("number_of_rows");
+        $config["uri_segment"] = 3;
+        $config["use_page_numbers"] = TRUE;
+        // $config["num_links"] = $total_row;
+        $config["next_link"] = 'Next';
+        $config["prev_link"] = 'Previous';
+
+        $config['first_tag_open'] = $config['last_tag_open'] = $config['next_tag_open'] = $config['prev_tag_open'] = $config['num_tag_open'] = '<li>';
+        $config['first_tag_close'] = $config['last_tag_close'] = $config['next_tag_close'] = $config['prev_tag_close'] = $config['num_tag_close'] = '</li>';
+         
+        $config['cur_tag_open'] = '<li class="active"><span><b>';
+        $config['cur_tag_close'] = '</b></span></li>';
+
+        $this->pagination->initialize($config);
+        
+        $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+        $offset = $page == 0 ? 0 : ($page - 1) * $config["per_page"];
+
+        $data['limit']=$config["per_page"];		
+        $data['result'] = $this->user_model->getListCaper2($config["per_page"], $offset);
+        
+        $str_links = $this->pagination->create_links();
+        $data["links"] = explode('&nbsp;', $str_links);
+        $data['page'] = $page==0? 1:$page;
+        
+        $data['title'] = "Daftar Peserta Pemberkasan Tahap 2";
+        
+        $this->load->view('header',$data);
+        $this->load->view('calon_peserta2',$data);
+        $this->load->view('footer',$data);
+    }
+
+    public function status2()
+    {
+        $userid = $this->input->post('caper_id');
+        if($this->user_model->ubahstatus2($userid)) {
+            echo "success";
+        } else {
+            echo "error";
+        }
     }
 }

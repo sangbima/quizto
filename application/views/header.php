@@ -32,6 +32,7 @@
 			if($this->uri->segment(2)!='attempt'){
 			$logged_in=$this->session->userdata('logged_in');
 	?>
+    <div class="wrap">
     <nav class="navbar navbar-default" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -75,6 +76,7 @@
                             <li><a href="<?php echo site_url('calonpeserta/index');?>">Calon Peserta</a></li>
                             <li><a href="<?php echo site_url('calonpeserta/statprov');?>">Sebaran Provinsi</a></li>
                             <li><a href="<?php echo site_url('calonpeserta/statkab');?>">Sebaran Kota/Kabupaten</a></li>
+                            <li><a href="<?php echo site_url('calonpeserta/caper2');?>">Pemberkasan 2</a></li>
                         </ul>
                     </li>
                     <li class="dropdown" <?php if($this->uri->segment(1)=='qbank'){ echo "class='active'"; } ?> >
