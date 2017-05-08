@@ -9,6 +9,7 @@ class Calonpeserta extends CI_Controller
        $this->load->database();
        $this->load->model("register_model");
        $this->load->model("user_model");
+       $this->load->model("berkas_model");
        $this->load->helper(array('url', 'file', 'directory'));
        $this->lang->load('basic', $this->config->item('language'));
        // $this->load->library('pagination');

@@ -17,7 +17,7 @@ $config['batas_pendaftaran']='2017-04-20 16:00:00';
 
 // Pengumpulan berkas tahap 2
 $config['awal_berkas_2']='2017-05-01 01:00:00';
-$config['akhir_berkas_2']='2017-05-09 23:59:59';
+$config['akhir_berkas_2']='2017-05-12 12:00:00';
 
 // umur
 $config['check_date_age'] = '2017-04-30';

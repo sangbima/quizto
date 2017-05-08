@@ -39,6 +39,7 @@
                     </tr>
                     <?php 
 					$xi=($page-1) * $this->config->item('number_of_rows') ;
+
                     foreach($result as $key => $value) {
 						++$xi;
                     ?> 
@@ -48,6 +49,8 @@
                         <td><?php echo $value['fullname']; ?></td>
                         <td>
                             <?php
+                                echo $this->berkas_model->if_berkas_exist('skck',$value['registration_no']) ? '<label class="label label-danger"><i class="fa fa-thumbs-down"></i></label> ' : '<label class="label label-success"><i class="fa fa-thumbs-up"></i></label> ';
+                                
                                 $skckfull="calonpeserta/download/full/skck/" . $value['registration_no'];
                                 echo anchor('#myModal', '<i class="fa fa-eye"></i>', 
                                     array(
@@ -60,6 +63,8 @@
                         </td>
                         <td>
                             <?php
+                                echo $this->berkas_model->if_berkas_exist('sksj',$value['registration_no']) ? '<label class="label label-danger"><i class="fa fa-thumbs-down"></i></label> ' : '<label class="label label-success"><i class="fa fa-thumbs-up"></i></label> ';
+
                                 $sksjfull="calonpeserta/download/full/sksj/" . $value['registration_no'];
                                 echo anchor('#myModal', '<i class="fa fa-eye"></i>', 
                                     array(
@@ -72,6 +77,8 @@
                         </td>
                         <td>
                             <?php
+                                echo $this->berkas_model->if_berkas_exist('sksr',$value['registration_no']) ? '<label class="label label-danger"><i class="fa fa-thumbs-down"></i></label> ' : '<label class="label label-success"><i class="fa fa-thumbs-up"></i></label> ';
+
                                 $sksrfull="calonpeserta/download/full/sksr/" . $value['registration_no'];
                                 echo anchor('#myModal', '<i class="fa fa-eye"></i>', 
                                     array(
@@ -84,6 +91,8 @@
                         </td>
                         <td>
                             <?php
+                                echo $this->berkas_model->if_berkas_exist('skbn',$value['registration_no']) ? '<label class="label label-danger"><i class="fa fa-thumbs-down"></i></label> ' : '<label class="label label-success"><i class="fa fa-thumbs-up"></i></label> ';
+
                                 $skbnfull="calonpeserta/download/full/skbn/" . $value['registration_no'];
                                 echo anchor('#myModal', '<i class="fa fa-eye"></i>', 
                                     array(
@@ -96,6 +105,8 @@
                         </td>
                         <td>
                             <?php
+                                echo $this->berkas_model->if_berkas_exist('bpjs',$value['registration_no']) ? '<label class="label label-danger"><i class="fa fa-thumbs-down"></i></label> ' : '<label class="label label-success"><i class="fa fa-thumbs-up"></i></label> ';
+
                                 $bpjsfull="calonpeserta/download/full/bpjs/" . $value['registration_no'];
                                 echo anchor('#myModal', '<i class="fa fa-eye"></i>', 
                                     array(
@@ -108,6 +119,8 @@
                         </td>
                         <td>
                             <?php
+                                echo $this->berkas_model->if_berkas_exist('kis',$value['registration_no']) ? '<label class="label label-danger"><i class="fa fa-thumbs-down"></i></label> ' : '<label class="label label-success"><i class="fa fa-thumbs-up"></i></label> ';
+
                                 $kisfull="calonpeserta/download/full/kis/" . $value['registration_no'];
                                 echo anchor('#myModal', '<i class="fa fa-eye"></i>', 
                                     array(
