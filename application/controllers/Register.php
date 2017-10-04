@@ -140,10 +140,33 @@ class Register extends CI_Controller
         }
     }
 
+    // public function file_lampiran2_check($str)
+    // {
+    //     // Berupa image
+    //     $allowed_mime_type_arr = array('image/jpeg');
+    //     $mime = get_mime_by_extension($_FILES['lampiran2']['name']);
+    //     if(isset($_FILES['lampiran2']['name']) && $_FILES['lampiran2']['name'] != '') {
+    //         if(in_array($mime, $allowed_mime_type_arr)) {
+    //             if($_FILES['lampiran2']['size'] < 204800) {
+    //                 return true;
+    //             } else {
+    //                 $this->form_validation->set_message('file_lampiran2_check', 'Transkrip Nilai harus berukuran maksimal 200KB');
+    //                 return false;
+    //             }
+    //         } else {
+    //             $this->form_validation->set_message('file_lampiran2_check', 'Transkrip Nilai harus berupa file .jpg atau .jpeg');
+    //             return false;
+    //         }
+    //     } else {
+    //         $this->form_validation->set_message('file_lampiran2_check', 'Transkrip Nilai harus diunggah');
+    //         return false;
+    //     }
+    // }
+
     public function file_lampiran2_check($str)
     {
-        // Berupa image
-        $allowed_mime_type_arr = array('image/jpeg');
+        // Berupa Dokumen
+        $allowed_mime_type_arr = array('application/pdf');
         $mime = get_mime_by_extension($_FILES['lampiran2']['name']);
         if(isset($_FILES['lampiran2']['name']) && $_FILES['lampiran2']['name'] != '') {
             if(in_array($mime, $allowed_mime_type_arr)) {
@@ -151,10 +174,10 @@ class Register extends CI_Controller
                     return true;
                 } else {
                     $this->form_validation->set_message('file_lampiran2_check', 'Transkrip Nilai harus berukuran maksimal 200KB');
-                    return false;
+                return false;
                 }
             } else {
-                $this->form_validation->set_message('file_lampiran2_check', 'Transkrip Nilai harus berupa file .jpg atau .jpeg');
+                $this->form_validation->set_message('file_lampiran2_check', 'Transkrip Nilai harus berupa file .pdf');
                 return false;
             }
         } else {

@@ -85,6 +85,7 @@
                                     array(
                                         'title' => 'Lihat KTP', 
                                         'data-toggle' => 'modal',
+                                        'data-title' => date('d-m-Y', strtotime($value->tanggal_lahir)),
                                         'class' => 'image-floating',
                                         'data-img-url' => site_url($ktpfull)
                                     ));
@@ -139,6 +140,7 @@
             </div>
             <div class="modal-body text-center">
                 <img class="img-responsive" src="#"/>
+                <p id="datatitle"></p>
             </div>
             <div class="modal-footer">
                 <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
@@ -149,6 +151,9 @@
 
 <script type="text/javascript">
     $('.image-floating').click(function(e){
+        var modal = $('#myModal');
+        var title = $(this).attr('data-title');
+        modal.find('.modal-title').text(title);
         $('#myModal img').attr('src', $(this).attr('data-img-url'));
     });
 

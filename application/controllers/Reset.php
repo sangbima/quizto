@@ -34,6 +34,20 @@ class Reset extends CI_Controller
         $this->load->view('footer',$data);
     }
 
+    public function register()
+    {
+        $logged_in=$this->session->userdata('logged_in');
+        if($logged_in['su']!='1'){
+            exit($this->lang->line('permission_denied'));
+        }
+
+        $data['title'] = 'RESET REGISTRATION';
+
+        $this->load->view('header',$data);
+        $this->load->view('reset_register',$data);
+        $this->load->view('footer',$data);
+    }
+
     public function confirm()
     {
 

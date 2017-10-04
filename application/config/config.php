@@ -13,14 +13,14 @@ $config['base_url'] = $sq_base_url;
 $config['pass_percentage']=false;
 
 // batas akhir waktu registrasi
-$config['batas_pendaftaran']='2017-04-20 16:00:00';
+$config['batas_pendaftaran']='2017-10-09 09:00:00';
 
 // Pengumpulan berkas tahap 2
 $config['awal_berkas_2']='2017-05-01 01:00:00';
 $config['akhir_berkas_2']='2017-05-12 12:00:00';
 
 // umur
-$config['check_date_age'] = '2017-04-30';
+$config['check_date_age'] = '2017-10-30';
 $config['umur_max'] = 40;
 $config['umur_min'] = 25;
 

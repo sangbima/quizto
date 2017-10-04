@@ -478,7 +478,8 @@
                                     <li><sup class="required">*</sup> Wajib diisi</li>
                                     <li>Semua file harus berbentuk gambar (.jpeg, .jpg)</li>
                                     <li>Ukuran per file max. 200 Kb</li>
-                                    <li>Khusus Surat Lamaran dan Riwayat Hidup berupa dokumen (.docx, doc, atau .pdf)</li>
+                                    <li>Khusus <b>Transkrip Nilai</b> harus berupa dokumen pdf (.pdf)</li>
+                                    <li>Khusus <b>Surat Lamaran dan Riwayat Hidup</b> berupa dokumen (.docx, doc, atau .pdf)</li>
                                 </ul>
                                 </div>
                            </div>
