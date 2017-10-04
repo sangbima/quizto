@@ -68,14 +68,14 @@ $config['protocol']="smtp";
 */
 
 // smtp hostname eg. smtp.gmail.com
-// $config['smtp_hostname'] = "ssl://smtp.gmail.com";
-$config['smtp_hostname'] = "ssl://mail.kemdikbud.go.id";
+$config['smtp_hostname'] = "ssl://smtp.gmail.com";
+// $config['smtp_hostname'] = "ssl://mail.kemdikbud.go.id";
 // smtp username
-// $config['smtp_username'] = "cat.kemendikbud@gmail.com";
-$config['smtp_username'] = "kepegawaian.setditjenbud";
+$config['smtp_username'] = "cat.kemendikbud@gmail.com";
+// $config['smtp_username'] = "kepegawaian.setditjenbud";
 // smtp password
-// $config['smtp_password'] = '$$gedungFSudirman';
-$config['smtp_password'] = 'kepegawaian#2702';
+$config['smtp_password'] = '$$gedungFSudirman';
+// $config['smtp_password'] = 'kepegawaian#2702';
 // smtp outgoing port. eg for gmail its 465, outlook 587, yahoo 465 for other contact your mailing administrator
 $config['smtp_port'] = 465;
 $config['smtp_secure'] = "ssl";
@@ -96,7 +96,7 @@ $config['email_subject'] = "Pendaftaran Anda Sukses";
 
 // $config['email_message'] = "Proses Pendaftaran Anda sebagai penggiat budaya telah sukses. <br/><br/> Berikut data lengkap Anda untuk login.<br/><br/> Username Anda: <b>[registration_no]</b><br/>Password Anda: <b>[password]</b><br/><br/>Informasi Hasil Seleksi Administrasi akan disampaikan melalui laman kebudayaan.kemdikbud.go.id tanggal <u>24 April 2017</u><br/><br/>Untuk info lebih lanjut kunjungi laman http://kebudayaan.kemdikbud.go.id <br/><br/>Terima Kasih <br/><br/> Salam,<br/>Panitia Penerimaan Penggiat Budaya<br/>Direktorat Jenderal Kebudayaan<br/>Kementerian Pendidikan dan Kebudayaan";
 
-$config['email_message'] = "Proses Pendaftaran Anda sebagai penggiat budaya telah sukses. <br/><br/> Informasi Hasil Seleksi Administrasi akan disampaikan melalui laman kebudayaan.kemdikbud.go.id tanggal <u>24 April 2017</u><br/><br/>Untuk info lebih lanjut kunjungi laman http://kebudayaan.kemdikbud.go.id <br/><br/>Terima Kasih <br/><br/> Salam,<br/>Panitia Penerimaan Penggiat Budaya<br/>Direktorat Jenderal Kebudayaan<br/>Kementerian Pendidikan dan Kebudayaan";
+$config['email_message'] = "Proses Pendaftaran Anda sebagai penggiat budaya telah sukses. <br/><br/> Informasi Hasil Seleksi Administrasi akan disampaikan melalui laman kebudayaan.kemdikbud.go.id tanggal <u>13 Oktober 2017</u><br/><br/>Untuk info lebih lanjut kunjungi laman http://kebudayaan.kemdikbud.go.id <br/><br/>Terima Kasih <br/><br/> Salam,<br/>Panitia Penerimaan Penggiat Budaya<br/>Direktorat Jenderal Kebudayaan<br/>Kementerian Pendidikan dan Kebudayaan";
 
 // activation email subject
 $config['activation_subject'] = "Action required to verify your account";
