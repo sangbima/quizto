@@ -60,9 +60,7 @@ Class Register_model extends CI_Model
         $this->email->to($toemail);
         $this->email->from($fromemail, $fromname);
         $this->email->subject($subject);
-        $this->email->message($message);
-		
-	    								    
+        $this->email->message($message);							    
 		
         if(!$this->email->send()){
             print_r($this->email->print_debugger());
@@ -74,7 +72,14 @@ Class Register_model extends CI_Model
             } else {
                 return false;
             }
-        }		
+        }	
+        
+        	// if($this->db->insert('register',$userdata)){    
+            //     $this->save_lampiran($userdata);                            
+            //     return true;
+            // } else {
+            //     return false;
+            // }
     }
 
     function getStatProv($limit = null, $start = null)
@@ -232,7 +237,18 @@ Class Register_model extends CI_Model
 		
 		//$lname=array('Foto','Ijazah','Transkrip Nilai','KTP','SKCK','SKBN','SKS');
 		// $lname=array('foto','ijazah','transkrip_nilai','ktp','skck','skbn','sks','bpjs','riwayat_hidup');
-        $lname=array('foto','ijazah','transkrip_nilai','ktp','surat_pernyataan','surat_lamaran','riwayat_hidup');
+        $lname=array(
+            'foto',
+            'ijazah',
+            'ktp',
+            'surat_pernyataan',
+            'transkrip_nilai',
+            'riwayat_hidup', 
+            'surat_lamaran',
+            'skck', 
+            'sksj', 
+            'bpjs'
+        );
 		for ($xi=0;$xi<count($lname);++$xi) {
             $vname='lampiran' . $xi;	
             if(isset($_FILES[$vname])){			

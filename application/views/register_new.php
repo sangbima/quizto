@@ -413,7 +413,7 @@
                     <div class="panel-body">
                         <div class="row">
                            <?php 
-        				        $lname=array('Foto (Ukuran 4x6)<sup class="required">*</sup>','Ijazah<sup class="required">*</sup>','Transkrip Nilai<sup class="required">*</sup>','KTP<sup class="required">*</sup>','Surat Pernyataan<sup class="required">*</sup>',);
+        				        $lname=array('Foto (Ukuran 4x6)<sup class="required">*</sup>','Ijazah<sup class="required">*</sup>','KTP<sup class="required">*</sup>','Surat Pernyataan<sup class="required">*</sup>');
         				        for ($xi=0;$xi<count($lname);++$xi) 
         				           {
         					         $lid='lampiran' . $xi;                             						 					    
@@ -436,6 +436,22 @@
                                 </div>
                             </div>													
 						   <?php }?>
+                           <div class="col-md-4">
+                                <div class="form-group">        
+                                    <?php echo form_label('Transkrip Nilai<sup class="required">*</sup>', 'lampiran4'); ?>                              
+                                    <?php echo form_input(array(
+                                        'name' => 'lampiran4',                                         
+                                        'id' => 'lampiran4', 
+                                        'class' =>'form-control', 
+                                        'placeholder' => 'Transkrip Nilai' ,                                          
+                                        'type' => 'file',
+                                        'accept' => '.pdf',
+                                        'required' => 'required'
+                                    )); ?>
+                                    <small><?php echo form_error('lampiran4', '<div class="text-danger">', '</div>');?></small>
+                                    <br>                                    
+                                </div>
+                            </div>
                             <div class="col-md-4">
                                 <div class="form-group">        
                                     <?php echo form_label('Riwayat Hidup<sup class="required">*</sup>', 'lampiran5'); ?>                              
@@ -445,17 +461,16 @@
                                         'class' =>'form-control', 
                                         'placeholder' => 'Riwayat Hidup' ,                                          
                                         'type' => 'file',
-                                        'accept' => '.doc, .docx, .pdf',
+                                        'accept' => '.jpeg, .jpg',
                                         'required' => 'required'
                                     )); ?>
                                     <small><?php echo form_error('lampiran5', '<div class="text-danger">', '</div>');?></small>
                                     <br>                                    
                                 </div>
                             </div>
-                           
                         </div>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group">        
                                     <?php echo form_label('Surat Lamaran<sup class="required">*</sup>', 'lampiran6'); ?>                              
                                     <?php echo form_input(array(
@@ -464,13 +479,63 @@
                                         'class' =>'form-control', 
                                         'placeholder' => 'Surat Lamaran' ,                                          
                                         'type' => 'file',
-                                        'accept' => '.doc, .docx, .pdf',
+                                        'accept' => '.jpeg, .jpg',
                                         'required' => 'required'
                                     )); ?>
                                     <small><?php echo form_error('lampiran6', '<div class="text-danger">', '</div>');?></small>
                                     <br>                                    
                                 </div>
-                            </div>										
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">        
+                                    <?php echo form_label('SKCK<sup class="required">*</sup>', 'lampiran7'); ?>                              
+                                    <?php echo form_input(array(
+                                        'name' => 'lampiran7',                                         
+                                        'id' => 'lampiran7', 
+                                        'class' =>'form-control', 
+                                        'placeholder' => 'SKCK' ,                                          
+                                        'type' => 'file',
+                                        'accept' => '.jpeg, .jpg',
+                                        'required' => 'required'
+                                    )); ?>
+                                    <small><?php echo form_error('lampiran7', '<div class="text-danger">', '</div>');?></small>
+                                    <br>                                    
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">        
+                                    <?php echo form_label('SKSJ<sup class="required">*</sup>', 'lampiran8'); ?>                              
+                                    <?php echo form_input(array(
+                                        'name' => 'lampiran8',                                         
+                                        'id' => 'lampiran8', 
+                                        'class' =>'form-control', 
+                                        'placeholder' => 'SKSJ' ,                                          
+                                        'type' => 'file',
+                                        'accept' => '.jpeg, .jpg',
+                                        'required' => 'required'
+                                    )); ?>
+                                    <small><?php echo form_error('lampiran8', '<div class="text-danger">', '</div>');?></small>
+                                    <br>                                    
+                                </div>
+                            </div>								
+                        </div>
+                        <div class="row">
+                        <div class="col-md-6">
+                                <div class="form-group">        
+                                    <?php echo form_label('BPJS/KIS<sup class="required">*</sup>', 'lampiran9'); ?>                              
+                                    <?php echo form_input(array(
+                                        'name' => 'lampiran9',                                         
+                                        'id' => 'lampiran9', 
+                                        'class' =>'form-control', 
+                                        'placeholder' => 'BPJS/KIS' ,                                          
+                                        'type' => 'file',
+                                        'accept' => '.jpeg, .jpg',
+                                        'required' => 'required'
+                                    )); ?>
+                                    <small><?php echo form_error('lampiran9', '<div class="text-danger">', '</div>');?></small>
+                                    <br>                                    
+                                </div>
+                            </div>
                             <div class="col-md-6">
                                 <div class="box bg-danger" style="padding: 0 5px 0 5px;">
                                 <p>Keterangan:</p>
@@ -479,7 +544,10 @@
                                     <li>Semua file harus berbentuk gambar (.jpeg, .jpg)</li>
                                     <li>Ukuran per file max. 200 Kb</li>
                                     <li>Khusus <b>Transkrip Nilai</b> harus berupa dokumen pdf (.pdf)</li>
-                                    <li>Khusus <b>Surat Lamaran dan Riwayat Hidup</b> berupa dokumen (.docx, doc, atau .pdf)</li>
+                                    <li>SKCK: Surat Keterangan Catatan Kepolisian</li>
+                                    <li>SKSJ: Surat Keterangan Sehat Jasmani</li>									
+                                    <li>BPJS yang masih aktif</li>                                    
+                                    <li>KIS: Kartu Indonesia Sehat</li>
                                 </ul>
                                 </div>
                            </div>

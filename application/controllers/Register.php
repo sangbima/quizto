@@ -64,11 +64,14 @@ class Register extends CI_Controller
         
         $this->form_validation->set_rules('lampiran0', 'Pas Foto', 'callback_file_lampiran0_check');
         $this->form_validation->set_rules('lampiran1', 'Ijazah', 'callback_file_lampiran1_check');
-        $this->form_validation->set_rules('lampiran2', 'Transkrip Nilai', 'callback_file_lampiran2_check'); 
-        $this->form_validation->set_rules('lampiran3', 'KTP', 'callback_file_lampiran3_check');
-        $this->form_validation->set_rules('lampiran4', 'Surat Pernyataan', 'callback_file_lampiran4_check'); 
+        $this->form_validation->set_rules('lampiran2', 'KTP', 'callback_file_lampiran3_check');
+        $this->form_validation->set_rules('lampiran3', 'Surat Pernyataan', 'callback_file_lampiran4_check'); 
+        $this->form_validation->set_rules('lampiran4', 'Transkrip Nilai', 'callback_file_lampiran2_check');
         $this->form_validation->set_rules('lampiran5', 'Daftar Riwayat Hidup', 'callback_file_lampiran5_check');
         $this->form_validation->set_rules('lampiran6', 'Surat Lamaran', 'callback_file_lampiran6_check');
+        $this->form_validation->set_rules('lampiran7', 'SKCK', 'callback_file_lampiran7_check');
+        $this->form_validation->set_rules('lampiran8', 'SKSJ', 'callback_file_lampiran8_check');
+        $this->form_validation->set_rules('lampiran9', 'BPJS/KIS', 'callback_file_lampiran9_check');
         
         $this->form_validation->set_message('required', 'Input %s wajib diisi.');
         $this->form_validation->set_message('min_length', 'Input %s sekurangnya harus berisi %s karakter.');
@@ -167,10 +170,10 @@ class Register extends CI_Controller
     {
         // Berupa Dokumen
         $allowed_mime_type_arr = array('application/pdf');
-        $mime = get_mime_by_extension($_FILES['lampiran2']['name']);
-        if(isset($_FILES['lampiran2']['name']) && $_FILES['lampiran2']['name'] != '') {
+        $mime = get_mime_by_extension($_FILES['lampiran4']['name']);
+        if(isset($_FILES['lampiran4']['name']) && $_FILES['lampiran4']['name'] != '') {
             if(in_array($mime, $allowed_mime_type_arr)) {
-                if($_FILES['lampiran2']['size'] < 204800) {
+                if($_FILES['lampiran4']['size'] < 204800) {
                     return true;
                 } else {
                     $this->form_validation->set_message('file_lampiran2_check', 'Transkrip Nilai harus berukuran maksimal 200KB');
@@ -213,10 +216,10 @@ class Register extends CI_Controller
     {
         // Berupa image
         $allowed_mime_type_arr = array('image/jpeg');
-        $mime = get_mime_by_extension($_FILES['lampiran4']['name']);
-        if(isset($_FILES['lampiran4']['name']) && $_FILES['lampiran4']['name'] != '') {
+        $mime = get_mime_by_extension($_FILES['lampiran3']['name']);
+        if(isset($_FILES['lampiran3']['name']) && $_FILES['lampiran3']['name'] != '') {
             if(in_array($mime, $allowed_mime_type_arr)) {
-                if($_FILES['lampiran4']['size'] < 204800) {
+                if($_FILES['lampiran3']['size'] < 204800) {
                     return true;
                 } else {
                     $this->form_validation->set_message('file_lampiran4_check', 'Surat Pernyataan harus berukuran maksimal 200KB');
@@ -232,10 +235,33 @@ class Register extends CI_Controller
         }
     }
 
+    // public function file_lampiran5_check($str)
+    // {
+    //     // Berupa Dokumen
+    //     $allowed_mime_type_arr = array('application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document');
+    //     $mime = get_mime_by_extension($_FILES['lampiran5']['name']);
+    //     if(isset($_FILES['lampiran5']['name']) && $_FILES['lampiran5']['name'] != '') {
+    //         if(in_array($mime, $allowed_mime_type_arr)) {
+    //             if($_FILES['lampiran5']['size'] < 204800) {
+    //                 return true;
+    //             } else {
+    //                 $this->form_validation->set_message('file_lampiran5_check', 'Daftar Riwayat Hidup harus berukuran maksimal 200KB');
+    //             return false;
+    //             }
+    //         } else {
+    //             $this->form_validation->set_message('file_lampiran5_check', 'Daftar Riwayat Hidup harus berupa file .doc, .docx atau .pdf');
+    //             return false;
+    //         }
+    //     } else {
+    //         $this->form_validation->set_message('file_lampiran5_check', 'Daftar Riwayat Hidup harus diunggah');
+    //         return false;
+    //     }
+    // }
+
     public function file_lampiran5_check($str)
     {
-        // Berupa Dokumen
-        $allowed_mime_type_arr = array('application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document');
+        // Berupa image
+        $allowed_mime_type_arr = array('image/jpeg');
         $mime = get_mime_by_extension($_FILES['lampiran5']['name']);
         if(isset($_FILES['lampiran5']['name']) && $_FILES['lampiran5']['name'] != '') {
             if(in_array($mime, $allowed_mime_type_arr)) {
@@ -243,10 +269,10 @@ class Register extends CI_Controller
                     return true;
                 } else {
                     $this->form_validation->set_message('file_lampiran5_check', 'Daftar Riwayat Hidup harus berukuran maksimal 200KB');
-                return false;
+                    return false;
                 }
             } else {
-                $this->form_validation->set_message('file_lampiran5_check', 'Daftar Riwayat Hidup harus berupa file .doc, .docx atau .pdf');
+                $this->form_validation->set_message('file_lampiran5_check', 'Daftar Riwayat Hidup harus berupa file .jpg atau .jpeg');
                 return false;
             }
         } else {
@@ -255,24 +281,116 @@ class Register extends CI_Controller
         }
     }
 
+    // public function file_lampiran6_check($str)
+    // {
+    //     // Berupa dokumen
+    //     $allowed_mime_type_arr = array('application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document');
+    //     $mime = get_mime_by_extension($_FILES['lampiran6']['name']);
+    //     if(isset($_FILES['lampiran6']['name']) && $_FILES['lampiran6']['name'] != '') {
+    //         if(in_array($mime, $allowed_mime_type_arr)) {
+    //             if($_FILES['lampiran6']['size'] < 204800) {
+    //                 return true;
+    //             } else {
+    //                 $this->form_validation->set_message('file_lampiran6_check', 'Surat Lamaran harus berupa file .doc, .docx atau .pdf');
+    //             }
+    //         } else {
+    //             $this->form_validation->set_message('file_lampiran6_check', 'Surat Lamaran harus berukuran maksimal 200KB');
+    //             return false;
+    //         }
+    //     } else {
+    //         $this->form_validation->set_message('file_lampiran6_check', 'Surat Lamaran harus diunggah');
+    //         return false;
+    //     }
+    // }
+
     public function file_lampiran6_check($str)
     {
-        // Berupa dokumen
-        $allowed_mime_type_arr = array('application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document');
+        // Berupa image
+        $allowed_mime_type_arr = array('image/jpeg');
         $mime = get_mime_by_extension($_FILES['lampiran6']['name']);
         if(isset($_FILES['lampiran6']['name']) && $_FILES['lampiran6']['name'] != '') {
             if(in_array($mime, $allowed_mime_type_arr)) {
                 if($_FILES['lampiran6']['size'] < 204800) {
                     return true;
                 } else {
-                    $this->form_validation->set_message('file_lampiran6_check', 'Surat Lamaran harus berupa file .doc, .docx atau .pdf');
+                    $this->form_validation->set_message('file_lampiran6_check', 'Surat Lamaran harus berukuran maksimal 200KB');
+                    return false;
                 }
             } else {
-                $this->form_validation->set_message('file_lampiran6_check', 'Surat Lamaran harus berukuran maksimal 200KB');
+                $this->form_validation->set_message('file_lampiran6_check', 'Surat Lamaran harus berupa file .jpg atau .jpeg');
                 return false;
             }
         } else {
             $this->form_validation->set_message('file_lampiran6_check', 'Surat Lamaran harus diunggah');
+            return false;
+        }
+    }
+
+    public function file_lampiran7_check($str)
+    {
+        // Berupa image
+        $allowed_mime_type_arr = array('image/jpeg');
+        $mime = get_mime_by_extension($_FILES['lampiran7']['name']);
+        if(isset($_FILES['lampiran7']['name']) && $_FILES['lampiran7']['name'] != '') {
+            if(in_array($mime, $allowed_mime_type_arr)) {
+                if($_FILES['lampiran7']['size'] < 204800) {
+                    return true;
+                } else {
+                    $this->form_validation->set_message('file_lampiran7_check', 'Surat Keterangan Catatan Kepolisian maksimal 200KB');
+                    return false;
+                }
+            } else {
+                $this->form_validation->set_message('file_lampiran7_check', 'Surat Keterangan Catatan Kepolisian harus berupa file .jpg atau .jpeg');
+                return false;
+            }
+        } else {
+            $this->form_validation->set_message('file_lampiran7_check', 'Surat Keterangan Catatan Kepolisian harus diunggah');
+            return false;
+        }
+    }
+
+    public function file_lampiran8_check($str)
+    {
+        // Berupa image
+        $allowed_mime_type_arr = array('image/jpeg');
+        $mime = get_mime_by_extension($_FILES['lampiran8']['name']);
+        if(isset($_FILES['lampiran8']['name']) && $_FILES['lampiran8']['name'] != '') {
+            if(in_array($mime, $allowed_mime_type_arr)) {
+                if($_FILES['lampiran8']['size'] < 204800) {
+                    return true;
+                } else {
+                    $this->form_validation->set_message('file_lampiran8_check', 'Surat Keterangan Sehat Jasmani maksimal 200KB');
+                    return false;
+                }
+            } else {
+                $this->form_validation->set_message('file_lampiran8_check', 'Surat Keterangan Sehat Jasmani harus berupa file .jpg atau .jpeg');
+                return false;
+            }
+        } else {
+            $this->form_validation->set_message('file_lampiran8_check', 'Surat Keterangan Sehat Jasmani harus diunggah');
+            return false;
+        }
+    }
+
+    public function file_lampiran9_check($str)
+    {
+        // Berupa image
+        $allowed_mime_type_arr = array('image/jpeg');
+        $mime = get_mime_by_extension($_FILES['lampiran9']['name']);
+        if(isset($_FILES['lampiran9']['name']) && $_FILES['lampiran9']['name'] != '') {
+            if(in_array($mime, $allowed_mime_type_arr)) {
+                if($_FILES['lampiran9']['size'] < 204800) {
+                    return true;
+                } else {
+                    $this->form_validation->set_message('file_lampiran9_check', 'BPJS/KIS maksimal 200KB');
+                    return false;
+                }
+            } else {
+                $this->form_validation->set_message('file_lampiran9_check', 'BPJS/KIS harus berupa file .jpg atau .jpeg');
+                return false;
+            }
+        } else {
+            $this->form_validation->set_message('file_lampiran9_check', 'BPJS/KIS harus diunggah');
             return false;
         }
     }

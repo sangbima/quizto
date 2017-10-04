@@ -559,3 +559,14 @@ sup.required{
   top: 30%;
   width: 200px;
 }
+
+/* Tabel Calon Peserta */
+#tbl-caper {
+  font-size: 12px;
+}
+#tbl-caper th{
+  text-align: center;
+}
+#tbl-caper th, #tbl-caper td {
+  padding: 3px;
+}

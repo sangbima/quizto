@@ -28,10 +28,16 @@
                         <th>#</th>
                         <th>NO. REGISTRASI</th>
                         <th>NAMA</th>
+                        <th>FOTO</th>
                         <th>IJAZAH</th>
                         <th>TRANSKRIP</th>
                         <th>KTP</th>
                         <th>SP</th>
+                        <th>LAMARAN</th>
+                        <th>CV</th>
+                        <th>BPJS</th>
+                        <th>SKCK</th>
+                        <th>SKSJ</th>
                         <th>STATUS</th>
                         <th>AKSI</th>
                     </tr>
@@ -54,6 +60,18 @@
                         <td><?php echo $xi;?></td>
                         <td><?php echo $value->registration_no; ?></td>
                         <td><?php echo $check_age . ' '.$value->first_name .' '.$value->last_name; ?></td>
+                        <td>
+                            <?php
+                                $foto="calonpeserta/download/full/foto/" . $value->registration_no;
+                                echo anchor('#myModal', '<i class="fa fa-eye"></i>', 
+                                    array(
+                                        'title' => 'Lihat Foto', 
+                                        'data-toggle' => 'modal',
+                                        'class' => 'text-center image-floating',
+                                        'data-img-url' => site_url($foto)
+                                    ));
+                            ?>
+                        </td>
                         <td>
                             <?php
                                 $ijazahfull="calonpeserta/download/full/ijazah/" . $value->registration_no;
@@ -100,6 +118,66 @@
                                         'data-toggle' => 'modal',
                                         'class' => 'image-floating',
                                         'data-img-url' => site_url($spfull)
+                                    ));
+                            ?>
+                        </td>
+                        <td>
+                            <?php
+                                $lamaran="calonpeserta/download/full/surat_lamaran/" . $value->registration_no;
+                                echo anchor('#myModal', '<i class="fa fa-eye"></i>', 
+                                    array(
+                                        'title' => 'Lihat Surat Lamaran', 
+                                        'data-toggle' => 'modal',
+                                        'class' => 'image-floating',
+                                        'data-img-url' => site_url($lamaran)
+                                    ));
+                            ?>
+                        </td>
+                        <td>
+                            <?php
+                                $cv="calonpeserta/download/full/riwayat_hidup/" . $value->registration_no;
+                                echo anchor('#myModal', '<i class="fa fa-eye"></i>', 
+                                    array(
+                                        'title' => 'Lihat Riwayat Hidup', 
+                                        'data-toggle' => 'modal',
+                                        'class' => 'image-floating',
+                                        'data-img-url' => site_url($cv)
+                                    ));
+                            ?>
+                        </td>
+                        <td>
+                            <?php
+                                $bpjs="calonpeserta/download/full/bpjs/" . $value->registration_no;
+                                echo anchor('#myModal', '<i class="fa fa-eye"></i>', 
+                                    array(
+                                        'title' => 'Lihat BPJS', 
+                                        'data-toggle' => 'modal',
+                                        'class' => 'image-floating',
+                                        'data-img-url' => site_url($bpjs)
+                                    ));
+                            ?>
+                        </td>
+                        <td>
+                            <?php
+                                $skck="calonpeserta/download/full/skck/" . $value->registration_no;
+                                echo anchor('#myModal', '<i class="fa fa-eye"></i>', 
+                                    array(
+                                        'title' => 'Lihat SKCK', 
+                                        'data-toggle' => 'modal',
+                                        'class' => 'image-floating',
+                                        'data-img-url' => site_url($skck)
+                                    ));
+                            ?>
+                        </td>
+                        <td>
+                            <?php
+                                $sksj="calonpeserta/download/full/sksj/" . $value->registration_no;
+                                echo anchor('#myModal', '<i class="fa fa-eye"></i>', 
+                                    array(
+                                        'title' => 'Lihat SKSJ', 
+                                        'data-toggle' => 'modal',
+                                        'class' => 'image-floating',
+                                        'data-img-url' => site_url($sksj)
                                     ));
                             ?>
                         </td>
