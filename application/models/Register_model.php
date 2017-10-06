@@ -62,24 +62,24 @@ Class Register_model extends CI_Model
         $this->email->subject($subject);
         $this->email->message($message);							    
 		
-        // if(!$this->email->send()){
-        //     print_r($this->email->print_debugger());
-        //     exit;
-        // } else {
-		// 	if($this->db->insert('register',$userdata)){    
-        //         $this->save_lampiran($userdata);                            
-        //         return true;
-        //     } else {
-        //         return false;
-        //     }
-        // }	
-        
-        	if($this->db->insert('register',$userdata)){    
+        if(!$this->email->send()){
+            print_r($this->email->print_debugger());
+            exit;
+        } else {
+			if($this->db->insert('register',$userdata)){    
                 $this->save_lampiran($userdata);                            
                 return true;
             } else {
                 return false;
             }
+        }	
+        
+        	// if($this->db->insert('register',$userdata)){    
+            //     $this->save_lampiran($userdata);                            
+            //     return true;
+            // } else {
+            //     return false;
+            // }
     }
 
     function getStatProv($limit = null, $start = null)
