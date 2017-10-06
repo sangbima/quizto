@@ -79,6 +79,7 @@ $config['smtp_password'] = 'kepegawaian#2702';
 // smtp outgoing port. eg for gmail its 465, outlook 587, yahoo 465 for other contact your mailing administrator
 $config['smtp_port'] = 465;
 $config['smtp_secure'] = "ssl";
+// $config['smtp_crypto'] = "ssl";
 $config['smtp_auth'] = TRUE;
 // smtp timeout default 5 seconds
 $config['smtp_timeout'] = "5";
