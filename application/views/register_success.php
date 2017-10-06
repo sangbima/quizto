@@ -18,7 +18,6 @@
                 <div class="panel-body">
                     <p>Informasi Hasil Seleksi Administrasi akan disampaikan melalui laman kebudayaan.kemdikbud.go.id tanggal <u>13 Oktober 2017</u></p>
                     <p>
-                        Info lengkap silahkan hubungi: <a href="mailto:kepegawaian.setditjenbud@kemdikbud.go.id">Panitia Ujian</a><br/><br/>
                         <a href="/" class="btn btn-primary">Kembali</a>
                     </p>
                 </div>

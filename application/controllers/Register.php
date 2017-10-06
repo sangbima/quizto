@@ -58,9 +58,9 @@ class Register extends CI_Controller
         $this->form_validation->set_rules('institusi_pendidikan', 'Institusi Pendidikan', 'required');
         $this->form_validation->set_rules('fakultas', 'Fakultas/Jurusan', 'required');
         $this->form_validation->set_rules('no_ijazah', 'No. Ijazah', 'required');
-        $this->form_validation->set_rules('nilai_ipk', 'IPK/NEM', 'numeric|required');
+        $this->form_validation->set_rules('nilai_ipk', 'IPK/NEM', 'decimal|required');
         $this->form_validation->set_rules('jobdesk', 'Deskripsi Pekerjaan', 'trim');
-        $this->form_validation->set_rules('thn_mengabdi', 'Masa Kerja', 'numeric');
+        $this->form_validation->set_rules('thn_mengabdi', 'Masa Kerja', 'decimal');
         
         $this->form_validation->set_rules('lampiran0', 'Pas Foto', 'callback_file_lampiran0_check');
         $this->form_validation->set_rules('lampiran1', 'Ijazah', 'callback_file_lampiran1_check');
