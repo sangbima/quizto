@@ -16,6 +16,7 @@ Class Kotakabupaten_model extends CI_Model
         $this->db->select('id, provinsi, kotakabupaten');
         if($provinsi != NULL) {
             $this->db->where('provinsi', $provinsi);
+            $this->db->where('status', 1);
         }
 
         $query = $this->db->get('locations');
