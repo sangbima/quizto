@@ -393,7 +393,6 @@
                                         'class' =>'form-control', 
                                         'placeholder' => $this->lang->line('nilai_ipk'), 
                                         'required' => 'required',
-                                        'type' => 'number'
                                     )); ?>
                                     <small><?php echo form_error('nilai_ipk', '<div class="text-danger">', '</div>');?></small>
                                 </div>
