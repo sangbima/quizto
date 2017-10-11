@@ -198,7 +198,7 @@ class Calonpeserta extends CI_Controller
         header('Content-Disposition: inline; filename="' . $file_name .'"');
 
         if (file_exists($myfile)) {
-            header("Content-Length: " . filesize($myfile))	;	 
+            header("Content-Length: " . filesize($myfile));	 
             readfile($myfile);
         }
         exit;
