@@ -13,7 +13,7 @@ $config['base_url'] = $sq_base_url;
 $config['pass_percentage']=false;
 
 // batas akhir waktu registrasi
-$config['batas_pendaftaran']='2017-10-11 16:00:00';
+$config['batas_pendaftaran']='2017-10-11 22:00:00';
 
 // Pengumpulan berkas tahap 2
 $config['awal_berkas_2']='2017-05-01 01:00:00';

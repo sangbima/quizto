@@ -86,13 +86,21 @@
                         </td>
                         <td>
                             <?php
-                                $transfull="calonpeserta/download/full/transkrip_nilai/" . $value->registration_no;
-                                echo anchor('#myModal', '<i class="fa fa-eye"></i>', 
+                                // $transfull="calonpeserta/download/full/transkrip_nilai/" . $value->registration_no;
+                                // echo anchor('#myModal', '<i class="fa fa-eye"></i>', 
+                                //     array(
+                                //         'title' => 'Lihat Transkrip Nilai',
+                                //         'class' => 'image-floating',
+                                //         'data-toggle' => 'modal',
+                                //         'data-img-url' => site_url($transfull)
+                                //     ));
+                                $transfull = "calonpeserta/download/pdf/transkrip_nilai/" . $value->registration_no;
+                                echo anchor('#myModalTrans', '<i class="fa fa-eye"></i>', 
                                     array(
                                         'title' => 'Lihat Transkrip Nilai',
-                                        'class' => 'image-floating',
+                                        'class' => 'trans-floating',
                                         'data-toggle' => 'modal',
-                                        'data-img-url' => site_url($transfull)
+                                        'data-pdf-url' => site_url($transfull)
                                     ));
                             ?>
                         </td>
@@ -227,12 +235,38 @@
     </div>
 </div>
 
+<!-- Modal -->
+<div id="myModalTrans" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="trans-title"></h4>
+            </div>
+            <div class="modal-body text-center">
+                <img class="img-responsive" src="#"/>
+                <p id="trans-title"></p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script type="text/javascript">
     $('.image-floating').click(function(e){
         var modal = $('#myModal');
         var title = $(this).attr('data-title');
         modal.find('.modal-title').text(title);
         $('#myModal img').attr('src', $(this).attr('data-img-url'));
+    });
+
+    $('.trans-floating').click(function(e){
+        var modal = $('#myModalTrans');
+        var title = $(this).attr('trans-title');
+        modal.find('.modal-title').text(title);
+        $('#myModalTrans img').attr('src', $(this).attr('data-pdf-url'));
     });
 
     $('.changestatus').click(function(e){

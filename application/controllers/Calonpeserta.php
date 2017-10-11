@@ -94,6 +94,10 @@ class Calonpeserta extends CI_Controller
             $this->download_image($extra,$value,"full");    
         } 
 
+        if ($dtype == "pdf") { 
+            $this->download_pdf($extra,$value,"pdf");    
+        }
+
         if ($dtype == "zip") { 
             $this->download_zip_detail($extra,$value);    
         }
@@ -171,7 +175,34 @@ class Calonpeserta extends CI_Controller
             imagedestroy($canvas);
         }
         exit;
-	}
+    }
+    
+    public function download_pdf($registration_no="",$lampiran_name="")
+    {
+        $dirname="upload/data/" . $registration_no . "/lampiran";
+        $maps = directory_map('./upload/data/'.$registration_no.'/lampiran/');
+        
+        $nama_file = $registration_no ."_" . strtolower($lampiran_name);
+
+        $file_names = preg_grep('/'.$nama_file.'/', $maps);
+
+        foreach ($file_names as $key => $value) {
+            $file_name = $value;
+        }
+
+        $file_path=realpath($dirname);
+        // $file_name=$registration_no ."_" . strtolower($lampiran_name) . ".jpg"; 				 				 
+        $myfile=$file_path . "/" . $file_name;
+
+        header("Content-type:application/pdf");
+        header('Content-Disposition: inline; filename="' . $file_name .'"');
+
+        if (file_exists($myfile)) {
+            header("Content-Length: " . filesize($myfile))	;	 
+            readfile($myfile);
+        }
+        exit;
+    }
 	
 	public function download_zip_all()
     {
