@@ -321,7 +321,11 @@ Class Ujian_model extends CI_Model
                 $manual_valuation=1;
             }
         }
-        $percentage_obtained=($marks/$quiz['noq'])*100;
+        $percentage_obtained=0;
+        if($quiz['noq'] > 0) {
+            $percentage_obtained=($marks/$quiz['noq'])*100;
+        }
+        
         if($percentage_obtained >= $quiz['pass_percentage']){
             $qr=$this->lang->line('pass');
         }else{

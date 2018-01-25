@@ -3,6 +3,27 @@
         $logged_in=$this->session->userdata('logged_in');
     ?>
     <h3><?php echo $title;?></h3>
+    <?php
+        if(empty($quid)) {
+    ?>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-bordered">
+                <tr>
+                    <th>#</th>
+                    <th>Nama Test</th>
+                    <th>Jumlah Soal</th>
+                    <th>Durasi (menit)</th>
+                </tr>
+                <tr>
+                    <td colspan="4">Tidak ada Ujian</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <?php
+        } else {
+    ?>
     <div class="row">
         <div class="col-md-12">
             <table class="table table-bordered">
@@ -44,4 +65,5 @@
             <?php } ?>
         </div>
     </div>
+    <?php } ?>
 </div>
