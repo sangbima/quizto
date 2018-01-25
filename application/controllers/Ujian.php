@@ -37,27 +37,31 @@ class Ujian extends CI_Controller
       //$data['reach_max'] = $this->ujian_model->is_reach_max($logged_in['uid']);
     $data['uid']=$logged_in['uid'];
     $data['masih_ada_kesempatan'] = false;
-			
-    foreach ($data['result'] as $key => $value) {
+		
+    if(!empty($data['result']))	{
+      foreach ($data['result'] as $key => $value) {
         $data['quid'][$key] = $value['quid'];   
-		
+    
         $ma = $this->ujian_model->count_result($value['quid'],$data['uid']);    
-		
+    
         if ( $ma < $data['result'][$key]['maximum_attempts']  ) {
                $data['masih_ada_kesempatan'] = true;      
            }       
            $key++;
       }
-    
+    } else {
+      $data['quid'] = null;
+    }
+        
       foreach ($data['result_all'] as $key => $value) {
         $data['quid_all'][$key] = $value['quid'];
         $key++;
       }   
 	  	
 	
-	  $data['quiz_current']=$this->current_quiz($data['quid'][0]);	  	 
+	   $data['quiz_current']=$this->current_quiz($data['quid'][0]);	  	 
       $data['quiz_next']=$this->next_quiz($data['quid'][0]);	  	 
-	  	 
+	  	 // var_dump($data['quiz_current']);die();
 		 
       $this->session->set_userdata('quid', $data['quid']);
       $this->session->set_userdata('quid_all', $data['quid_all']);
@@ -1730,13 +1734,16 @@ class Ujian extends CI_Controller
 		
 		$quiz_only = $this->ujian_model->ujian_list();
 		
-						
-		foreach($quiz_only as $qkey=>$qval) {
-			if($qval['quid']==$cur_quid) {
-				$nq=($qkey+1);			
-			}	
-			//echo $qval['quid'] . "|" . $qval['quiz_name']. "_";	
-			}	
+    if(!empty($quiz_only)) {
+      foreach($quiz_only as $qkey=>$qval) {
+        if($qval['quid']==$cur_quid) {
+          $nq=($qkey+1);      
+        } 
+        //echo $qval['quid'] . "|" . $qval['quiz_name']. "_"; 
+      } 
+    } else {
+      $nq=null;
+    }
 						
 		if ($nq<count($quiz_only)) {
 			$nqz=$quiz_only[$nq]['quid'];
@@ -1769,13 +1776,18 @@ class Ujian extends CI_Controller
 		
 		$quiz_only = $this->ujian_model->ujian_list();
 		
+    if(!empty($quiz_only)) {
+      foreach($quiz_only as $qkey=>$qval) {
+        if($qval['quid']==$cur_quid) {
+          $nq=$qkey;      
+        } 
+        //echo $qval['quid'] . "|" . $qval['quiz_name']. "_"; 
+      } 
+    } else {
+      $nq=null;
+    }
 						
-		foreach($quiz_only as $qkey=>$qval) {
-			if($qval['quid']==$cur_quid) {
-				$nq=$qkey;			
-			}	
-			//echo $qval['quid'] . "|" . $qval['quiz_name']. "_";	
-			}	
+		
 						
 		if ($nq<count($quiz_only)) {
 			$nqz=$quiz_only[$nq]['quid'];
